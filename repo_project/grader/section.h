@@ -5,49 +5,62 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
 #include <sqlite3.h>
-
 #include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
 #include "dbtool.h"
 #include "dbtable.h"
 using namespace std;
+
+class Student;
+class Lab;
 
 class Section : public DBTable
 {
 
 private:
-    string id;
+    int id;
+    DBTool *tool;
     vector<Student*> students;
+    vector<Lab*> labs;
 
-protected:
-    std::string sql_select_all;
+    Student* get_student(string fn, string ln);
+    string table_students = "stable";
+    string table_sections = "ltable";
+    string table_labs;
+    bool select_all_students_in_section();
+    bool select_all_labs_in_section();
+    bool drop_student_table();
+    bool drop_lab_table();
+
+    std::string sql_select_all_students_in_section;
+    std::string sql_select_all_labs_in_section;
+
 
 public:
     Section();
-    Section(string id,DBTool *tool, std::string table);
+    Section(int id,DBTool *tool);
     ~Section();
 
-    void add_student(Student*);
+    void add_student(std::string fn, std::string ln);
+    void add_lab_student(std::string fn, std::string ln, std::string labname, int labnumber);
+
+
     vector<Student*> get_students();
     string get_id();
-
-    // An overloaded method to generate a new
-    // create command for your child class.
-    void store_create_sql();
-
-    // An overloaded method to generate a new
-    // insert command for your child class.
-    virtual void store_add_row_sql();
+    void repopulate();
 
     bool add_row(int id);
 
 };
 
-int cb_add_row(void  *data,
+int cb_select_all_students_in_section(void  *data,
+               int    argc,
+               char **argv,
+               char **azColName);
+
+int cb_select_all_labs_in_section(void  *data,
                int    argc,
                char **argv,
                char **azColName);
