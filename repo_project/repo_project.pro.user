@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.2.0, 2017-03-22T19:08:20. -->
-<qtcreator>
- <data>
-  <variable>EnvironmentId</variable>
-  <value type="QByteArray">{dd5a113b-9a11-4480-93aa-db27a287a747}</value>
-=======
-<!-- Written by QtCreator 4.2.0, 2017-03-23T17:51:28. -->
+<!-- Written by QtCreator 4.2.0, 2017-03-28T21:52:20. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{cd9819f3-1edc-4b54-b91d-9fc0dd5d9969}</value>
->>>>>>> 5cb29502dddca8032d7eb246edefea7a2ff8e622
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -310,21 +302,12 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Student</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/sh3/mullana/Desktop/repo_lopez_mullan_lickfeld_binici/repo_project/Student/Student.pro</value>
-    <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">Student/Student.pro</value>
-=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">grader</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/worklu/repo_lopez_mullan_lickfeld_binici/repo_project/grader/grader.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">grader/grader.pro</value>
->>>>>>> 5cb29502dddca8032d7eb246edefea7a2ff8e622
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>

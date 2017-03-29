@@ -26,8 +26,10 @@ private:
 public:
     Lab(Student* belongsto, std::string labname, int labnumber, DBTool *tool, std::string table);
     ~Lab();
+
     std::string get_lab_name;
     int get_lab_num();
+
     // An overloaded method to generate a new
     // create command for your child class.
     void store_create_sql();
@@ -37,7 +39,6 @@ public:
     virtual void store_add_row_sql();
 
     bool add_row(int labnumber, std::string fn, std::string ln, std::string labname);
-
     void set_grade(int);
     int get_grade();
 

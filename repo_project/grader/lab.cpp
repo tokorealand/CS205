@@ -12,9 +12,7 @@ Lab::Lab(Student* belongsto,std::string labname, int labnumber, DBTool *tool, st
     belongs = belongsto;
 
     // Load SQL specific to child class.
-
     store_add_row_sql();
-
     store_create_sql();
 
     // must build table sepparately so new
