@@ -22,7 +22,7 @@ Student::Student(int sectionnum,std::string fn,std::string ln, DBTool *tool, std
 
 Student::~Student()
 {
-    //inputs contained information to player table inside the database
+    //inputs contained information to student table inside the database
     build_table();
     add_row(sectionNum,firstName,lastName);
 }

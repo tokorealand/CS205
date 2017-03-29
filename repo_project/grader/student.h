@@ -36,7 +36,7 @@ public:
 
     string get_first_name();
     string get_last_name();
-    void add_lab(Lab*thelab);
+    void add_lab(Lab *thelab);
     vector<Lab*> get_labs();
 
     // An overloaded method to generate a new
@@ -52,8 +52,8 @@ public:
 };
 
 int cb_add_row_student(void  *data,
-               int    argc,
-               char **argv,
-               char **azColName);
+                       int    argc,
+                       char **argv,
+                       char **azColName);
 
 #endif // STUDENT_H
