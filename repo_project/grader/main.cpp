@@ -6,10 +6,12 @@
 #include "commentengine.h"
 #include "class.h"
 #include <string>
+#include "grader.h"
 using namespace std;
 
 int main(int argc, char *argv[])
 {
 
-    return 0;
+   Grader g;
+
 }

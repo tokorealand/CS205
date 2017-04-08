@@ -4,26 +4,28 @@
 #include "student.h"
 #include "dbtable.h"
 #include "dbtool.h"
+#include "../controller/controller.h"
 #include "lab.h"
 #include <vector>
 #include <string>
 using namespace std;
 
-class Grader : public DBTable{
+class Controller;
+class Grader{
 private:
-    vector<Section*> sections;
+
     Student* currentStudent;
     Lab* currentLab;
     DBTool *tool;
-    std::string sql_select_all_pgh;
-    std::string sql_select_all_g;
+    Controller *control;
+
+
 
 public:
     Grader();
-    Grader(DBTool *db);
     ~Grader();
 
-    void add_section(Section*);
+
     void set_current_student(Student*);
     void set_currentLab(Lab*);
 
@@ -34,14 +36,6 @@ public:
 };
 
 
-int cb_select_all_students(void  *data,
-                           int    argc,
-                           char **argv,
-                           char **azColName);
 
-int cb_select_all_sections(void  *data,
-                           int    argc,
-                           char **argv,
-                           char **azColName);
 
 #endif // GRADER_H

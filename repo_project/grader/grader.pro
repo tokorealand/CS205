@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     dbtable.cpp \
     dbtool.cpp \
     commentengine.cpp \
-    class.cpp
+    class.cpp \
+    ../controller/controller.cpp
 
 HEADERS += \
     grader.h \
@@ -23,4 +24,6 @@ HEADERS += \
     dbtable.h \
     dbtool.h \
     commentengine.h \
-    class.h
+    class.h \
+    ../controller/controller.h
+

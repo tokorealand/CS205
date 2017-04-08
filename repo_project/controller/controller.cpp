@@ -38,6 +38,58 @@ void Controller::total_drop()
     drop_class_table();
 }
 
+Class* Controller::get_class(std::string id)
+{
+   for(Class* it: classes)
+   {
+       if(it->get_id() == id)
+       {
+           return it;
+       }
+
+   }
+   return NULL;
+}
+
+Section* Controller::get_section(std::string id)
+{
+   for(Section* it: sections)
+   {
+       if(it->get_id() == id)
+       {
+           return it;
+       }
+
+   }
+   return NULL;
+}
+
+Student* Controller::get_student(std::string id)
+{
+   for(Student* it: students)
+   {
+       if(it->get_id() == id)
+       {
+           return it;
+       }
+
+   }
+   return NULL;
+}
+
+Lab* Controller::get_lab(std::string id)
+{
+   for(Lab* it: labs)
+   {
+       if(it->get_id() == id)
+       {
+           return it;
+       }
+
+   }
+   return NULL;
+}
+
 bool Controller::item_exist(std::string id, std::string type)
 {
     if(type == "class")
@@ -108,6 +160,7 @@ void Controller::add_section(std::string sectionID, string classID)
 
     Section *sec = new Section(sectionID, classID,class_tool,table_section);
     sections.push_back(sec);
+
 }
 
 void Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)

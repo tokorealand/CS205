@@ -6,6 +6,7 @@
 #include "../grader/dbtool.h"
 #include "../grader/lab.h"
 #include "../grader/class.h"
+#include "../grader/commentengine.h"
 #include <iostream>
 #include <sqlite3.h>
 #include <stdio.h>
@@ -47,6 +48,7 @@ private:
 
     bool item_exist(std::string id, std::string type);
 
+
     void total_drop();
 
 
@@ -83,6 +85,10 @@ public:
 
     void add_lab(std::string labID, Student* lab_of_student, std::string labName, std::string labNumber, DBTool *tool, std::string table);
 
+    Class* get_class(std::string id);
+    Section* get_section(std::string id);
+    Student* get_student(std::string id);
+    Lab* get_lab(std::string id);
 
 
 };
