@@ -10,6 +10,7 @@ Controller::Controller(DBTool *tool):DBTable(tool)
 
 Controller::~Controller()
 {
+    total_drop();
     for(Class* it : classes)
     {
         delete it;
@@ -26,10 +27,73 @@ Controller::~Controller()
     {
         delete it;
     }
+
+}
+
+void Controller::total_drop()
+{
+    drop_lab_table();
+    drop_student_table();
+    drop_section_table();
+    drop_class_table();
+}
+
+bool Controller::item_exist(std::string id, std::string type)
+{
+    if(type == "class")
+    {
+        for(Class* it : classes)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(type == "section")
+    {
+        for(Section* it : sections)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    if(type == "student")
+    {
+        for(Student* it : students)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    if(type == "lab")
+    {
+        for(Lab* it : labs)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    return false;
 }
 
 void Controller::add_class(std::string classID, int number_of_sections)
 {
+    if(item_exist(classID,"class"))
+    {
+        return;
+    }
     Class *cla = new Class(classID,number_of_sections,class_tool,table_class);
     classes.push_back(cla);
 
@@ -37,19 +101,33 @@ void Controller::add_class(std::string classID, int number_of_sections)
 
 void Controller::add_section(std::string sectionID, string classID)
 {
+    if(item_exist(sectionID,"section"))
+    {
+        return;
+    }
+
     Section *sec = new Section(sectionID, classID,class_tool,table_section);
     sections.push_back(sec);
 }
 
 void Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)
 {
+    if(item_exist(studentID,"student"))
+    {
+        return;
+    }
     Student *stu = new Student(studentID,sectionID, firstname, lastname, class_tool,table_student);
     students.push_back(stu);
 }
 
-void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, DBTool *tool, string table)
+void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
 {
-
+    if(item_exist(labID,"lab"))
+    {
+        return;
+    }
+    Lab *la = new Lab(labID, studentID, labName, labNumber,class_tool,table_lab);
+    labs.push_back(la);
 }
 
 //Used to retriveve all players in database
@@ -370,6 +448,115 @@ int cb_select_all_students(void  *data,
     }
 
     obj->add_student(argv[0],argv[1],argv[2],argv[3]);
+    //old from lab 6
+
+    return 0;
+}
+
+////////
+
+//Used to retriveve all labs in database
+bool Controller::select_all_labs() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_labs = "SELECT * FROM ";
+    sql_select_all_labs += table_lab;
+    sql_select_all_labs += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_labs.c_str(),
+                           cb_select_all_students,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << table_name
+        //                  << " template ::"
+        //                  << std::endl
+        //                  << "SQL error: "
+        //                  << zErrMsg;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
+// Removes the db table from the database.
+bool Controller::drop_lab_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_lab="DROP TABLE ";
+    sql_drop_lab += table_lab;
+    sql_drop_lab += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_lab.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << sql_drop
+        //                  << std::endl;
+
+        //        std::cerr << "SQL error: "
+        //                  << zErrMsg
+        //                  << std::endl;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+
+//Call back for select_all_pgh
+int cb_select_all_labs(void  *data,
+                       int    argc,
+                       char **argv,
+                       char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_sections being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
     //old from lab 6
 
     return 0;

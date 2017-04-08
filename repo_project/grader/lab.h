@@ -16,19 +16,23 @@ class Student;
 
 class Lab : public DBTable{
 private:
-    int labNum;
+    std::string labNum;
     int grade;
     std::string labName;
+    std::string id;
+    std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
 
 
 
 public:
-    Lab(Student* belongsto, std::string labname, int labnumber, DBTool *tool, std::string table);
+    Lab(string labID, std::string studentID, string labName, string labNumber, DBTool *tool, std::string table);
     ~Lab();
 
     std::string get_lab_name;
     int get_lab_num();
+
+    std::string get_id();
 
     // An overloaded method to generate a new
     // create command for your child class.
@@ -38,7 +42,7 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-    bool add_row(int labnumber, int studentid, std::string fn, std::string ln, std::string labname);
+    bool add_row(string id, string studentid, std::string labname, std::string labnumber);
     void set_grade(int);
     int get_grade();
 

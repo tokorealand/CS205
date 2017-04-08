@@ -35,7 +35,7 @@ void Student::add_lab(Lab *thelab)
     labs.push_back(thelab);
 }
 
-std::string Student::get_studentid()
+std::string Student::get_id()
 {
     return id;
 }

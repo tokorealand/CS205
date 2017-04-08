@@ -45,6 +45,12 @@ private:
     bool drop_lab_table();
     std::string sql_select_all_labs;
 
+    bool item_exist(std::string id, std::string type);
+
+    void total_drop();
+
+
+
 
 protected:
     std::string sql_select_all;
@@ -64,7 +70,7 @@ public:
 
     void add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
 
-    void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber, DBTool *tool, std::string table);
+    void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber);
 
 
     /* Pointer version of the creation methods.

@@ -24,6 +24,11 @@ Class::~Class()
     add_row(id,number_of_sections);
 }
 
+std::string Class:: get_id()
+{
+    return id;
+}
+
 
 ///*
 // *Creates objects from the database

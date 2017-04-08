@@ -5,12 +5,12 @@
 
 class Student;
 
-Lab::Lab(Student* belongsto,std::string labname, int labnumber, DBTool *tool, std::string table):DBTable(tool,table)
+Lab::Lab(std::string labID, string studentID, string labName, string labNumber, DBTool *tool, std::string table):DBTable(tool,table)
 {
-    labNum = labnumber;
-    labName = labname;
-    belongs = belongsto;
-
+    this->id = labID;
+    this->studentID = studentID;
+    this->labName = labName;
+    this->labNum = labNumber;
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -23,8 +23,13 @@ Lab::Lab(Student* belongsto,std::string labname, int labnumber, DBTool *tool, st
 Lab::~Lab()
 {
     //inputs contained information to player table inside the database
-//    build_table();
-//    add_row(labNum,belongs->get_studentid(),belongs->get_first_name(),belongs->get_last_name(),labName);
+    build_table();
+    add_row(id,studentID,labName,labNum);
+}
+
+std::string Lab::get_id()
+{
+    return id;
 }
 
 // SQL used for inputting information
@@ -46,48 +51,43 @@ void Lab::store_create_sql() {
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
-    sql_create += "  labnumber INT PRIMARY KEY NOT NULL, ";
-    sql_create += "  studentid INT NOT NULL, ";
-    sql_create += "  firstname TEXT NOT NULL, ";
-    sql_create += "  lastname TEXT NOT NULL, ";
-    sql_create += "  labname TEXT NOT NULL";
+    sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
+    sql_create += "  studentid TEXT NOT NULL, ";
+    sql_create += "  labname TEXT NOT NULL, ";
+    sql_create += "  labnumber TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the player table database.
 */
-bool Lab::add_row(int labnumber, int studentid,std::string firstname, std::string lastname, std::string labname) {
+bool Lab::add_row(std::string id, std::string studentid, std::string labname , std::string labnumber) {
     int   retCode = 0;
     char *zErrMsg = 0;
-    char  tempval[128];
-    char  tempval2[128];
+
 
 
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( labnumber, studentid, firstname, lastname, labname ) ";
+    sql_add_row += " ( id, studentid, labname, labnumber ) ";
     sql_add_row += "VALUES (";
 
-    sprintf (tempval, "%d", labnumber);
-    sql_add_row += tempval;
-    sql_add_row += ", ";
-
-    sprintf (tempval2, "%d", studentid);
-    sql_add_row += tempval2;
-    sql_add_row += ", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(firstname);
+    sql_add_row += std::string(id);
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(lastname);
+    sql_add_row += std::string(studentid);
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
     sql_add_row += std::string(labname);
+    sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(labnumber);
     sql_add_row += "\" ";
     sql_add_row += " );";
 

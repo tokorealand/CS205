@@ -56,27 +56,27 @@ Section::~Section()
 //}
 
 
-//int Section::get_id()
-//{
-//    return id;
-//}
+std::string Section::get_id()
+{
+    return id;
+}
 
 bool Section::check_for_student(std::string studentid)
 {
-    Student *p;
+//    Student *p;
 
 
-    for(std::vector<Student*>::iterator it = students.begin();
-        it != students.end(); ++it)
-    {
-        p = *it;
+//    for(std::vector<Student*>::iterator it = students.begin();
+//        it != students.end(); ++it)
+//    {
+//        p = *it;
 
-        if(p->get_studentid() == studentid)
-        {
-            return true;
-        }
-    }
-    return false;
+//        if(p->get_studentid() == studentid)
+//        {
+//            return true;
+//        }
+//    }
+//    return false;
 }
 /*
  *Creates students and adds them

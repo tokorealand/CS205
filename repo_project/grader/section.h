@@ -57,7 +57,7 @@ public:
 
 
     vector<Student*> get_students();
-    int get_id();
+    string get_id();
     void repopulate();
     bool check_for_student(string studentid);
 

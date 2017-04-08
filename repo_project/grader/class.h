@@ -18,20 +18,12 @@ class Class : public DBTable
 {
 
 private:
-    //int sectioncounter = 0;
-    int sc = 0;
-    int lc = 0;
-    int* studentcounter = &sc;
-    int* labcounter = &lc;
+
     std::string id;
     int number_of_sections = 0;
     DBTool *tool;
     vector<Section*> sections;
-    std::string table_section = "sectiontable";
-    bool select_all_sections_in_class();
-    bool drop_section_table();
-    std::string sql_select_all_sections_in_class;
-    void repopulate();
+
 
 protected:
     std::string sql_select_all;
@@ -43,14 +35,13 @@ public:
 
     void add_section();
     Section* get_section(int sectionid);
-    void increment_student();
-    int sectioncounter = 0;
+
 
     // create command for your child class.
     void store_create_sql();
 
     void store_add_row_sql();
-
+    std::string get_id();
     bool add_row(std::string id, int number_of_sections);
 
   //  void increment_section();

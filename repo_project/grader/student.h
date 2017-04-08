@@ -38,7 +38,7 @@ public:
     string get_first_name();
     string get_last_name();
     void add_lab(Lab *thelab);
-    string get_studentid();
+    string get_id();
     vector<Lab*> get_labs();
 
     // An overloaded method to generate a new
