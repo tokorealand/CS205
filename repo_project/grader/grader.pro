@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     section.cpp \
     dbtable.cpp \
     dbtool.cpp \
-    commentengine.cpp
+    commentengine.cpp \
+    class.cpp
 
 HEADERS += \
     grader.h \
@@ -21,4 +22,5 @@ HEADERS += \
     section.h \
     dbtable.h \
     dbtool.h \
-    commentengine.h
+    commentengine.h \
+    class.h

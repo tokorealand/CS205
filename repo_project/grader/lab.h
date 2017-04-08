@@ -38,7 +38,7 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-    bool add_row(int labnumber, std::string fn, std::string ln, std::string labname);
+    bool add_row(int labnumber, int studentid, std::string fn, std::string ln, std::string labname);
     void set_grade(int);
     int get_grade();
 
