@@ -2,4 +2,10 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     grader\
-    controller
+    controller\
+    maingui \
+    commentgui \
+    addstudentsgui \
+    addnewlabsgui \
+    rubriccreatorgui
+

@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     dbtool.cpp \
     commentengine.cpp \
     class.cpp \
-    ../controller/controller.cpp
+    ../controller/controller.cpp \
+    fileparser.cpp
 
 HEADERS += \
     grader.h \
@@ -25,5 +26,5 @@ HEADERS += \
     dbtool.h \
     commentengine.h \
     class.h \
-    ../controller/controller.h
-
+    ../controller/controller.h \
+    fileparser.h
