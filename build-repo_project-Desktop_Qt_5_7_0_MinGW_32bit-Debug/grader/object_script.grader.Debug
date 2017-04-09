@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\grader.o
+./debug\student.o
+./debug\lab.o
+./debug\section.o
+./debug\dbtable.o
+./debug\dbtool.o
+./debug\commentengine.o
+./debug\class.o
+./debug\controller.o
+./debug\fileparser.o
+);
