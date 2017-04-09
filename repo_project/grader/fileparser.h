@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <QTCore/qdiriterator.h>
+
+
 
 using namespace std;
 
@@ -12,7 +15,9 @@ class FileParser{
 public:
     FileParser(string );
     ~FileParser();
-    void parse();
+    void parse_student_file();
+    void parse_lab_file();
+    void parse_java_file(string);
 
 private:
     string fileName;

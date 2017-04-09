@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     Section sec(1,tool);
     sec.add_student("luis","lopez");
 
-    FileParser f("Wheel.java");
+    FileParser f("students.txt");
     cout << "Hello World!" << endl;
 
     return 0;
