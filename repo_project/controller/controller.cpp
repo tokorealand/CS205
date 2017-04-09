@@ -149,6 +149,7 @@ void Controller::add_class(std::string classID, int number_of_sections)
     Class *cla = new Class(classID,number_of_sections,class_tool,table_class);
     classes.push_back(cla);
 
+
 }
 
 void Controller::add_section(std::string sectionID, string classID)
@@ -160,6 +161,7 @@ void Controller::add_section(std::string sectionID, string classID)
 
     Section *sec = new Section(sectionID, classID,class_tool,table_section);
     sections.push_back(sec);
+    get_class(classID)->add_section(sec);
 
 }
 
@@ -171,6 +173,7 @@ void Controller::add_student(std::string studentID, std::string sectionID, std::
     }
     Student *stu = new Student(studentID,sectionID, firstname, lastname, class_tool,table_student);
     students.push_back(stu);
+    get_section(sectionID)->add_student(stu);
 }
 
 void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
@@ -181,6 +184,7 @@ void Controller::add_lab(std::string labID, string studentID, string labName, st
     }
     Lab *la = new Lab(labID, studentID, labName, labNumber,class_tool,table_lab);
     labs.push_back(la);
+    get_student(studentID)->add_lab(la);
 }
 
 //Used to retriveve all players in database

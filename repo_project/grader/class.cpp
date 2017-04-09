@@ -31,9 +31,9 @@ std::string Class:: get_id()
 /*
  *Creates sections and adds them
 **/
-void Class::add_section()
+void Class::add_section(Section* sec)
 {
-
+sections.push_back(sec);
 }
 
 

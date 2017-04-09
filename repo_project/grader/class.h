@@ -33,7 +33,7 @@ public:
     Class(std::string classID,int number_of_sections,DBTool *tool, std::string table);
     ~Class();
 
-    void add_section();
+    void add_section(Section* sec);
     Section* get_section(int sectionid);
 
 

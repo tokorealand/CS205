@@ -13,5 +13,8 @@ int main(int argc, char *argv[])
 {
 
    Grader g;
+   g.add_class("Class1",2);
+   g.add_section("C1S1","Class1");
+   g.add_student("s1","C1S1","lu","lo");
 
 }
