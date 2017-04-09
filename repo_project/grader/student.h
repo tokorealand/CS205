@@ -25,18 +25,20 @@ private:
     vector<Lab*> labs;
     string firstName;
     string lastName;
-    int sectionNum;
+    string sectionID;
+    string id;
 protected:
     std::string sql_select_all;
 
 
 public:
-    Student(int sectionnum,string fn, string ln,DBTool *tool, std::string table);
+    Student(string studentID, string sectionID, string firstname, string lastname, DBTool *tool, std::string table);
     ~Student();
 
     string get_first_name();
     string get_last_name();
     void add_lab(Lab *thelab);
+    string get_id();
     vector<Lab*> get_labs();
 
     // An overloaded method to generate a new
@@ -47,7 +49,7 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-    bool add_row(int sectionnum, std::string fn, std::string ln);
+    bool add_row(string id, string sectionID, std::string firstname, std::string lastname);
 
 };
 

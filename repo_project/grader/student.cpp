@@ -2,11 +2,12 @@
 
 
 
-Student::Student(int sectionnum,std::string fn,std::string ln, DBTool *tool, std::string table):DBTable(tool,table)
+Student::Student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname, DBTool *tool, std::string table):DBTable(tool,table)
 {
-    firstName = fn;
-    lastName  = ln;
-    sectionNum = sectionnum;
+    this->firstName = firstname;
+    this->lastName  = lastname;
+    this->sectionID = sectionID;
+    this->id = studentID;
 
     // Load SQL specific to child class.
 
@@ -24,12 +25,19 @@ Student::~Student()
 {
     //inputs contained information to student table inside the database
     build_table();
-    add_row(sectionNum,firstName,lastName);
+    add_row(id,sectionID,firstName,lastName);
 }
+
+
 
 void Student::add_lab(Lab *thelab)
 {
     labs.push_back(thelab);
+}
+
+std::string Student::get_id()
+{
+    return id;
 }
 
 std::string Student::get_first_name()
@@ -61,7 +69,8 @@ void Student::store_create_sql() {
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
-    sql_create += "  sectionnum INT NOT NULL, ";
+    sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
+    sql_create += "  sectionid TEXT NOT NULL, ";
     sql_create += "  firstname TEXT NOT NULL, ";
     sql_create += "  lastname TEXT NOT NULL";
     sql_create += " );";
@@ -70,27 +79,31 @@ void Student::store_create_sql() {
 
 /** Adds the inputted information into the student table database.
 */
-bool Student::add_row(int sectionnum,std::string fn, std::string ln) {
+bool Student::add_row(std::string id, std::string sectionid, std::string firstname, std::string lastname) {
     int   retCode = 0;
     char *zErrMsg = 0;
-    char  tempval[128];
+
 
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( sectionnum, firstname, lastname ) ";
+    sql_add_row += " ( id, sectionid, firstname, lastname ) ";
     sql_add_row += "VALUES (";
 
-    sprintf (tempval, "%d", sectionnum);
-    sql_add_row += tempval;
-    sql_add_row += ", ";
-
     sql_add_row += "\"";
-    sql_add_row += std::string(fn);
+    sql_add_row += std::string(id);
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(ln);
+    sql_add_row += std::string(sectionid);
+     sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(firstname);
+    sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(lastname);
     sql_add_row += "\" ";
     sql_add_row += " );";
 
@@ -109,7 +122,7 @@ bool Student::add_row(int sectionnum,std::string fn, std::string ln) {
         std::cerr << table_name
                   << " template ::"
                   << std::endl
-                  << "SQL edrror: "
+                  << "SQL student error: "
                   << zErrMsg;
 
         sqlite3_free(zErrMsg);

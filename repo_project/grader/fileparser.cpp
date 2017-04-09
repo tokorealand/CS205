@@ -1,11 +1,13 @@
 #include "fileparser.h"
 #include <QTCore/qdiriterator.h>
 
-FileParser::FileParser(string aFileName)
+FileParser::FileParser(string aFileName, Grader* aGrader)
 {
     fileName = aFileName;
+    grader = aGrader;
     parse_student_file();
     parse_java_file("./");
+
 }
 
 
@@ -49,8 +51,12 @@ void FileParser::parse_student_file()
         end = s.find_first_of(delim, start)+1;
         len = end-start;
 
-        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-        cout<<'\n';
+        grader->add_class(class_name, 2);
+        grader->add_section(class_section, class_name);
+        grader->add_student("", class_section, first_name, last_name);
+
+//        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
+//        cout<<'\n';
     }
     file.close();
 }
@@ -68,7 +74,7 @@ void FileParser::parse_java_file(string aFilepath)
 
         // lab submissions should be titled "firstname_lastname_classname_sectionnumber_labnumber"
 
-        int parseStart = labEntry.toStdString().find(aFilepath) + aFilepath.length();
+        int parseStart = labEntry.toStdString().find(aFilepath);
         int parseEnd = labEntry.toStdString().length();
         int parseLen = parseEnd - parseStart;
         string lab = labEntry.toStdString().substr(parseStart, parseLen);
@@ -106,9 +112,26 @@ void FileParser::parse_java_file(string aFilepath)
         {
 
 
-            parseStart = labEntry.toStdString().find(aFilepath) + aFilepath.length();
+            parseStart = labEntry.toStdString().find(labEntry.toStdString());
             parseEnd = labEntry.toStdString().length();
             parseLen = parseEnd - parseStart;
+
+            string component=labEntry.toStdString().substr(parseStart, parseLen);
+
+            parseStart = component.find(".");
+            parseEnd = component.length();
+            parseLen = parseEnd - parseStart;
+            string filetype = component.substr(parseStart, parseLen);
+
+            if(filetype.compare("java") == 0)
+            {
+                ifstream java;
+
+                java.open(labEntry);
+
+            }
+
+
 
 
 

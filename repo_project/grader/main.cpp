@@ -5,17 +5,22 @@
 #include "dbtool.h"
 #include "fileparser.h"
 #include "commentengine.h"
+#include "class.h"
+#include <string>
+#include "grader.h"
 using namespace std;
 
 int main(int argc, char *argv[])
 {
 
-    DBTool *tool = new DBTool("Sectiontable");
-    Section sec(1,tool);
-    sec.add_student("luis","lopez");
 
-    FileParser f("students.txt");
+    //FileParser f("students.txt");
     cout << "Hello World!" << endl;
 
-    return 0;
+
+    Grader g;
+    g.add_class("Class1",2);
+    g.add_section("C1S1","Class1");
+    g.add_student("s1","C1S1","lu","lo");
+
 }

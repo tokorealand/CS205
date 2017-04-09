@@ -17,6 +17,8 @@ SOURCES += main.cpp \
     dbtable.cpp \
     dbtool.cpp \
     commentengine.cpp \
+    class.cpp \
+    ../controller/controller.cpp \
     fileparser.cpp
 
 HEADERS += \
@@ -27,5 +29,7 @@ HEADERS += \
     dbtable.h \
     dbtool.h \
     commentengine.h \
+    class.h \
+    ../controller/controller.h \
     fileparser.h
 
