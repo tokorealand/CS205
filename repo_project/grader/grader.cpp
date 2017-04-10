@@ -4,6 +4,7 @@ Grader::Grader()
 {
     tool = new DBTool("Grader");
     control = new Controller(tool);
+    fp = new FileParser("students.txt", this);
 }
 
 Grader::~Grader()

@@ -1,7 +1,11 @@
 TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
-CONFIG -= qt
+//CONFIG -= qt
+
+
+
+QT += core
 
 LIBS += -l sqlite3
 
@@ -28,3 +32,4 @@ HEADERS += \
     class.h \
     ../controller/controller.h \
     fileparser.h
+

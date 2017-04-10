@@ -6,10 +6,13 @@
 #include "dbtool.h"
 #include "../controller/controller.h"
 #include "lab.h"
+#include "fileparser.h"
+
 #include <vector>
 #include <string>
 using namespace std;
 
+class FileParser;
 class Controller;
 class Grader{
 private:
@@ -18,6 +21,7 @@ private:
     Lab* currentLab;
     DBTool *tool;
     Controller *control;
+    FileParser* fp;
 
 
 

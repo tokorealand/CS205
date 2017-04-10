@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 {
 
 
+    //FileParser f("students.txt");
+    cout << "Hello World!" << endl;
 
 
     Grader g;

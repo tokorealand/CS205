@@ -1,0 +1,4 @@
+Julian:Binici:CS150:02
+Luis:Lopez:CS205:01
+Allie:Mullan:CS203:03
+James:Nigro:CS200:01
