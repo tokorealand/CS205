@@ -7,5 +7,6 @@ SUBDIRS += \
     commentgui \
     addstudentsgui \
     addnewlabsgui \
-    rubriccreatorgui
+    rubriccreatorgui \
+    ExportEngine
 
