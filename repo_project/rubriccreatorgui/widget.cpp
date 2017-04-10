@@ -8,6 +8,8 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+    this->setStyleSheet(
+                "background-image:url(\"/home/worklu/repo_lopez_mullan_lickfeld_binici/repo_project/maingui/minb.jpg\"); background-position: center;" );
     ui->setupUi(this);
 }
 

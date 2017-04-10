@@ -1,5 +1,5 @@
 #include "fileparser.h"
-#include <QTCore/qdiriterator.h>
+#include <qdiriterator.h>
 
 FileParser::FileParser(string aFileName, Grader* aGrader)
 {
@@ -123,13 +123,13 @@ void FileParser::parse_java_file(string aFilepath)
             parseLen = parseEnd - parseStart;
             string filetype = component.substr(parseStart, parseLen);
 
-            if(filetype.compare("java") == 0)
-            {
-                ifstream java;
+//            if(filetype.compare("java") == 0)
+//            {
+//                ifstream java;
 
-                java.open(labEntry);
+//                java.open(labEntry);
 
-            }
+//            }
 
 
 
