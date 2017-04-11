@@ -7,8 +7,6 @@
 #include "grader.h"
 #include <vector>
 
-
-
 using namespace std;
 
 class Grader;
@@ -25,6 +23,7 @@ private:
     string fileName;
     ifstream file;
     Grader*grader;
+    vector<vector<string>> classAndClassContentsVector;
 };
 
 #endif // FILEPARSER_H

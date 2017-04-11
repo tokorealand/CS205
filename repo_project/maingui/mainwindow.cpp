@@ -1,8 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../add_students_gui/add_students_gui.h"
-#include "../addlabsGUI/addlabsgui.h"
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -65,7 +62,10 @@ void MainWindow::on_actionAdd_Students_triggered()
     asg->show();
 }
 
-
+void MainWindow::on_actionComment_triggered(){
+    Dialog *c = new Dialog(0, grad, selected_lab);
+    c->show();
+}
 
 
 void MainWindow::on_displayButton_clicked()

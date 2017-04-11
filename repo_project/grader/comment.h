@@ -23,11 +23,12 @@ private:
     std::string commentphrase;
     std::string rubricsection;
     std::string highlight;
+    std::string points;
 
 
 
 public: 
-    Comment(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, DBTool *tool, std::string table);
+    Comment(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
 
 ~Comment();
     std::string get_id();
@@ -40,7 +41,12 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-     bool add_row(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight);
+     bool add_row(std::string id, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points);
+
+     std::string get_comment_text();
+     std::string get_rubric_section();
+     double get_points_deducted();
+     std::string get_highlight_color();
 
 };
 
@@ -48,5 +54,6 @@ int cb_add_row_comment_ne(void  *data,
                    int    argc,
                    char **argv,
                    char **azColName);
+
 
 #endif // COMMENT_H

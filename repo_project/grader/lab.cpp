@@ -1,7 +1,9 @@
 #ifndef LAB_CPP
 #define LAB_CPP
+
 #include "lab.h"
-#include "student.h"
+
+using namespace std;
 
 class Student;
 
@@ -178,13 +180,13 @@ vector<string> Lab::get_line_vector(){
 
 
 //add an already created comment
-void Lab::add_comments(CommentEngine c){
+void Lab::add_comments(Comment c){
     //commentMap.insert(make_pair(1,c));
 }
 
 //returns the vector representing each class - a vector of strings representing each line of code
 vector<vector<string>> Lab::get_class_code_vector(){
-    return classes;
+    return classAndClassContentsVector;
 }
 
 int Lab::get_number_of_classes(){
@@ -193,7 +195,7 @@ int Lab::get_number_of_classes(){
 
 //get class in location i, find the size of the vector containing each line of the code as a string
 int Lab::get_no_lines_in_class(int i){
-    return classes.at(i).size();
+    return classAndClassContentsVector.at(i).size();
 }
 //check if there is a comment at a given line number
 bool Lab::is_comment_at(int i){
@@ -205,15 +207,19 @@ bool Lab::is_comment_at(int i){
 }
 
 //use this method to get the comment at a particular line number
-CommentEngine Lab::get_comment_at(int lineNo){
-    return commentMap.at(lineNo);
+Comment Lab::get_comment_at(int lineNo){
+    return myComments.at(lineNo);
 }
 
-vector<string> Lab ::get_java_text()
-{
+vector<string> Lab ::get_java_text(){
     return javaText;
 }
 
+//creates a comment and saves it to the comment vector
+void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
+    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);
+    myComments.push_back(*c);
+}
 
 
 #endif // LAB_CPP

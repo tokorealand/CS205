@@ -1,27 +1,26 @@
 #include "fileparser.h"
 #include <qdiriterator.h>
 
-FileParser::FileParser(string aFileName, Grader* aGrader)
-{
+FileParser::FileParser(string aFileName, Grader* aGrader){
     fileName = aFileName;
-    grader = aGrader;
+    grader   = aGrader;
     //parse_student_file();
-   //parse_java_file("./Lab_1");
+    //parse_java_file("./Lab_1");
+}
+
+
+FileParser::~FileParser(){
 
 }
 
 
-FileParser::~FileParser()
-{
+//parses the student file
+string FileParser::parse_student_file(string aFilePath){
 
-}
-
-string FileParser::parse_student_file(string aFilePath)
-{
     string studentInfo = "";
 
-   try{
-            file.open(aFilePath);
+    try{
+        file.open(aFilePath);
     }
     catch(const std::exception& e)
     {
@@ -69,25 +68,27 @@ string FileParser::parse_student_file(string aFilePath)
         grader->add_student(studentID, sectionID, first_name, last_name);
 
         studentInfo = studentInfo + first_name + " " + last_name + " " + class_name +" " + class_section+" " +'\n';
-//        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-//        cout<<'\n';
+        //        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
+        //        cout<<'\n';
     }
 
     file.close();
     return studentInfo;
 }
 
+//parses a java class
 void FileParser::parse_java_file(string aFilepath)
 {
     vector<string> javafiles;
+
     QString filepath= QString::fromStdString(aFilepath);
+
     QDirIterator it(filepath, QDirIterator::NoIteratorFlags);
 
-    while(it.hasNext())
-    {
+    //for parsing the file name
+    while(it.hasNext()){
 
         QString labEntry = it.next();
-
 
         // lab submissions should be titled "firstname_lastname_classname_sectionnumber_labnumber"
 
@@ -122,23 +123,24 @@ void FileParser::parse_java_file(string aFilepath)
         parseLen = parseEnd - parseStart;
         string lab_number= lab.substr(parseStart, parseLen);
 
-
+        //} //should these be in the same while loop?
 
         QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
 
+        //for parsing ...?
         while(it2.hasNext())
         {
 
-            QString component=it2.next();
+            QString component = it2.next();
 
-            parseStart = component.toStdString().find(".java");
-            parseEnd = component.toStdString().length();
-            parseLen = parseEnd - parseStart;
+            parseStart  = component.toStdString().find(".java");
+            parseEnd    = component.toStdString().length();
+            parseLen    = parseEnd - parseStart;
 
-            if(parseStart !=component.toStdString().npos)
+            if(parseStart != component.toStdString().npos)
             {
-//                cout<<component.toStdString();
-//                cout<<'\n';
+                //                cout<<component.toStdString();
+                //                cout<<'\n';
 
                 ifstream java;
 
@@ -155,7 +157,8 @@ void FileParser::parse_java_file(string aFilepath)
 
             }
 
-         }
+        }
+
         string classID = class_name;
         string sectionID = class_name + "_" + section_number;
         string studentID = first_name + "_" + last_name;

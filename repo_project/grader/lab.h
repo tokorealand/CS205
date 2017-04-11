@@ -14,7 +14,7 @@
 #include "comment.h"
 #include "component.h"
 #include "commentengine.h"
-
+#include "comment.h"
 
 using namespace std;
 class Student;
@@ -32,10 +32,6 @@ private:
     std::string id;
     std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
-
-    //Allie
-    vector<vector<string>> classes;
-     map<int, CommentEngine> commentMap;
 
 public:
     Lab(string labID, std::string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table);
@@ -63,16 +59,19 @@ public:
     int get_grade();
 
     //Allie
-    CommentEngine get_comment_at(int lineNo);
+    vector<vector<string>> classAndClassContentsVector; //
+    map<int, Comment> commentMap;
+    Comment get_comment_at(int lineNo);
     bool is_comment_at(int i);
     int get_no_lines_in_class(int i);
     int get_number_of_classes();
-    vector<vector<string>> get_class_code_vector();
-    void add_comments(CommentEngine c);
+    void add_comments(Comment c);
+    void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
+
+    vector<vector<string>> get_class_code_vector();    
+    vector<Comment> myComments;
     vector<string> get_line_vector();
     vector<string> get_java_text();
-
-
 };
 
 int cb_add_row_lab(void  *data,

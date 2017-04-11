@@ -1,6 +1,6 @@
 #include "comment.h"
 
-Comment::Comment(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, DBTool *tool, std::string table):DBTable(tool,table)
+Comment::Comment(std::string id, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id = id;
     this->labid = labID;
@@ -8,6 +8,7 @@ Comment::Comment(std::string id, std::string labID, std::string linenumber,std::
     this->commentphrase = commentphrase;
     this->rubricsection = rubricsection;
     this->highlight = highlight;
+    this->points = points;
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -16,7 +17,7 @@ Comment::Comment(std::string id, std::string labID, std::string linenumber,std::
 Comment::~Comment()
 {
     build_table( );
-    add_row(id,  labid,  linenumber, commentphrase,  rubricsection, highlight);
+    add_row(id,  labid,  linenumber, commentphrase,  rubricsection, highlight, points);
 }
 
 std::string Comment::get_id()
@@ -24,6 +25,22 @@ std::string Comment::get_id()
     return id;
 }
 
+string Comment::get_comment_text(){
+    return commentphrase;
+}
+
+string Comment::get_rubric_section(){
+    return rubricsection;
+}
+
+double Comment::get_points_deducted(){
+    return std::stod(points);
+}
+
+string Comment::get_highlight_color(){
+    return highlight;
+
+}
 // SQL used for inputting information
 void Comment::store_add_row_sql() {
 
@@ -48,14 +65,15 @@ void Comment::store_create_sql() {
     sql_create += "  linenumber TEXT NOT NULL, ";
     sql_create += "  commentphrase TEXT NOT NULL, ";
     sql_create += "  rubricsection TEXT NOT NULL, ";
-    sql_create += "  highlight TEXT NOT NULL";
+    sql_create += "  highlight TEXT NOT NULL, ";
+    sql_create += "  points TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the component table database.
 */
-bool Comment::add_row(std::string id, std::string labid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight) {
+bool Comment::add_row(std::string id, std::string labid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -152,3 +170,30 @@ int cb_add_row_comment_ne(void  *data,
 
     return 0;
 }
+
+//using namespace std;
+
+//Comment::Comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
+
+//    this->commentText       = commentText;
+//    this->rubricSection     = rubricSection;
+//    this->pointsDeducted    = pointsDeducted;
+//    this->highlightColor    = highlightColor;
+
+//}
+
+//string Comment::get_comment_text(){
+//    return commentText;
+//}
+
+//string Comment::get_rubric_section(){
+//    return rubricSection;
+//}
+
+//double Comment::get_points_deducted(){
+//    return pointsDeducted;
+//}
+
+//string Comment::get_highlight_color(){
+//    return highlightColor;
+

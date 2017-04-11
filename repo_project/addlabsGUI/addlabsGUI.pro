@@ -39,6 +39,8 @@ SOURCES += main.cpp\
 ../grader/comment.cpp\
     ../controller/controller.cpp
 
+
+
 HEADERS  += addlabsgui.h\
     ../grader/student.h \
     ../grader/lab.h \
@@ -52,5 +54,6 @@ HEADERS  += addlabsgui.h\
     ../grader/fileparser.h\
 ../grader/comment.h\
         ../controller/controller.h
+
 
 FORMS    += addlabsgui.ui
