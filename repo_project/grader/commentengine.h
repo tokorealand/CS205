@@ -40,8 +40,6 @@ private:
     bool add_row(int id, std::string comment);
     void repopulate();
 
-
-
 };
 
 int cb_add_row_comment(void  *data,

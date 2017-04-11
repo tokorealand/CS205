@@ -5,6 +5,9 @@
 #include <iostream>
 #include "../grader/lab.h"
 #include "../grader/grader.h"
+#include "../add_students_gui/add_students_gui.h"
+#include "../addlabsGUI/addlabsgui.h"
+#include "../CommentGUI/dialog.h"
 
 class Grader;
 namespace Ui {
@@ -21,14 +24,13 @@ public:
         void build_tabs();
         void display_java_text();
 
-
 private slots:
 
     void on_actionLoad_New_Lab_triggered();
 
-
-
     void on_actionAdd_Students_triggered();
+
+     void on_actionComment_triggered();
 
     void on_displayButton_clicked();
 
