@@ -65,6 +65,9 @@ void MainWindow::on_actionAdd_Students_triggered()
 void MainWindow::on_actionComment_triggered(){
     Dialog *c = new Dialog(0, grad, selected_lab);
     c->show();
+
+    //get the comment strings from the current lab and add them to the second box
+
 }
 
 
