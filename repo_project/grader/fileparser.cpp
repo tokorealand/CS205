@@ -164,3 +164,7 @@ void FileParser::parse_java_file(string aFilepath)
        }
 
 }
+
+void FileParser::parse_lab_file(string){
+
+}

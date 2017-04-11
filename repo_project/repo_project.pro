@@ -4,4 +4,6 @@ SUBDIRS += \
     grader\
     maingui\
     controller \
-    addstudentsGUI
+    addstudentsGUI \
+    addlabsGUI
+

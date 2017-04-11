@@ -23,6 +23,8 @@ private:
     Controller *control;
     FileParser* fp;
 
+    vector<string> listOfLabNames;
+
 
 
 public:
@@ -56,6 +58,10 @@ public:
     Lab* get_lab(std::string id);
 
     FileParser* get_file_parser();
+
+    void add_lab_name(string name);
+
+    vector<string> get_lab_name_list();
 
 
 };
