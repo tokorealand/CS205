@@ -45,9 +45,9 @@ void Grader::add_component(std::string componentID, std::string labID, std::stri
     control->add_component(componentID,labID,  compath);
 }
 
-void Grader::add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight)
+void Grader::add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points)
 {
-    control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight);
+    control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
 }
 
 Class* Grader::get_class(string id)

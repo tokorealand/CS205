@@ -269,13 +269,13 @@ void Controller::add_component(std::string componentID, string labID, string com
     get_lab(labID)->add_component(com);
 }
 
-void Controller::add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight)
+void Controller::add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
 {
     if(item_exist(commentID,"comment"))
     {
         return;
     }
-    Comment *com = new Comment(commentID, labID, linenumber,commentphrase,rubricsection, highlight, class_tool,table_comment);
+    Comment *com = new Comment(commentID, labID, linenumber,commentphrase,rubricsection, highlight,points, class_tool,table_comment);
     comments.push_back(com);
     get_lab(labID)->add_comment(com);
 }

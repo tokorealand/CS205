@@ -108,6 +108,10 @@ bool Comment::add_row(std::string id, std::string labid, std::string linenumber,
 
     sql_add_row += "\"";
     sql_add_row += std::string(highlight);
+    sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(points);
     sql_add_row += "\" ";
     sql_add_row += " );";
 

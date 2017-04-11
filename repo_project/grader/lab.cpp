@@ -207,8 +207,8 @@ bool Lab::is_comment_at(int i){
 }
 
 //use this method to get the comment at a particular line number
-Comment Lab::get_comment_at(int lineNo){
-    return myComments.at(lineNo);
+Comment* Lab::get_comment_at(std::string lineNo){
+    return comments.at(std::stoi(lineNo));
 }
 
 vector<string> Lab ::get_java_text(){
@@ -216,10 +216,10 @@ vector<string> Lab ::get_java_text(){
 }
 
 //creates a comment and saves it to the comment vector
-void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
-    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);
-    myComments.push_back(*c);
-}
+//void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
+//    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);
+//    myComments.push_back(*c);
+//}
 
 
 #endif // LAB_CPP

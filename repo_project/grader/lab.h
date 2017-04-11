@@ -61,7 +61,7 @@ public:
     //Allie
     vector<vector<string>> classAndClassContentsVector; //
     map<int, Comment> commentMap;
-    Comment get_comment_at(int lineNo);
+    Comment* get_comment_at(std::string lineNo);
     bool is_comment_at(int i);
     int get_no_lines_in_class(int i);
     int get_number_of_classes();

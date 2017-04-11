@@ -35,7 +35,7 @@ public:
     void set_current_student(Student*);
     void set_currentLab(Lab*);
 
-    void add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight);
+    void add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points);
 
     void add_component(std::string componentID, string labID, string compath);
 
