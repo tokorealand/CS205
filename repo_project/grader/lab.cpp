@@ -209,6 +209,9 @@ vector<string> Lab ::get_java_text()
     return javaText;
 }
 
+void Lab::create_comment(){
+    Comment c();
+}
 
 
 #endif // LAB_CPP

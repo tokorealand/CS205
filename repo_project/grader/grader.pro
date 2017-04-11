@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     class.cpp \
     ../controller/controller.cpp \
     fileparser.cpp \
-    component.cpp
+    component.cpp \
+    comment.cpp
 
 HEADERS += \
     grader.h \
@@ -32,5 +33,6 @@ HEADERS += \
     class.h \
     ../controller/controller.h \
     fileparser.h \
-    component.h
+    component.h \
+    comment.h
 

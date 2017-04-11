@@ -13,7 +13,7 @@
 #include "student.h"
 #include "component.h"
 #include "commentengine.h"
-
+#include "comment.h"
 
 using namespace std;
 class Student;
@@ -62,8 +62,11 @@ public:
     bool is_comment_at(int i);
     int get_no_lines_in_class(int i);
     int get_number_of_classes();
-    vector<vector<string>> get_class_code_vector();
     void add_comments(CommentEngine c);
+    void create_comment();
+
+    vector<vector<string>> get_class_code_vector();    
+    vector<CommentEngine> myComments;
     vector<string> get_line_vector();
     vector<string> get_java_text();
 
