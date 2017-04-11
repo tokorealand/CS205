@@ -8,6 +8,7 @@ Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab) :
     ui->setupUi(this);
     grader = aGrader;
     lab = aLab;
+    //ui->commentList->setSelectionMode(QAbstractItemView::ExtendedSelection);
     populate();
 }
 
@@ -44,12 +45,16 @@ void Dialog::populate(){
 void Dialog::on_doneButton_clicked(){
 
     //save comment details -- will be in a vector of comments in lab object
-    string commentText      = ui->commentText->text().toStdString();
+    string commentId        = lab->get_id() + to_string(lab->get_comment_vector().size());
+    string labId            = lab->get_id();
+    string lineNumber       = ui->lineNo->text().toStdString();
+    string commentText      = ui->commentText->text().toStdString(); //save what's in the box
     string rubricSection    = ui->rubricSectionDropDown->currentText().toStdString();
-    double pointsDeducted   = ui->pointsOffSpinBox->value();
     string highlightColor   = ui->colorDropDown->currentText().toStdString();
+    string pointsDeducted   = to_string(ui->pointsOffSpinBox->value());
 
-    lab->create_comment(commentText, rubricSection, pointsDeducted, highlightColor);
+    //add the comment
+    grader->add_comment(commentId, labId, lineNumber, commentText, rubricSection, highlightColor, pointsDeducted);
 
     //close the window
     close();
@@ -65,4 +70,10 @@ void Dialog::on_commentText_textChanged(const QString &arg1){
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList.filter(regExp));
+}
+
+void Dialog::on_commentList_clicked(const QModelIndex &index)
+{
+    QString s = ui->commentList->selectedItems().at(0)->text();
+    ui->commentText->setText(s);
 }

@@ -25,6 +25,8 @@ private slots:
 
     void on_commentText_textChanged(const QString &arg1);
 
+    void on_commentList_clicked(const QModelIndex &index);
+
 private:
     Ui::Dialog *ui;
     Grader* grader;

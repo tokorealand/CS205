@@ -45,6 +45,11 @@ void Grader::add_component(std::string componentID, std::string labID, std::stri
     control->add_component(componentID,labID,  compath);
 }
 
+void Grader::add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points)
+{
+    control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
+}
+
 Class* Grader::get_class(string id)
 {
     return control->get_class(id);
@@ -63,6 +68,16 @@ Student* Grader::get_student(string id)
 Lab* Grader::get_lab(string id)
 {
     return control->get_lab(id);
+}
+
+Component* Grader::get_component(string id)
+{
+    return control->get_component(id);
+}
+
+Comment* Grader::get_comment(string id)
+{
+    return control->get_comment(id);
 }
 
 FileParser* Grader::get_file_parser()
