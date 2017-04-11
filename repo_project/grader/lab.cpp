@@ -152,6 +152,52 @@ int cb_add_row_lab(void  *data,
     return 0;
 }
 
+//METHODS ALLIE MADE FOR THE EXPORT ENGINE
+vector<string> Lab::get_line_vector(){
+
+    vector<string> temp;
+
+    //create line by line vector -- this would be in the file parser. in this case we would be reading the file line by line and placing each line in a vector
+    temp.push_back("first line text");
+    temp.push_back("second line text");
+    temp.push_back("third line text");
+    temp.push_back("fourth line text");
+
+    return temp;
+}
+
+
+//add an already created comment
+void Lab::add_comments(CommentEngine c){
+    //commentMap.insert(make_pair(1,c));
+}
+
+//returns the vector representing each class - a vector of strings representing each line of code
+vector<vector<string>> Lab::get_class_code_vector(){
+    return classes;
+}
+
+int Lab::get_number_of_classes(){
+    return 0;
+}
+
+//get class in location i, find the size of the vector containing each line of the code as a string
+int Lab::get_no_lines_in_class(int i){
+    return classes.at(i).size();
+}
+//check if there is a comment at a given line number
+bool Lab::is_comment_at(int i){
+    if(commentMap.find(i) == commentMap.end()){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+//use this method to get the comment at a particular line number
+CommentEngine Lab::get_comment_at(int lineNo){
+    return commentMap.at(lineNo);
+}
 
 
 

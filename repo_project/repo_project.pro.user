@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2017-04-10T20:39:54. -->
+<!-- Written by QtCreator 4.2.1, 2017-04-10T21:07:46. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -368,7 +368,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">controller/controller.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/controller</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -426,7 +426,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">addstudentsgui/addstudentsgui.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/addstudentsgui/addstudentsgui.app/Contents/MacOS</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -484,7 +484,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">commentgui/commentgui.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/commentgui/commentgui.app/Contents/MacOS</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -542,7 +542,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">maingui/maingui.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/maingui/maingui.app/Contents/MacOS</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -600,7 +600,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">rubriccreatorgui/rubriccreatorgui.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/rubriccreatorgui/rubriccreatorgui.app/Contents/MacOS</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -658,7 +658,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">addnewlabsgui/addnewlabsgui.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/Julian/Desktop/repo_lopez_mullan_lickfeld_binici/build-repo_project-Desktop_Qt_5_8_0_clang_64bit-Debug/addnewlabsgui/addnewlabsgui.app/Contents/MacOS</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

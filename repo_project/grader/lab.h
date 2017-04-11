@@ -11,7 +11,7 @@
 #include "dbtool.h"
 #include "dbtable.h"
 #include "student.h"
-#include <vector>
+#include "commentengine.h"
 
 
 using namespace std;
@@ -27,7 +27,9 @@ private:
     std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
 
-
+    //Allie
+    vector<vector<string>> classes;
+     map<int, CommentEngine> commentMap;
 
 public:
     Lab(string labID, std::string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table);
@@ -49,6 +51,16 @@ public:
     bool add_row(string id, string studentid, std::string labname, std::string labnumber);
     void set_grade(int);
     int get_grade();
+
+    //Allie
+    CommentEngine get_comment_at(int lineNo);
+    bool is_comment_at(int i);
+    int get_no_lines_in_class(int i);
+    int get_number_of_classes();
+    vector<vector<string>> get_class_code_vector();
+    void add_comments(CommentEngine c);
+    vector<string> get_line_vector();
+
 
 };
 
