@@ -82,16 +82,16 @@ void FileParser::parse_java_file(string aFilepath)
     vector<string> javafiles;
     QString filepath= QString::fromStdString(aFilepath);
     QDirIterator it(filepath, QDirIterator::NoIteratorFlags);
-
+    it.next();
+    it.next();
     while(it.hasNext())
     {
 
         QString labEntry = it.next();
 
-
         // lab submissions should be titled "firstname_lastname_classname_sectionnumber_labnumber"
 
-        int parseStart = filepath.length();
+        int parseStart = filepath.length()+1;
         int parseEnd = labEntry.toStdString().length();
         int parseLen = parseEnd - parseStart;
         string lab = labEntry.toStdString().substr(parseStart, parseLen);
@@ -100,7 +100,6 @@ void FileParser::parse_java_file(string aFilepath)
         parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
         string first_name = lab.substr(parseStart, parseLen);
-
 
         parseStart = parseEnd+1 ;
         parseEnd = lab.find("_", parseStart);
@@ -118,53 +117,55 @@ void FileParser::parse_java_file(string aFilepath)
         string section_number = lab.substr(parseStart, parseLen);
 
         parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_", parseStart);
+        parseEnd = lab.length();
         parseLen = parseEnd - parseStart;
         string lab_number= lab.substr(parseStart, parseLen);
 
+        cout<<labEntry.toStdString();
+        cout<<'\n';
 
+            QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
 
-        QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
-
-        while(it2.hasNext())
-        {
-
-            QString component=it2.next();
-
-            parseStart = component.toStdString().find(".java");
-            parseEnd = component.toStdString().length();
-            parseLen = parseEnd - parseStart;
-
-            if(parseStart !=component.toStdString().npos)
+            while(it2.hasNext())
             {
-//                cout<<component.toStdString();
-//                cout<<'\n';
 
-                ifstream java;
+                QString component=it2.next();
+                cout<<component.toStdString();
+                cout<<'\n';
+                parseStart = component.toStdString().find(".java");
+                parseEnd = component.toStdString().length();
+                parseLen = parseEnd - parseStart;
 
-                java.open(component.toStdString());
-
-                string s;
-                string javaText = "";
-                while(getline(java,s))
+                if(parseStart !=component.toStdString().npos)
                 {
-                    javaText = javaText + s;
+
+
+                    ifstream java;
+
+                    java.open(component.toStdString());
+
+                    string s;
+                    string javaText = "";
+                    while(getline(java,s))
+                    {
+                        javaText = javaText + s;
+                    }
+
+                    javafiles.push_back(javaText);
+
                 }
 
-                javafiles.push_back(javaText);
+             }
 
-            }
+            string classID = class_name;
+            string sectionID = class_name + "_" + section_number;
+            string studentID = first_name + "_" + last_name;
+            string labID = first_name + "_" + last_name + "_" +lab_number;
+            string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
 
-         }
-        string classID = class_name;
-        string sectionID = class_name + "_" + section_number;
-        string studentID = first_name + "_" + last_name;
-        string labID = first_name + "_" + last_name + "_" +lab_number;
-        string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
-
-        grader->add_lab(labID, studentID, labName, lab_number, javafiles);
-
-
+            grader->add_lab(labID, studentID, labName, lab_number, javafiles);
+            cout<<"Lab Sucessfully added";
+            cout<<'\n';
     }
 
 }
