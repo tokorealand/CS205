@@ -64,3 +64,11 @@ FileParser* Grader::get_file_parser()
 {
     return fp;
 }
+
+void Grader::add_lab_name(string name){
+    listOfLabNames.push_back(name);
+}
+
+vector<string> Grader::get_lab_name_list(){
+    return listOfLabNames;
+}
