@@ -45,6 +45,8 @@ public:
 
     void add_class(std::string classID, int number_of_sections);
 
+    std::string student_list();
+
 
 
     Class* get_class(std::string id);
