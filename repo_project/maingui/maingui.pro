@@ -41,6 +41,7 @@ SOURCES += main.cpp\
     ../controller/controller.cpp\
     ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
+    ../CommentGUI/dialog.cpp
 
 
 
@@ -57,11 +58,13 @@ HEADERS  += mainwindow.h \
     ../grader/fileparser.h \
     ../controller/controller.h\
      ../add_students_gui/add_students_gui.h\
-    ../addlabsGUI/addlabsgui.h
+    ../addlabsGUI/addlabsgui.h \
+    ../CommentGUI/dialog.h
 
 
 
 FORMS    += mainwindow.ui\
                     ../add_students_gui/add_students_gui.ui\
-                    ../addlabsGUI/addlabsgui.ui
+                    ../addlabsGUI/addlabsgui.ui\
+                    ../CommentGUI/dialog.ui
 

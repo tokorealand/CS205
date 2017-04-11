@@ -1,11 +1,13 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
-Dialog::Dialog(QWidget *parent) :
+Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab) :
     QDialog(parent),
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    grader = aGrader;
+    lab = aLab;
     populate();
 }
 
@@ -45,17 +47,13 @@ void Dialog::on_doneButton_clicked(){
     close();
 }
 
-
-
 void Dialog::populate_comment_list(){
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList);
 }
 
+void Dialog::on_commentText_textChanged(const QString &arg1){
 
-
-void Dialog::on_commentText_textChanged(const QString &arg1)
-{
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList.filter(regExp));

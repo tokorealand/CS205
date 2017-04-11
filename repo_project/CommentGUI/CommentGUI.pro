@@ -22,10 +22,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+LIBS += -l sqlite3
 
 SOURCES += main.cpp\
-        dialog.cpp
+        dialog.cpp \
+    ../grader/student.cpp \
+    ../grader/lab.cpp \
+    ../grader/section.cpp \
+    ../grader/dbtable.cpp \
+    ../grader/dbtool.cpp \
+    ../grader/commentengine.cpp \
+    ../grader/class.cpp \
+    ../grader/component.cpp \
+    ../grader/grader.cpp\
+    ../grader/fileparser.cpp \
+    ../controller/controller.cpp
 
-HEADERS  += dialog.h
+HEADERS  += dialog.h \
+    ../grader/student.h \
+    ../grader/lab.h \
+    ../grader/section.h \
+    ../grader/dbtable.h \
+    ../grader/dbtool.h \
+    ../grader/commentengine.h \
+    ../grader/class.h \
+    ../grader/component.h \
+    ../grader/grader.h\
+    ../grader/fileparser.h\
+    ../controller/controller.h
 
 FORMS    += dialog.ui
