@@ -44,13 +44,16 @@ void Dialog::populate(){
 void Dialog::on_doneButton_clicked(){
 
     //save comment details -- will be in a vector of comments in lab object
-    string commentText      = ui->commentText->text().toStdString();
+    string commentText;
+
+    if(ui->commentList->selectedItems().size() = 0){
+    }// ui->commentText->text().toStdString();
+
     string rubricSection    = ui->rubricSectionDropDown->currentText().toStdString();
     double pointsDeducted   = ui->pointsOffSpinBox->value();
     string highlightColor   = ui->colorDropDown->currentText().toStdString();
-
-    lab->create_comment(commentText, rubricSection, pointsDeducted, highlightColor);
-
+    //lab->create_comment(commentText, rubricSection, pointsDeducted, highlightColor);
+    //grader->add_comment(commentText, rubricSection, pointsDeducted, highlightColor);
     //close the window
     close();
 }
