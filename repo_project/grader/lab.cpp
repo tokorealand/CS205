@@ -173,7 +173,7 @@ vector<string> Lab::get_line_vector(){
 
 
 //add an already created comment
-void Lab::add_comments(CommentEngine c){
+void Lab::add_comments(Comment c){
     //commentMap.insert(make_pair(1,c));
 }
 
@@ -200,17 +200,17 @@ bool Lab::is_comment_at(int i){
 }
 
 //use this method to get the comment at a particular line number
-CommentEngine Lab::get_comment_at(int lineNo){
-    return commentMap.at(lineNo);
+Comment Lab::get_comment_at(int lineNo){
+    return myComments.at(lineNo);
 }
 
-vector<string> Lab ::get_java_text()
-{
+vector<string> Lab ::get_java_text(){
     return javaText;
 }
 
-void Lab::create_comment(){
-    Comment c();
+void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
+    Comment c(commentText, rubricSection, pointsDeducted, highlightColor);
+    myComments.push_back(c);
 }
 
 

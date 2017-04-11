@@ -58,15 +58,15 @@ public:
     int get_grade();
 
     //Allie
-    CommentEngine get_comment_at(int lineNo);
+    Comment get_comment_at(int lineNo);
     bool is_comment_at(int i);
     int get_no_lines_in_class(int i);
     int get_number_of_classes();
-    void add_comments(CommentEngine c);
-    void create_comment();
+    void add_comments(Comment c);
+    void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
 
     vector<vector<string>> get_class_code_vector();    
-    vector<CommentEngine> myComments;
+    vector<Comment> myComments;
     vector<string> get_line_vector();
     vector<string> get_java_text();
 
