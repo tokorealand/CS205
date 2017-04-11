@@ -67,11 +67,13 @@ public:
     int get_number_of_classes();
     void add_comments(Comment c);
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
+    vector<Comment> get_comment_vector();
 
     vector<vector<string>> get_class_code_vector();    
     vector<Comment> myComments;
     vector<string> get_line_vector();
     vector<string> get_java_text();
+
 };
 
 int cb_add_row_lab(void  *data,

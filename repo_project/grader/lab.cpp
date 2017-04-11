@@ -214,6 +214,9 @@ Comment* Lab::get_comment_at(std::string lineNo){
 vector<string> Lab ::get_java_text(){
     return javaText;
 }
+vector<Comment> Lab::get_comment_vector(){
+    return myComments;
+}
 
 //creates a comment and saves it to the comment vector
 //void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
