@@ -5,6 +5,7 @@
 #include <fstream>
 #include <qdiriterator.h>
 #include "grader.h"
+#include <vector>
 
 
 

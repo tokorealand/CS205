@@ -176,13 +176,13 @@ void Controller::add_student(std::string studentID, std::string sectionID, std::
     get_section(sectionID)->add_student(stu);
 }
 
-void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
+void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, vector<string> javaText)
 {
     if(item_exist(labID,"lab"))
     {
         return;
     }
-    Lab *la = new Lab(labID, studentID, labName, labNumber,class_tool,table_lab);
+    Lab *la = new Lab(labID, studentID, labName, labNumber, javaText, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
 }
@@ -613,7 +613,7 @@ int cb_select_all_labs(void  *data,
 
     }
 
-    obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
     //old from lab 6
 
     return 0;

@@ -5,8 +5,8 @@ FileParser::FileParser(string aFileName, Grader* aGrader)
 {
     fileName = aFileName;
     grader = aGrader;
-    parse_student_file();
-    parse_java_file("./");
+    //parse_student_file();
+   parse_java_file("./Lab_1");
 
 }
 
@@ -53,22 +53,23 @@ void FileParser::parse_student_file()
 
         grader->add_class(class_name, 2);
         grader->add_section(class_section, class_name);
-        grader->add_student("", class_section, first_name, last_name);
+        grader->add_student(first_name+last_name, class_section, first_name, last_name);
 
-//        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-//        cout<<'\n';
+        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
+        cout<<'\n';
     }
     file.close();
 }
 
 void FileParser::parse_java_file(string aFilepath)
 {
-
+    vector<string> javafiles;
     QString filepath= QString::fromStdString(aFilepath);
     QDirIterator it(filepath, QDirIterator::NoIteratorFlags);
 
     while(it.hasNext())
     {
+
         QString labEntry = it.next();
 
 
@@ -106,43 +107,50 @@ void FileParser::parse_java_file(string aFilepath)
         string labnumber= lab.substr(parseStart, parseLen);
 
 
+
         QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
 
         while(it2.hasNext())
         {
 
+            QString component=it2.next();
 
-            parseStart = labEntry.toStdString().find(labEntry.toStdString());
-            parseEnd = labEntry.toStdString().length();
+
+            parseStart = component.toStdString().find(".java");
+            parseEnd = component.toStdString().length();
             parseLen = parseEnd - parseStart;
 
-            string component=labEntry.toStdString().substr(parseStart, parseLen);
-
-            parseStart = component.find(".");
-            parseEnd = component.length();
-            parseLen = parseEnd - parseStart;
-            string filetype = component.substr(parseStart, parseLen);
-
-//            if(filetype.compare("java") == 0)
-//            {
-//                ifstream java;
-
-//                java.open(labEntry);
-
-//            }
 
 
 
+            if(parseStart !=component.toStdString().npos)
+            {
+
+                cout<<component.toStdString();
+                cout<<'\n';
+
+                ifstream java;
 
 
-        }
+                java.open(component.toStdString());
 
-        cout<<lab;
-        cout<<'\n';
+                string s;
+                string javaText = "";
+                while(getline(java,s))
+                {
+                    javaText = javaText + s;
+                }
+
+                javafiles.push_back(javaText);
+
+            }
 
 
 
-    }
 
+         }
+
+
+       }
 
 }

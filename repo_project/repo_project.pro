@@ -9,3 +9,4 @@ SUBDIRS += \
     addnewlabsgui \
     rubriccreatorgui
 
+
