@@ -35,6 +35,8 @@ public:
     void set_current_student(Student*);
     void set_currentLab(Lab*);
 
+    void add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points);
+
     void add_component(std::string componentID, string labID, string compath);
 
     void add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
@@ -56,6 +58,11 @@ public:
     Student* get_student(std::string id);
 
     Lab* get_lab(std::string id);
+
+    Component* get_component(std::string id);
+
+    Comment* get_comment(std::string id);
+
 
     FileParser* get_file_parser();
 

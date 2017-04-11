@@ -52,8 +52,14 @@ void Dialog::on_doneButton_clicked(){
     string rubricSection    = ui->rubricSectionDropDown->currentText().toStdString();
     double pointsDeducted   = ui->pointsOffSpinBox->value();
     string highlightColor   = ui->colorDropDown->currentText().toStdString();
+
     //lab->create_comment(commentText, rubricSection, pointsDeducted, highlightColor);
     //grader->add_comment(commentText, rubricSection, pointsDeducted, highlightColor);
+
+
+//    lab->create_comment(commentText, rubricSection, pointsDeducted, highlightColor);
+
+
     //close the window
     close();
 }
