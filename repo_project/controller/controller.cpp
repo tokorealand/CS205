@@ -34,6 +34,17 @@ Controller::~Controller()
 
 }
 
+std::string Controller::student_list()
+{
+    std::string list = "";
+    for(Student* it: students)
+    {
+        list+=it->get_first_name();
+
+    }
+    return list;
+}
+
 void Controller::total_drop()
 {
     drop_component_table();

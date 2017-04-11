@@ -84,6 +84,8 @@ public:
 
     void add_component(std::string componentID, std::string labID, std::string compath);
 
+    std::string student_list();
+
 
     /* Pointer version of the creation methods.
      *
