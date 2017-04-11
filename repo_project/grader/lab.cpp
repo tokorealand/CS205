@@ -38,6 +38,11 @@ void Lab::add_component(Component *com)
     coms.push_back(com);
 }
 
+void Lab::add_comment(Comment *com)
+{
+    comments.push_back(com);
+}
+
 // SQL used for inputting information
 void Lab::store_add_row_sql() {
 

@@ -11,6 +11,7 @@
 #include "dbtool.h"
 #include "dbtable.h"
 #include "student.h"
+#include "comment.h"
 #include "component.h"
 #include "commentengine.h"
 
@@ -18,11 +19,13 @@
 using namespace std;
 class Student;
 class Component;
+class Comment;
 
 class Lab : public DBTable{
 private:
     vector<string> javaText;
     vector<Component*> coms;
+    vector<Comment*> comments;
     std::string labNum;
     int grade;
     std::string labName;
@@ -42,6 +45,8 @@ public:
     int get_lab_num();
 
     void add_component(Component* com);
+    void add_comment(Comment* com);
+
 
     std::string get_id();
 

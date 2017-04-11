@@ -36,6 +36,7 @@ SOURCES += main.cpp\
     ../grader/component.cpp \
     ../controller/controller.cpp\
     ../grader/grader.cpp\
+../grader/comment.cpp\
     ../grader/fileparser.cpp
 
 
@@ -50,6 +51,7 @@ HEADERS  += add_students_gui.h\
     ../grader/component.h \
     ../controller/controller.h\
     ../grader/grader.h\
+../grader/comment.h\
     ../grader/fileparser.h
 
 FORMS    += add_students_gui.ui

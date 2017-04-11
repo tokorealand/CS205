@@ -31,6 +31,10 @@ Controller::~Controller()
     {
         delete it;
     }
+    for(Comment* it : comments)
+    {
+        delete it;
+    }
 
 }
 
@@ -47,6 +51,7 @@ std::string Controller::student_list()
 
 void Controller::total_drop()
 {
+    drop_comments_table();
     drop_component_table();
     drop_lab_table();
     drop_student_table();
@@ -119,6 +124,19 @@ Component* Controller::get_component(std::string id)
     return NULL;
 }
 
+Comment* Controller::get_comment(std::string id)
+{
+    for(Comment* it: comments)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
+}
+
 bool Controller::item_exist(std::string id, std::string type)
 {
     if(type == "class")
@@ -170,6 +188,18 @@ bool Controller::item_exist(std::string id, std::string type)
     if(type == "component")
     {
         for(Component* it : components)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(type == "comment")
+    {
+        for(Comment* it : comments)
         {
             if(it->get_id() == id)
             {
@@ -234,9 +264,20 @@ void Controller::add_component(std::string componentID, string labID, string com
     {
         return;
     }
-    Component *com = new Component(componentID, labID, compath, class_tool,table_lab);
+    Component *com = new Component(componentID, labID, compath, class_tool,table_component);
     components.push_back(com);
     get_lab(labID)->add_component(com);
+}
+
+void Controller::add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight)
+{
+    if(item_exist(commentID,"comment"))
+    {
+        return;
+    }
+    Comment *com = new Comment(commentID, labID, linenumber,commentphrase,rubricsection, highlight, class_tool,table_comment);
+    comments.push_back(com);
+    get_lab(labID)->add_comment(com);
 }
 
 //Used to retriveve all players in database
@@ -530,7 +571,7 @@ int cb_select_all_students(void  *data,
 
 
 
-    std::cerr << "cb_select_all_sections being called\n";
+    std::cerr << "cb_select_all_students being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -639,7 +680,7 @@ int cb_select_all_labs(void  *data,
 
 
 
-    std::cerr << "cb_select_all_sections being called\n";
+    std::cerr << "cb_select_all_labs being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -680,7 +721,7 @@ int cb_select_all_components(void  *data,
 
 
 
-    std::cerr << "cb_select_all_sections being called\n";
+    std::cerr << "cb_select_all_components being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -727,6 +768,83 @@ bool Controller::drop_component_table() {
     // callback to store any results.
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_drop_component.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << sql_drop
+        //                  << std::endl;
+
+        //        std::cerr << "SQL error: "
+        //                  << zErrMsg
+        //                  << std::endl;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+
+//Call back for select_all_pgh
+int cb_select_all_commentss(void  *data,
+                             int    argc,
+                             char **argv,
+                             char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_commentss being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    //old from lab 6
+
+    return 0;
+}
+
+// Removes the db table from the database.
+bool Controller::drop_comments_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_comment="DROP TABLE ";
+    sql_drop_comment += table_comment;
+    sql_drop_comment += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_comment.c_str(),
                            cb_drop,
                            this,
                            &zErrMsg          );

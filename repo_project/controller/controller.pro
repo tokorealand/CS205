@@ -15,6 +15,7 @@ HEADERS += \
     ../grader/commentengine.h \
     ../grader/class.h \
     ../grader/component.h \
+../grader/comment.h\
     controller.h
 
 SOURCES += main.cpp \
@@ -26,6 +27,7 @@ SOURCES += main.cpp \
     ../grader/commentengine.cpp \
     ../grader/class.cpp \
     ../grader/component.cpp \
+    ../grader/comment.cpp\
     controller.cpp
 
 
