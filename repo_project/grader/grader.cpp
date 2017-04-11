@@ -35,6 +35,11 @@ void Grader::add_lab(std::string labID, string studentID, string labName, string
     control->add_lab(labID, studentID,labName,labNumber, javaText);
 }
 
+void Grader::add_component(std::string componentID, std::string labID, std::string compath)
+{
+    control->add_component(componentID,labID,  compath);
+}
+
 Class* Grader::get_class(string id)
 {
     return control->get_class(id);

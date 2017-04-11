@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <QTCore/qdiriterator.h>
+#include <qdiriterator.h>
 #include "grader.h"
 #include <vector>
 

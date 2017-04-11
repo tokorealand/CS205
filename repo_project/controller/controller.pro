@@ -14,6 +14,7 @@ HEADERS += \
     ../grader/dbtool.h \
     ../grader/commentengine.h \
     ../grader/class.h \
+    ../grader/component.h \
     controller.h
 
 SOURCES += main.cpp \
@@ -24,6 +25,7 @@ SOURCES += main.cpp \
     ../grader/dbtool.cpp \
     ../grader/commentengine.cpp \
     ../grader/class.cpp \
+    ../grader/component.cpp \
     controller.cpp
 
 

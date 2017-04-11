@@ -27,11 +27,16 @@ Controller::~Controller()
     {
         delete it;
     }
+    for(Component* it : components)
+    {
+        delete it;
+    }
 
 }
 
 void Controller::total_drop()
 {
+    drop_component_table();
     drop_lab_table();
     drop_student_table();
     drop_section_table();
@@ -40,54 +45,67 @@ void Controller::total_drop()
 
 Class* Controller::get_class(std::string id)
 {
-   for(Class* it: classes)
-   {
-       if(it->get_id() == id)
-       {
-           return it;
-       }
+    for(Class* it: classes)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
 
-   }
-   return NULL;
+    }
+    return NULL;
 }
 
 Section* Controller::get_section(std::string id)
 {
-   for(Section* it: sections)
-   {
-       if(it->get_id() == id)
-       {
-           return it;
-       }
+    for(Section* it: sections)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
 
-   }
-   return NULL;
+    }
+    return NULL;
 }
 
 Student* Controller::get_student(std::string id)
 {
-   for(Student* it: students)
-   {
-       if(it->get_id() == id)
-       {
-           return it;
-       }
+    for(Student* it: students)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
 
-   }
-   return NULL;
+    }
+    return NULL;
 }
 
 Lab* Controller::get_lab(std::string id)
 {
-   for(Lab* it: labs)
-   {
-       if(it->get_id() == id)
-       {
-           return it;
-       }
+    for(Lab* it: labs)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
 
-   }
-   return NULL;
+    }
+    return NULL;
+}
+
+Component* Controller::get_component(std::string id)
+{
+    for(Component* it: components)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
 }
 
 bool Controller::item_exist(std::string id, std::string type)
@@ -129,6 +147,18 @@ bool Controller::item_exist(std::string id, std::string type)
     if(type == "lab")
     {
         for(Lab* it : labs)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(type == "component")
+    {
+        for(Component* it : components)
         {
             if(it->get_id() == id)
             {
@@ -185,6 +215,17 @@ void Controller::add_lab(std::string labID, string studentID, string labName, st
     Lab *la = new Lab(labID, studentID, labName, labNumber, javaText, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
+}
+
+void Controller::add_component(std::string componentID, string labID, string compath)
+{
+    if(item_exist(componentID,"component"))
+    {
+        return;
+    }
+    Component *com = new Component(componentID, labID, compath, class_tool,table_lab);
+    components.push_back(com);
+    get_lab(labID)->add_component(com);
 }
 
 //Used to retriveve all players in database
@@ -619,3 +660,79 @@ int cb_select_all_labs(void  *data,
     return 0;
 }
 
+//Call back for select_all_pgh
+int cb_select_all_components(void  *data,
+                             int    argc,
+                             char **argv,
+                             char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_sections being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    //old from lab 6
+
+    return 0;
+}
+
+// Removes the db table from the database.
+bool Controller::drop_component_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_component="DROP TABLE ";
+    sql_drop_component += table_component;
+    sql_drop_component += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_component.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << sql_drop
+        //                  << std::endl;
+
+        //        std::cerr << "SQL error: "
+        //                  << zErrMsg
+        //                  << std::endl;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
