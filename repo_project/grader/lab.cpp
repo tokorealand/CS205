@@ -1,7 +1,9 @@
 #ifndef LAB_CPP
 #define LAB_CPP
+
 #include "lab.h"
-#include "student.h"
+
+using namespace std;
 
 class Student;
 
@@ -179,7 +181,7 @@ void Lab::add_comments(Comment c){
 
 //returns the vector representing each class - a vector of strings representing each line of code
 vector<vector<string>> Lab::get_class_code_vector(){
-    return classes;
+    return classAndClassContentsVector;
 }
 
 int Lab::get_number_of_classes(){
@@ -188,7 +190,7 @@ int Lab::get_number_of_classes(){
 
 //get class in location i, find the size of the vector containing each line of the code as a string
 int Lab::get_no_lines_in_class(int i){
-    return classes.at(i).size();
+    return classAndClassContentsVector.at(i).size();
 }
 //check if there is a comment at a given line number
 bool Lab::is_comment_at(int i){
@@ -210,8 +212,8 @@ vector<string> Lab ::get_java_text(){
 
 //creates a comment and saves it to the comment vector
 void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
-    Comment c(commentText, rubricSection, pointsDeducted, highlightColor);
-    myComments.push_back(c);
+    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);
+    myComments.push_back(*c);
 }
 
 
