@@ -1,8 +1,7 @@
 #include "fileparser.h"
 #include <qdiriterator.h>
 
-FileParser::FileParser(string aFileName, Grader* aGrader)
-{
+FileParser::FileParser(string aFileName, Grader* aGrader){
     fileName = aFileName;
     grader = aGrader;
     //parse_student_file();
@@ -11,8 +10,7 @@ FileParser::FileParser(string aFileName, Grader* aGrader)
 }
 
 
-FileParser::~FileParser()
-{
+FileParser::~FileParser(){
 
 }
 

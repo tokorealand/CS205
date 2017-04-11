@@ -208,6 +208,7 @@ vector<string> Lab ::get_java_text(){
     return javaText;
 }
 
+//creates a comment and saves it to the comment vector
 void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
     Comment c(commentText, rubricSection, pointsDeducted, highlightColor);
     myComments.push_back(c);
