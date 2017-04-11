@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
    // f.add_class("Class1",3);
    // f.add_student("Student1","section1","luis","lopez");
 
-  f.add_lab("student1lab1","student1","recursion","1");
-  f.add_lab("student1lab1","student1","recursion","1");
+ // f.add_lab("student1lab1","student1","recursion","1");
+  //f.add_lab("student1lab1","student1","recursion","1");
     return 0;
 }
