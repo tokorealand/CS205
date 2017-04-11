@@ -11,12 +11,15 @@
 #include "dbtool.h"
 #include "dbtable.h"
 #include "student.h"
+#include <vector>
+
 
 using namespace std;
 class Student;
 
 class Lab : public DBTable{
 private:
+    vector<string> javaText;
     std::string labNum;
     int grade;
     std::string labName;
@@ -27,7 +30,7 @@ private:
 
 
 public:
-    Lab(string labID, std::string studentID, string labName, string labNumber, DBTool *tool, std::string table);
+    Lab(string labID, std::string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table);
     ~Lab();
 
     std::string get_lab_name;

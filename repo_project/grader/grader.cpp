@@ -30,9 +30,9 @@ void Grader::add_student(std::string studentID, std::string sectionID, std::stri
     control->add_student(studentID, sectionID, firstname, lastname);
 }
 
-void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber)
+void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber, vector<string> javaText)
 {
-    control->add_lab(labID, studentID,labName,labNumber);
+    control->add_lab(labID, studentID,labName,labNumber, javaText);
 }
 
 Class* Grader::get_class(string id)

@@ -5,8 +5,9 @@
 
 class Student;
 
-Lab::Lab(std::string labID, string studentID, string labName, string labNumber, DBTool *tool, std::string table):DBTable(tool,table)
+Lab::Lab(std::string labID, string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table):DBTable(tool,table)
 {
+    this->javaText = aJavaText;
     this->id = labID;
     this->studentID = studentID;
     this->labName = labName;
