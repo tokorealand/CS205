@@ -64,3 +64,8 @@ Lab* Grader::get_lab(string id)
 {
     return control->get_lab(id);
 }
+
+FileParser* Grader::get_file_parser()
+{
+    return fp;
+}

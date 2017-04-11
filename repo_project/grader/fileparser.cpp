@@ -16,10 +16,11 @@ FileParser::~FileParser()
 
 }
 
-void FileParser::parse_student_file()
+vector<string> FileParser::parse_student_file(string aFilePath)
 {
+    vector<string> studentInfo;
 
-    file.open(fileName);
+    file.open(aFilePath);
 
     string s;
 
@@ -55,9 +56,11 @@ void FileParser::parse_student_file()
         grader->add_section(class_section, class_name);
         grader->add_student(first_name+last_name, class_section, first_name, last_name);
 
-        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-        cout<<'\n';
+        studentInfo.push_back(first_name + " " + last_name + " " + class_name +" " + class_section);
+//        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
+//        cout<<'\n';
     }
+    return studentInfo;
     file.close();
 }
 
