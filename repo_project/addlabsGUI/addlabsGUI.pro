@@ -22,9 +22,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+LIBS += -l sqlite3
 
 SOURCES += main.cpp\
-        addlabsgui.cpp
+        addlabsgui.cpp\
     ../grader/student.cpp \
     ../grader/lab.cpp \
     ../grader/section.cpp \
@@ -37,7 +38,7 @@ SOURCES += main.cpp\
     ../grader/fileparser.cpp\
     ../controller/controller.cpp
 
-HEADERS  += addlabsgui.h
+HEADERS  += addlabsgui.h\
     ../grader/student.h \
     ../grader/lab.h \
     ../grader/section.h \
