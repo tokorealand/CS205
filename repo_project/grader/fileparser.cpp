@@ -20,7 +20,13 @@ vector<string> FileParser::parse_student_file(string aFilePath)
 {
     vector<string> studentInfo;
 
-    file.open(aFilePath);
+    try{
+        file.open(aFilePath);
+    }
+    catch(const std::exception& e)
+    {
+        cout<<"ERROR File does not exist";
+    }
 
     string s;
 
@@ -52,16 +58,17 @@ vector<string> FileParser::parse_student_file(string aFilePath)
         end = s.find_first_of(delim, start)+1;
         len = end-start;
 
-        grader->add_class(class_name, 2);
-        grader->add_section(class_section, class_name);
-        grader->add_student(first_name+last_name, class_section, first_name, last_name);
+//        grader->add_class(class_name, 2);
+//        grader->add_section(class_section, class_name);
+//        grader->add_student(first_name+last_name, class_section, first_name, last_name);
 
         studentInfo.push_back(first_name + " " + last_name + " " + class_name +" " + class_section);
 //        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
 //        cout<<'\n';
     }
-    return studentInfo;
+
     file.close();
+    return studentInfo;
 }
 
 void FileParser::parse_java_file(string aFilepath)
