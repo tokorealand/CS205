@@ -204,6 +204,11 @@ CommentEngine Lab::get_comment_at(int lineNo){
     return commentMap.at(lineNo);
 }
 
+vector<string> Lab ::get_java_text()
+{
+    return javaText;
+}
+
 
 
 #endif // LAB_CPP

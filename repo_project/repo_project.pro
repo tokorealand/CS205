@@ -5,5 +5,6 @@ SUBDIRS += \
     maingui\
     controller \
     addlabsGUI \
-    add_students_gui
+    add_students_gui \
+    labViewGUI
 

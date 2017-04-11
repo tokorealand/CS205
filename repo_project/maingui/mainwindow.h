@@ -19,6 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
         void build_tabs();
+        void display_java_text();
 
 
 private slots:
@@ -28,6 +29,8 @@ private slots:
 
 
     void on_actionAdd_Students_triggered();
+
+    void on_displayButton_clicked();
 
 private:
     Ui::MainWindow *ui;

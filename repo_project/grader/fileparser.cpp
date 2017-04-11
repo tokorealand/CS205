@@ -6,7 +6,7 @@ FileParser::FileParser(string aFileName, Grader* aGrader)
     fileName = aFileName;
     grader = aGrader;
     //parse_student_file();
-   parse_java_file("./Lab_1");
+   //parse_java_file("./Lab_1");
 
 }
 
@@ -59,13 +59,18 @@ string FileParser::parse_student_file(string aFilePath)
         end = s.find_first_of(delim, start)+1;
         len = end-start;
 
-        grader->add_class(class_name, 2);
-        grader->add_section(class_section, class_name);
-        grader->add_student(first_name+last_name, class_section, first_name, last_name);
+
+        string classID = class_name;
+        string sectionID = class_name + "_" +class_section;
+        string studentID = first_name + "_" + last_name;
+
+        grader->add_class(classID, 0);
+        grader->add_section(sectionID, classID);
+        grader->add_student(studentID, sectionID, first_name, last_name);
 
         studentInfo = studentInfo + first_name + " " + last_name + " " + class_name +" " + class_section+" " +'\n';
-        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-        cout<<'\n';
+//        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
+//        cout<<'\n';
     }
 
     file.close();
@@ -86,36 +91,36 @@ void FileParser::parse_java_file(string aFilepath)
 
         // lab submissions should be titled "firstname_lastname_classname_sectionnumber_labnumber"
 
-        int parseStart = labEntry.toStdString().find(aFilepath);
+        int parseStart = filepath.length();
         int parseEnd = labEntry.toStdString().length();
         int parseLen = parseEnd - parseStart;
         string lab = labEntry.toStdString().substr(parseStart, parseLen);
 
         parseStart = 0;
-        parseEnd = lab.find("_");
+        parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
-        string firstname = lab.substr(parseStart, parseLen);
+        string first_name = lab.substr(parseStart, parseLen);
 
 
         parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_");
+        parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
-        string lastname = lab.substr(parseStart, parseLen);
+        string last_name = lab.substr(parseStart, parseLen);
 
         parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_");
+        parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
-        string classname = lab.substr(parseStart, parseLen);
+        string class_name = lab.substr(parseStart, parseLen);
 
         parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_");
+        parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
-        string sectionnumber = lab.substr(parseStart, parseLen);
+        string section_number = lab.substr(parseStart, parseLen);
 
         parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_");
+        parseEnd = lab.find("_", parseStart);
         parseLen = parseEnd - parseStart;
-        string labnumber= lab.substr(parseStart, parseLen);
+        string lab_number= lab.substr(parseStart, parseLen);
 
 
 
@@ -126,22 +131,16 @@ void FileParser::parse_java_file(string aFilepath)
 
             QString component=it2.next();
 
-
             parseStart = component.toStdString().find(".java");
             parseEnd = component.toStdString().length();
             parseLen = parseEnd - parseStart;
 
-
-
-
             if(parseStart !=component.toStdString().npos)
             {
-
-                cout<<component.toStdString();
-                cout<<'\n';
+//                cout<<component.toStdString();
+//                cout<<'\n';
 
                 ifstream java;
-
 
                 java.open(component.toStdString());
 
@@ -156,16 +155,18 @@ void FileParser::parse_java_file(string aFilepath)
 
             }
 
-
-
-
          }
+        string classID = class_name;
+        string sectionID = class_name + "_" + section_number;
+        string studentID = first_name + "_" + last_name;
+        string labID = first_name + "_" + last_name + "_" +lab_number;
+        string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
+
+        grader->add_lab(labID, studentID, labName, lab_number, javafiles);
 
 
-       }
+    }
 
 }
 
-void FileParser::parse_lab_file(string){
 
-}

@@ -18,12 +18,8 @@ void AddLabsGUI::on_selectButton_clicked(){
 
     //save file path
     string filepath = ui->labPathText->toPlainText().toStdString();
-    string labName = ui->labNameText->toPlainText().toStdString();
-
     grader->get_file_parser()->parse_java_file(filepath);
 
-    //give the grader a lab name
-    grader->add_lab_name(labName);
 }
 
 void AddLabsGUI::on_doneButton_clicked(){

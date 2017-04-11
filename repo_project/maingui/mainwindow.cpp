@@ -10,10 +10,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     grad = new Grader();
-    grad->add_class("c1",2);
-    grad->add_section("c11","c1");
-    grad->add_student("luisbonilla","c11","luis","lopez");
-    ui->side1->addItem(QString::fromStdString(grad->student_list()));
+    //    grad->add_class("c1",2);
+    //    grad->add_section("c11","c1");
+    //    grad->add_student("luisbonilla","c11","luis","lopez");
+    //ui->side1->addItem(QString::fromStdString(grad->student_list()));
 }
 
 MainWindow::~MainWindow()
@@ -63,4 +63,12 @@ void MainWindow::on_actionAdd_Students_triggered()
 {
     add_students_gui* asg = new add_students_gui(0, grad);
     asg->show();
+}
+
+
+
+
+void MainWindow::on_displayButton_clicked()
+{
+    ui->displayJavaText->setPlainText(QString:: fromStdString(grad->get_lab("JulianBinici1")->get_java_text().at(0)));
 }

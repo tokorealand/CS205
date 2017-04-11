@@ -65,6 +65,7 @@ public:
     vector<vector<string>> get_class_code_vector();
     void add_comments(CommentEngine c);
     vector<string> get_line_vector();
+    vector<string> get_java_text();
 
 
 };
