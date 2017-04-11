@@ -53,6 +53,9 @@ public:
 
     Lab* get_lab(std::string id);
 
+    FileParser* get_file_parser();
+
+
 };
 
 

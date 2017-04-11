@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     grader\
-    controller
+    controller \
+    addstudentsGUI
 
 
