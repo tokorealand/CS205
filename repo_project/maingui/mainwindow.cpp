@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "../add_students_gui/add_students_gui.h"
+#include "../addlabsGUI/addlabsgui.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -46,10 +48,19 @@ void MainWindow::build_tabs(){
 
 void MainWindow::on_actionLoad_New_Lab_triggered()
 {
-    std::vector<std::string> s;
-    grad->add_lab("lb1","luisbonilla","trees","1",s);
-    ui->side2->addItem(QString::fromStdString(grad->get_lab("lb1")->get_id()));
-    std::cout<<grad->get_lab("lb1")->get_id();
+        AddLabsGUI* alg = new AddLabsGUI(0, grad);
+        alg->show();
+
+//    std::vector<std::string> s;
+//    grad->add_lab("lb1","luisbonilla","trees","1",s);
+//    ui->side2->addItem(QString::fromStdString(grad->get_lab("lb1")->get_id()));
+//    std::cout<<grad->get_lab("lb1")->get_id();
 
 
+}
+
+void MainWindow::on_actionAdd_Students_triggered()
+{
+    add_students_gui* asg = new add_students_gui(0, grad);
+    asg->show();
 }

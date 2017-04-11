@@ -27,6 +27,8 @@ private slots:
 
 
 
+    void on_actionAdd_Students_triggered();
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;

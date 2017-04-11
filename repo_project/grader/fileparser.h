@@ -17,7 +17,7 @@ class FileParser{
 public:
     FileParser(string, Grader* );
     ~FileParser();
-    vector<string> parse_student_file(string);
+    string parse_student_file(string);
     void parse_lab_file(string);
     void parse_java_file(string);
 

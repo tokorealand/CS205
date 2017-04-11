@@ -20,7 +20,7 @@ void AddLabsGUI::on_selectButton_clicked(){
     string filepath = ui->labPathText->toPlainText().toStdString();
     string labName = ui->labNameText->toPlainText().toStdString();
 
-    //vector<string> labInfo = grader->get_file_parser()->parse_lab_file(filepath);
+    grader->get_file_parser()->parse_java_file(filepath);
 
     //give the grader a lab name
     grader->add_lab_name(labName);

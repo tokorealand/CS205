@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     ../grader/component.cpp \
     ../grader/grader.cpp \
     ../grader/fileparser.cpp \
-    ../controller/controller.cpp
+    ../controller/controller.cpp\
+    ../add_students_gui/add_students_gui.cpp\
+    ../addlabsGUI/addlabsgui.cpp\
 
 
 
@@ -53,9 +55,13 @@ HEADERS  += mainwindow.h \
     ../grader/component.h \
     ../grader/grader.cpp \
     ../grader/fileparser.h \
-    ../controller/controller.h
+    ../controller/controller.h\
+     ../add_students_gui/add_students_gui.h\
+    ../addlabsGUI/addlabsgui.h
 
 
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui\
+                    ../add_students_gui/add_students_gui.ui\
+                    ../addlabsGUI/addlabsgui.ui
 

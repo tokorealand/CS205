@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-11T00:26:06
+# Project created by QtCreator 2017-04-11T03:46:01
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = addstudentsGUI
+TARGET = add_students_gui
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 LIBS += -l sqlite3
 
 SOURCES += main.cpp\
-        widget.cpp\
+        add_students_gui.cpp\
     ../grader/student.cpp \
     ../grader/lab.cpp \
     ../grader/section.cpp \
@@ -34,11 +34,12 @@ SOURCES += main.cpp\
     ../grader/commentengine.cpp \
     ../grader/class.cpp \
     ../grader/component.cpp \
+    ../controller/controller.cpp\
     ../grader/grader.cpp\
-    ../grader/fileparser.cpp\
-    ../controller/controller.cpp
+    ../grader/fileparser.cpp
 
-HEADERS  += widget.h\
+
+HEADERS  += add_students_gui.h\
     ../grader/student.h \
     ../grader/lab.h \
     ../grader/section.h \
@@ -47,9 +48,8 @@ HEADERS  += widget.h\
     ../grader/commentengine.h \
     ../grader/class.h \
     ../grader/component.h \
+    ../controller/controller.h\
     ../grader/grader.h\
-    ../grader/fileparser.h\
-        ../controller/controller.h
+    ../grader/fileparser.h
 
-
-FORMS    += widget.ui
+FORMS    += add_students_gui.ui
