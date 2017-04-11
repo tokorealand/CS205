@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>502</width>
-    <height>391</height>
+    <width>505</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>310</y>
       <width>461</width>
-      <height>24</height>
+      <height>29</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -108,9 +108,12 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>502</width>
-     <height>21</height>
+     <width>505</width>
+     <height>22</height>
     </rect>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -139,9 +142,17 @@
     <addaction name="actionComment"/>
     <addaction name="actionHighlight"/>
    </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="actionExport_This_Lab"/>
+    <addaction name="actionExport_This_Sectin"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuGrade"/>
    <addaction name="menuGrading_Tools"/>
+   <addaction name="menuExport"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -179,7 +190,17 @@
   </action>
   <action name="actionLab">
    <property name="text">
-    <string> </string>
+    <string/>
+   </property>
+  </action>
+  <action name="actionExport_This_Lab">
+   <property name="text">
+    <string>Export This Lab</string>
+   </property>
+  </action>
+  <action name="actionExport_This_Sectin">
+   <property name="text">
+    <string>Export This Section</string>
    </property>
   </action>
  </widget>

@@ -5,6 +5,10 @@
 #include <iostream>
 #include <QObject>
 #include <QSignalMapper>
+#include "../addnewlabsgui/widgeta.h"
+#include "../addnewlabsgui/ui_widget.h"
+#include "../AddStudentsGUI1/addstudentsgui.h"
+#include "../AddStudentsGUI1/ui_addstudentsgui.h"
 
 namespace Ui {
 class MainWindow;

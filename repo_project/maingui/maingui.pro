@@ -24,8 +24,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+                ../addnewlabsgui/widgeta.cpp\
+                ../AddStudentsGUI1/addstudentsgui.cpp\
+                ../CommentGUI1/commentgui.cpp
 
-HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui
+HEADERS  += mainwindow.h\
+                ../addnewlabsgui/widgeta.h\
+                ../AddStudentsGUI1/addstudentsgui.h\
+                ../CommentGUI1/commentgui.h
+
+
+FORMS    += mainwindow.ui\
+                ../addnewlabsgui/widgeta.ui \
+                ../AddStudentsGUI1/addstudentsgui.ui
+                ../CommentGUI1/commentgui.ui
+

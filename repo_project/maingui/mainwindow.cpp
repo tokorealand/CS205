@@ -60,11 +60,13 @@ void MainWindow::load_lab(){
 }
 
 void MainWindow::add_new_labs(){
-
+    WidgetA *w = new WidgetA(0);
+    w->show();
 }
 
 void MainWindow::add_students(){
-
+    AddStudentsGUI*w = new AddStudentsGUI(0);
+    w->show();
 }
 
 void MainWindow::load_random_lab(){

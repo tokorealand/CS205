@@ -1,7 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 
-Widget::Widget(QWidget *parent) :
+Widget::Widget(QWidget *parent, int i) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
@@ -15,7 +15,7 @@ Widget::~Widget()
 
 //add button
 void Widget::on_pushButton_clicked(){
-    ui->listWidget->addItem(ui->textEdit->toPlainText());
+    //ui->listWidget->addItem(ui->textEdit->toPlainText());
 }
 
 //done button
