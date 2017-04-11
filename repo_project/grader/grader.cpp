@@ -13,6 +13,11 @@ Grader::~Grader()
     delete tool;
 }
 
+std::string Grader::student_list()
+{
+    return control->student_list();
+}
+
 void Grader::add_class(string classID, int number_of_sections)
 {
     control->add_class(classID,number_of_sections);
