@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     commentengine.cpp \
     class.cpp \
     ../controller/controller.cpp \
-    fileparser.cpp
+    fileparser.cpp \
+    component.cpp
 
 HEADERS += \
     grader.h \
@@ -30,5 +31,6 @@ HEADERS += \
     commentengine.h \
     class.h \
     ../controller/controller.h \
-    fileparser.h
+    fileparser.h \
+    component.h
 
