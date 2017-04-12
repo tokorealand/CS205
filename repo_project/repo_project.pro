@@ -7,5 +7,6 @@ SUBDIRS += \
     addlabsGUI \
     add_students_gui \
     CommentGUI\
-    labViewGUI
+    labViewGUI \
+    RubricCreatorGUI
 

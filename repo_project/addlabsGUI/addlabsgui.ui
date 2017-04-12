@@ -70,6 +70,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="addRubricButton">
+       <property name="text">
+        <string>Add Rubric</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="doneButton">
        <property name="text">
         <string>Done</string>
@@ -79,11 +86,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>labPathLabel</zorder>
-  <zorder>labPathText</zorder>
-  <zorder>selectButton</zorder>
-  <zorder>displayLabs</zorder>
-  <zorder>labPathText</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

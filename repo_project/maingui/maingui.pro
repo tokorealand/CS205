@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     ../controller/controller.cpp\
     ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
-    ../CommentGUI/dialog.cpp
+    ../CommentGUI/dialog.cpp \
+    ../RubricCreatorGUI/rubriccreatorgui.cpp
 
 
 
@@ -62,12 +63,14 @@ HEADERS  += mainwindow.h \
     ../controller/controller.h\
      ../add_students_gui/add_students_gui.h\
     ../addlabsGUI/addlabsgui.h \
-    ../CommentGUI/dialog.h
+    ../CommentGUI/dialog.h \
+    ../RubricCreatorGUI/rubriccreatorgui.h
 
 
 
 FORMS    += mainwindow.ui\
                     ../add_students_gui/add_students_gui.ui\
                     ../addlabsGUI/addlabsgui.ui\
-                    ../CommentGUI/dialog.ui
+                    ../CommentGUI/dialog.ui \
+                    ../RubricCreatorGUI/rubriccreatorgui.ui
 

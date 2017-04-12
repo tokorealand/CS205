@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "../grader/grader.h"
 #include "../grader/fileparser.h"
+#include "../RubricCreatorGUI/rubriccreatorgui.h"
 
 namespace Ui {
 class AddLabsGUI;
@@ -21,6 +22,8 @@ private slots:
     void on_selectButton_clicked();
 
     void on_doneButton_clicked();
+
+    void on_addRubricButton_clicked();
 
 private:
     Grader* grader;

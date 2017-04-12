@@ -25,3 +25,8 @@ void AddLabsGUI::on_selectButton_clicked(){
 void AddLabsGUI::on_doneButton_clicked(){
     close();
 }
+
+void AddLabsGUI::on_addRubricButton_clicked(){
+    RubricCreatorGUI *r = new RubricCreatorGUI(0);
+    r->show();
+}
