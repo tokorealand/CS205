@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     grad = new Grader();
+    populate_existing_labs();
+    //set up slots
+    //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
     //    grad->add_class("c1",2);
     //    grad->add_section("c11","c1");
     //    grad->add_student("luisbonilla","c11","luis","lopez");
@@ -17,6 +20,30 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete grad;
+}
+
+//should eventually get a list of labs from the database and display them
+void MainWindow::populate_existing_labs(){
+
+    ui->menuExisting_Labs->addAction("Lab 1");
+    ui->menuExisting_Labs->addAction("Lab 2");
+    ui->menuExisting_Labs->addAction("Lab 3");
+
+}
+
+void MainWindow::click_lab_in_existing_labs_menu(){
+
+    //get the sender- the selected lab
+    QAction *selected = qobject_cast<QAction*>(sender());
+
+    QString selected_lab_string = selected->text();
+
+    //ui->listWidget->addItem(selected_lab_string);
+
+    //change the label
+    ui->currentLab->setText(selected_lab_string);
+
+    //load_random_lab();
 }
 
 void MainWindow::build_tabs(){
@@ -63,8 +90,10 @@ void MainWindow::on_actionAdd_Students_triggered()
 }
 
 void MainWindow::on_actionComment_triggered(){
-    Dialog *c = new Dialog(0, grad, selected_lab);
-    c->show();
+    if(selected_lab != nullptr){ // only open the comment engine if there is a lab
+        Dialog *c = new Dialog(0, grad, selected_lab);
+        c->show();
+    }
 
     //get the comment strings from the current lab and add them to the second box
 

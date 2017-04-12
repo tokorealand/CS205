@@ -36,11 +36,11 @@ void Dialog::populate(){
     ui->rubricSectionDropDown->insertItem(2,"section 3", QVariant(0));
 
     //populate the colorDropDown with colors from the rubric section
-    ui->colorDropDown->insertItem(0,"red", QVariant(0));
+    ui->colorDropDown->insertItem(0,"none", QVariant(0));
     ui->colorDropDown->insertItem(1,"green", QVariant(0));
     ui->colorDropDown->insertItem(2,"blue", QVariant(0));
+    ui->colorDropDown->insertItem(3,"red", QVariant(0));
 }
-
 
 void Dialog::on_doneButton_clicked(){
 
@@ -61,6 +61,7 @@ void Dialog::on_doneButton_clicked(){
 }
 
 void Dialog::populate_comment_list(){
+
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList);
 }
@@ -72,8 +73,8 @@ void Dialog::on_commentText_textChanged(const QString &arg1){
     ui->commentList->addItems(commentQStringList.filter(regExp));
 }
 
-void Dialog::on_commentList_clicked(const QModelIndex &index)
-{
+void Dialog::on_commentList_clicked(const QModelIndex &index){
+
     QString s = ui->commentList->selectedItems().at(0)->text();
     ui->commentText->setText(s);
 }
