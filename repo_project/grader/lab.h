@@ -37,7 +37,7 @@ public:
     Lab(string labID, std::string studentID, string labName, string labNumber, vector<vector<string>> aJavaFiles, DBTool *tool, std::string table);
     ~Lab();
 
-    std::string get_lab_name;
+    std::string get_lab_name();
     int get_lab_num();
 
     void add_component(Component* com);

@@ -216,6 +216,10 @@ vector<Comment> Lab::get_comment_vector(){
     return myComments;
 }
 
+std::string Lab::get_lab_name(){
+    return labName;
+}
+
 //creates a comment and saves it to the comment vector
 //void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
 //    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);

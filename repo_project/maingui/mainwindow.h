@@ -10,6 +10,7 @@
 #include "../add_students_gui/add_students_gui.h"
 #include "../addlabsGUI/addlabsgui.h"
 #include "../CommentGUI/dialog.h"
+#include <QListWidget>
 
 class Grader;
 namespace Ui {

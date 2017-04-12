@@ -38,7 +38,7 @@ SOURCES += main.cpp\
     ../grader/component.cpp \
     ../grader/grader.cpp \
     ../grader/fileparser.cpp \
-../grader/comment.cpp\
+    ../grader/comment.cpp\
     ../controller/controller.cpp\
     ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
@@ -59,7 +59,7 @@ HEADERS  += mainwindow.h \
     ../grader/grader.cpp \
     ../grader/comment.h\
     ../grader/fileparser.h \
-../grader/comment.h\
+    ../grader/comment.h\
     ../controller/controller.h\
      ../add_students_gui/add_students_gui.h\
     ../addlabsGUI/addlabsgui.h \

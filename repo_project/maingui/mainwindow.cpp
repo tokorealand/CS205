@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -8,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     grad = new Grader();
     populate_existing_labs();
+    build_tabs();
     //set up slots
     //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
     //    grad->add_class("c1",2);
@@ -25,6 +28,7 @@ MainWindow::~MainWindow()
 //should eventually get a list of labs from the database and display them
 void MainWindow::populate_existing_labs(){
 
+    //sample -- load in labs
     ui->menuExisting_Labs->addAction("Lab 1");
     ui->menuExisting_Labs->addAction("Lab 2");
     ui->menuExisting_Labs->addAction("Lab 3");
@@ -35,6 +39,7 @@ void MainWindow::populate_existing_labs(){
     }
 }
 
+//slot for selecting a lab under existing labs menu
 void MainWindow::click_lab_in_existing_labs_menu(){
 
     //get the sender- the selected lab
@@ -42,7 +47,7 @@ void MainWindow::click_lab_in_existing_labs_menu(){
 
     QString selected_lab_string = selected->text();
 
-    //ui->listWidget->addItem(selected_lab_string);
+    ui->displayJavaText->setText("sample lab code " + selected_lab_string);
 
     //change the label
     ui->currentLab->setText(selected_lab_string);
@@ -52,22 +57,26 @@ void MainWindow::click_lab_in_existing_labs_menu(){
 
 void MainWindow::build_tabs(){
 
-    if(selected_lab != nullptr){
-        //load in the selected lab from the database into some kind of public object/pointer LAB CONTAINER
-        int noClasses = 3;
+    //sample tab -- delete
+    ui->tabWidget->addTab(new QListWidget, "sample tab");
 
-        //remove all tabs -- WHY DOESN'T IT GO THROUGH THE LOOP ENOUGH TIMES?
+    if(selected_lab != nullptr){ //make sure there is a selected lab
+
+        int noClasses = selected_lab->get_number_of_classes();
+
+        //remove all tabs
         for(int i = 0; i < ui->tabWidget->count(); i++){
             ui->tabWidget->removeTab(i);
         }
 
         //build tabs
         for(int i = 0; i < noClasses; i++){
-            QString tabName = "Class: get class name"; //figure out how you can get the class name
-            ui->tabWidget->addTab(new QWidget(), tabName);
-            std::cout << "add tab " << i << std::endl;
+
+            //string s = selected_lab->get_lab_name().toStdString();
+            QString tabName = QString::fromStdString(selected_lab->get_lab_name());
 
             //draw boxes in the tab
+            ui->tabWidget->addTab(new QListWidget(), tabName);
 
             //load in text to all the tabs
         }
@@ -94,6 +103,7 @@ void MainWindow::on_actionAdd_Students_triggered()
 }
 
 void MainWindow::on_actionComment_triggered(){
+
     if(selected_lab != nullptr){ // only open the comment engine if there is a lab
         Dialog *c = new Dialog(0, grad, selected_lab);
         c->show();
@@ -104,8 +114,8 @@ void MainWindow::on_actionComment_triggered(){
 }
 
 
-void MainWindow::on_displayButton_clicked()
-{
+void MainWindow::on_displayButton_clicked(){
+
     string javaText = "";
     for(int i = 0; i<grad->get_lab("Julian_Binici_1")->get_no_lines_in_class(0); i++)
     {
