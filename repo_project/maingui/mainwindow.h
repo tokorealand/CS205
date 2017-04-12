@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <iostream>
+#include <QObject>
+#include <QSignalMapper>
 #include "../grader/lab.h"
 #include "../grader/grader.h"
 #include "../add_students_gui/add_students_gui.h"
@@ -23,6 +25,7 @@ public:
     ~MainWindow();
         void build_tabs();
         void display_java_text();
+        void populate_existing_labs();
 
 private slots:
 
@@ -30,9 +33,11 @@ private slots:
 
     void on_actionAdd_Students_triggered();
 
-     void on_actionComment_triggered();
+    void on_actionComment_triggered();
 
     void on_displayButton_clicked();
+
+    void click_lab_in_existing_labs_menu();
 
 private:
     Ui::MainWindow *ui;
