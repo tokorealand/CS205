@@ -28,7 +28,10 @@ Student::~Student()
     add_row(id,sectionID,firstName,lastName);
 }
 
-
+std::vector<Lab*> Student::get_labs()
+{
+    return labs;
+}
 
 void Student::add_lab(Lab *thelab)
 {

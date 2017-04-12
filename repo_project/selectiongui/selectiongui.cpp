@@ -25,6 +25,17 @@ selectiongui::selectiongui(QWidget *parent, Grader *aGrader) :
 
     grader->add_student("josebonilla","CS1501","Jose","Bonilla");
 
+   // grader->add_lab();
+
+    std::vector<vector<std::string>> g;
+
+    grader->add_lab("lb01","luislopez","Recursion","1",g);
+    grader->add_lab("lb02","luislopez","Trees","2",g);
+    grader->add_lab("lb03","luislopez","Arrays","3",g);
+    grader->add_lab("lb04","luislopez","Tsp","4",g);
+
+
+
 
 
 
@@ -91,7 +102,19 @@ void selectiongui::on_ss_clicked()
 
 void selectiongui::on_sts_clicked()
 {
+    QList<QString> lbcontainer;
+    ui->lablist->clear();
 
+
+    cstudent=grader->get_student(ui->studenlist->currentItem()->text().QString::toStdString());
+    std::vector<Lab*> holder = cstudent->get_labs();
+
+    for(Lab* it: holder)
+    {
+        lbcontainer.append(QString::fromStdString(it->get_lab_name()));
+    }
+
+    ui->lablist->addItems(lbcontainer);
 }
 
 void selectiongui::on_ls_clicked()
