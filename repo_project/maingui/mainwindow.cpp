@@ -102,5 +102,10 @@ void MainWindow::on_actionComment_triggered(){
 
 void MainWindow::on_displayButton_clicked()
 {
-    //ui->displayJavaText->setPlainText(QString:: fromStdString(grad->get_lab("Julian_Binici_1")->get_java_text().at(0)));
+    string javaText = "";
+    for(int i = 0; i<grad->get_lab("Julian_Binici_1")->get_no_lines_in_class(0); i++)
+    {
+        javaText = javaText +grad->get_lab("Julian_Binici_1")->get_class_code_vector().at(0).at(i)+'\n';
+    }
+    ui->displayJavaText->setPlainText(QString::fromStdString( javaText));
 }
