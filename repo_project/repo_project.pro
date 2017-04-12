@@ -8,5 +8,6 @@ SUBDIRS += \
     add_students_gui \
     CommentGUI\
     labViewGUI \
-    RubricCreatorGUI
+    RubricCreatorGUI \
+    selectiongui
 

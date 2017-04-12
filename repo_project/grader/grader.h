@@ -2,6 +2,7 @@
 #define GRADER_H
 #include "section.h"
 #include "student.h"
+#include "class.h"
 #include "dbtable.h"
 #include "dbtool.h"
 #include "../controller/controller.h"
@@ -70,6 +71,8 @@ public:
     void add_lab_name(string name);
 
     vector<string> get_lab_name_list();
+
+    vector<Class*> get_classes();
 
 
 };

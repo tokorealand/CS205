@@ -211,6 +211,12 @@ bool Controller::item_exist(std::string id, std::string type)
     return false;
 }
 
+std::vector<Class*> Controller:: get_classes()
+{
+    return classes;
+}
+
+
 void Controller::add_class(std::string classID, int number_of_sections)
 {
     if(item_exist(classID,"class"))

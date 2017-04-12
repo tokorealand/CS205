@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>selectiongui</class>
+ <widget class="QWidget" name="selectiongui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1189</width>
+    <height>651</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>selectiongui</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="class_2">
+       <property name="text">
+        <string>Classes</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="classlist"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cs">
+       <property name="text">
+        <string>Select Class</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="_2">
+     <item>
+      <widget class="QLabel" name="section">
+       <property name="text">
+        <string>Sections</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="sectionlist"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ss">
+       <property name="text">
+        <string>Select Section</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="student">
+       <property name="text">
+        <string>Student</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="studenlist"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="sts">
+       <property name="text">
+        <string>Select Student</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="lab">
+       <property name="text">
+        <string>Labs</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="lablist"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ls">
+       <property name="text">
+        <string>Select Lab</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <zorder>classlist</zorder>
+  <zorder>sectionlist</zorder>
+  <zorder>studenlist</zorder>
+  <zorder>class_2</zorder>
+  <zorder>section</zorder>
+  <zorder>student</zorder>
+  <zorder>class_2</zorder>
+  <zorder>lablist</zorder>
+  <zorder>lab</zorder>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

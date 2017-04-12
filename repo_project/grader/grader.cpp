@@ -85,6 +85,11 @@ FileParser* Grader::get_file_parser()
     return fp;
 }
 
+vector<Class*> Grader::get_classes()
+{
+    return control->get_classes();
+}
+
 void Grader::add_lab_name(string name){
     listOfLabNames.push_back(name);
 }
