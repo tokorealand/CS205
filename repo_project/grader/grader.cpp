@@ -92,3 +92,7 @@ void Grader::add_lab_name(string name){
 vector<string> Grader::get_lab_name_list(){
     return listOfLabNames;
 }
+
+Controller* Grader::get_control(){
+    return control;
+}

@@ -29,6 +29,10 @@ void MainWindow::populate_existing_labs(){
     ui->menuExisting_Labs->addAction("Lab 2");
     ui->menuExisting_Labs->addAction("Lab 3");
 
+    for(int i =0; i<ui->menuExisting_Labs->actions().size(); i++){
+        QAction *qa = ui->menuExisting_Labs->actions().at(i);
+        connect(qa,SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
+    }
 }
 
 void MainWindow::click_lab_in_existing_labs_menu(){
@@ -43,7 +47,7 @@ void MainWindow::click_lab_in_existing_labs_menu(){
     //change the label
     ui->currentLab->setText(selected_lab_string);
 
-    //load_random_lab();
+    //load in lab
 }
 
 void MainWindow::build_tabs(){
@@ -70,8 +74,8 @@ void MainWindow::build_tabs(){
     }
 }
 
-void MainWindow::on_actionLoad_New_Lab_triggered()
-{
+void MainWindow::on_actionLoad_New_Lab_triggered(){
+
         AddLabsGUI* alg = new AddLabsGUI(0, grad);
         alg->show();
 
@@ -108,4 +112,5 @@ void MainWindow::on_displayButton_clicked()
         javaText = javaText +grad->get_lab("Julian_Binici_1")->get_class_code_vector().at(0).at(i)+'\n';
     }
     ui->displayJavaText->setPlainText(QString::fromStdString( javaText));
+    selected_lab = grad->get_lab("Julian_Binici_1");
 }

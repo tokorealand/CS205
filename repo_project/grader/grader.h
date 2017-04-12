@@ -63,6 +63,7 @@ public:
 
     Comment* get_comment(std::string id);
 
+    Controller* get_control();
 
     FileParser* get_file_parser();
 
