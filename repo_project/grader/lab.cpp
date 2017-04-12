@@ -7,9 +7,9 @@ using namespace std;
 
 class Student;
 
-Lab::Lab(std::string labID, string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table):DBTable(tool,table)
+Lab::Lab(std::string labID, string studentID, string labName, string labNumber, vector<vector<string>> aJavaFiles, DBTool *tool, std::string table):DBTable(tool,table)
 {
-    this->javaText = aJavaText;
+    this->javaFiles = aJavaFiles;
     this->id = labID;
     this->studentID = studentID;
     this->labName = labName;
@@ -186,7 +186,7 @@ void Lab::add_comments(Comment c){
 
 //returns the vector representing each class - a vector of strings representing each line of code
 vector<vector<string>> Lab::get_class_code_vector(){
-    return classAndClassContentsVector;
+    return javaFiles;
 }
 
 int Lab::get_number_of_classes(){
@@ -195,7 +195,7 @@ int Lab::get_number_of_classes(){
 
 //get class in location i, find the size of the vector containing each line of the code as a string
 int Lab::get_no_lines_in_class(int i){
-    return classAndClassContentsVector.at(i).size();
+    return javaFiles.at(i).size();
 }
 //check if there is a comment at a given line number
 bool Lab::is_comment_at(int i){
@@ -211,9 +211,7 @@ Comment* Lab::get_comment_at(std::string lineNo){
     return comments.at(std::stoi(lineNo));
 }
 
-vector<string> Lab ::get_java_text(){
-    return javaText;
-}
+
 vector<Comment> Lab::get_comment_vector(){
     return myComments;
 }

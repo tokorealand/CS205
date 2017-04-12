@@ -23,7 +23,7 @@ class Comment;
 
 class Lab : public DBTable{
 private:
-    vector<string> javaText;
+    vector<vector<string>> javaFiles;
     vector<Component*> coms;
     vector<Comment*> comments;
     std::string labNum;
@@ -34,7 +34,7 @@ private:
     Student *belongs = nullptr; //student pointer of whose lab it is.
 
 public:
-    Lab(string labID, std::string studentID, string labName, string labNumber, vector<string> aJavaText, DBTool *tool, std::string table);
+    Lab(string labID, std::string studentID, string labName, string labNumber, vector<vector<string>> aJavaFiles, DBTool *tool, std::string table);
     ~Lab();
 
     std::string get_lab_name;
@@ -59,7 +59,6 @@ public:
     int get_grade();
 
     //Allie
-    vector<vector<string>> classAndClassContentsVector; //
     map<int, Comment> commentMap;
     Comment* get_comment_at(std::string lineNo);
     bool is_comment_at(int i);
@@ -68,12 +67,10 @@ public:
     void add_comments(Comment c);
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
     vector<Comment> get_comment_vector();
+    vector<vector<string>> get_class_code_vector();
 
-    vector<vector<string>> get_class_code_vector();    
     vector<Comment> myComments;
     vector<string> get_line_vector();
-    vector<string> get_java_text();
-
 };
 
 int cb_add_row_lab(void  *data,

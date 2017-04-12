@@ -41,7 +41,7 @@ public:
 
     void add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
 
-    void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber, vector<string> javaText);
+    void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber, vector<vector<string>> javaFiles);
 
     void add_section(std::string sectionID, std::string classID);
 

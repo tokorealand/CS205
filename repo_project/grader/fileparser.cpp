@@ -79,7 +79,7 @@ string FileParser::parse_student_file(string aFilePath){
 //parses a java class
 void FileParser::parse_java_file(string aFilepath)
 {
-    vector<string> javafiles;
+    vector<vector<string>> javaFiles;
 
     QString filepath= QString::fromStdString(aFilepath);
 
@@ -149,12 +149,14 @@ void FileParser::parse_java_file(string aFilepath)
 
                     string s;
                     string javaText = "";
+
+                    vector<string> javaLines;
                     while(getline(java,s))
                     {
-                        javaText = javaText + s;
+                        javaLines.push_back(s);
                     }
 
-                    javafiles.push_back(javaText);
+                    javaFiles.push_back(javaLines);
               }
 
            }
@@ -165,7 +167,7 @@ void FileParser::parse_java_file(string aFilepath)
             string labID = first_name + "_" + last_name + "_" +lab_number;
             string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
 
-            grader->add_lab(labID, studentID, labName, lab_number, javafiles);
+            grader->add_lab(labID, studentID, labName, lab_number, javaFiles);
             cout<<"Lab Sucessfully added";
             cout<<'\n';
     }
