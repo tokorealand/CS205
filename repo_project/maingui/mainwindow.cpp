@@ -102,5 +102,5 @@ void MainWindow::on_actionComment_triggered(){
 
 void MainWindow::on_displayButton_clicked()
 {
-    ui->displayJavaText->setPlainText(QString:: fromStdString(grad->get_lab("JulianBinici1")->get_java_text().at(0)));
+    ui->displayJavaText->setPlainText(QString:: fromStdString(grad->get_lab("Julian_Binici_1")->get_java_text().at(0)));
 }
