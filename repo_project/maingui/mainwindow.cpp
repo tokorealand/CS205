@@ -119,7 +119,7 @@ void MainWindow::on_displayButton_clicked(){
     string javaText = "";
     for(int i = 0; i<grad->get_lab("Julian_Binici_1")->get_no_lines_in_class(0); i++)
     {
-        javaText = javaText +grad->get_lab("Julian_Binici_1")->get_class_code_vector().at(0).at(i)+'\n';
+        javaText = javaText + to_string (i)+ "   " +grad->get_lab("Julian_Binici_1")->get_class_code_vector().at(0).at(i)+'\n';
     }
     ui->displayJavaText->setPlainText(QString::fromStdString( javaText));
     selected_lab = grad->get_lab("Julian_Binici_1");
