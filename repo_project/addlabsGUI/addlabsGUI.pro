@@ -36,9 +36,10 @@ SOURCES += main.cpp\
     ../grader/component.cpp \
     ../grader/grader.cpp\
     ../grader/fileparser.cpp\
-../grader/comment.cpp\
+    ../grader/comment.cpp\
     ../controller/controller.cpp\
-    ../RubricCreatorGUI/rubriccreatorgui.cpp
+    ../RubricCreatorGUI/rubriccreatorgui.cpp \
+    ../grader/rubricobject.cpp
 
 
 
@@ -53,9 +54,10 @@ HEADERS  += addlabsgui.h\
     ../grader/component.h \
     ../grader/grader.h\
     ../grader/fileparser.h\
-../grader/comment.h\
-        ../controller/controller.h\
-    ../RubricCreatorGUI/rubriccreatorgui.h
+    ../grader/comment.h\
+    ../controller/controller.h\
+    ../RubricCreatorGUI/rubriccreatorgui.h\
+    ../grader/rubricobject.h
 
 
 FORMS    += addlabsgui.ui\

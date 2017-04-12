@@ -43,7 +43,9 @@ SOURCES += main.cpp\
     ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
     ../CommentGUI/dialog.cpp \
-    ../RubricCreatorGUI/rubriccreatorgui.cpp
+    ../RubricCreatorGUI/rubriccreatorgui.cpp \
+    ../grader/rubricobject.cpp
+
 
 
 
@@ -64,7 +66,9 @@ HEADERS  += mainwindow.h \
      ../add_students_gui/add_students_gui.h\
     ../addlabsGUI/addlabsgui.h \
     ../CommentGUI/dialog.h \
-    ../RubricCreatorGUI/rubriccreatorgui.h
+    ../RubricCreatorGUI/rubriccreatorgui.h \
+    ../grader/rubricobject.h
+
 
 
 
