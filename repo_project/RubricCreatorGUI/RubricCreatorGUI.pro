@@ -24,8 +24,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        rubriccreatorgui.cpp
+        rubriccreatorgui.cpp \
+        ../grader/rubricobject.cpp
 
-HEADERS  += rubriccreatorgui.h
+HEADERS  += rubriccreatorgui.h \
+            ../grader/rubricobject.h
 
 FORMS    += rubriccreatorgui.ui

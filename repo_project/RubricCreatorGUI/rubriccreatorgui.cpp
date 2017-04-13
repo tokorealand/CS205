@@ -31,11 +31,17 @@ void RubricCreatorGUI::display_sections(){
 //done button
 void RubricCreatorGUI::on_doneButton_clicked(){
     //create a rubric object
+    RubricObject *r = new RubricObject();
 
     //sections - contains all the rubric sections
+    for(int i = 0 ; i < ui->rubricSectionList->count(); i++){
+        r->set_point_totals(ui->rubricSectionList->item(i)->text().toStdString());
+    }
     //pointValues - contains all the point values
     //colors - contains all the colors
     //totalPoints - the total points in the rubric
+
+    //add the rubric objects to the labs
 
     close();//exit gui
 
