@@ -33,6 +33,10 @@ class selectiongui : public QWidget
 public:
     explicit selectiongui(QWidget *parent = 0, Grader *aGrader =NULL);
     ~selectiongui();
+    bool lab_selected();
+
+    Lab* select_lab();
+
 
 private slots:
     void on_cs_clicked();
@@ -51,6 +55,7 @@ private:
     Student *cstudent;
     Lab *clab;
 
+    bool labselect=false;
 
 
 };

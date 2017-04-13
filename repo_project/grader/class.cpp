@@ -76,7 +76,7 @@ void Class::store_add_row_sql() {
 void Class::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Section\n";
+    std::cerr << "calling store_create_sql from Class\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";

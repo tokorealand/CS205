@@ -100,6 +100,18 @@ void MainWindow::on_actionLoad_Lab_triggered()
 {
     selectiongui *slg = new selectiongui(0, grad);
     slg->show();
+    this->hide();
+    while(slg->lab_selected() == false)
+
+    {
+        QApplication::processEvents();
+
+    }
+    selected_lab = slg->select_lab();
+    ui->currentLab->clear();
+    ui->currentLab->setText(QString::fromStdString(selected_lab->get_lab_name()));
+    delete slg;
+    this->show();
 }
 
 
@@ -107,6 +119,9 @@ void MainWindow::on_actionAdd_Students_triggered()
 {
     add_students_gui* asg = new add_students_gui(0, grad);
     asg->show();
+
+
+
 }
 
 void MainWindow::on_actionComment_triggered(){

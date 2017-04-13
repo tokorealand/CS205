@@ -121,55 +121,58 @@ void FileParser::parse_java_file(string aFilepath)
         parseLen = parseEnd - parseStart;
         string section_number = lab.substr(parseStart, parseLen);
 
-        parseStart = parseEnd+1 ;
-        parseEnd = lab.length();
-        parseLen = parseEnd - parseStart;
-        string lab_number= lab.substr(parseStart, parseLen);
 
-
-        cout<<labEntry.toStdString();
-        cout<<'\n';
-
-        QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
-
-        //for parsing ...?
-        while(it2.hasNext())
+        if(parseEnd != lab.npos)
         {
+            parseStart = parseEnd+1 ;
+            parseEnd = lab.length();
+            parseLen = parseEnd - parseStart;
+            string lab_number= lab.substr(parseStart, parseLen);
 
-            QString component = it2.next();
 
-            parseStart  = component.toStdString().find(".java");
-            parseEnd    = component.toStdString().length();
-            parseLen    = parseEnd - parseStart;
-
-            if(parseStart != component.toStdString().npos)
-            {
-                    ifstream java;
-                    java.open(component.toStdString());
-
-                    string s;
-                    string javaText = "";
-
-                    vector<string> javaLines;
-                    while(getline(java,s))
-                    {
-                        javaLines.push_back(s);
-                    }
-
-                    javaFiles.push_back(javaLines);
-              }
-
-           }
-
-            string classID = class_name;
-            string sectionID = class_name + "_" + section_number;
-            string studentID = first_name + "_" + last_name;
-            string labID = first_name + "_" + last_name + "_" +lab_number;
-            string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
-
-            grader->add_lab(labID, studentID, labName, lab_number, javaFiles);
-            cout<<"Lab Sucessfully added";
+            cout<<labEntry.toStdString();
             cout<<'\n';
+
+            QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
+            //for parsing ...?
+            while(it2.hasNext())
+            {
+
+                QString component = it2.next();
+
+                parseStart  = component.toStdString().find(".java");
+                parseEnd    = component.toStdString().length();
+                parseLen    = parseEnd - parseStart;
+
+                if(parseStart != component.toStdString().npos)
+                {
+                        ifstream java;
+                        java.open(component.toStdString());
+
+                        string s;
+                        string javaText = "";
+
+                        vector<string> javaLines;
+                        while(getline(java,s))
+                        {
+                            javaLines.push_back(s);
+                        }
+
+                        javaFiles.push_back(javaLines);
+                  }
+
+               }
+
+                string classID = class_name;
+                string sectionID = class_name + "_" + section_number;
+                string studentID = first_name + "_" + last_name;
+                string labID = first_name + "_" + last_name + "_" +lab_number;
+                string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
+
+                grader->add_lab(labID, studentID, labName, lab_number, javaFiles);
+                cout<<"Lab Sucessfully added";
+                cout<<'\n';
+        }
     }
 
 }
