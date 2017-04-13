@@ -45,6 +45,11 @@ std::string Section::get_id()
     return id;
 }
 
+std::vector<Student*> Section::get_students()
+{
+    return students;
+}
+
 
 /*
  *Creates students and adds them

@@ -38,6 +38,11 @@ sections.push_back(sec);
 
 
 
+std::vector<Section*> Class::get_sections()
+{
+    return sections;
+}
+
 Section* Class::get_section(int sectionid)
 {/*
     Section *s;

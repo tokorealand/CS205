@@ -36,6 +36,8 @@ public:
     void add_section(Section* sec);
     Section* get_section(int sectionid);
 
+    std::vector<Section*> get_sections();
+
 
     // create command for your child class.
     void store_create_sql();

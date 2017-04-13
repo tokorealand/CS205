@@ -116,6 +116,9 @@ public:
     Comment* get_comment(std::string id);
 
 
+    std::vector<Class*> get_classes();
+
+
 };
 
 int cb_select_all_classes(void  *data,
