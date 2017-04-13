@@ -43,10 +43,12 @@ private slots:
 
     void click_lab_in_existing_labs_menu();
 
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;
     Grader *grad;
+
 };
 
 #endif // MAINWINDOW_H
