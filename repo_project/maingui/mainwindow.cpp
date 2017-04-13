@@ -121,8 +121,9 @@ void MainWindow::on_actionComment_triggered(){
 }
 
 
-void MainWindow::on_displayButton_clicked(){
-
+void MainWindow::on_displayButton_clicked()
+{
+    ui->displayJavaText->clear();
     string javaText = "";
 
     if(selected_lab != NULL)
