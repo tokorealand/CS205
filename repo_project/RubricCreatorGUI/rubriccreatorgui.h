@@ -2,6 +2,7 @@
 #define RUBRICCREATORGUI_H
 
 #include <QWidget>
+#include "../grader/rubricobject.h"
 
 using namespace std;
 
