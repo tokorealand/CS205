@@ -28,7 +28,6 @@ private slots:
 
     void on_doneButton_clicked();
 
-
     void on_removeSelectedButton_clicked();
 
     void on_addSectionButton_clicked();
