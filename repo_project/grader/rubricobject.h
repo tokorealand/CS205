@@ -3,6 +3,7 @@
 
 #include "string"
 #include "vector"
+#include "lab.h"
 
 using namespace std;
 
