@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     ../controller/controller.cpp \
     fileparser.cpp \
     component.cpp \
-    comment.cpp
+    comment.cpp \
+    rubricobject.cpp
 
 HEADERS += \
     grader.h \
@@ -34,5 +35,6 @@ HEADERS += \
     ../controller/controller.h \
     fileparser.h \
     component.h \
-    comment.h
+    comment.h \
+    rubricobject.h
 

@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     ../grader/grader.cpp\
     ../grader/fileparser.cpp \
     ../controller/controller.cpp \
-    ../grader/comment.cpp
+    ../grader/comment.cpp \
+    ../grader/rubricobject.cpp
 
 HEADERS  += dialog.h \
     ../grader/student.h \
@@ -51,7 +52,9 @@ HEADERS  += dialog.h \
     ../grader/grader.h\
     ../grader/fileparser.h\
     ../controller/controller.h \
-    ../grader/comment.h
+    ../grader/comment.h \
+    ../grader/rubricobject.h
+
 
 
 FORMS    += dialog.ui
