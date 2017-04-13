@@ -97,7 +97,7 @@
      <x>0</x>
      <y>0</y>
      <width>676</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -121,6 +121,7 @@
      <string>Grade</string>
     </property>
     <addaction name="actionAnother_Lab"/>
+    <addaction name="actionLoad_Lab"/>
    </widget>
    <widget class="QMenu" name="menuGrading_Tools">
     <property name="title">
@@ -169,6 +170,11 @@
   <action name="actionHighlight">
    <property name="text">
     <string>Highlight</string>
+   </property>
+  </action>
+  <action name="actionLoad_Lab">
+   <property name="text">
+    <string>Load Lab</string>
    </property>
   </action>
  </widget>

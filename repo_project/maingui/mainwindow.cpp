@@ -96,6 +96,13 @@ void MainWindow::on_actionLoad_New_Lab_triggered(){
 
 }
 
+void MainWindow::on_actionLoad_Lab_triggered()
+{
+    selectiongui *slg = new selectiongui(0, grad);
+    slg->show();
+}
+
+
 void MainWindow::on_actionAdd_Students_triggered()
 {
     add_students_gui* asg = new add_students_gui(0, grad);
