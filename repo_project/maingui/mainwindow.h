@@ -10,6 +10,7 @@
 #include "../add_students_gui/add_students_gui.h"
 #include "../addlabsGUI/addlabsgui.h"
 #include "../CommentGUI/dialog.h"
+#include "../selectiongui/selectiongui.h"
 #include <QListWidget>
 
 class Grader;
@@ -37,6 +38,8 @@ private slots:
     void on_actionComment_triggered();
 
     void on_displayButton_clicked();
+
+    void on_actionLoad_Lab_triggered();
 
     void click_lab_in_existing_labs_menu();
 
