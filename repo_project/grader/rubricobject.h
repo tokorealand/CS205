@@ -11,7 +11,7 @@ class RubricObject
 {
 public:
     //constructors
-    RubricObject();
+    RubricObject(Lab aLab);
     //getters
     vector<string> get_rubric_sections();
     vector<string> get_point_totals();

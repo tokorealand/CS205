@@ -32,6 +32,7 @@ void RubricCreatorGUI::display_sections(){
 void RubricCreatorGUI::on_doneButton_clicked(){
     //create a rubric object
 
+
     //sections - contains all the rubric sections
     //pointValues - contains all the point values
     //colors - contains all the colors

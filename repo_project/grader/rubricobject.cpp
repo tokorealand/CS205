@@ -2,8 +2,7 @@
 
 using namespace std;
 
-RubricObject::RubricObject(){
-
+RubricObject::RubricObject(Lab aLab){
 }
 
 //getters
