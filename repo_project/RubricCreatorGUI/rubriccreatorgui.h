@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../grader/rubricobject.h"
+#include "../grader/class.h"
 
 using namespace std;
 

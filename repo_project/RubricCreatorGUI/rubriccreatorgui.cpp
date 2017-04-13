@@ -49,7 +49,7 @@ void RubricCreatorGUI::on_doneButton_clicked(){
     //totalPoints - the total points in the rubric
     r->set_point_values(totalPoints);
 
-    //add the rubric objects to the labs
+    //add the rubric objects to grader --- grader should populate a rubric into everything else
 
 
     close();//exit gui
