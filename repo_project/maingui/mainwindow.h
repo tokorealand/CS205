@@ -44,9 +44,12 @@ private slots:
     void click_lab_in_existing_labs_menu();
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;
+    Class* selected_class = nullptr;
     Grader *grad;
 
 };

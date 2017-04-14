@@ -64,7 +64,25 @@ selectiongui::~selectiongui()
     delete ui;
 }
 
-void selectiongui::on_cs_clicked()
+
+bool selectiongui:: lab_selected()
+{
+    return labselect;
+}
+
+Lab* selectiongui:: select_lab()
+{
+    return clab;
+}
+
+Class* selectiongui:: select_class()
+{
+    return cclass;
+}
+
+
+
+void selectiongui::on_classlist_doubleClicked(const QModelIndex &index)
 {
     QList<QString> scontainer;
     ui->sectionlist->clear();
@@ -83,7 +101,7 @@ void selectiongui::on_cs_clicked()
     ui->sectionlist->addItems(scontainer);
 }
 
-void selectiongui::on_ss_clicked()
+void selectiongui::on_sectionlist_doubleClicked(const QModelIndex &index)
 {
     QList<QString> stcontainer;
     ui->studenlist->clear();
@@ -101,7 +119,7 @@ void selectiongui::on_ss_clicked()
     ui->studenlist->addItems(stcontainer);
 }
 
-void selectiongui::on_sts_clicked()
+void selectiongui::on_studenlist_doubleClicked(const QModelIndex &index)
 {
     QList<QString> lbcontainer;
     ui->lablist->clear();
@@ -117,18 +135,14 @@ void selectiongui::on_sts_clicked()
 
     ui->lablist->addItems(lbcontainer);
 }
-bool selectiongui:: lab_selected()
+
+void selectiongui::on_pushButton_clicked()
 {
-    return labselect;
+    exit = true;
 }
 
-Lab* selectiongui:: select_lab()
-{
-    return clab;
-}
 
-void selectiongui::on_ls_clicked()
+bool selectiongui::exit_pressed()
 {
-clab=grader->get_lab(ui->lablist->currentItem()->text().QString::toStdString());
-    labselect = true;
+    return exit;
 }

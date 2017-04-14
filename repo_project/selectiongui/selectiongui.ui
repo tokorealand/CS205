@@ -26,13 +26,6 @@
      <item>
       <widget class="QListWidget" name="classlist"/>
      </item>
-     <item>
-      <widget class="QPushButton" name="cs">
-       <property name="text">
-        <string>Select Class</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
@@ -47,13 +40,6 @@
      <item>
       <widget class="QListWidget" name="sectionlist"/>
      </item>
-     <item>
-      <widget class="QPushButton" name="ss">
-       <property name="text">
-        <string>Select Section</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
@@ -61,19 +47,12 @@
      <item>
       <widget class="QLabel" name="student">
        <property name="text">
-        <string>Student</string>
+        <string>Students</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QListWidget" name="studenlist"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="sts">
-       <property name="text">
-        <string>Select Student</string>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>
@@ -89,25 +68,16 @@
      <item>
       <widget class="QListWidget" name="lablist"/>
      </item>
-     <item>
-      <widget class="QPushButton" name="ls">
-       <property name="text">
-        <string>Select Lab</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
+   </item>
   </layout>
-  <zorder>classlist</zorder>
-  <zorder>sectionlist</zorder>
-  <zorder>studenlist</zorder>
-  <zorder>class_2</zorder>
-  <zorder>section</zorder>
-  <zorder>student</zorder>
-  <zorder>class_2</zorder>
-  <zorder>lablist</zorder>
-  <zorder>lab</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

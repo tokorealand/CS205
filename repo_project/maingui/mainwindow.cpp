@@ -101,15 +101,26 @@ void MainWindow::on_actionLoad_Lab_triggered()
     selectiongui *slg = new selectiongui(0, grad);
     slg->show();
     this->hide();
-    while(slg->lab_selected() == false)
+    while(slg->lab_selected() == false && slg->exit_pressed() == false)
 
     {
         QApplication::processEvents();
 
     }
+    if(slg->exit_pressed())
+    {
+        delete slg;
+        this->show();
+        return;
+    }
     selected_lab = slg->select_lab();
+    selected_class = slg->select_class();
+
     ui->currentLab->clear();
     ui->currentLab->setText(QString::fromStdString(selected_lab->get_lab_name()));
+
+    ui->classlist->clear();
+    ui->classlist->setText(QString::fromStdString(selected_class->get_id()));
     delete slg;
     this->show();
 }
@@ -154,4 +165,9 @@ void MainWindow::on_displayButton_clicked()
     {
         ui->displayJavaText->setPlainText("Please select a lab");
     }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    this->close();
 }
