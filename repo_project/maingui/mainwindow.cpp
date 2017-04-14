@@ -120,7 +120,7 @@ void MainWindow::on_actionLoad_Lab_triggered()
     ui->currentLab->setText(QString::fromStdString(selected_lab->get_lab_name()));
 
     ui->classlist->clear();
-    ui->classlist->setText(QString::fromStdString(selected_class->get_id()));
+    ui->classlist->addItem(QString::fromStdString(selected_class->get_id()));
     delete slg;
     this->show();
 }
@@ -130,6 +130,8 @@ void MainWindow::on_actionAdd_Students_triggered()
 {
     add_students_gui* asg = new add_students_gui(0, grad);
     asg->show();
+
+
 
 
 
@@ -146,11 +148,29 @@ void MainWindow::on_actionComment_triggered(){
 
 }
 
+void MainWindow::display_classes()
+{
+    QList<QString> ccontainer;
+    ui->classlist->clear();
+
+    std::cout<<grad->get_classes().size();
+    std::vector<Class*> holder = grad->get_classes();
+
+    for(Class* it: holder)
+    {
+        ccontainer.append(QString::fromStdString(it->get_id()));
+    }
+
+    ui->classlist->addItems(ccontainer);
+}
+
 
 void MainWindow::on_displayButton_clicked()
 {
     ui->displayJavaText->clear();
     string javaText = "";
+
+     display_classes();
 
     if(selected_lab != NULL)
     {
@@ -170,4 +190,63 @@ void MainWindow::on_displayButton_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     this->close();
+}
+
+void MainWindow::on_classlist_doubleClicked(const QModelIndex &index)
+{
+    QList<QString> scontainer;
+    ui->sectionlist->clear();
+    ui->studentlist->clear();
+    ui->lablist->clear();
+
+
+    selected_class=grad->get_class(ui->classlist->currentItem()->text().QString::toStdString());
+    std::vector<Section*> holder = selected_class->get_sections();
+
+    for(Section* it: holder)
+    {
+        scontainer.append(QString::fromStdString(it->get_id()));
+    }
+
+    ui->sectionlist->addItems(scontainer);
+}
+
+void MainWindow::on_sectionlist_doubleClicked(const QModelIndex &index)
+{
+    QList<QString> stcontainer;
+    ui->studentlist->clear();
+    ui->lablist->clear();
+
+
+    selected_section=grad->get_section(ui->sectionlist->currentItem()->text().QString::toStdString());
+    std::vector<Student*> holder = selected_section->get_students();
+
+    for(Student* it: holder)
+    {
+        stcontainer.append(QString::fromStdString(it->get_id()));
+    }
+
+    ui->studentlist->addItems(stcontainer);
+}
+
+void MainWindow::on_studentlist_doubleClicked(const QModelIndex &index)
+{
+    QList<QString> lbcontainer;
+    ui->lablist->clear();
+
+
+    selected_student=grad->get_student(ui->studentlist->currentItem()->text().QString::toStdString());
+    std::vector<Lab*> holder = selected_student->get_labs();
+
+    for(Lab* it: holder)
+    {
+        lbcontainer.append(QString::fromStdString(it->get_id()));
+    }
+
+    ui->lablist->addItems(lbcontainer);
+}
+
+void MainWindow::on_lablist_doubleClicked(const QModelIndex &index)
+{
+    selected_lab=grad->get_lab(ui->lablist->currentItem()->text().QString::toStdString());
 }

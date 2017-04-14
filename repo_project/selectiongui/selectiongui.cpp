@@ -5,34 +5,37 @@ selectiongui::selectiongui(QWidget *parent, Grader *aGrader) :
     QWidget(parent),
     ui(new Ui::selectiongui)
 {
-   grader = aGrader;
-//    grader->add_class("CS150",0);
-//    grader->add_class("CS202",0);
-//    grader->add_class("CS303",0);
+    grader = aGrader;
+    //    grader->add_class("CS150",0);
+    //    grader->add_class("CS202",0);
+    //    grader->add_class("CS303",0);
 
-//    grader->add_section("CS1501","CS150");
-//    grader->add_section("CS1502","CS150");
-//    grader->add_section("CS1503","CS150");
+    //    grader->add_section("CS1501","CS150");
+    //    grader->add_section("CS1502","CS150");
+    //    grader->add_section("CS1503","CS150");
 
-//    grader->add_section("CS2021","CS202");
+    //    grader->add_section("CS2021","CS202");
 
-//    grader->add_section("CS2022","CS202");
+    //    grader->add_section("CS2022","CS202");
 
-//    grader->add_section("CS2023","CS202");
+    //    grader->add_section("CS2023","CS202");
 
-//    grader->add_student("luislopez","CS1501","Luis","Lopez");
-//    grader->add_student("luisbonilla","CS1501","Luis","Bonilla");
+    //    grader->add_student("luislopez","CS1501","Luis","Lopez");
+    //    grader->add_student("luisbonilla","CS1501","Luis","Bonilla");
 
-//    grader->add_student("josebonilla","CS1501","Jose","Bonilla");
+    //    grader->add_student("josebonilla","CS1501","Jose","Bonilla");
 
-//   // grader->add_lab();
+    //   // grader->add_lab();
 
-//    std::vector<vector<std::string>> g;
+    //    std::vector<vector<std::string>> g;
 
-//    grader->add_lab("lb01","luislopez","Recursion","1",g);
-//    grader->add_lab("lb02","luislopez","Trees","2",g);
-//    grader->add_lab("lb03","luislopez","Arrays","3",g);
-//    grader->add_lab("lb04","luislopez","Tsp","4",g);
+    //    grader->add_lab("lb01","luislopez","Recursion","1",g);
+    //    grader->add_lab("lb02","luislopez","Trees","2",g);
+    //    grader->add_lab("lb03","luislopez","Arrays","3",g);
+    //    grader->add_lab("lb04","luislopez","Tsp","4",g);
+
+
+
 
 
 
@@ -145,4 +148,12 @@ void selectiongui::on_pushButton_clicked()
 bool selectiongui::exit_pressed()
 {
     return exit;
+}
+
+void selectiongui::on_lablist_doubleClicked(const QModelIndex &index)
+{
+
+    clab=grader->get_lab(ui->lablist->currentItem()->text().QString::toStdString());
+
+    labselect =true;
 }

@@ -52,6 +52,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_lablist_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::selectiongui *ui;
     Grader *grader;
