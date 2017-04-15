@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>691</width>
-    <height>500</height>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -110,11 +110,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QTextEdit" name="displayJavaText">
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
+           <widget class="QListWidget" name="disjava"/>
           </item>
           <item>
            <widget class="QPushButton" name="displayButton">
