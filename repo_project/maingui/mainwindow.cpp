@@ -251,3 +251,16 @@ void MainWindow::on_lablist_doubleClicked(const QModelIndex &index)
 {
     selected_lab=grad->get_lab(ui->lablist->currentItem()->text().QString::toStdString());
 }
+
+void MainWindow::on_disjava_doubleClicked(const QModelIndex &index)
+{
+    if(ui->disjava->currentItem()->backgroundColor() == Qt::red)
+    {
+        ui->disjava->currentItem()->setBackgroundColor(Qt::white);
+    }
+    else
+    {
+        ui->disjava->currentItem()->setBackgroundColor(Qt::red);
+
+    }
+}
