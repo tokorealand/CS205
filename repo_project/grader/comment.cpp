@@ -175,6 +175,14 @@ int cb_add_row_comment_ne(void  *data,
     return 0;
 }
 
+bool Comment::get_highlight(){
+    if (highlight != ""){
+        return true;
+    }
+    return false;
+}
+
+
 //using namespace std;
 
 //Comment::Comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
