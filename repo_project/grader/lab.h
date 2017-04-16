@@ -68,6 +68,7 @@ public:
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
     vector<Comment> get_comment_vector();
     vector<vector<string>> get_class_code_vector();
+    Comment *get_comment_at(int lineNo);
 
     vector<Comment> myComments;
     vector<string> get_line_vector();

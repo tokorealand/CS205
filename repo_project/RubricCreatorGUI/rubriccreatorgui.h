@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../grader/rubricobject.h"
+#include "../grader/class.h"
 
 using namespace std;
 
@@ -27,7 +28,6 @@ public:
 private slots:
 
     void on_doneButton_clicked();
-
 
     void on_removeSelectedButton_clicked();
 

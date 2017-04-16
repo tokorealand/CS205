@@ -2,6 +2,7 @@
 
 Class::Class(std::string classID, int number_of_sections, DBTool *tool, std::string table):DBTable(tool,table)
 {
+
     this->number_of_sections = number_of_sections;
     this->id = classID;
     this->tool = tool;
@@ -169,3 +170,5 @@ int cb_add_row_class(void  *data,
 
     return 0;
 }
+
+

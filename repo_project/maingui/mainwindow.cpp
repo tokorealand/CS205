@@ -11,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     grad = new Grader();
     populate_existing_labs();
     build_tabs();
+    std::cout<<grad->get_classes().size()<<"GGGG";
+
+    display_classes();
+
     //set up slots
     //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
     //    grad->add_class("c1",2);
@@ -47,7 +51,7 @@ void MainWindow::click_lab_in_existing_labs_menu(){
 
     QString selected_lab_string = selected->text();
 
-    ui->displayJavaText->setText("sample lab code " + selected_lab_string);
+ //   ui->displayJavaText->setText("sample lab code " + selected_lab_string);
 
     //change the label
     ui->currentLab->setText(selected_lab_string);
@@ -85,13 +89,13 @@ void MainWindow::build_tabs(){
 
 void MainWindow::on_actionLoad_New_Lab_triggered(){
 
-        AddLabsGUI* alg = new AddLabsGUI(0, grad);
-        alg->show();
+    AddLabsGUI* alg = new AddLabsGUI(0, grad);
+    alg->show();
 
-//    std::vector<std::string> s;
-//    grad->add_lab("lb1","luisbonilla","trees","1",s);
-//    ui->side2->addItem(QString::fromStdString(grad->get_lab("lb1")->get_id()));
-//    std::cout<<grad->get_lab("lb1")->get_id();
+    //    std::vector<std::string> s;
+    //    grad->add_lab("lb1","luisbonilla","trees","1",s);
+    //    ui->side2->addItem(QString::fromStdString(grad->get_lab("lb1")->get_id()));
+    //    std::cout<<grad->get_lab("lb1")->get_id();
 
 
 }
@@ -153,7 +157,8 @@ void MainWindow::display_classes()
     QList<QString> ccontainer;
     ui->classlist->clear();
 
-    std::cout<<grad->get_classes().size();
+    if(grad->get_classes().size()>0)
+    {
     std::vector<Class*> holder = grad->get_classes();
 
     for(Class* it: holder)
@@ -162,28 +167,30 @@ void MainWindow::display_classes()
     }
 
     ui->classlist->addItems(ccontainer);
+    }
 }
 
 
 void MainWindow::on_displayButton_clicked()
 {
-    ui->displayJavaText->clear();
-    string javaText = "";
-
-     display_classes();
+    ui->disjava->clear();
+    QList<QString> jtcontainer;
+    display_classes();
 
     if(selected_lab != NULL)
     {
         for(int i = 0; i<selected_lab->get_no_lines_in_class(0); i++)
         {
-            javaText = javaText + to_string (i)+ "   " +selected_lab->get_class_code_vector().at(0).at(i)+'\n';
+            QString  javaText = QString::fromStdString( to_string (i)+ "   " +selected_lab->get_class_code_vector().at(0).at(i)) ;
+            jtcontainer.push_back(javaText);
         }
-        ui->displayJavaText->setPlainText(QString::fromStdString( javaText));
-
+        ui->disjava->addItems(jtcontainer);
     }
-  else
+    else
     {
-        ui->displayJavaText->setPlainText("Please select a lab");
+        ui->disjava->clear();
+        QString nolab = "PLEASE SELECT LAB";
+        ui->disjava->addItem(nolab);
     }
 }
 
@@ -249,4 +256,17 @@ void MainWindow::on_studentlist_doubleClicked(const QModelIndex &index)
 void MainWindow::on_lablist_doubleClicked(const QModelIndex &index)
 {
     selected_lab=grad->get_lab(ui->lablist->currentItem()->text().QString::toStdString());
+}
+
+void MainWindow::on_disjava_doubleClicked(const QModelIndex &index)
+{
+    if(ui->disjava->currentItem()->backgroundColor() == Qt::red)
+    {
+        ui->disjava->currentItem()->setBackgroundColor(Qt::white);
+    }
+    else
+    {
+        ui->disjava->currentItem()->setBackgroundColor(Qt::red);
+
+    }
 }

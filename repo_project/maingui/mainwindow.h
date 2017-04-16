@@ -54,6 +54,8 @@ private slots:
 
     void on_lablist_doubleClicked(const QModelIndex &index);
 
+    void on_disjava_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;

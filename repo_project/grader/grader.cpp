@@ -5,6 +5,7 @@ Grader::Grader()
     tool = new DBTool("Grader");
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
+
 }
 
 Grader::~Grader()
@@ -17,6 +18,8 @@ std::string Grader::student_list()
 {
     return control->student_list();
 }
+
+
 
 void Grader::add_class(string classID, int number_of_sections)
 {

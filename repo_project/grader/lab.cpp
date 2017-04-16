@@ -211,6 +211,11 @@ Comment* Lab::get_comment_at(std::string lineNo){
     return comments.at(std::stoi(lineNo));
 }
 
+//same as above but with an int -- ALLIE
+Comment* Lab::get_comment_at(int lineNo){
+    return comments.at(lineNo);
+}
+
 
 vector<Comment> Lab::get_comment_vector(){
     return myComments;

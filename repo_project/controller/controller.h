@@ -71,6 +71,7 @@ private:
 
 
 
+
 protected:
     std::string sql_select_all;
 
@@ -79,6 +80,8 @@ public:
     Controller();
     Controller(DBTool *db);
     ~Controller();
+    void total_recall();
+
 
     /* String version of the creation methods.
      *

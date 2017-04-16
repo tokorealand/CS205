@@ -8,6 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+LIBS += -l sqlite3
 TARGET = RubricCreatorGUI
 TEMPLATE = app
 
@@ -25,9 +26,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         rubriccreatorgui.cpp \
-        ../grader/rubricobject.cpp
+    ../grader/student.cpp \
+    ../grader/lab.cpp \
+    ../grader/section.cpp \
+    ../grader/dbtable.cpp \
+    ../grader/dbtool.cpp \
+    ../grader/commentengine.cpp \
+    ../grader/class.cpp \
+    ../grader/component.cpp \
+    ../grader/grader.cpp\
+    ../grader/fileparser.cpp \
+    ../controller/controller.cpp \
+    ../grader/comment.cpp \
+    ../grader/rubricobject.cpp
 
 HEADERS  += rubriccreatorgui.h \
-            ../grader/rubricobject.h
+    ../grader/student.h \
+    ../grader/lab.h \
+    ../grader/section.h \
+    ../grader/dbtable.h \
+    ../grader/dbtool.h \
+    ../grader/commentengine.h \
+    ../grader/class.h \
+    ../grader/component.h \
+    ../grader/grader.h\
+    ../grader/fileparser.h\
+    ../controller/controller.h \
+    ../grader/comment.h \
+    ../grader/rubricobject.h
 
 FORMS    += rubriccreatorgui.ui
