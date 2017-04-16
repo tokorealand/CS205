@@ -47,7 +47,7 @@ void RubricCreatorGUI::on_doneButton_clicked(){
         r->set_section_colors(ui->colorList->item(i)->text().toStdString());
     }
     //totalPoints - the total points in the rubric
-    r->set_point_values(totalPoints);
+    r->set_total_points(to_string(totalPoints));
 
     //add the rubric objects to grader --- grader should populate a rubric into everything else
 
@@ -75,8 +75,7 @@ void RubricCreatorGUI::on_removeSelectedButton_clicked(){
     display_sections();
 }
 
-void RubricCreatorGUI::on_addSectionButton_clicked()
-{
+void RubricCreatorGUI::on_addSectionButton_clicked(){
 
     //add the rubric section
     QString newSection = ui->addRubricSectionText->toPlainText();
