@@ -44,10 +44,28 @@ private slots:
     void click_lab_in_existing_labs_menu();
 
 
+    void on_pushButton_clicked();
+
+    void on_classlist_doubleClicked(const QModelIndex &index);
+
+    void on_sectionlist_doubleClicked(const QModelIndex &index);
+
+    void on_studentlist_doubleClicked(const QModelIndex &index);
+
+    void on_lablist_doubleClicked(const QModelIndex &index);
+
+    void on_disjava_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;
+    Student* selected_student = nullptr;
+    Class* selected_class = nullptr;
+    Section* selected_section =nullptr;
     Grader *grad;
+
+    void display_classes();
+
 
 };
 

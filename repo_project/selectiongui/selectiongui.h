@@ -34,18 +34,25 @@ public:
     explicit selectiongui(QWidget *parent = 0, Grader *aGrader =NULL);
     ~selectiongui();
     bool lab_selected();
+    bool exit_pressed();
 
     Lab* select_lab();
+    Class*  select_class();
+
 
 
 private slots:
-    void on_cs_clicked();
 
-    void on_ss_clicked();
 
-    void on_sts_clicked();
+    void on_classlist_doubleClicked(const QModelIndex &index);
 
-    void on_ls_clicked();
+    void on_sectionlist_doubleClicked(const QModelIndex &index);
+
+    void on_studenlist_doubleClicked(const QModelIndex &index);
+
+    void on_pushButton_clicked();
+
+    void on_lablist_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::selectiongui *ui;
@@ -55,7 +62,8 @@ private:
     Student *cstudent;
     Lab *clab;
 
-    bool labselect=false;
+    bool labselect = false;
+    bool exit = false;
 
 
 };

@@ -121,7 +121,6 @@ void FileParser::parse_java_file(string aFilepath)
         parseLen = parseEnd - parseStart;
         string section_number = lab.substr(parseStart, parseLen);
 
-
         if(parseEnd != lab.npos)
         {
             parseStart = parseEnd+1 ;
