@@ -1,10 +1,10 @@
 #include "component.h"
 
-Component::Component(std::string id, std::string labID, std::string compath, DBTool *tool, std::string table):DBTable(tool,table)
+Component::Component(std::string id, std::string labID, std::string aText, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id = id;
     this->labID = labID;
-    this->compath = compath;
+    this->text = aText;
 
     // Load SQL specific to child class.
     store_add_row_sql();
@@ -19,7 +19,7 @@ Component::Component(std::string id, std::string labID, std::string compath, DBT
 Component::~Component()
 {
     build_table();
-    add_row(id,labID,compath);
+    add_row(id,labID,text);
 }
 
 std::string Component::get_id()

@@ -79,14 +79,10 @@ string FileParser::parse_student_file(string aFilePath){
 //parses a java class
 void FileParser::parse_java_file(string aFilepath)
 {
-    vector<vector<string>> javaFiles;
 
     QString filepath= QString::fromStdString(aFilepath);
 
     QDirIterator it(filepath, QDirIterator::NoIteratorFlags);
-
-    it.next();
-    it.next();
 
     //for parsing the file name
     while(it.hasNext())
@@ -121,46 +117,14 @@ void FileParser::parse_java_file(string aFilepath)
         parseLen = parseEnd - parseStart;
         string section_number = lab.substr(parseStart, parseLen);
 
-        if(parseEnd != lab.npos)
-        {
-            parseStart = parseEnd+1 ;
-            parseEnd = lab.length();
-            parseLen = parseEnd - parseStart;
-            string lab_number= lab.substr(parseStart, parseLen);
 
+         parseStart = parseEnd+1 ;
+         parseEnd = lab.length();
+         parseLen = parseEnd - parseStart;
+         string lab_number= lab.substr(parseStart, parseLen);
 
-            cout<<labEntry.toStdString();
-            cout<<'\n';
-
-            QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
-            //for parsing ...?
-            while(it2.hasNext())
-            {
-
-                QString component = it2.next();
-
-                parseStart  = component.toStdString().find(".java");
-                parseEnd    = component.toStdString().length();
-                parseLen    = parseEnd - parseStart;
-
-                if(parseStart != component.toStdString().npos)
-                {
-                        ifstream java;
-                        java.open(component.toStdString());
-
-                        string s;
-                        string javaText = "";
-
-                        vector<string> javaLines;
-                        while(getline(java,s))
-                        {
-                            javaLines.push_back(s);
-                        }
-
-                        javaFiles.push_back(javaLines);
-                  }
-
-               }
+          if(parseEnd != lab.npos)
+          {
 
                 string classID = class_name;
                 string sectionID = class_name + "_" + section_number;
@@ -168,10 +132,50 @@ void FileParser::parse_java_file(string aFilepath)
                 string labID = first_name + "_" + last_name + "_" +lab_number;
                 string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
 
-                grader->add_lab(labID, studentID, labName, lab_number, javaFiles);
+
+                grader->add_class(classID, 0);
+                grader->add_section(sectionID, classID);
+                grader->add_student(studentID, sectionID, first_name, last_name);
+
+                QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
+                while(it2.hasNext())
+                {
+
+                    QString component = it2.next();
+
+                    parseStart  = labEntry.toStdString().length()+1;
+                    parseEnd    = component.toStdString().find(".java");
+                    parseLen    = parseEnd - parseStart;
+
+
+
+                    if(parseEnd != component.toStdString().npos)
+                    {
+                       string componentName = component.toStdString().substr(parseStart, parseLen);
+                       string componentID = labID + "_" + componentName;
+//                        cout<<componentName;
+//                        cout<<'\n';
+
+                            ifstream java;
+                            java.open(component.toStdString());
+
+                            string s;
+                            string javaText = "";
+
+                            while(getline(java,s))
+                            {
+                                javaText = javaText + s + '\n';
+                            }
+
+                           grader->add_component(componentID, labID, javaText);
+                      }
+
+                   }
+
+                grader->add_lab(labID, studentID, labName, lab_number);
                 cout<<"Lab Sucessfully added";
                 cout<<'\n';
-        }
+           }
     }
 
 }

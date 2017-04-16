@@ -5,6 +5,7 @@
 #include "../grader/grader.h"
 #include "../grader/fileparser.h"
 #include "../RubricCreatorGUI/rubriccreatorgui.h"
+#include <QFileDialog>
 
 namespace Ui {
 class AddLabsGUI;
@@ -24,6 +25,8 @@ private slots:
     void on_doneButton_clicked();
 
     void on_addRubricButton_clicked();
+
+    void on_browseButton_clicked();
 
 private:
     Grader* grader;

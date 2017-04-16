@@ -30,3 +30,10 @@ void AddLabsGUI::on_addRubricButton_clicked(){
     RubricCreatorGUI *r = new RubricCreatorGUI(0);
     r->show();
 }
+
+void AddLabsGUI::on_browseButton_clicked()
+{
+
+    QString filename = QFileDialog::getExistingDirectory(this, tr(""), "/User",  QFileDialog::ShowDirsOnly);
+    ui->browsePath->setText(filename);
+}

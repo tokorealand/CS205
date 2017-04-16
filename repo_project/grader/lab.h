@@ -34,7 +34,7 @@ private:
     Student *belongs = nullptr; //student pointer of whose lab it is.
 
 public:
-    Lab(string labID, std::string studentID, string labName, string labNumber, vector<vector<string>> aJavaFiles, DBTool *tool, std::string table);
+    Lab(string labID, std::string studentID, string labName, string labNumber,  DBTool *tool, std::string table);
     ~Lab();
 
     std::string get_lab_name();

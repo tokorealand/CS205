@@ -35,9 +35,9 @@ void Grader::add_student(std::string studentID, std::string sectionID, std::stri
     control->add_student(studentID, sectionID, firstname, lastname);
 }
 
-void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber, vector<vector<string>> javaFiles)
+void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber)
 {
-    control->add_lab(labID, studentID,labName,labNumber, javaFiles);
+    control->add_lab(labID, studentID,labName,labNumber);
 }
 
 void Grader::add_component(std::string componentID, std::string labID, std::string compath)

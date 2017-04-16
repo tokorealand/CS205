@@ -14,12 +14,13 @@ class Component : public DBTable
 {
 
 private:
-    std::string compath;
+    std::string text;
     std::string labID;
     std::string id;
 
+
 public:
-    Component(std::string id, std::string labID, std::string compath, DBTool *tool, std::string table);
+    Component(std::string id, std::string labID, std::string text, DBTool *tool, std::string table);
     ~Component();
 
     std::string get_id();

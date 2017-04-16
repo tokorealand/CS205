@@ -253,13 +253,13 @@ void Controller::add_student(std::string studentID, std::string sectionID, std::
     get_section(sectionID)->add_student(stu);
 }
 
-void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, vector<vector<string>> javaFiles)
+void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
 {
     if(item_exist(labID,"lab"))
     {
         return;
     }
-    Lab *la = new Lab(labID, studentID, labName, labNumber, javaFiles, class_tool,table_lab);
+    Lab *la = new Lab(labID, studentID, labName, labNumber, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
 }
