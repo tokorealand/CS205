@@ -47,6 +47,7 @@ public:
      std::string get_rubric_section();
      double get_points_deducted();
      std::string get_highlight_color();
+     bool get_highlight();
 
 };
 
