@@ -58,20 +58,52 @@ void RubricCreatorGUI::on_doneButton_clicked(){
 //remove selected
 void RubricCreatorGUI::on_removeSelectedButton_clicked(){
 
+    //is a section selected
     if(ui->rubricSectionList->selectedItems().size()>0){
-        sections.removeOne(ui->rubricSectionList->selectedItems().at(0)->text());
-    }
-    if(ui->pointValueList->selectedItems().size()>0){
-        pointVals.removeOne(ui->pointValueList->selectedItems().at(0)->text());
+        //get the location of the selected item in the list
+        int a = ui->rubricSectionList->currentRow();
 
-        string s = ui->pointValueList->selectedItems().at(0)->text().toStdString(); //.toStdString().constData();
-        double d = stod(s);
+        //remove the items at the location in each list
+        sections.removeAt(a);
+        pointVals.removeAt(a);
+        colors.removeAt(a);
+
+        string s = pointVals.at(a).toStdString() + "";
+        int d = stoi(s);
         totalPoints = totalPoints - d;
     }
-    if(ui->colorList->selectedItems().size()>0){
-        colors.removeOne(ui->colorList->selectedItems().at(0)->text());
+
+    //is point val selected
+    if(ui->pointValueList->selectedItems().size()>0){
+        //get the location of the selected item in the list
+        int a = ui->pointValueList->currentRow();
+
+        //remove the items at the location in each list
+        sections.removeAt(a);
+        pointVals.removeAt(a);
+        colors.removeAt(a);
+
+        string s = pointVals.at(a).toStdString() + "";
+        int d = stoi(s);
+        totalPoints = totalPoints - d;
     }
 
+    //is color selected
+    if(ui->colorList->selectedItems().size()>0){
+        //get the location of the selected item in the list
+        int a = ui->colorList->currentRow();
+
+        //remove the items at the location in each list
+        sections.removeAt(a);
+        pointVals.removeAt(a);
+        colors.removeAt(a);
+
+        string s = pointVals.at(a).toStdString() + "";
+        int d = stoi(s);
+        totalPoints = totalPoints - d;
+    }
+
+    //update the display
     display_sections();
 }
 

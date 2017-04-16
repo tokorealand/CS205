@@ -40,10 +40,6 @@ SOURCES += main.cpp\
     ../grader/fileparser.cpp\
     ../grader/rubricobject.cpp
 
-
-
-
-
 HEADERS  += add_students_gui.h\
     ../grader/student.h \
     ../grader/lab.h \
