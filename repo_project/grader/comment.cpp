@@ -130,7 +130,7 @@ bool Comment::add_row(std::string id, std::string labid, std::string linenumber,
         std::cerr << table_name
                   << " template ::"
                   << std::endl
-                  << "SQL lab error: "
+                  << "SQL comment error: "
                   << zErrMsg;
 
         sqlite3_free(zErrMsg);

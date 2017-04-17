@@ -139,6 +139,9 @@ void FileParser::parse_java_file(string aFilepath)
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
                 grader->add_lab(labID, studentID, labName, lab_number);
+                cout<<"Lab Sucessfully added";
+                cout<<'\n';
+
 
                 QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
                 while(it2.hasNext())
@@ -174,9 +177,6 @@ void FileParser::parse_java_file(string aFilepath)
 
                    }
 
-
-                cout<<"Lab Sucessfully added";
-                cout<<'\n';
            }
     }
 

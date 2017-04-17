@@ -53,7 +53,6 @@ std::string Controller::student_list()
 void Controller::total_recall()
 {
     select_all_classes();
-    std::cout<<"helloooo";
     select_all_sections();
    select_all_students();
     select_all_labs();
@@ -767,7 +766,7 @@ int cb_select_all_components(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_component(argv[0],argv[1],argv[2]);
     //old from lab 6
 
     return 0;
