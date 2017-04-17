@@ -97,34 +97,39 @@ void FileParser::parse_java_file(string aFilepath)
         int parseLen = parseEnd - parseStart;
         string lab = labEntry.toStdString().substr(parseStart, parseLen);
 
-        parseStart = 0;
-        parseEnd = lab.find("_", parseStart);
-        parseLen = parseEnd - parseStart;
-        string first_name = lab.substr(parseStart, parseLen);
-
-        parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_", parseStart);
-        parseLen = parseEnd - parseStart;
-        string last_name = lab.substr(parseStart, parseLen);
-
-        parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_", parseStart);
-        parseLen = parseEnd - parseStart;
-        string class_name = lab.substr(parseStart, parseLen);
-
-        parseStart = parseEnd+1 ;
-        parseEnd = lab.find("_", parseStart);
-        parseLen = parseEnd - parseStart;
-        string section_number = lab.substr(parseStart, parseLen);
+        cout<<lab;
+        cout<<'\n';
 
 
-         parseStart = parseEnd+1 ;
-         parseEnd = lab.length();
-         parseLen = parseEnd - parseStart;
-         string lab_number= lab.substr(parseStart, parseLen);
+        if(lab.compare(".") != 0 && lab.compare("..") != 0)
+        {
+            parseStart = 0;
+            parseEnd = lab.find("_", parseStart);
+            parseLen = parseEnd - parseStart;
+            string first_name = lab.substr(parseStart, parseLen);
 
-          if(parseEnd != lab.npos)
-          {
+            parseStart = parseEnd+1 ;
+            parseEnd = lab.find("_", parseStart);
+            parseLen = parseEnd - parseStart;
+            string last_name = lab.substr(parseStart, parseLen);
+
+            parseStart = parseEnd+1 ;
+            parseEnd = lab.find("_", parseStart);
+            parseLen = parseEnd - parseStart;
+            string class_name = lab.substr(parseStart, parseLen);
+
+            parseStart = parseEnd+1 ;
+            parseEnd = lab.find("_", parseStart);
+            parseLen = parseEnd - parseStart;
+            string section_number = lab.substr(parseStart, parseLen);
+
+
+             parseStart = parseEnd+1 ;
+             parseEnd = lab.length();
+             parseLen = parseEnd - parseStart;
+             string lab_number= lab.substr(parseStart, parseLen);
+
+
 
                 string classID = class_name;
                 string sectionID = class_name + "_" + section_number;
@@ -140,6 +145,7 @@ void FileParser::parse_java_file(string aFilepath)
                 cout<<"Lab Sucessfully added";
                 cout<<'\n';
 
+
                 QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
                 while(it2.hasNext())
                 {
@@ -150,10 +156,9 @@ void FileParser::parse_java_file(string aFilepath)
                     parseEnd    = component.toStdString().find(".java");
                     parseLen    = parseEnd - parseStart;
 
-
-
                     if(parseEnd != component.toStdString().npos)
                     {
+
                        string componentName = component.toStdString().substr(parseStart, parseLen);
                        string componentID = labID + "_" + componentName;
 //                        cout<<componentName;
@@ -174,7 +179,6 @@ void FileParser::parse_java_file(string aFilepath)
                       }
 
                    }
-
 
            }
     }
