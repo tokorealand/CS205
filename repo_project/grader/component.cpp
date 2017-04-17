@@ -27,6 +27,11 @@ std::string Component::get_id()
     return id;
 }
 
+std::string Component:: get_text()
+{
+    return text;
+}
+
 // SQL used for inputting information
 void Component::store_add_row_sql() {
 

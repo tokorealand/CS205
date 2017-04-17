@@ -58,7 +58,6 @@ string FileParser::parse_student_file(string aFilePath){
         end = s.find_first_of(delim, start)+1;
         len = end-start;
 
-
         string classID = class_name;
         string sectionID = class_name + "_" +class_section;
         string studentID = first_name + "_" + last_name;
@@ -128,8 +127,6 @@ void FileParser::parse_java_file(string aFilepath)
              parseEnd = lab.length();
              parseLen = parseEnd - parseStart;
              string lab_number= lab.substr(parseStart, parseLen);
-
-
 
                 string classID = class_name;
                 string sectionID = class_name + "_" + section_number;
