@@ -2,7 +2,7 @@
 
 Grader::Grader()
 {
-    tool = new DBTool("Grader");
+    tool = new DBTool("TEST3");
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
 
