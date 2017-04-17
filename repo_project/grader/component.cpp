@@ -96,7 +96,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
         std::cerr << table_name
                   << " template ::"
                   << std::endl
-                  << "SQL lab error: "
+                  << "SQL component error: "
                   << zErrMsg;
 
         sqlite3_free(zErrMsg);

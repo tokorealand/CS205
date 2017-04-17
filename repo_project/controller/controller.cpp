@@ -53,7 +53,6 @@ std::string Controller::student_list()
 void Controller::total_recall()
 {
     select_all_classes();
-    std::cout<<"helloooo";
     select_all_sections();
    select_all_students();
     select_all_labs();
