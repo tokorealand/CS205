@@ -48,14 +48,14 @@ void Component::store_create_sql() {
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
     sql_create += "  labid TEXT NOT NULL, ";
-    sql_create += "  compath TEXT NOT NULL";
+    sql_create += "  text TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the component table database.
 */
-bool Component::add_row(std::string id, std::string labid, std::string compath) {
+bool Component::add_row(std::string id, std::string labid, std::string text) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -64,7 +64,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, labid, compath ) ";
+    sql_add_row += " ( id, labid, text ) ";
     sql_add_row += "VALUES (";
 
 
@@ -77,7 +77,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(compath);
+    sql_add_row += std::string(text);
     sql_add_row += "\" ";
     sql_add_row += " );";
 
