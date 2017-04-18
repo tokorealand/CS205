@@ -54,8 +54,9 @@ void Controller::total_recall()
 {
     select_all_classes();
     select_all_sections();
-   select_all_students();
+    select_all_students();
     select_all_labs();
+    select_all_components();
 
 }
 
@@ -274,13 +275,13 @@ void Controller::add_lab(std::string labID, string studentID, string labName, st
     get_student(studentID)->add_lab(la);
 }
 
-void Controller::add_component(std::string componentID, string labID, string compath)
+void Controller::add_component(std::string componentID, string labID, string text)
 {
     if(item_exist(componentID,"component"))
     {
         return;
     }
-    Component *com = new Component(componentID, labID, compath, class_tool,table_component);
+    Component *com = new Component(componentID, labID, text, class_tool,table_component);
     components.push_back(com);
     get_lab(labID)->add_component(com);
 
@@ -308,7 +309,6 @@ bool Controller::select_all_classes() {
     sql_select_all_classes+= table_class;
     sql_select_all_classes += ";";
 
-    std::cout<<"YOOO";
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_select_all_classes.c_str(),
@@ -353,14 +353,14 @@ bool Controller::drop_class_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-                std::cerr << sql_drop
-                          << std::endl;
+        std::cerr << sql_drop
+                  << std::endl;
 
-                std::cerr << "SQL error: "
-                          << zErrMsg
-                          << std::endl;
+        std::cerr << "SQL error: "
+                  << zErrMsg
+                  << std::endl;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
 
@@ -404,7 +404,6 @@ int cb_select_all_classes(void  *data,
 
     obj->add_class(argv[0],std::stoi(argv[1]));
 
-    std::cout<<argv[0]<<"DDDDDDDDDDDD";
 
     return 0;
 }
@@ -427,13 +426,13 @@ bool Controller::select_all_sections() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -728,9 +727,38 @@ int cb_select_all_labs(void  *data,
 
     }
 
-   // obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
 
     return 0;
+}
+
+//Used to retriveve all labs in database
+bool Controller::select_all_components() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_components = "SELECT * FROM ";
+    sql_select_all_components += table_component;
+    sql_select_all_components += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_components.c_str(),
+                           cb_select_all_components,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
 }
 
 //Call back for select_all_pgh
@@ -796,14 +824,14 @@ bool Controller::drop_component_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
-        //                  << std::endl;
+        std::cerr << sql_drop
+                  << std::endl;
 
-        //        std::cerr << "SQL error: "
-        //                  << zErrMsg
-        //                  << std::endl;
+        std::cerr << "SQL error: "
+                  << zErrMsg
+                  << std::endl;
 
-        //        sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
 
@@ -812,9 +840,9 @@ bool Controller::drop_component_table() {
 
 //Call back for select_all_pgh
 int cb_select_all_commentss(void  *data,
-                             int    argc,
-                             char **argv,
-                             char **azColName)
+                            int    argc,
+                            char **argv,
+                            char **azColName)
 {
 
 
