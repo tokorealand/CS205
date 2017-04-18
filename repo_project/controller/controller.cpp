@@ -284,6 +284,8 @@ void Controller::add_component(std::string componentID, string labID, string com
     components.push_back(com);
     get_lab(labID)->add_component(com);
 
+
+
 }
 
 void Controller::add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
