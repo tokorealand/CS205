@@ -2,6 +2,7 @@
 #define LAB_CPP
 
 #include "lab.h"
+#include "string"
 
 using namespace std;
 
