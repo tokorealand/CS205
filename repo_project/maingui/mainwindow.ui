@@ -119,7 +119,7 @@
           <item>
            <widget class="QPushButton" name="pushButton">
             <property name="text">
-             <string>Exit</string>
+             <string>Save|Exit</string>
             </property>
            </widget>
           </item>

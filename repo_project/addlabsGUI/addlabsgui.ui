@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>AddLabsGUI</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(131, 131, 131);</string>
+  </property>
   <widget class="QPushButton" name="addRubricButton">
    <property name="geometry">
     <rect>
@@ -40,6 +43,9 @@
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="doneButton">
@@ -83,6 +89,9 @@
      <height>25</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="selectButton">
    <property name="geometry">
@@ -120,6 +129,19 @@
    </property>
    <property name="text">
     <string>Lab Path:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="browsePath">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>130</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
  </widget>
