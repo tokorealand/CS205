@@ -6,21 +6,21 @@ Exporter::Exporter(){
 Exporter::~Exporter(){
 }
 
-void Exporter::parse_file(Lab currentLab){
+void Exporter::parse_file(Lab* currentLab){
 
     this->currentLab = currentLab;
 
     //get current submission's class vector
-    vector<vector<string>> vectorTemp = currentLab.get_class_code_vector();
+    vector<vector<string>> vectorTemp = currentLab->get_class_code_vector();
 
     //for each class in the submission
-    for(int i = 0; i < currentLab.get_number_of_classes(); i++){
+    for(int i = 0; i < currentLab->get_number_of_classes(); i++){
 
         //get a current class
         vector<string> classTemp = vectorTemp.at(i);
 
         //create a name for the class
-        string name = currentLab.get_id() + "-" + currentLab.get_lab_name() + "-"
+        string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
                              + string("class") + to_string(i) + ".html";
         //open a file writer
         ofstream ofs;
@@ -45,7 +45,7 @@ void Exporter::parse_file(Lab currentLab){
 
 
 //parses a line of code according to the comments
-string Exporter::parse_line(string line, Lab currentLab, int lineNo){
+string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
 
     string htmlLine; //final line saved to html file
 
@@ -58,10 +58,10 @@ string Exporter::parse_line(string line, Lab currentLab, int lineNo){
     string endHighlight = "";
 
     //if there is a comment for that line
-    if(currentLab.is_comment_at(lineNo)){
+    if(currentLab->is_comment_at(lineNo)){
 
         //save an instance of the current comment
-        Comment *currentComment = currentLab.get_comment_at(lineNo);
+        Comment *currentComment = currentLab->get_comment_at(lineNo);
 
         //check if a rubric color is specified
         if(currentComment->get_rubric_section() != ""){

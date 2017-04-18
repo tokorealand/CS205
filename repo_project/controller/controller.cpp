@@ -5,6 +5,7 @@
 Controller::Controller(DBTool *tool):DBTable(tool)
 {
     this->class_tool = tool;
+    total_recall();
 }
 
 
@@ -47,6 +48,15 @@ std::string Controller::student_list()
 
     }
     return list;
+}
+
+void Controller::total_recall()
+{
+    select_all_classes();
+    select_all_sections();
+   select_all_students();
+    select_all_labs();
+
 }
 
 void Controller::total_drop()
@@ -253,13 +263,13 @@ void Controller::add_student(std::string studentID, std::string sectionID, std::
     get_section(sectionID)->add_student(stu);
 }
 
-void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, vector<vector<string>> javaFiles)
+void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
 {
     if(item_exist(labID,"lab"))
     {
         return;
     }
-    Lab *la = new Lab(labID, studentID, labName, labNumber, javaFiles, class_tool,table_lab);
+    Lab *la = new Lab(labID, studentID, labName, labNumber, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
 }
@@ -273,6 +283,7 @@ void Controller::add_component(std::string componentID, string labID, string com
     Component *com = new Component(componentID, labID, compath, class_tool,table_component);
     components.push_back(com);
     get_lab(labID)->add_component(com);
+
 }
 
 void Controller::add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
@@ -291,13 +302,15 @@ bool Controller::select_all_classes() {
     int   retCode = 0;
     char *zErrMsg = 0;
 
-    sql_select_all_sections  = "SELECT * FROM ";
-    sql_select_all_sections += table_class;
-    sql_select_all_sections += ";";
+    sql_select_all_classes  = "SELECT * FROM ";
+    sql_select_all_classes+= table_class;
+    sql_select_all_classes += ";";
+
+    std::cout<<"YOOO";
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_select_all_classes.c_str(),
-                           cb_select_all_sections,
+                           cb_select_all_classes,
                            this,
                            &zErrMsg          );
 
@@ -338,14 +351,14 @@ bool Controller::drop_class_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
-        //                  << std::endl;
+                std::cerr << sql_drop
+                          << std::endl;
 
-        //        std::cerr << "SQL error: "
-        //                  << zErrMsg
-        //                  << std::endl;
+                std::cerr << "SQL error: "
+                          << zErrMsg
+                          << std::endl;
 
-        //        sqlite3_free(zErrMsg);
+                sqlite3_free(zErrMsg);
     }
 
 
@@ -361,7 +374,7 @@ int cb_select_all_classes(void  *data,
 
 
 
-    std::cerr << "cb_select_all_sections being called\n";
+    std::cerr << "cb_select_all_classes being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -388,7 +401,8 @@ int cb_select_all_classes(void  *data,
     }
 
     obj->add_class(argv[0],std::stoi(argv[1]));
-    //old from lab 6
+
+    std::cout<<argv[0]<<"DDDDDDDDDDDD";
 
     return 0;
 }
@@ -411,13 +425,13 @@ bool Controller::select_all_sections() {
 
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << table_name
-        //                  << " template ::"
-        //                  << std::endl
-        //                  << "SQL error: "
-        //                  << zErrMsg;
+                std::cerr << table_name
+                          << " template ::"
+                          << std::endl
+                          << "SQL error: "
+                          << zErrMsg;
 
-        //        sqlite3_free(zErrMsg);
+                sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -622,7 +636,7 @@ bool Controller::select_all_labs() {
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_select_all_labs.c_str(),
-                           cb_select_all_students,
+                           cb_select_all_labs,
                            this,
                            &zErrMsg          );
 
@@ -712,8 +726,7 @@ int cb_select_all_labs(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
-    //old from lab 6
+   // obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
 
     return 0;
 }
@@ -753,7 +766,7 @@ int cb_select_all_components(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_component(argv[0],argv[1],argv[2]);
     //old from lab 6
 
     return 0;

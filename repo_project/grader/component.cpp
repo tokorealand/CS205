@@ -1,10 +1,10 @@
 #include "component.h"
 
-Component::Component(std::string id, std::string labID, std::string compath, DBTool *tool, std::string table):DBTable(tool,table)
+Component::Component(std::string id, std::string labID, std::string aText, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id = id;
     this->labID = labID;
-    this->compath = compath;
+    this->text = aText;
 
     // Load SQL specific to child class.
     store_add_row_sql();
@@ -19,12 +19,17 @@ Component::Component(std::string id, std::string labID, std::string compath, DBT
 Component::~Component()
 {
     build_table();
-    add_row(id,labID,compath);
+    add_row(id,labID,text);
 }
 
 std::string Component::get_id()
 {
     return id;
+}
+
+std::string Component:: get_text()
+{
+    return text;
 }
 
 // SQL used for inputting information
@@ -48,14 +53,14 @@ void Component::store_create_sql() {
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
     sql_create += "  labid TEXT NOT NULL, ";
-    sql_create += "  compath TEXT NOT NULL";
+    sql_create += "  text TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the component table database.
 */
-bool Component::add_row(std::string id, std::string labid, std::string compath) {
+bool Component::add_row(std::string id, std::string labid, std::string text) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -64,7 +69,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, labid, compath ) ";
+    sql_add_row += " ( id, labid, text ) ";
     sql_add_row += "VALUES (";
 
 
@@ -77,7 +82,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(compath);
+    sql_add_row += std::string(text);
     sql_add_row += "\" ";
     sql_add_row += " );";
 
@@ -96,7 +101,7 @@ bool Component::add_row(std::string id, std::string labid, std::string compath) 
         std::cerr << table_name
                   << " template ::"
                   << std::endl
-                  << "SQL lab error: "
+                  << "SQL component error: "
                   << zErrMsg;
 
         sqlite3_free(zErrMsg);

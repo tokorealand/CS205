@@ -7,9 +7,9 @@ using namespace std;
 
 class Student;
 
-Lab::Lab(std::string labID, string studentID, string labName, string labNumber, vector<vector<string>> aJavaFiles, DBTool *tool, std::string table):DBTable(tool,table)
+Lab::Lab(std::string labID, string studentID, string labName, string labNumber, DBTool *tool, std::string table):DBTable(tool,table)
 {
-    this->javaFiles = aJavaFiles;
+
     this->id = labID;
     this->studentID = studentID;
     this->labName = labName;
@@ -223,6 +223,11 @@ vector<Comment> Lab::get_comment_vector(){
 
 std::string Lab::get_lab_name(){
     return labName;
+}
+
+vector<Component*> Lab:: get_components()
+{
+    return coms;
 }
 
 //creates a comment and saves it to the comment vector

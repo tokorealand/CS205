@@ -11,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     grad = new Grader();
     populate_existing_labs();
     build_tabs();
+    std::cout<<grad->get_classes().size()<<"GGGG";
+
+    display_classes();
+
     //set up slots
     //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
     //    grad->add_class("c1",2);
@@ -153,7 +157,8 @@ void MainWindow::display_classes()
     QList<QString> ccontainer;
     ui->classlist->clear();
 
-    std::cout<<grad->get_classes().size();
+    if(grad->get_classes().size()>0)
+    {
     std::vector<Class*> holder = grad->get_classes();
 
     for(Class* it: holder)
@@ -162,6 +167,7 @@ void MainWindow::display_classes()
     }
 
     ui->classlist->addItems(ccontainer);
+    }
 }
 
 
@@ -173,11 +179,10 @@ void MainWindow::on_displayButton_clicked()
 
     if(selected_lab != NULL)
     {
-        for(int i = 0; i<selected_lab->get_no_lines_in_class(0); i++)
-        {
-            QString  javaText = QString::fromStdString( to_string (i)+ "   " +selected_lab->get_class_code_vector().at(0).at(i)) ;
+
+            QString  javaText = QString::fromStdString(selected_lab->get_components().at(0)->get_text()) ;
             jtcontainer.push_back(javaText);
-        }
+
         ui->disjava->addItems(jtcontainer);
     }
     else

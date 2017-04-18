@@ -7,6 +7,7 @@
 #include "../grader/comment.h"
 #include "../grader/lab.h"
 
+
 class Exporter{
 
 public:
@@ -16,8 +17,14 @@ public:
     ~Exporter();
 
     //methods
+<<<<<<< HEAD
     void parse_file(Lab currentLab);
     string parse_line(string line, Lab currentLab, int lineNo);
+=======
+    //void new_file(Lab lab);
+    void parse_file(Lab *currentLab);
+    string parse_line(string line, Lab *currentLab, int lineNo);
+>>>>>>> 3daab35c29259e524b9edfacb013fa8e86294596
     string space();
     string enter();
     string highlight();
@@ -26,7 +33,7 @@ public:
     string get_finished();
 
     //variables
-    Lab currentLab;
+    Lab* currentLab;
     string fileString;
     vector<string> codeByLine;
     vector<vector<string>> codeLinesByClass;
