@@ -35,6 +35,8 @@ public:
 
     bool add_row(std::string id, std::string labid, std::string compath);
 
+    std::string get_text();
+
 
 };
 

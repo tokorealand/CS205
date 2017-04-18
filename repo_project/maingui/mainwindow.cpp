@@ -179,11 +179,10 @@ void MainWindow::on_displayButton_clicked()
 
     if(selected_lab != NULL)
     {
-        for(int i = 0; i<selected_lab->get_no_lines_in_class(0); i++)
-        {
-            QString  javaText = QString::fromStdString( to_string (i)+ "   " +selected_lab->get_class_code_vector().at(0).at(i)) ;
+
+            QString  javaText = QString::fromStdString(selected_lab->get_components().at(0)->get_text()) ;
             jtcontainer.push_back(javaText);
-        }
+
         ui->disjava->addItems(jtcontainer);
     }
     else

@@ -34,6 +34,7 @@ void AddLabsGUI::on_addRubricButton_clicked(){
 void AddLabsGUI::on_browseButton_clicked()
 {
 
+    ui->labPathText->clear();
     QString filename = QFileDialog::getExistingDirectory(this, tr(""), "/User",  QFileDialog::ShowDirsOnly);
-    ui->browsePath->setText(filename);
+    ui->labPathText->setText(filename);
 }
