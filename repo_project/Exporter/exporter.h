@@ -16,7 +16,6 @@ public:
     ~Exporter();
 
     //methods
-    //void new_file(Lab lab);
     void parse_file(Lab currentLab);
     string parse_line(string line, Lab currentLab, int lineNo);
     string space();
