@@ -16,7 +16,9 @@ public:
     Exporter();
     ~Exporter();
 
+
     //methods
+
 
     //void new_file(Lab lab);
     void parse_file(Lab *currentLab);
