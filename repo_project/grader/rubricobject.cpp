@@ -39,3 +39,19 @@ void RubricObject::set_section_colors(string color){
 void RubricObject::set_total_points(string totalPoints){
     this->totalPoints = totalPoints;
 }
+
+int RubricObject::get_size(){
+    return rubricSections.size();
+}
+
+string RubricObject::get_section_at(int i){
+    return rubricSections.at(i);
+}
+
+string RubricObject::get_section_text_at(int i){
+    return rubricSections.at(i);
+}
+
+string RubricObject::get_color_at(int i){
+    return sectionColors.at(i);
+}

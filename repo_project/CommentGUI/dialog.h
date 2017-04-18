@@ -9,8 +9,7 @@ namespace Ui {
 class Dialog;
 }
 
-class Dialog : public QDialog
-{
+class Dialog : public QDialog{
     Q_OBJECT
 
 public:
@@ -21,10 +20,7 @@ private slots:
     void on_doneButton_clicked();
     void populate();
     void populate_comment_list();
-
-
     void on_commentText_textChanged(const QString &arg1);
-
     void on_commentList_clicked(const QModelIndex &index);
 
 private:
@@ -32,7 +28,6 @@ private:
     Grader* grader;
     Lab *lab;
     QStringList commentQStringList;
-
 };
 
 #endif // DIALOG_H

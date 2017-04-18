@@ -15,6 +15,7 @@
 #include "component.h"
 #include "commentengine.h"
 #include "comment.h"
+#include "rubricobject.h"
 
 using namespace std;
 class Student;
@@ -26,12 +27,14 @@ private:
     vector<vector<string>> javaFiles;
     vector<Component*> coms;
     vector<Comment*> comments;
+    vector<Comment> myComments;
     std::string labNum;
     int grade;
     std::string labName;
     std::string id;
     std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
+
 
 public:
     Lab(string labID, std::string studentID, string labName, string labNumber,  DBTool *tool, std::string table);
@@ -60,19 +63,31 @@ public:
 
     //Allie
     map<int, Comment> commentMap;
+
     Comment* get_comment_at(std::string lineNo);
+    Comment *get_comment_at(int lineNo);
+
     bool is_comment_at(int i);
+
     int get_no_lines_in_class(int i);
     int get_number_of_classes();
+    int get_size();
+
     void add_comments(Comment c);
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
+    void add_rubric(RubricObject rubric);\
+
     vector<Comment> get_comment_vector();
     vector<vector<string>> get_class_code_vector();
-    Comment *get_comment_at(int lineNo);
     vector<Component*> get_components();
-
-    vector<Comment> myComments;
     vector<string> get_line_vector();
+
+    RubricObject get_rubric();
+    RubricObject rubric;
+
+    string get_section_at(int i);
+    string get_section_text_at(int i);
+    string get_color_at(int i);
 };
 
 int cb_add_row_lab(void  *data,

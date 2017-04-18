@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -58,7 +58,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -80,7 +80,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -109,12 +109,23 @@
       <item>
        <widget class="QLabel" name="colorLabel">
         <property name="text">
-         <string>Color: </string>
+         <string>Highlight?</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="colorDropDown"/>
+       <widget class="QComboBox" name="colorDropDown">
+        <item>
+         <property name="text">
+          <string>Yes</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>No</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="lineNoLabel">

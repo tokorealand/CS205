@@ -125,3 +125,8 @@ void RubricCreatorGUI::on_addSectionButton_clicked(){
 
     display_sections();
 }
+
+
+
+
+

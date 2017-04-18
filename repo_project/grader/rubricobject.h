@@ -17,6 +17,10 @@ public:
     vector<string> get_point_totals();
     vector<string> get_section_colors();
     string get_total_points();
+    string get_section_at(int i);
+    string get_section_text_at(int i);
+    string get_color_at(int i);
+    int get_size();
 
     //setters
     void set_rubric_sections(string rubricSection);
@@ -24,8 +28,6 @@ public:
     void set_section_colors(string color);
     void set_total_points(string totalPoints);
 
-    //vars
-    //Lab thisLab;
 private:
     vector<string> rubricSections;
     vector<string> pointTotals;

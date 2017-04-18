@@ -19,6 +19,7 @@ public:
     explicit RubricCreatorGUI(QWidget *parent = 0);
     ~RubricCreatorGUI();
 
+    //PRIVATE ?
     QStringList sections;
     void display_sections();
     QStringList pointVals;
@@ -26,11 +27,8 @@ public:
     double totalPoints = 0.0;
 
 private slots:
-
     void on_doneButton_clicked();
-
     void on_removeSelectedButton_clicked();
-
     void on_addSectionButton_clicked();
 
 private:

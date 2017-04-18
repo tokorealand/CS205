@@ -230,11 +230,13 @@ vector<Component*> Lab:: get_components()
     return coms;
 }
 
-//creates a comment and saves it to the comment vector
-//void Lab::create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
-//    Comment* c = new Comment(commentText, rubricSection, pointsDeducted, highlightColor);
-//    myComments.push_back(*c);
-//}
+RubricObject Lab::get_rubric(){
+    return rubric;
+}
+
+void Lab::add_rubric(RubricObject rubric){
+    this->rubric = rubric;
+}
 
 
 #endif // LAB_CPP

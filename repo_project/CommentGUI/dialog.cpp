@@ -8,38 +8,34 @@ Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab) :
     ui->setupUi(this);
     grader = aGrader;
     lab = aLab;
-    //ui->commentList->setSelectionMode(QAbstractItemView::ExtendedSelection);
     populate();
 }
 
-Dialog::~Dialog()
-{
+Dialog::~Dialog(){
     delete ui;
 }
 
 //populate the gui with info
 void Dialog::populate(){
+
     //populate the commentList with comments from the database
-    commentQStringList.append("comment one");
-    commentQStringList.append("comment two");
-    commentQStringList.append("comment three");
-    commentQStringList.append("comment four");
-    commentQStringList.append("and five");
-    commentQStringList.append("now six");
-    commentQStringList.append("this is seven");
-    commentQStringList.append("last comment 8");
-    ui->commentList->addItems(commentQStringList);
+    for(int i = 0; i < lab->get_rubric().get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric().get_section_at(i));
+        ui->commentList->insertItem(i, temp);
+    }
+
 
     //populate the rubricSectionsDropDown with rubric sections
-    ui->rubricSectionDropDown->insertItem(0,"section 1", QVariant(0));
-    ui->rubricSectionDropDown->insertItem(1,"section 2", QVariant(0));
-    ui->rubricSectionDropDown->insertItem(2,"section 3", QVariant(0));
+    for(int i = 0; i<lab->get_rubric().get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric().get_section_text_at(i));
+        ui->rubricSectionDropDown->insertItem(i, temp);
+    }
 
     //populate the colorDropDown with colors from the rubric section
-    ui->colorDropDown->insertItem(0,"none", QVariant(0));
-    ui->colorDropDown->insertItem(1,"green", QVariant(0));
-    ui->colorDropDown->insertItem(2,"blue", QVariant(0));
-    ui->colorDropDown->insertItem(3,"red", QVariant(0));
+    for(int i = 0; i<lab->get_rubric().get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric().get_color_at(i));
+        ui->rubricSectionDropDown->insertItem(i, temp);
+    }
 }
 
 void Dialog::on_doneButton_clicked(){
