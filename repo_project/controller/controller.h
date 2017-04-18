@@ -94,7 +94,7 @@ public:
 
     void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber);
 
-    void add_component(std::string componentID, std::string labID, std::string compath);
+    void add_component(std::string componentID, std::string labID, std::string text);
 
     void add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, string points);
 

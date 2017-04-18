@@ -45,6 +45,7 @@ public:
 
     void add_component(Component* com);
     void add_comment(Comment* com);
+    void add_java_line(vector<string>);
 
 
     std::string get_id();

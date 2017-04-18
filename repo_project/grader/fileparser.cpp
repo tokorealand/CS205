@@ -167,12 +167,15 @@ void FileParser::parse_java_file(string aFilepath)
                             string s;
                             string javaText = "";
 
+                            vector<string> javaLine;
+
                             while(getline(java,s))
                             {
                                 javaText = javaText + s + '\n';
+                                javaLine.push_back(s);
                             }
 
-                           grader->add_component(componentID, labID, javaText);
+                           grader->add_component(componentID, labID, javaText, javaLine);
                       }
 
                    }

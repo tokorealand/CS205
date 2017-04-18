@@ -193,6 +193,11 @@ int Lab::get_number_of_classes(){
     return 0;
 }
 
+void Lab:: add_java_line(vector<string> javaLine)
+{
+    javaFiles.push_back(javaLine);
+}
+
 //get class in location i, find the size of the vector containing each line of the code as a string
 int Lab::get_no_lines_in_class(int i){
     return javaFiles.at(i).size();
