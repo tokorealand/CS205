@@ -47,7 +47,6 @@ public:
     void add_comment(Comment* com);
     void add_java_line(vector<string>);
 
-
     std::string get_id();
 
     // An overloaded method to generate a new

@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     grad = new Grader();
     populate_existing_labs();
-    build_tabs();
+    //build_tabs();
     std::cout<<grad->get_classes().size()<<"GGGG";
 
     display_classes();
@@ -33,9 +33,9 @@ MainWindow::~MainWindow()
 void MainWindow::populate_existing_labs(){
 
     //sample -- load in labs
-    ui->menuExisting_Labs->addAction("Lab 1");
-    ui->menuExisting_Labs->addAction("Lab 2");
-    ui->menuExisting_Labs->addAction("Lab 3");
+//    ui->menuExisting_Labs->addAction("Lab 1");
+//    ui->menuExisting_Labs->addAction("Lab 2");
+//    ui->menuExisting_Labs->addAction("Lab 3");
 
     for(int i =0; i<ui->menuExisting_Labs->actions().size(); i++){
         QAction *qa = ui->menuExisting_Labs->actions().at(i);
@@ -50,8 +50,6 @@ void MainWindow::click_lab_in_existing_labs_menu(){
     QAction *selected = qobject_cast<QAction*>(sender());
 
     QString selected_lab_string = selected->text();
-
- //   ui->displayJavaText->setText("sample lab code " + selected_lab_string);
 
     //change the label
     ui->currentLab->setText(selected_lab_string);

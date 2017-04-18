@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "../grader/rubricobject.h"
 #include "../grader/class.h"
+#include "../grader/grader.h"
 
 using namespace std;
 
@@ -16,8 +17,9 @@ class RubricCreatorGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit RubricCreatorGUI(QWidget *parent = 0);
+    explicit RubricCreatorGUI(QWidget *parent = 0, Grader *grader = nullptr);
     ~RubricCreatorGUI();
+    RubricObject* get_rubric();
 
     //PRIVATE ?
     QStringList sections;
@@ -33,6 +35,8 @@ private slots:
 
 private:
     Ui::RubricCreatorGUI *ui;
+    Grader* grader;
+    RubricObject *r;
 };
 
 #endif // RUBRICCREATORGUI_H

@@ -27,13 +27,13 @@ void AddLabsGUI::on_doneButton_clicked(){
 }
 
 void AddLabsGUI::on_addRubricButton_clicked(){
-    RubricCreatorGUI *r = new RubricCreatorGUI(0);
+    RubricCreatorGUI *r = new RubricCreatorGUI(0, grader);
     r->show();
+    RubricObject *rubric = r->get_rubric();
 }
 
 void AddLabsGUI::on_browseButton_clicked()
 {
-
     ui->labPathText->clear();
     QString filename = QFileDialog::getExistingDirectory(this, tr(""), "/User",  QFileDialog::ShowDirsOnly);
     ui->labPathText->setText(filename);
