@@ -19,21 +19,21 @@ Dialog::~Dialog(){
 void Dialog::populate(){
 
     //populate the commentList with comments from the database
-    for(int i = 0; i < lab->get_rubric().get_size(); i++){
-        QString temp = QString::fromStdString(lab->get_rubric().get_section_at(i));
+    for(int i = 0; i < lab->get_rubric()->get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric()->get_section_at(i));
         ui->commentList->insertItem(i, temp);
     }
 
 
     //populate the rubricSectionsDropDown with rubric sections
-    for(int i = 0; i<lab->get_rubric().get_size(); i++){
-        QString temp = QString::fromStdString(lab->get_rubric().get_section_text_at(i));
+    for(int i = 0; i<lab->get_rubric()->get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric()->get_section_text_at(i));
         ui->rubricSectionDropDown->insertItem(i, temp);
     }
 
     //populate the colorDropDown with colors from the rubric section
-    for(int i = 0; i<lab->get_rubric().get_size(); i++){
-        QString temp = QString::fromStdString(lab->get_rubric().get_color_at(i));
+    for(int i = 0; i<lab->get_rubric()->get_size(); i++){
+        QString temp = QString::fromStdString(lab->get_rubric()->get_color_at(i));
         ui->rubricSectionDropDown->insertItem(i, temp);
     }
 }

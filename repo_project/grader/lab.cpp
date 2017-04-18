@@ -235,11 +235,11 @@ vector<Component*> Lab:: get_components()
     return coms;
 }
 
-RubricObject Lab::get_rubric(){
+RubricObject *Lab::get_rubric(){
     return rubric;
 }
 
-void Lab::add_rubric(RubricObject rubric){
+void Lab::add_rubric(RubricObject* rubric){
     this->rubric = rubric;
 }
 

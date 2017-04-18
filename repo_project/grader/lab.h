@@ -76,15 +76,15 @@ public:
 
     void add_comments(Comment c);
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
-    void add_rubric(RubricObject rubric);\
+    void add_rubric(RubricObject *rubric);\
 
     vector<Comment> get_comment_vector();
     vector<vector<string>> get_class_code_vector();
     vector<Component*> get_components();
     vector<string> get_line_vector();
 
-    RubricObject get_rubric();
-    RubricObject rubric;
+    RubricObject* get_rubric();
+    RubricObject* rubric;
 
     string get_section_at(int i);
     string get_section_text_at(int i);
