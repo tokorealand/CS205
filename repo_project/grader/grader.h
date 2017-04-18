@@ -27,7 +27,6 @@ private:
     vector<string> listOfLabNames;
 
 
-
 public:
     Grader();
     ~Grader();
