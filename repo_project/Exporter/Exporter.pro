@@ -14,6 +14,8 @@ SOURCES += main.cpp\
     ../grader/class.cpp \
     ../grader/component.cpp \
     ../grader/comment.cpp\
+../grader/year.cpp\
+../grader/semester.cpp\
     exporter.cpp
 
 
@@ -25,5 +27,7 @@ HEADERS  += ../grader/student.h \
     ../grader/dbtool.h \
     ../grader/class.h \
     ../grader/component.h \
+../grader/year.h\
+../grader/semester.h\
     ../grader/comment.h\
 exporter.h

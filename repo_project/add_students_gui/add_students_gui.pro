@@ -38,6 +38,8 @@ SOURCES += main.cpp\
     ../grader/grader.cpp\
     ../grader/comment.cpp\
     ../grader/fileparser.cpp\
+../grader/year.cpp\
+../grader/semester.cpp\
     ../grader/rubricobject.cpp
 
 HEADERS  += add_students_gui.h\
@@ -52,6 +54,8 @@ HEADERS  += add_students_gui.h\
     ../controller/controller.h\
     ../grader/grader.h\
     ../grader/comment.h\
+../grader/year.h\
+../grader/semester.h\
     ../grader/fileparser.h\
     ../grader/rubricobject.h
 

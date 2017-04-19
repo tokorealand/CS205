@@ -42,6 +42,8 @@ SOURCES += main.cpp\
     ../controller/controller.cpp\
     ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
+../grader/year.cpp\
+../grader/semester.cpp\
     ../CommentGUI/dialog.cpp \
     ../RubricCreatorGUI/rubriccreatorgui.cpp \
     ../grader/rubricobject.cpp \
@@ -62,6 +64,8 @@ HEADERS  += mainwindow.h \
     ../grader/grader.cpp \
     ../grader/comment.h\
     ../grader/fileparser.h \
+../grader/year.h\
+../grader/semester.h\
     ../grader/comment.h\
     ../controller/controller.h\
      ../add_students_gui/add_students_gui.h\

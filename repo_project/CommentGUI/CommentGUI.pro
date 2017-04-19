@@ -38,6 +38,8 @@ SOURCES += main.cpp\
     ../grader/fileparser.cpp \
     ../controller/controller.cpp \
     ../grader/comment.cpp \
+../grader/year.cpp\
+../grader/semester.cpp\
     ../grader/rubricobject.cpp
 
 HEADERS  += dialog.h \
@@ -46,6 +48,8 @@ HEADERS  += dialog.h \
     ../grader/section.h \
     ../grader/dbtable.h \
     ../grader/dbtool.h \
+../grader/year.h\
+../grader/semester.h\
     ../grader/commentengine.h \
     ../grader/class.h \
     ../grader/component.h \

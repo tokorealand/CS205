@@ -10,8 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     grad = new Grader();
     populate_existing_labs();
+    grad->add_year("2017");
+    grad->add_semester("spring2017","2017");
+    grad->add_class("CS150spring2017","spring2017");
+    grad->add_section("cadad","CS150spring2017");
+    grad->add_student("luis_lopez","cadad","luis","lopez");
     //build_tabs();
-    std::cout<<grad->get_classes().size()<<"GGGG";
 
     display_classes();
 
@@ -168,12 +172,31 @@ void MainWindow::display_classes()
     }
 }
 
+void MainWindow::display_years()
+{
+    QList<QString> ycontainer;
+    ui->years->clear();
+
+    if(grad->get_years().size()>0)
+    {
+    std::vector<Year*> holder = grad->get_years();
+
+    for(Year* it: holder)
+    {
+        ycontainer.append(QString::fromStdString(it->get_id()));
+    }
+
+    ui->years->addItems(ycontainer);
+    }
+}
+
 
 void MainWindow::on_displayButton_clicked()
 {
     ui->disjava->clear();
     QList<QString> jtcontainer;
     display_classes();
+    display_years();
 
     if(selected_lab != NULL)
     {
@@ -266,4 +289,46 @@ void MainWindow::on_disjava_doubleClicked(const QModelIndex &index)
         ui->disjava->currentItem()->setBackgroundColor(Qt::red);
 
     }
+}
+
+void MainWindow::on_years_activated(const QString &arg1)
+{
+
+//    selected_class=grad->get_class(ui->classlist->currentItem()->text().QString::toStdString());
+//    std::vector<Section*> holder = selected_class->get_sections();
+
+//    for(Section* it: holder)
+//    {
+//        scontainer.append(QString::fromStdString(it->get_id()));
+//    }
+
+//    ui->sectionlist->addItems(scontainer);
+
+//    std::cout<<ui->years->currentText().QString::toStdString();
+
+
+
+//    selected_year=grad->get_year(arg1.QString::toStdString());
+
+//if(selected_year==NULL)
+//{
+
+//    std::cout<<"ADSFDSAFASSDAdas";
+//}
+
+//    QList<QString> semcontainer;
+//    ui->semesters->clear();
+//    ui->sectionlist->clear();
+//    ui->studentlist->clear();
+//    ui->lablist->clear();
+
+
+   //std::vector<Semester*> holder = selected_year->get_semesters();
+
+//    for(Semester* it: holder)
+//    {
+//        semcontainer.append(QString::fromStdString(it->get_id()));
+//    }
+
+//    ui->semesters->addItems(semcontainer);
 }
