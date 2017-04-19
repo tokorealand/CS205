@@ -16,6 +16,8 @@ HEADERS += \
     ../grader/class.h \
     ../grader/component.h \
 ../grader/comment.h\
+../grader/year.h\
+../grader/semester.h\
     controller.h \
     ../grader/rubricobject.h
 
@@ -32,6 +34,8 @@ SOURCES += main.cpp \
     ../grader/component.cpp \
     ../grader/comment.cpp\
     controller.cpp \
+../grader/year.cpp\
+../grader/semester.cpp\
     ../grader/rubricobject.cpp
 
 

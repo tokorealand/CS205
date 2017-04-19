@@ -6,6 +6,8 @@
 #include "../grader/dbtool.h"
 #include "../grader/lab.h"
 #include "../grader/class.h"
+#include "../grader/semester.h"
+#include "../grader/year.h"
 #include "../grader/component.h"
 #include "../grader/commentengine.h"
 #include "../grader/comment.h"
@@ -20,6 +22,8 @@
 class Controller : public DBTable{
 
 private:
+    std::vector<Year*> years;
+    std::vector<Semester*> semesters;
     std::vector<Class*> classes;
     std::vector<Section*> sections;
     std::vector<Student*> students;
@@ -27,6 +31,8 @@ private:
     std::vector<Component*> components;
     std::vector<Comment*> comments;
 
+    std::string table_year = "yeartable";
+    std::string table_semester = "semestertable";
     std::string table_class = "classtable";
     std::string table_section = "sectiontable";
     std::string table_student = "studenttable";
@@ -37,6 +43,14 @@ private:
 
 
     DBTool *class_tool;
+
+    bool select_all_years();
+    bool drop_year_table();
+    std::string sql_select_all_year;
+
+    bool select_all_semesters();
+    bool drop_semester_table();
+    std::string sql_select_all_semester;
 
     bool select_all_classes();
     bool drop_class_table();
@@ -86,7 +100,12 @@ public:
     /* String version of the creation methods.
      *
      **/
-    void add_class(std::string classID, int number_of_sections);
+
+    void add_year(std::string yearID);
+
+    void add_semester(std::string semesterID, std::string yearID);
+
+    void add_class(std::string classID,std::string semesterID);
 
     void add_section(std::string sectionID, std::string classID);
 
@@ -111,6 +130,9 @@ public:
 
     void add_lab(std::string labID, Student* lab_of_student, std::string labName, std::string labNumber, DBTool *tool, std::string table);
 
+
+    Year* get_year(std::string id);
+    Semester* get_semester(std::string id);
     Class* get_class(std::string id);
     Section* get_section(std::string id);
     Student* get_student(std::string id);
@@ -119,10 +141,23 @@ public:
     Comment* get_comment(std::string id);
 
 
+    std::vector<Year*> get_years();
+    std::vector<Semester*> get_semesters();
     std::vector<Class*> get_classes();
 
 
+
 };
+
+int cb_select_all_years(void  *data,
+                          int    argc,
+                          char **argv,
+                          char **azColName);
+
+int cb_select_all_semesters(void  *data,
+                          int    argc,
+                          char **argv,
+                          char **azColName);
 
 int cb_select_all_classes(void  *data,
                           int    argc,

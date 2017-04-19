@@ -12,6 +12,14 @@ Controller::Controller(DBTool *tool):DBTable(tool)
 Controller::~Controller()
 {
     total_drop();
+    for(Year* it : years)
+    {
+        delete it;
+    }
+    for(Semester* it : semesters)
+    {
+        delete it;
+    }
     for(Class* it : classes)
     {
         delete it;
@@ -52,6 +60,8 @@ std::string Controller::student_list()
 
 void Controller::total_recall()
 {
+    select_all_years();
+    select_all_semesters();
     select_all_classes();
     select_all_sections();
     select_all_students();
@@ -68,7 +78,37 @@ void Controller::total_drop()
     drop_student_table();
     drop_section_table();
     drop_class_table();
+    drop_semester_table();
+    drop_year_table();
 }
+
+
+Year* Controller::get_year(std::string id)
+{
+    for(Year* it: years)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
+}
+
+Semester* Controller::get_semester(std::string id)
+{
+    for(Semester* it: semesters)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
+}
+
 
 Class* Controller::get_class(std::string id)
 {
@@ -150,6 +190,30 @@ Comment* Controller::get_comment(std::string id)
 
 bool Controller::item_exist(std::string id, std::string type)
 {
+    if(type == "year")
+    {
+        for(Year* it : years)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(type == "semester")
+    {
+        for(Semester* it : semesters)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     if(type == "class")
     {
         for(Class* it : classes)
@@ -222,20 +286,57 @@ bool Controller::item_exist(std::string id, std::string type)
     return false;
 }
 
+std::vector<Year*> Controller:: get_years()
+{
+    return years;
+}
+
+std::vector<Semester*> Controller:: get_semesters()
+{
+    return semesters;
+}
+
 std::vector<Class*> Controller:: get_classes()
 {
     return classes;
 }
 
 
-void Controller::add_class(std::string classID, int number_of_sections)
+
+void Controller::add_year(std::string yearID)
+{
+    if(item_exist(yearID,"year"))
+    {
+        return;
+    }
+
+    Year *yea = new Year(yearID,class_tool,table_year);
+    years.push_back(yea);
+}
+
+void Controller::add_semester(std::string semesterID, std::string yearID)
+{
+    if(item_exist(semesterID,"semester"))
+    {
+        return;
+    }
+
+    Semester *sem = new Semester(semesterID, yearID,class_tool,table_semester);
+    semesters.push_back(sem);
+    get_year(yearID)->add_semester(sem);
+}
+
+
+
+void Controller::add_class(std::string classID,std::string semesterID)
 {
     if(item_exist(classID,"class"))
     {
         return;
     }
-    Class *cla = new Class(classID,number_of_sections,class_tool,table_class);
+    Class *cla = new Class(classID,semesterID,class_tool,table_class);
     classes.push_back(cla);
+    get_semester(semesterID)->add_class(cla);
 
 
 }
@@ -300,6 +401,229 @@ void Controller::add_comment(std::string commentID, std::string labID, std::stri
     get_lab(labID)->add_comment(com);
 }
 
+
+
+//Used to retriveve all players in database
+bool Controller::select_all_years() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_year  = "SELECT * FROM ";
+    sql_select_all_year+= table_year;
+    sql_select_all_year += ";";
+
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_year.c_str(),
+                           cb_select_all_years,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+                std::cerr << table_name
+                          << " template ::"
+                          << std::endl
+                          << "SQL error: "
+                          << zErrMsg;
+
+                sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
+// Removes the db table from the database.
+bool Controller::drop_year_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_year="DROP TABLE ";
+    sql_drop_year += table_year;
+    sql_drop_year += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_year.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << sql_drop
+                  << std::endl;
+
+        std::cerr << "SQL error: "
+                  << zErrMsg
+                  << std::endl;
+
+        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+
+//Call back for select_all_pgh
+int cb_select_all_years(void  *data,
+                        int    argc,
+                        char **argv,
+                        char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_years being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    obj->add_year(argv[0]);
+
+
+    return 0;
+}
+
+
+////////////////////////////
+//Used to retriveve all players in database
+bool Controller::select_all_semesters() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_semester  = "SELECT * FROM ";
+    sql_select_all_semester+= table_semester;
+    sql_select_all_semester += ";";
+
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_semester.c_str(),
+                           cb_select_all_semesters,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+                std::cerr << table_name
+                          << " template ::"
+                          << std::endl
+                          << "SQL error: "
+                          << zErrMsg;
+
+                sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
+// Removes the db table from the database.
+bool Controller::drop_semester_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_semester="DROP TABLE ";
+    sql_drop_semester += table_semester;
+    sql_drop_semester += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_semester.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << sql_drop
+                  << std::endl;
+
+        std::cerr << "SQL error: "
+                  << zErrMsg
+                  << std::endl;
+
+        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+
+//Call back for select_all_pgh
+int cb_select_all_semesters(void  *data,
+                            int    argc,
+                            char **argv,
+                            char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_semesters being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    obj->add_semester(argv[0],argv[1]);
+
+
+    return 0;
+}
+
+
+
+//////////////////////////////////////
 //Used to retriveve all players in database
 bool Controller::select_all_classes() {
     int   retCode = 0;
@@ -318,13 +642,13 @@ bool Controller::select_all_classes() {
 
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << table_name
-        //                  << " template ::"
-        //                  << std::endl
-        //                  << "SQL error: "
-        //                  << zErrMsg;
+                std::cerr << table_name
+                          << " template ::"
+                          << std::endl
+                          << "SQL error: "
+                          << zErrMsg;
 
-        //        sqlite3_free(zErrMsg);
+                sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -402,7 +726,7 @@ int cb_select_all_classes(void  *data,
 
     }
 
-    obj->add_class(argv[0],std::stoi(argv[1]));
+    obj->add_class(argv[0],argv[1]);
 
 
     return 0;
