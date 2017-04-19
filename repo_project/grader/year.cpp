@@ -25,10 +25,12 @@ std::string Year:: get_id()
 void Year::add_semester(Semester* sem)
 {
 semester.push_back(sem);
+std::cout<<"ggggg"<<get_semesters().size();
 }
 
 std::vector<Semester*> Year::get_semesters()
 {
+
     return semester;
 }
 

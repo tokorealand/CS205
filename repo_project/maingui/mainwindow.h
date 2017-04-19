@@ -60,6 +60,8 @@ private slots:
 
     void on_years_activated(const QString &arg1);
 
+    void on_semesters_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;

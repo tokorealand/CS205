@@ -33,12 +33,13 @@ vector<Semester*> Grader::get_semesters()
 
 Year* Grader::get_year(string id)
 {
-    control->get_year(id);
+
+   return control->get_year(id);
 }
 
 Semester* Grader::get_semester(string id)
 {
-    control->get_semester(id);
+   return  control->get_semester(id);
 }
 
 void Grader::add_year(string yearID)
@@ -99,6 +100,8 @@ Student* Grader::get_student(string id)
 {
     return control->get_student(id);
 }
+
+
 
 Lab* Grader::get_lab(string id)
 {
