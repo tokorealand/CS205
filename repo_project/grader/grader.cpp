@@ -2,7 +2,7 @@
 
 Grader::Grader()
 {
-    tool = new DBTool("TEST3");
+    tool = new DBTool("TEST4");
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
 
@@ -19,11 +19,41 @@ std::string Grader::student_list()
     return control->student_list();
 }
 
-
-
-void Grader::add_class(string classID, int number_of_sections)
+vector<Year*> Grader::get_years()
 {
-    control->add_class(classID,number_of_sections);
+    return control->get_years();
+
+}
+
+vector<Semester*> Grader::get_semesters()
+{
+    return control->get_semesters();
+
+}
+
+Year* Grader::get_year(string id)
+{
+    control->get_year(id);
+}
+
+Semester* Grader::get_semester(string id)
+{
+    control->get_semester(id);
+}
+
+void Grader::add_year(string yearID)
+{
+    control->add_year(yearID);
+}
+
+void Grader::add_semester(string semesterID,string yearID)
+{
+    control->add_semester(semesterID,yearID);
+}
+
+void Grader::add_class(string classID,std::string semesterid)
+{
+    control->add_class(classID,semesterid);
 }
 
 void Grader::add_section(std::string sectionID, string classID)

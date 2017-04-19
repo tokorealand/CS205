@@ -45,11 +45,20 @@ public:
 
     void add_section(std::string sectionID, std::string classID);
 
-    void add_class(std::string classID, int number_of_sections);
+    void add_class(std::string classID, std::string semesterid);
+
+    void add_semester(std::string semesterID, std::string classID);
+
+    void add_year(std::string yearID);
+
 
     std::string student_list();
 
 
+
+    Year* get_year(std::string id);
+
+    Semester* get_semester(std::string id);
 
     Class* get_class(std::string id);
 
@@ -70,6 +79,10 @@ public:
     void add_lab_name(string name);
 
     vector<string> get_lab_name_list();
+
+    vector<Year*> get_years();
+
+    vector<Semester*> get_semesters();
 
     vector<Class*> get_classes();
 

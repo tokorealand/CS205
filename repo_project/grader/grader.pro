@@ -21,7 +21,9 @@ SOURCES += main.cpp \
     fileparser.cpp \
     component.cpp \
     comment.cpp \
-    rubricobject.cpp
+    rubricobject.cpp \
+    year.cpp \
+    semester.cpp
 
 HEADERS += \
     grader.h \
@@ -36,5 +38,7 @@ HEADERS += \
     fileparser.h \
     component.h \
     comment.h \
-    rubricobject.h
+    rubricobject.h \
+    year.h \
+    semester.h
 

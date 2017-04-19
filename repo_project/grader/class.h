@@ -20,7 +20,7 @@ class Class : public DBTable
 private:
 
     std::string id;
-    int number_of_sections = 0;
+    std::string semesterid;
     DBTool *tool;
     vector<Section*> sections;
 
@@ -30,7 +30,7 @@ protected:
 
 public:
     Class();
-    Class(std::string classID,int number_of_sections,DBTool *tool, std::string table);
+    Class(std::string classID,std::string semesterid,DBTool *tool, std::string table);
     ~Class();
 
     void add_section(Section* sec);
@@ -44,7 +44,7 @@ public:
 
     void store_add_row_sql();
     std::string get_id();
-    bool add_row(std::string id, int number_of_sections);
+    bool add_row(std::string id, std::string semesterid);
 
   //  void increment_section();
 

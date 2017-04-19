@@ -1,11 +1,11 @@
 #include "class.h"
 
-Class::Class(std::string classID, int number_of_sections, DBTool *tool, std::string table):DBTable(tool,table)
+Class::Class(std::string classID, string semesterid, DBTool *tool, std::string table):DBTable(tool,table)
 {
 
-    this->number_of_sections = number_of_sections;
     this->id = classID;
     this->tool = tool;
+    this->semesterid=semesterid;
 
     store_add_row_sql();
 
@@ -18,7 +18,7 @@ Class::~Class()
 
 
     build_table();
-    add_row(id,number_of_sections);
+    add_row(id,semesterid);
 }
 
 std::string Class:: get_id()
@@ -61,7 +61,6 @@ Section* Class::get_section(int sectionid)
 
 
 
-
 // SQL used for inputting information
 void Class::store_add_row_sql() {
 
@@ -82,23 +81,23 @@ void Class::store_create_sql() {
     sql_create += table_name;
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
-    sql_create += "  number_of_sections INT NOT NULL";
+    sql_create += "  semesterid TEXT NOT NULL";
 
     sql_create += " );";
+
 
 }
 
 
-bool Class::add_row(std::string id, int number_of_sections) {
+bool Class::add_row(std::string id, std::string semesterid) {
     int   retCode = 0;
     char *zErrMsg = 0;
-    char  tempval[128];
 
 
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, number_of_sections )";
+    sql_add_row += " ( id, semesterid )";
     sql_add_row += "VALUES (";
 
 
@@ -106,8 +105,9 @@ bool Class::add_row(std::string id, int number_of_sections) {
     sql_add_row += std::string(id);
     sql_add_row += "\", ";
 
-    sprintf (tempval, "%d", number_of_sections);
-    sql_add_row += tempval;
+    sql_add_row += "\"";
+    sql_add_row += std::string(semesterid);
+    sql_add_row += "\" ";
     sql_add_row += " );";
 
 
@@ -117,7 +117,7 @@ bool Class::add_row(std::string id, int number_of_sections) {
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_add_row.c_str(),
-                           cb_add_row_section,
+                           cb_add_row_class,
                            this,
                            &zErrMsg          );
 
