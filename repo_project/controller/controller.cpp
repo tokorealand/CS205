@@ -83,22 +83,26 @@ void Controller::total_drop()
 }
 
 
+
+/**
+ *
+ * GET METHODS
+ *
+ */
+
 Year* Controller::get_year(std::string id)
 {
-    std::cout<<"\n"<<"asdasdasd"<<id;
 
     for(Year* it: years)
     {
         if(it->get_id() == id)
         {
 
-            std::cout<<"\n"<<"ygaytvdyav"<<it->get_id();
 
             return it;
         }
 
     }
-    std::cout<<"NONNOONONONONONON";
     return NULL;
 }
 

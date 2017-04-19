@@ -55,7 +55,7 @@ public:
     std::string student_list();
 
 
-
+//pointer get methods
     Year* get_year(std::string id);
 
     Semester* get_semester(std::string id);
@@ -76,8 +76,12 @@ public:
 
     FileParser* get_file_parser();
 
+
+
     void add_lab_name(string name);
 
+
+//vector get methods
     vector<string> get_lab_name_list();
 
     vector<Year*> get_years();

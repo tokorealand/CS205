@@ -31,16 +31,7 @@ vector<Semester*> Grader::get_semesters()
 
 }
 
-Year* Grader::get_year(string id)
-{
 
-   return control->get_year(id);
-}
-
-Semester* Grader::get_semester(string id)
-{
-   return  control->get_semester(id);
-}
 
 void Grader::add_year(string yearID)
 {
@@ -86,6 +77,23 @@ void Grader::add_comment(std::string commentID, std::string labID, std::string l
     control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
 }
 
+
+/**
+ *
+ * GET METHODS
+ *
+ */
+
+Year* Grader::get_year(string id)
+{
+
+   return control->get_year(id);
+}
+
+Semester* Grader::get_semester(string id)
+{
+   return  control->get_semester(id);
+}
 Class* Grader::get_class(string id)
 {
     return control->get_class(id);
@@ -100,8 +108,6 @@ Student* Grader::get_student(string id)
 {
     return control->get_student(id);
 }
-
-
 
 Lab* Grader::get_lab(string id)
 {
@@ -123,6 +129,10 @@ FileParser* Grader::get_file_parser()
     return fp;
 }
 
+Controller* Grader::get_control(){
+    return control;
+}
+
 vector<Class*> Grader::get_classes()
 {
     return control->get_classes();
@@ -136,6 +146,4 @@ vector<string> Grader::get_lab_name_list(){
     return listOfLabNames;
 }
 
-Controller* Grader::get_control(){
-    return control;
-}
+
