@@ -11,7 +11,9 @@
 #include "../addlabsGUI/addlabsgui.h"
 #include "../CommentGUI/dialog.h"
 #include "../selectiongui/selectiongui.h"
-#include <QListWidget>
+#include "../grader/year.h"
+#include "../grader/semester.h"
+
 
 class Grader;
 namespace Ui {
@@ -56,15 +58,20 @@ private slots:
 
     void on_disjava_doubleClicked(const QModelIndex &index);
 
+    void on_years_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Lab* selected_lab = nullptr;
     Student* selected_student = nullptr;
     Class* selected_class = nullptr;
     Section* selected_section =nullptr;
+    Year* selected_year =nullptr;
+    Semester* selected_semester =nullptr;
     Grader *grad;
 
     void display_classes();
+    void display_years();
 
 
 };
