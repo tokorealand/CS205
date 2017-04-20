@@ -9,5 +9,6 @@ SUBDIRS += \
     CommentGUI\
     labViewGUI \
     RubricCreatorGUI \
-    Exporter
+    Exporter \
+    GradeBookGUI
 
