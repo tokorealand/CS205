@@ -122,20 +122,33 @@ void FileParser::parse_java_file(string aFilepath)
             parseLen = parseEnd - parseStart;
             string section_number = lab.substr(parseStart, parseLen);
 
+             parseStart = parseEnd+1 ;
+             parseEnd = lab.find("_", parseStart);
+             parseLen = parseEnd - parseStart;
+             string lab_number= lab.substr(parseStart, parseLen);
+
+             parseStart = parseEnd+1 ;
+             parseEnd = lab.find("_", parseStart);
+             parseLen = parseEnd - parseStart;
+             string semester = lab.substr(parseStart, parseLen);
 
              parseStart = parseEnd+1 ;
              parseEnd = lab.length();
              parseLen = parseEnd - parseStart;
-             string lab_number= lab.substr(parseStart, parseLen);
+             string year = lab.substr(parseStart, parseLen);
 
-                string classID = class_name;
-                string sectionID = class_name + "_" + section_number;
-                string studentID = first_name + "_" + last_name;
-                string labID = first_name + "_" + last_name + "_" +lab_number;
+                string yearID = year;
+                string semesterID = semester+"_"+year;
+                string classID = class_name+"_"+semester+"_"+year;
+                string sectionID = class_name + "_" + section_number+"_"+semester+"_"+year;
+                string studentID = first_name + "_" + last_name+"_"+ class_name + "_" + section_number+"_"+semester+"_"+year;
+                string labID = first_name + "_" + last_name + "_" +lab_number+"_"+ class_name + "_" + section_number+"_"+semester+"_"+year;
                 string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
 
 
-                grader->add_class(classID, 0);
+                grader->add_year(yearID);
+                grader->add_semester(semesterID, yearID);
+                grader->add_class(classID, semesterID);
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
                 grader->add_lab(labID, studentID, labName, lab_number);
