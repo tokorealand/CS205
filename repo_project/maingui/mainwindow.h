@@ -64,6 +64,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Component* selected_component =nullptr;
     Lab* selected_lab = nullptr;
     Student* selected_student = nullptr;
     Class* selected_class = nullptr;

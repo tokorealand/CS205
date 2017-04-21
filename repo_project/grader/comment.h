@@ -27,6 +27,7 @@ private:
 
 
 
+
 public: 
     Comment(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
 
@@ -48,6 +49,7 @@ public:
      double get_points_deducted();
      std::string get_highlight_color();
      bool get_highlight();
+     std::string get_linenumber();
 
 };
 

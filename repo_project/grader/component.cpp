@@ -5,7 +5,7 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     this->id = id;
     this->labID = labID;
     this->text = aText;
-    this->make_text_lines();
+    make_text_lines();
 
     // Load SQL specific to child class.
     store_add_row_sql();
@@ -56,6 +56,11 @@ std::vector<std::string> Component:: get_text_lines()
 void Component::add_comment(Comment* comment)
 {
     comments.push_back(comment);
+}
+
+std::vector<Comment*> Component::get_comments()
+{
+    return this->comments;
 }
 
 

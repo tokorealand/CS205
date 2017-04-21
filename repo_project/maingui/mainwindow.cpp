@@ -192,7 +192,7 @@ void MainWindow::on_displayButton_clicked()
         Component* com = selected_lab->get_components().at(0);
         for(int i = 0; i<selected_lab->get_components().at(0)->get_text_lines().size(); i++)
         {
-            string  javaText = to_string(i) +"     " + selected_lab->get_components().at(0)->get_text_lines().at(i) ;
+            string  javaText = to_string(i) + "     " + selected_lab->get_components().at(0)->get_text_lines().at(i);
             jtcontainer.push_back(QString::fromStdString(javaText));
         }
 

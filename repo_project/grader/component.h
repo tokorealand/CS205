@@ -41,10 +41,11 @@ public:
 
     void make_text_lines();
     std::vector<std::string> get_text_lines();
+
     std::string get_id();
+
     void add_comment(Comment* comment);
-
-
+    std::vector<Comment*> get_comments();
 
 };
 

@@ -92,8 +92,8 @@ void FileParser::parse_java_file(string aFilepath)
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
                 grader->add_lab(labID, studentID, labName, lab_number);
-                cout<<"Lab Sucessfully added";
-                cout<<'\n';
+//                cout<<"Lab Sucessfully added";
+//                cout<<'\n';
 
 
                 QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
@@ -111,8 +111,8 @@ void FileParser::parse_java_file(string aFilepath)
 
                        string componentName = component.toStdString().substr(parseStart, parseLen);
                        string componentID = labID + "_" + componentName;
-//                        cout<<componentName;
-//                        cout<<'\n';
+                        cout<<componentID;
+                        cout<<'\n';
 
                             ifstream java;
                             java.open(component.toStdString());
