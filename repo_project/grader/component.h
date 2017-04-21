@@ -9,7 +9,9 @@
 #include <sys/types.h>
 #include "dbtool.h"
 #include "dbtable.h"
+#include "comment.h"
 
+class Comment;
 class Component : public DBTable
 {
 
@@ -18,17 +20,12 @@ private:
     std::string labID;
     std::string id;
     std::vector<std::string> text_lines;
+    std::vector<Comment*> comments;
 
 
 public:
     Component(std::string id, std::string labID, std::string text, DBTool *tool, std::string table);
     ~Component();
-
-    void make_text_lines();
-    std::vector<std::string> get_text_lines();
-
-
-    std::string get_id();
 
     // An overloaded method to generate a new
     // create command for your child class.
@@ -41,6 +38,12 @@ public:
     bool add_row(std::string id, std::string labid, std::string compath);
 
     std::string get_text();
+
+    void make_text_lines();
+    std::vector<std::string> get_text_lines();
+    std::string get_id();
+    void add_comment(Comment* comment);
+
 
 
 };

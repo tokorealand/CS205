@@ -45,7 +45,6 @@ void Component:: make_text_lines()
         parseStart = parseEnd+1;
         parseEnd = text.find("\n", parseStart) ;
         parseLen =  parseEnd - parseStart;
-
     }
 }
 
@@ -53,6 +52,13 @@ std::vector<std::string> Component:: get_text_lines()
 {
     return this->text_lines;
 }
+
+void Component::add_comment(Comment* comment)
+{
+    comments.push_back(comment);
+}
+
+
 
 // SQL used for inputting information
 void Component::store_add_row_sql() {
