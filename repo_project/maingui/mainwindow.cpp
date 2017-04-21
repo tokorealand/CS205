@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    grad->add_student("luis_lopez","cadad","luis","lopez");
     //build_tabs();
 
-    display_classes();
+    display_years();
 
     //set up slots
     //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
@@ -185,7 +185,6 @@ void MainWindow::on_displayButton_clicked()
 {
     ui->disjava->clear();
     QList<QString> jtcontainer;
-    display_classes();
     display_years();
 
 
