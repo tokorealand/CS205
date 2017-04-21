@@ -188,10 +188,11 @@ void MainWindow::on_displayButton_clicked()
     display_classes();
     display_years();
 
-   Component* com = selected_lab->get_components().at(0);
+
 
     if(selected_lab != NULL)
     {
+        Component* com = selected_lab->get_components().at(0);
         for(int i = 0; i<selected_lab->get_components().at(0)->get_text_lines().size(); i++)
         {
             string  javaText = selected_lab->get_components().at(0)->get_text_lines().at(i) ;
