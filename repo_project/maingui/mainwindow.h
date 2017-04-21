@@ -7,12 +7,12 @@
 #include <QSignalMapper>
 #include "../grader/lab.h"
 #include "../grader/grader.h"
-#include "../add_students_gui/add_students_gui.h"
 #include "../addlabsGUI/addlabsgui.h"
 #include "../CommentGUI/dialog.h"
 #include "../selectiongui/selectiongui.h"
 #include "../grader/year.h"
 #include "../grader/semester.h"
+#include "../grader/component.h"
 
 
 class Grader;

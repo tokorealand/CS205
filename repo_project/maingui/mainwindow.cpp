@@ -132,16 +132,6 @@ void MainWindow::on_actionLoad_Lab_triggered()
 }
 
 
-void MainWindow::on_actionAdd_Students_triggered()
-{
-    add_students_gui* asg = new add_students_gui(0, grad);
-    asg->show();
-
-
-
-
-
-}
 
 void MainWindow::on_actionComment_triggered(){
 
@@ -198,13 +188,18 @@ void MainWindow::on_displayButton_clicked()
     display_classes();
     display_years();
 
+   Component* com = selected_lab->get_components().at(0);
+
     if(selected_lab != NULL)
     {
-
-            QString  javaText = QString::fromStdString(selected_lab->get_components().at(0)->get_text()) ;
-            jtcontainer.push_back(javaText);
+        for(int i = 0; i<selected_lab->get_components().at(0)->get_text_lines().size(); i++)
+        {
+            string  javaText = selected_lab->get_components().at(0)->get_text_lines().at(i) ;
+            jtcontainer.push_back(QString::fromStdString(javaText));
+        }
 
         ui->disjava->addItems(jtcontainer);
+
     }
     else
     {
@@ -212,6 +207,10 @@ void MainWindow::on_displayButton_clicked()
         QString nolab = "PLEASE SELECT LAB";
         ui->disjava->addItem(nolab);
     }
+}
+void MainWindow::on_actionAdd_Students_triggered()
+{
+
 }
 
 void MainWindow::on_pushButton_clicked()

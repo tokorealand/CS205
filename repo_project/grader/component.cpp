@@ -5,6 +5,7 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     this->id = id;
     this->labID = labID;
     this->text = aText;
+    this->make_text_lines();
 
     // Load SQL specific to child class.
     store_add_row_sql();
@@ -30,6 +31,27 @@ std::string Component::get_id()
 std::string Component:: get_text()
 {
     return text;
+}
+
+void Component:: make_text_lines()
+{
+    int parseStart = 0;
+    int parseEnd = text.find("\n");
+    int parseLen= parseEnd - parseStart;
+    while(text.find("\n", parseStart) != text.npos)
+    {
+        std:: string line = text.substr(parseStart, parseLen);
+        text_lines.push_back(line);       
+        parseStart = parseEnd+1;
+        parseEnd = text.find("\n", parseStart) ;
+        parseLen =  parseEnd - parseStart;
+
+    }
+}
+
+std::vector<std::string> Component:: get_text_lines()
+{
+    return this->text_lines;
 }
 
 // SQL used for inputting information

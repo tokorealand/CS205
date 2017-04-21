@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>502</height>
+    <width>822</width>
+    <height>655</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,25 +164,6 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QTextEdit" name="textEdit_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -236,8 +217,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>691</width>
-     <height>19</height>
+     <width>822</width>
+     <height>22</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -254,7 +235,6 @@
     </widget>
     <addaction name="menuExisting_Labs"/>
     <addaction name="actionLoad_New_Lab"/>
-    <addaction name="actionAdd_Students"/>
    </widget>
    <widget class="QMenu" name="menuGrade">
     <property name="title">

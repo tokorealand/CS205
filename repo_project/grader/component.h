@@ -17,11 +17,16 @@ private:
     std::string text;
     std::string labID;
     std::string id;
+    std::vector<std::string> text_lines;
 
 
 public:
     Component(std::string id, std::string labID, std::string text, DBTool *tool, std::string table);
     ~Component();
+
+    void make_text_lines();
+    std::vector<std::string> get_text_lines();
+
 
     std::string get_id();
 
