@@ -2,7 +2,7 @@
 
 Grader::Grader()
 {
-    tool = new DBTool("TEST16"
+    tool = new DBTool("TEST1909"
                       "");
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
@@ -124,13 +124,8 @@ Comment* Grader::get_comment(string id)
     return control->get_comment(id);
 }
 
-FileParser* Grader::get_file_parser()
-{
+FileParser* Grader::get_file_parser(){
     return fp;
-}
-
-Controller* Grader::get_control(){
-    return control;
 }
 
 vector<Class*> Grader::get_classes()
@@ -146,4 +141,15 @@ vector<string> Grader::get_lab_name_list(){
     return listOfLabNames;
 }
 
+Controller* Grader::get_control(){
+    return control;
+}
+
+void Grader::add_temp_rubric(RubricObject *r){
+    tempRubric = r;
+}
+
+RubricObject* Grader::get_temp_rubric(){
+    return tempRubric;
+}
 

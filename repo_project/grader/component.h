@@ -22,6 +22,9 @@ private:
     std::vector<std::string> text_lines;
     std::vector<Comment*> comments;
 
+    std::string table;
+    DBTool* tool;
+
 
 public:
     Component(std::string id, std::string labID, std::string text, DBTool *tool, std::string table);
@@ -44,7 +47,8 @@ public:
 
     std::string get_id();
 
-    void add_comment(Comment* comment);
+    void add_comment(std::string commentId, std::string labId, std::string lineNumber, std::string commentText,
+                     std::string rubricSection, std::string highlightColor, std::string pointsDeducted);
     std::vector<Comment*> get_comments();
 
 };

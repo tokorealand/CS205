@@ -218,7 +218,7 @@
      <x>0</x>
      <y>0</y>
      <width>822</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -228,20 +228,12 @@
     <property name="title">
      <string>File</string>
     </property>
-    <widget class="QMenu" name="menuExisting_Labs">
-     <property name="title">
-      <string>Existing Labs</string>
-     </property>
-    </widget>
-    <addaction name="menuExisting_Labs"/>
     <addaction name="actionLoad_New_Lab"/>
    </widget>
    <widget class="QMenu" name="menuGrade">
     <property name="title">
      <string>Grade</string>
     </property>
-    <addaction name="actionAnother_Lab"/>
-    <addaction name="actionLoad_Lab"/>
    </widget>
    <widget class="QMenu" name="menuGrading_Tools">
     <property name="title">
@@ -267,34 +259,9 @@
     <string>Add New Labs</string>
    </property>
   </action>
-  <action name="actionSample">
-   <property name="text">
-    <string>sample</string>
-   </property>
-  </action>
-  <action name="actionAdd_Students">
-   <property name="text">
-    <string>Add Students</string>
-   </property>
-  </action>
-  <action name="actionAnother_Lab">
-   <property name="text">
-    <string>Load Random Lab</string>
-   </property>
-  </action>
   <action name="actionComment">
    <property name="text">
     <string>Comment</string>
-   </property>
-  </action>
-  <action name="actionHighlight">
-   <property name="text">
-    <string>Highlight</string>
-   </property>
-  </action>
-  <action name="actionLoad_Lab">
-   <property name="text">
-    <string>Load Lab</string>
    </property>
   </action>
  </widget>

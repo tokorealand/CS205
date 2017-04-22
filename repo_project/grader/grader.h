@@ -90,7 +90,10 @@ public:
 
     vector<Class*> get_classes();
 
-
+    //ALLIE
+    void add_temp_rubric(RubricObject *r);
+    RubricObject* get_temp_rubric();
+    RubricObject* tempRubric;
 
 
 };

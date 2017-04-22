@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "../grader/grader.h"
 #include "../grader/fileparser.h"
+#include "../grader/component.h"
 
 namespace Ui {
 class Dialog;
@@ -13,7 +14,7 @@ class Dialog : public QDialog{
     Q_OBJECT
 
 public:
-    explicit Dialog(QWidget *parent = 0, Grader* aGrader = NULL, Lab *aLab = nullptr);
+    explicit Dialog(QWidget *parent = 0, Grader* aGrader = NULL, Lab *aLab = nullptr, Component *aComponent = nullptr);
     ~Dialog();
 
 private slots:
@@ -28,6 +29,7 @@ private:
     Grader* grader;
     Lab *lab;
     QStringList commentQStringList;
+    Component *component;
 };
 
 #endif // DIALOG_H

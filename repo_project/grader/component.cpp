@@ -7,6 +7,9 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     this->text = aText;
     make_text_lines();
 
+    this->tool = tool;
+    this->table = table;
+
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -53,9 +56,10 @@ std::vector<std::string> Component:: get_text_lines()
     return this->text_lines;
 }
 
-void Component::add_comment(Comment* comment)
-{
-    comments.push_back(comment);
+void Component::add_comment(string commentId, string labId, string lineNumber, string commentText,
+                            string rubricSection, string highlightColor, string pointsDeducted){
+    Comment *c = new Comment(commentId, labId, lineNumber, commentText, rubricSection, highlightColor, pointsDeducted, tool, table);
+    comments.push_back(c);
 }
 
 std::vector<Comment*> Component::get_comments()
