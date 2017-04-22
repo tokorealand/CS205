@@ -5,6 +5,7 @@ Semester::Semester(std::string id, std::string yearid,DBTool *tool, std::string 
     this->id=id;
     this->yearid=yearid;
     this->tool=tool;
+    this->name = id.substr(0, id.find("_"));
     store_add_row_sql();
     store_create_sql();
 }
@@ -31,6 +32,11 @@ classes.push_back(cla);
 std::vector<Class*> Semester::get_classes()
 {
     return classes;
+}
+
+std::string Semester:: get_name()
+{
+    return this->name;
 }
 
 // SQL used for inputting information

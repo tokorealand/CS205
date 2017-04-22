@@ -31,6 +31,25 @@ public:
 private slots:
     void on_yearSelect_activated(const QString &arg1);
 
+    void on_actionAdd_New_Labs_triggered();
+
+    void on_Refresh_clicked();
+
+    void on_semesterSelect_activated(const QString &arg1);
+
+    void on_classSelect_activated(const QString &arg1);
+
+    void on_sectionSelect_activated(const QString &arg1);
+
+    void on_labSelect_activated(const QString &arg1);
+
+    void on_studentSelect_activated(const QString &arg1);
+
+
+    void on_componentSelect_activated(const QModelIndex &index);
+
+    void display_component_text();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;

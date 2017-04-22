@@ -6,6 +6,7 @@ Class::Class(std::string classID, string semesterid, DBTool *tool, std::string t
     this->id = classID;
     this->tool = tool;
     this->semesterid=semesterid;
+    this->name = id.substr(0, id.find("_"));
 
     store_add_row_sql();
 
@@ -37,7 +38,10 @@ void Class::add_section(Section* sec)
 sections.push_back(sec);
 }
 
-
+std::string Class:: get_name()
+{
+    return this->name;
+}
 
 std::vector<Section*> Class::get_sections()
 {

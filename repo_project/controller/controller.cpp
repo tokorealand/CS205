@@ -97,8 +97,6 @@ Year* Controller::get_year(std::string id)
     {
         if(it->get_id() == id)
         {
-
-
             return it;
         }
 

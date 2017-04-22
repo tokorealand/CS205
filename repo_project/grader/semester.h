@@ -22,6 +22,7 @@ private:
     std::string yearid;
     DBTool *tool;
     vector<Class*> classes;
+    std::string name;
 
 protected:
     std::string sql_select_all;
@@ -34,6 +35,7 @@ public:
     Class* get_class(int classid);
 
     std::vector<Class*> get_classes();
+    std::string get_name();
 
 
     // create command for your child class.
