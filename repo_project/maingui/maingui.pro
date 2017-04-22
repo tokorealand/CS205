@@ -40,7 +40,6 @@ SOURCES += main.cpp\
     ../grader/fileparser.cpp \
     ../grader/comment.cpp\
     ../controller/controller.cpp\
-    ../add_students_gui/add_students_gui.cpp\
     ../addlabsGUI/addlabsgui.cpp\
 ../grader/year.cpp\
 ../grader/semester.cpp\
@@ -68,7 +67,6 @@ HEADERS  += mainwindow.h \
 ../grader/semester.h\
     ../grader/comment.h\
     ../controller/controller.h\
-     ../add_students_gui/add_students_gui.h\
     ../addlabsGUI/addlabsgui.h \
     ../CommentGUI/dialog.h \
     ../RubricCreatorGUI/rubriccreatorgui.h \
@@ -80,7 +78,6 @@ HEADERS  += mainwindow.h \
 
 
 FORMS    += mainwindow.ui\
-                    ../add_students_gui/add_students_gui.ui\
                     ../addlabsGUI/addlabsgui.ui\
                     ../CommentGUI/dialog.ui \
                     ../RubricCreatorGUI/rubriccreatorgui.ui\

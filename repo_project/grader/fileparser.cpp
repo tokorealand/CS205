@@ -14,66 +14,6 @@ FileParser::~FileParser(){
 }
 
 
-//parses the student file
-string FileParser::parse_student_file(string aFilePath){
-
-    string studentInfo = "";
-
-    try{
-        file.open(aFilePath);
-    }
-    catch(const std::exception& e)
-    {
-        cout<<"ERROR File does not exist";
-        cout<<'\n';
-    }
-
-    string s;
-
-    while(getline(file , s))
-    {
-
-        string delim = ":";
-        int start = 0;
-        int end = s.find_first_of(delim);
-        int len = end-start;
-
-        string first_name = s.substr(start , len);
-        start = end+1;
-        end = s.find_first_of(delim, start);
-        len = end-start;
-
-        string last_name = s.substr(start,len);
-        start = end+1;
-        end = s.find_first_of(delim, start);
-        len = end-start;
-
-        string class_name = s.substr(start,len);
-        start = end+1;
-        end = s.find_first_of(delim, start)+1;
-        len = end-start;
-
-        string class_section = s.substr(start,len);
-        start = end+1;
-        end = s.find_first_of(delim, start)+1;
-        len = end-start;
-
-        string classID = class_name;
-        string sectionID = class_name + "_" +class_section;
-        string studentID = first_name + "_" + last_name;
-
-        grader->add_class(classID, 0);
-        grader->add_section(sectionID, classID);
-        grader->add_student(studentID, sectionID, first_name, last_name);
-
-        studentInfo = studentInfo + first_name + " " + last_name + " " + class_name +" " + class_section+" " +'\n';
-        //        cout<<first_name + " " + last_name + " " + class_name +" " + class_section;
-        //        cout<<'\n';
-    }
-
-    file.close();
-    return studentInfo;
-}
 
 //parses a java class
 void FileParser::parse_java_file(string aFilepath)
@@ -152,8 +92,8 @@ void FileParser::parse_java_file(string aFilepath)
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
                 grader->add_lab(labID, studentID, labName, lab_number);
-                cout<<"Lab Sucessfully added";
-                cout<<'\n';
+//                cout<<"Lab Sucessfully added";
+//                cout<<'\n';
 
 
                 QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
@@ -171,8 +111,8 @@ void FileParser::parse_java_file(string aFilepath)
 
                        string componentName = component.toStdString().substr(parseStart, parseLen);
                        string componentID = labID + "_" + componentName;
-//                        cout<<componentName;
-//                        cout<<'\n';
+                        cout<<componentID;
+                        cout<<'\n';
 
                             ifstream java;
                             java.open(component.toStdString());
@@ -180,15 +120,13 @@ void FileParser::parse_java_file(string aFilepath)
                             string s;
                             string javaText = "";
 
-                            vector<string> javaLine;
 
                             while(getline(java,s))
                             {
-                                javaText = javaText + s + '\n';
-                                javaLine.push_back(s);
+                                javaText = javaText + s + "\n";
                             }
 
-                           grader->add_component(componentID, labID, javaText, javaLine);
+                           grader->add_component(componentID, labID, javaText);
                       }
 
                    }

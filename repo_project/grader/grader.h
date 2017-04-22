@@ -37,7 +37,7 @@ public:
 
     void add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points);
 
-    void add_component(std::string componentID, string labID, string compath, vector<string> javaLine);
+    void add_component(std::string componentID, string labID, string compath);
 
     void add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
 

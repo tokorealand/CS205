@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    grad->add_student("luis_lopez","cadad","luis","lopez");
     //build_tabs();
 
-    display_classes();
+    display_years();
 
     //set up slots
     //connect(ui->menuExisting_Labs->actions(), SIGNAL(triggered()), this, SLOT(click_lab_in_existing_labs_menu()));
@@ -132,16 +132,6 @@ void MainWindow::on_actionLoad_Lab_triggered()
 }
 
 
-void MainWindow::on_actionAdd_Students_triggered()
-{
-    add_students_gui* asg = new add_students_gui(0, grad);
-    asg->show();
-
-
-
-
-
-}
 
 void MainWindow::on_actionComment_triggered(){
 
@@ -195,14 +185,16 @@ void MainWindow::on_displayButton_clicked()
 {
     ui->disjava->clear();
     QList<QString> jtcontainer;
-    display_classes();
     display_years();
 
     if(selected_lab != NULL)
     {
-
-            QString  javaText = QString::fromStdString(selected_lab->get_components().at(0)->get_text()) ;
-            jtcontainer.push_back(javaText);
+        Component* com = selected_lab->get_components().at(0);
+        for(int i = 0; i<selected_lab->get_components().at(0)->get_text_lines().size(); i++)
+        {
+            string  javaText = to_string(i) + "     " + selected_lab->get_components().at(0)->get_text_lines().at(i);
+            jtcontainer.push_back(QString::fromStdString(javaText));
+        }
 
         ui->disjava->addItems(jtcontainer);
     }
@@ -212,6 +204,10 @@ void MainWindow::on_displayButton_clicked()
         QString nolab = "PLEASE SELECT LAB";
         ui->disjava->addItem(nolab);
     }
+}
+void MainWindow::on_actionAdd_Students_triggered()
+{
+
 }
 
 void MainWindow::on_pushButton_clicked()

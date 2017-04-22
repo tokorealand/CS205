@@ -1,10 +1,10 @@
-#include "gradebookgui.h"
+#include "mainmenugui.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GradeBookGUI w;
+    MainMenuGUI w;
     w.show();
 
     return a.exec();

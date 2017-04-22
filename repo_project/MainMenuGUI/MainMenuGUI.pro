@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-19T22:39:02
+# Project created by QtCreator 2017-04-21T16:24:14
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = GradeBookGUI
+TARGET = MainMenuGUI
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,8 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        gradebookgui.cpp
+        mainmenugui.cpp
 
-HEADERS  += gradebookgui.h
+HEADERS  += mainmenugui.h
 
-FORMS    += gradebookgui.ui
+FORMS    += mainmenugui.ui

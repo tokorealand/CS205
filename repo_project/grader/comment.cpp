@@ -33,6 +33,10 @@ string Comment::get_rubric_section(){
     return rubricsection;
 }
 
+string Comment::get_linenumber(){
+    return linenumber;
+}
+
 double Comment::get_points_deducted(){
     return std::stod(points);
 }

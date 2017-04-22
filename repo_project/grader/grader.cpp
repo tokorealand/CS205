@@ -2,7 +2,8 @@
 
 Grader::Grader()
 {
-    tool = new DBTool("TEST5");
+    tool = new DBTool("TEST16"
+                      "");
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
 
@@ -65,11 +66,10 @@ void Grader::add_lab(std::string labID, string studentID, string labName, string
     control->add_lab(labID, studentID,labName,labNumber);
 }
 
-void Grader::add_component(std::string componentID, std::string labID, std::string compath, vector<string> javaLine)
+void Grader::add_component(std::string componentID, std::string labID, std::string text)
 {
-    control->add_component(componentID,labID,  compath);
+    control->add_component(componentID,labID, text);
 
-    get_lab(labID)->add_java_line(javaLine);
 }
 
 void Grader::add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points)
