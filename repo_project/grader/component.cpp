@@ -56,9 +56,7 @@ std::vector<std::string> Component:: get_text_lines()
     return this->text_lines;
 }
 
-void Component::add_comment(string commentId, string labId, string lineNumber, string commentText,
-                            string rubricSection, string highlightColor, string pointsDeducted){
-    Comment *c = new Comment(commentId, labId, lineNumber, commentText, rubricSection, highlightColor, pointsDeducted, tool, table);
+void Component::add_comment(Comment *c){
     comments.push_back(c);
 }
 

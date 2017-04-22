@@ -53,7 +53,7 @@ void MainWindow::on_actionComment_triggered(){
     if(selected_lab != nullptr){ // only open the comment engine if there is a lab
         cout<< grad <<endl;
         cout << selected_lab << endl;
-        Dialog *c = new Dialog(0, grad, selected_lab);
+        Dialog *c = new Dialog(0, grad, selected_lab, selected_component);
         c->show();
     }
 
