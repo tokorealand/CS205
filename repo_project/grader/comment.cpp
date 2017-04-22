@@ -1,9 +1,9 @@
 #include "comment.h"
 
-Comment::Comment(std::string id, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points, DBTool *tool, std::string table):DBTable(tool,table)
+Comment::Comment(std::string id, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id = id;
-    this->labid = labID;
+    this->componentID = componentID;
     this->linenumber = linenumber;
     this->commentphrase = commentphrase;
     this->rubricsection = rubricsection;
@@ -17,7 +17,7 @@ Comment::Comment(std::string id, std::string labID, std::string linenumber, std:
 Comment::~Comment()
 {
     build_table( );
-    add_row(id,  labid,  linenumber, commentphrase,  rubricsection, highlight, points);
+    add_row(id,  componentID,  linenumber, commentphrase,  rubricsection, highlight, points);
 }
 
 std::string Comment::get_id()
@@ -65,7 +65,7 @@ void Comment::store_create_sql() {
     sql_create += table_name;
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
-    sql_create += "  labid TEXT NOT NULL, ";
+    sql_create += "  componentid TEXT NOT NULL, ";
     sql_create += "  linenumber TEXT NOT NULL, ";
     sql_create += "  commentphrase TEXT NOT NULL, ";
     sql_create += "  rubricsection TEXT NOT NULL, ";
@@ -77,7 +77,7 @@ void Comment::store_create_sql() {
 
 /** Adds the inputted information into the component table database.
 */
-bool Comment::add_row(std::string id, std::string labid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points) {
+bool Comment::add_row(std::string id, std::string componentid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -86,7 +86,7 @@ bool Comment::add_row(std::string id, std::string labid, std::string linenumber,
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, labid, linenumber, commentphrase, rubricsection, highlight ) ";
+    sql_add_row += " ( id, componentid, linenumber, commentphrase, rubricsection, highlight ) ";
     sql_add_row += "VALUES (";
 
 
@@ -95,7 +95,7 @@ bool Comment::add_row(std::string id, std::string labid, std::string linenumber,
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(labid);
+    sql_add_row += std::string(componentid);
     sql_add_row += "\", ";
 
     sql_add_row += "\"";

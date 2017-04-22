@@ -16,9 +16,9 @@ class Lab;
 class Comment : public DBTable
 {
 private:
-    Lab* inlab;
+    Lab* incomponent;
     std::string id;
-    std::string labid;
+    std::string componentID;
     std::string linenumber;
     std::string commentphrase;
     std::string rubricsection;
@@ -29,7 +29,7 @@ private:
 
 
 public: 
-    Comment(std::string id, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
+    Comment(std::string id, std::string componentID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
 
 ~Comment();
     std::string get_id();
