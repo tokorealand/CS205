@@ -9,7 +9,6 @@
 #include "../grader/grader.h"
 #include "../addlabsGUI/addlabsgui.h"
 #include "../CommentGUI/dialog.h"
-#include "../selectiongui/selectiongui.h"
 #include "../grader/year.h"
 #include "../grader/semester.h"
 #include "../grader/component.h"
