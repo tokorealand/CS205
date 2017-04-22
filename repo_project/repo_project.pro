@@ -8,5 +8,6 @@ SUBDIRS += \
     CommentGUI\
     labViewGUI \
     RubricCreatorGUI \
-    Exporter
+    Exporter\
+    MainMenuGUI
 
