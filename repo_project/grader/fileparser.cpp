@@ -78,11 +78,11 @@ void FileParser::parse_java_file(string aFilepath)
              string year = lab.substr(parseStart, parseLen);
 
                 string yearID = year;
-                string semesterID = semester+"_"+year;
-                string classID = class_name+"_"+semester+"_"+year;
-                string sectionID = class_name + "_" + section_number+"_"+semester+"_"+year;
-                string studentID = first_name + "_" + last_name+"_"+ class_name + "_" + section_number+"_"+semester+"_"+year;
-                string labID = first_name + "_" + last_name + "_" +lab_number+"_"+ class_name + "_" + section_number+"_"+semester+"_"+year;
+                string semesterID = semester+"_"+yearID;
+                string classID = class_name+"_"+semesterID;
+                string sectionID = section_number+"_"+classID;
+                string studentID = first_name + "_" + last_name+"_"+sectionID;
+                string labID = lab_number+"_"+studentID;
                 string labName = first_name + "_" + last_name + "_" + class_name + "_" +  section_number + "_"+ lab_number;
 
 
@@ -110,7 +110,7 @@ void FileParser::parse_java_file(string aFilepath)
                     {
 
                        string componentName = component.toStdString().substr(parseStart, parseLen);
-                       string componentID = labID + "_" + componentName;
+                       string componentID = componentName+"_"+labID;
                         cout<<componentID;
                         cout<<'\n';
 
