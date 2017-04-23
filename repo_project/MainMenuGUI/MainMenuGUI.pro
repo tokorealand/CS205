@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     ../grader/semester.cpp\
     ../CommentGUI/dialog.cpp \
     ../RubricCreatorGUI/rubriccreatorgui.cpp \
-    ../grader/rubricobject.cpp
+    ../grader/rubricobject.cpp \
+    ../Exporter/exporter.cpp
 
 
 
@@ -67,7 +68,8 @@ HEADERS  += mainmenugui.h\
     ../addlabsGUI/addlabsgui.h \
     ../CommentGUI/dialog.h \
     ../RubricCreatorGUI/rubriccreatorgui.h \
-    ../grader/rubricobject.h
+    ../grader/rubricobject.h \
+    ../Exporter/exporter.h
 
 
 FORMS    += mainmenugui.ui\

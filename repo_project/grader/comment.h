@@ -50,7 +50,7 @@ public:
      std::string get_highlight_color();
      bool get_highlight();
      std::string get_linenumber();
-
+     std::string get_section_color();
 };
 
 int cb_add_row_comment_ne(void  *data,

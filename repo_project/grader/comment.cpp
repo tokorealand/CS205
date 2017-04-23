@@ -39,6 +39,10 @@ string Comment::get_highlight_color(){
     return highlight;
 }
 
+string Comment::get_section_color(){
+    return "";
+}
+
 string Comment::get_linenumber(){
     return linenumber;
 }

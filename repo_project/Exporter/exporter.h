@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../grader/comment.h"
 #include "../grader/lab.h"
+#include "../grader/component.h"
 
 
 class Exporter{
@@ -14,7 +15,6 @@ public:
 
     //construction
     Exporter();
-
     ~Exporter();
 
 
@@ -33,6 +33,7 @@ public:
 
     //variables
     Lab* currentLab;
+    Component *currentComponent;
     string fileString;
     vector<string> codeByLine;
     vector<vector<string>> codeLinesByClass;

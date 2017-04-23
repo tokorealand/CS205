@@ -52,6 +52,9 @@ public:
 
     std::string get_name();
 
+    bool is_comment_at(int lineNo);
+    Comment* get_comment_at(int lineNo);
+
 };
 
 int cb_add_row_component(void  *data,

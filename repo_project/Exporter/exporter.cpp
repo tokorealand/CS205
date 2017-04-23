@@ -10,20 +10,24 @@ void Exporter::parse_file(Lab* currentLab){
 
     this->currentLab = currentLab;
 
-    //get current submission's class vector
-    vector<vector<string>> vectorTemp = currentLab->get_class_code_vector();
+    //get the components from this lab
+    vector<Component*> componentVector = currentLab->get_components();
+
 
     //for each class in the submission
-    for(int i = 0; i < currentLab->get_number_of_classes(); i++){
+    for(int i = 0; i < componentVector.size(); i++){
+
+        currentComponent = componentVector.at(i);
 
         //get a current class
-        vector<string> classTemp = vectorTemp.at(i);
+        vector<string> classTemp = currentComponent->get_text_lines();
 
         //create a name for the class
         string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
                              + string("class") + to_string(i) + ".html";
         //open a file writer
         ofstream ofs;
+        cout << "name" << name << endl;
         ofs.open(name);
 
         //begin writing the file
@@ -58,14 +62,14 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
     string endHighlight = "";
 
     //if there is a comment for that line
-    if(currentLab->is_comment_at(lineNo)){
+    if(currentComponent->is_comment_at(lineNo)){
 
         //save an instance of the current comment
-        Comment *currentComment = currentLab->get_comment_at(lineNo);
+        Comment *currentComment = currentComponent->get_comment_at(lineNo);
 
         //check if a rubric color is specified
         if(currentComment->get_rubric_section() != ""){
-            fontColor = font_color(currentComment->get_highlight_color());
+            fontColor = font_color(currentComment->get_section_color());
         }
         //check if a highlight is specified
         if(currentComment->get_highlight() == true){
@@ -75,6 +79,11 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
         //check if comment text is specified
         if(currentComment->get_comment_text() != ""){
             commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + "</b>" + "</p>";
+
+
+
+
+
         }
 
         htmlLine = "<p>" +  highlight + line  + endHighlight;

@@ -62,12 +62,14 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
     alg->show();
 }
 
+void MainMenuGUI::on_actionExport_Lab_triggered(){
+    x.parse_file(selected_lab);
 
-void MainMenuGUI::on_Refresh_clicked()
-{
-    display_years();
 }
 
+void MainMenuGUI::on_Refresh_clicked(){
+    display_years();
+}
 
 void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 {
