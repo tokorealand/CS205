@@ -8,6 +8,8 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     this->name = id.substr(0, id.find("_"));
     make_text_lines();
 
+
+
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -55,9 +57,8 @@ std::vector<std::string> Component:: get_text_lines()
     return this->text_lines;
 }
 
-void Component::add_comment(Comment* comment)
-{
-    comments.push_back(comment);
+void Component::add_comment(Comment *c){
+    comments.push_back(c);
 }
 
 std::vector<Comment*> Component::get_comments()

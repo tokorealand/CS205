@@ -6,11 +6,18 @@
 
 using namespace std;
 
-class RubricObject
-{
+class Lab;
+class MainWindow;
+class AddLabsGUI;
+class RubricCreatorGUI;
+
+class RubricObject{
+
 public:
     //constructors
     RubricObject();
+
+    void operator=(RubricObject &obj); //copy assignment
 
     //getters
     vector<string> get_rubric_sections();
@@ -27,6 +34,8 @@ public:
     void set_point_totals(string pointTotal);
     void set_section_colors(string color);
     void set_total_points(string totalPoints);
+
+    int size = 0;
 
 private:
     vector<string> rubricSections;

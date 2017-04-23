@@ -21,6 +21,9 @@ private:
     std::string id;
     std::vector<std::string> text_lines;
     std::vector<Comment*> comments;
+
+
+
     std::string name;
 
 public:
@@ -44,7 +47,7 @@ public:
 
     std::string get_id();
 
-    void add_comment(Comment* comment);
+    void add_comment(Comment *c);
     std::vector<Comment*> get_comments();
 
     std::string get_name();
