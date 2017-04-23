@@ -23,6 +23,7 @@ private:
     std::string semesterid;
     DBTool *tool;
     vector<Section*> sections;
+    std::string name;
 
 
 protected:
@@ -37,6 +38,7 @@ public:
     Section* get_section(int sectionid);
 
     std::vector<Section*> get_sections();
+    std::string get_name();
 
 
     // create command for your child class.

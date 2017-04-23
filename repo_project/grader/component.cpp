@@ -5,10 +5,10 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     this->id = id;
     this->labID = labID;
     this->text = aText;
+    this->name = id.substr(0, id.find("_"));
     make_text_lines();
 
-    this->tool = tool;
-    this->table = table;
+
 
     // Load SQL specific to child class.
     store_add_row_sql();
@@ -65,6 +65,10 @@ std::vector<Comment*> Component::get_comments()
     return this->comments;
 }
 
+std::string Component::get_name()
+{
+    return name;
+}
 
 
 // SQL used for inputting information

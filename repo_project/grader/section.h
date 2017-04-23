@@ -25,6 +25,7 @@ private:
     DBTool *tool;
     vector<Student*> students;
     vector<Lab*> labs;
+    std::string name;
 
 //    Student* get_student(string fn, string ln);
 //    string table_students = "stable";
@@ -55,7 +56,7 @@ public:
 
 //    void increment_student();
 
-
+    std::string get_name();
     vector<Student*> get_students();
     string get_id();
     void repopulate();

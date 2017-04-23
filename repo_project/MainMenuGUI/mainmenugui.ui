@@ -27,17 +27,92 @@
      <string>Select:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="QComboBox" name="yearSelect">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>350</y>
+      <x>110</x>
+      <y>77</y>
+      <width>104</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>71</y>
+      <width>32</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Year:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>118</y>
+      <width>62</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Semester:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>166</y>
+      <width>37</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Class:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>213</y>
+      <width>50</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Section:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>261</y>
       <width>52</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Student:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>310</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lab Number:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -53,7 +128,7 @@
      <string>Component</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="disjava">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -63,7 +138,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget_2">
+   <widget class="QListWidget" name="componentSelect">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -83,11 +158,21 @@
      </rect>
     </property>
    </widget>
+   <widget class="QComboBox" name="semesterSelect">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>124</y>
+      <width>104</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>320</y>
+      <x>50</x>
+      <y>360</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -96,89 +181,58 @@
      <string>Make Anonymous</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget_4">
+   <widget class="QComboBox" name="classSelect">
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>350</y>
-      <width>141</width>
-      <height>141</height>
+      <y>171</y>
+      <width>104</width>
+      <height>26</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QComboBox" name="sectionSelect">
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>60</y>
-      <width>141</width>
-      <height>251</height>
+      <y>218</y>
+      <width>104</width>
+      <height>26</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QComboBox" name="yearSelect"/>
-     </item>
-     <item>
-      <widget class="QComboBox" name="semesterSelect"/>
-     </item>
-     <item>
-      <widget class="QComboBox" name="classSelect"/>
-     </item>
-     <item>
-      <widget class="QComboBox" name="sectionSelect"/>
-     </item>
-     <item>
-      <widget class="QComboBox" name="labSelect"/>
-     </item>
-    </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QComboBox" name="studentSelect">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>81</width>
-      <height>231</height>
+      <x>110</x>
+      <y>265</y>
+      <width>104</width>
+      <height>26</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Year:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Semester:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Class:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Section:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Lab Number:</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   </widget>
+   <widget class="QPushButton" name="Refresh">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>10</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Refresh</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="labSelect">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>310</y>
+      <width>104</width>
+      <height>26</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -190,6 +244,16 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAdd_New_Labs"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -200,6 +264,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAdd_New_Labs">
+   <property name="text">
+    <string>Add New Labs</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

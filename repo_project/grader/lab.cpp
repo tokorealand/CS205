@@ -239,5 +239,10 @@ void Lab::add_rubric(RubricObject* rubric){
     this->rubric = rubric;
 }
 
+std::string Lab::get_lab_num()
+{
+    return labNum;
+}
+
 
 #endif // LAB_CPP

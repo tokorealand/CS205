@@ -41,11 +41,13 @@ public:
     ~Lab();
 
     std::string get_lab_name();
-    int get_lab_num();
+    string get_lab_num();
 
     void add_component(Component* com);
     void add_comment(Comment* com);
     void add_java_line(vector<string>);
+
+
 
     std::string get_id();
 

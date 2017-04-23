@@ -13,6 +13,9 @@ Section::Section( std::string sectionID,std::string classID,DBTool *tool, std::s
     this->classID = classID;
     this->tool = tool;
 
+
+    this->name = id.substr(0, id.find("_"));
+
     //  repopulate();
 
     // Load SQL specific to child class.
@@ -31,11 +34,8 @@ Section::Section( std::string sectionID,std::string classID,DBTool *tool, std::s
 **/
 Section::~Section()
 {
-
-
     build_table();
     add_row(id,classID);
-
 }
 
 
@@ -50,16 +50,18 @@ std::vector<Student*> Section::get_students()
     return students;
 }
 
+std::string Section::get_name()
+{
+    return name;
+}
+
 
 /*
  *Creates students and adds them
 **/
 void Section::add_student(Student *student)
 {
-
-
     students.push_back(student);
-
 }
 
 
