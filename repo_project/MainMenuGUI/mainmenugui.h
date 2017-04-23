@@ -60,6 +60,8 @@ private slots:
 
     void on_checkBox_toggled(bool checked);
 
+    void on_actionComment_triggered();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;
