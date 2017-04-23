@@ -20,6 +20,7 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
 
 Component::~Component()
 {
+
     build_table();
     add_row(id,labID,text);
 }
