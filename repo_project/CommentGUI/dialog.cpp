@@ -36,16 +36,21 @@ void Dialog::on_doneButton_clicked(){
 
     //save comment details -- will be in a vector of comments in lab object
     string commentId        = lab->get_id() + to_string(lab->get_comment_vector().size());
-    cout << "component " << component << endl;
     string componentId      = component->get_id();
     string lineNumber       = ui->lineNo->text().toStdString();
+    cout << "1" <<endl;
     string commentText      = ui->commentText->text().toStdString(); //save what's in the box
+    cout << "2" <<endl;
     string rubricSection    = ui->rubricSectionDropDown->currentText().toStdString();
+    cout << "3" <<endl;
     string highlightColor   = ui->colorDropDown->currentText().toStdString();
+    cout << "4" <<endl;
     string pointsDeducted   = to_string(ui->pointsOffSpinBox->value());
+    cout << "5" <<endl;
 
     //add the comment
     grader->add_comment(commentId, componentId, lineNumber, commentText, rubricSection, highlightColor, pointsDeducted);
+    cout << "6" <<endl;
 
     //close the window
     close();

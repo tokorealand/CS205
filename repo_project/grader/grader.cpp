@@ -75,6 +75,7 @@ void Grader::add_component(std::string componentID, std::string labID, std::stri
 
 void Grader::add_comment(std::string commentID, std::string labID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points)
 {
+    cout << "7" << endl;
     control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
 }
 
