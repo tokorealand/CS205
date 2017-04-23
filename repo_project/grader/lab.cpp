@@ -31,18 +31,15 @@ Lab::~Lab()
     add_row(id,studentID,labName,labNum);
 }
 
-std::string Lab::get_id()
-{
+std::string Lab::get_id(){
     return id;
 }
 
-void Lab::add_component(Component *com)
-{
+void Lab::add_component(Component *com){
     coms.push_back(com);
 }
 
-void Lab::add_comment(Comment *com)
-{
+void Lab::add_comment(Comment *com){
     comments.push_back(com);
 }
 
@@ -194,8 +191,7 @@ int Lab::get_number_of_classes(){
     return 0;
 }
 
-void Lab:: add_java_line(vector<string> javaLine)
-{
+void Lab:: add_java_line(vector<string> javaLine){
     javaFiles.push_back(javaLine);
 }
 
@@ -221,7 +217,6 @@ Comment* Lab::get_comment_at(std::string lineNo){
 Comment* Lab::get_comment_at(int lineNo){
     return comments.at(lineNo);
 }
-
 
 vector<Comment> Lab::get_comment_vector(){
     return myComments;

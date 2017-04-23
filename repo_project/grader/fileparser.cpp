@@ -4,20 +4,13 @@
 FileParser::FileParser(string aFileName, Grader* aGrader){
     fileName = aFileName;
     grader   = aGrader;
-    //parse_student_file();
-    //parse_java_file("./Lab_1");
 }
-
 
 FileParser::~FileParser(){
-
 }
 
-
-
 //parses a java class
-void FileParser::parse_java_file(string aFilepath)
-{
+vector<string> FileParser::parse_java_file(string aFilepath){
 
     QString filepath= QString::fromStdString(aFilepath);
 
@@ -94,6 +87,7 @@ void FileParser::parse_java_file(string aFilepath)
                 grader->add_lab(labID, studentID, labName, lab_number);
 //                cout<<"Lab Sucessfully added";
 //                cout<<'\n';
+                labIDList.push_back(labID);
 
 
                 QDirIterator it2(labEntry, QDirIterator::NoIteratorFlags);
@@ -128,12 +122,10 @@ void FileParser::parse_java_file(string aFilepath)
 
                            grader->add_component(componentID, labID, javaText);
                       }
-
                    }
-
            }
     }
-
+    return labIDList;
 }
 
 

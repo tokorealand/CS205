@@ -44,6 +44,7 @@ void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
     std::vector<Semester*> holder = selected_year->get_semesters();
 
@@ -81,6 +82,7 @@ void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
    std::vector<Class*> holder = selected_semester->get_classes();
 
@@ -107,6 +109,7 @@ void MainMenuGUI::on_classSelect_activated(const QString &arg1)
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
    std::vector<Section*> holder = selected_class->get_sections();
 
@@ -130,6 +133,7 @@ void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
    std::vector<Student*> holder = selected_section->get_students();
 
@@ -154,6 +158,7 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
    std::vector<Lab*> holder = selected_student->get_labs();
 
@@ -174,6 +179,7 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
     QList<QString> ccontainer;
     ui->componentSelect->clear();
     ui->disjava->clear();
+    ui->discomment->clear();
 
    std::vector<Component*> holder = selected_lab->get_components();
 
@@ -196,6 +202,7 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 
     QList<QString> ccontainer;
     ui->disjava->clear();
+    ui->discomment->clear();
     display_component_text();
 
    std::vector<Comment*> holder = selected_component->get_comments();
@@ -205,7 +212,7 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
         ccontainer.append(QString::fromStdString(it->get_comment_text()));
     }
 
-    //ui->componentSelect->addItems(ccontainer);
+    ui->discomment->addItems(ccontainer);
 }
 
 void MainMenuGUI::display_component_text()
@@ -230,5 +237,32 @@ void MainMenuGUI::display_component_text()
         QString nolab = "PLEASE SELECT LAB";
         ui->disjava->addItem(nolab);
     }
+}
 
+
+void MainMenuGUI::display_comment_text()
+{
+    ui->discomment->clear();
+    QList<QString> jtcontainer;
+    for(int i = 0; i<selected_component->get_comments().size(); i++)
+    {
+        string  commentText = selected_component->get_comments().at(i)->get_comment_text();
+        jtcontainer.push_back(QString::fromStdString(commentText));
+    }
+    ui->discomment->addItems(jtcontainer);
+}
+
+void MainMenuGUI::on_saveAndExit_clicked()
+{
+    this->close();
+}
+
+void MainMenuGUI::on_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+
+
+
+    }
 }

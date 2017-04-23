@@ -14,14 +14,12 @@ Comment::Comment(std::string id, std::string componentID, std::string linenumber
     store_create_sql();
 }
 
-Comment::~Comment()
-{
+Comment::~Comment(){
     build_table( );
     add_row(id,  componentID,  linenumber, commentphrase,  rubricsection, highlight, points);
 }
 
-std::string Comment::get_id()
-{
+std::string Comment::get_id(){
     return id;
 }
 
@@ -33,18 +31,19 @@ string Comment::get_rubric_section(){
     return rubricsection;
 }
 
-string Comment::get_linenumber(){
-    return linenumber;
-}
-
 double Comment::get_points_deducted(){
     return std::stod(points);
 }
 
 string Comment::get_highlight_color(){
     return highlight;
-
 }
+
+string Comment::get_linenumber(){
+    return linenumber;
+}
+
+
 // SQL used for inputting information
 void Comment::store_add_row_sql() {
 
@@ -80,9 +79,6 @@ void Comment::store_create_sql() {
 bool Comment::add_row(std::string id, std::string componentid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points) {
     int   retCode = 0;
     char *zErrMsg = 0;
-
-
-
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
@@ -186,30 +182,4 @@ bool Comment::get_highlight(){
     return false;
 }
 
-
-//using namespace std;
-
-//Comment::Comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor){
-
-//    this->commentText       = commentText;
-//    this->rubricSection     = rubricSection;
-//    this->pointsDeducted    = pointsDeducted;
-//    this->highlightColor    = highlightColor;
-
-//}
-
-//string Comment::get_comment_text(){
-//    return commentText;
-//}
-
-//string Comment::get_rubric_section(){
-//    return rubricSection;
-//}
-
-//double Comment::get_points_deducted(){
-//    return pointsDeducted;
-//}
-
-//string Comment::get_highlight_color(){
-//    return highlightColor;
 

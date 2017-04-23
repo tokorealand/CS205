@@ -15,6 +15,9 @@
 
 
 class Grader;
+class Lab;
+class RubricObject;
+
 namespace Ui {
 class MainWindow;
 }
@@ -34,16 +37,9 @@ private slots:
 
     void on_actionLoad_New_Lab_triggered();
 
-    void on_actionAdd_Students_triggered();
-
     void on_actionComment_triggered();
 
     void on_displayButton_clicked();
-
-    void on_actionLoad_Lab_triggered();
-
-    void click_lab_in_existing_labs_menu();
-
 
     void on_pushButton_clicked();
 

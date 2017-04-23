@@ -12,6 +12,8 @@
 #include "../grader/year.h"
 #include "../grader/semester.h"
 #include "../grader/component.h"
+#include "../grader/dbtable.h"
+#include "../grader/dbtool.h"
 
 class Grader;
 namespace Ui {
@@ -49,6 +51,14 @@ private slots:
     void on_componentSelect_activated(const QModelIndex &index);
 
     void display_component_text();
+
+    void display_comment_text();
+
+
+
+    void on_saveAndExit_clicked();
+
+    void on_checkBox_toggled(bool checked);
 
 private:
     Ui::MainMenuGUI *ui;

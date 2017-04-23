@@ -8,6 +8,10 @@
 #include <QFileDialog>
 
 namespace Ui {
+
+class Lab;
+class RubricObject;
+
 class AddLabsGUI;
 }
 
@@ -18,6 +22,7 @@ class AddLabsGUI : public QWidget
 public:
     explicit AddLabsGUI(QWidget *parent = 0, Grader* aGrader = NULL);
     ~AddLabsGUI();
+    void add_rubric_to_labs();
 
 private slots:
     void on_selectButton_clicked();
@@ -31,6 +36,9 @@ private slots:
 private:
     Grader* grader;
     Ui::AddLabsGUI *ui;
+    string componentid;
+    Controller* controller;
+    vector<string> labIDList;
 };
 
 #endif // ADDLABSGUI_H
