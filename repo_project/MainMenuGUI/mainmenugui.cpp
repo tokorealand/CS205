@@ -5,6 +5,7 @@ MainMenuGUI::MainMenuGUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenuGUI)
 {
+    anonymous_grading = false;
     ui->setupUi(this);
     grad = new Grader();
     display_years();
@@ -124,6 +125,7 @@ void MainMenuGUI::on_classSelect_activated(const QString &arg1)
 
 void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 {
+
     string sectionID = arg1.toStdString() +"_"+selected_class->get_id();
 
     selected_section=grad->get_section(sectionID);
@@ -137,22 +139,43 @@ void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 
    std::vector<Student*> holder = selected_section->get_students();
 
+    int i = 0;
+
     for(Student* it: holder)
     {
+        if(anonymous_grading == false)
+        {
         ccontainer.append(QString::fromStdString(it->get_first_name()+"_"+it->get_last_name()));
+        }
+        else
+        {
+            ccontainer.append(QString::fromStdString("Student_" + to_string(i)));
+        }
+
+       i++;
     }
 
     ui->studentSelect->addItems(ccontainer);
-
 }
 
 
 
 void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
 {
-    string studentID = arg1.toStdString() +"_"+selected_section->get_id();
 
-    selected_student=grad->get_student(studentID);
+    if(anonymous_grading == false)
+    {
+     string studentID = arg1.toStdString() +"_"+selected_section->get_id();
+     selected_student = grad->get_student(studentID);
+    }
+    else
+    {
+        string student = arg1.toStdString();
+      int studentIndex = atoi(student.substr(student.find("_"), student.length() -1).c_str());
+      selected_student = selected_section->get_students().at(studentIndex);
+    }
+
+
 
     QList<QString> ccontainer;
     ui->labSelect->clear();
@@ -169,6 +192,7 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
 
     ui->labSelect->addItems(ccontainer);
 }
+
 
 void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 {
@@ -217,7 +241,6 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 
 void MainMenuGUI::display_component_text()
 {
-    ui->disjava->clear();
     QList<QString> jtcontainer;
 
     if(selected_component != NULL)
@@ -228,6 +251,16 @@ void MainMenuGUI::display_component_text()
             string  javaText = to_string(i) + "     " +selected_component->get_text_lines().at(i);
             jtcontainer.push_back(QString::fromStdString(javaText));
         }
+
+//        for(int i = 0; i<selected_component->get_comments().size(); i++)
+//        {
+//            if(selected_component->get_comments().at(i)->get_highlight_color() != "no")
+//            {
+//                QString color = QString::fromStdString(selected_component->get_comments().at(i)->get_highlight_color());
+//                ui->disjava->item(i)->setBackgroundColor(QColor(color));
+
+//            }
+//        }
 
         ui->disjava->addItems(jtcontainer);
     }
@@ -252,6 +285,13 @@ void MainMenuGUI::display_comment_text()
     ui->discomment->addItems(jtcontainer);
 }
 
+
+void MainMenuGUI::display_rubric_text()
+{
+
+}
+
+
 void MainMenuGUI::on_saveAndExit_clicked()
 {
     this->close();
@@ -261,9 +301,11 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
 {
     if(checked)
     {
-
-
-
+    anonymous_grading = true;
+    }
+    else
+    {
+     anonymous_grading = false;
     }
 }
 

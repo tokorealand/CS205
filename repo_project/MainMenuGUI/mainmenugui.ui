@@ -247,6 +247,16 @@
      <string>Save and Exit</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="disrubric">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>60</y>
+      <width>301</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
