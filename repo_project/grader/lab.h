@@ -34,6 +34,7 @@ private:
     std::string id;
     std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
+    RubricObject *rubric =nullptr;
 
 
 public:
@@ -44,6 +45,7 @@ public:
     string get_lab_num();
 
     void add_component(Component* com);
+    void add_rubric(RubricObject* rub);
     void add_comment(Comment* com);
     void add_java_line(vector<string>);
 
@@ -77,7 +79,6 @@ public:
 
     void add_comments(Comment c);
     void create_comment(string commentText, string rubricSection, double pointsDeducted, string highlightColor);
-    void add_rubric(RubricObject *rubric);\
 
     vector<Comment> get_comment_vector();
     vector<vector<string>> get_class_code_vector();
@@ -85,7 +86,7 @@ public:
     vector<string> get_line_vector();
 
     RubricObject* get_rubric();
-    RubricObject* rubric;
+   // RubricObject* rubric;
 
     string get_section_at(int i);
     string get_section_text_at(int i);

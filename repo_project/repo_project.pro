@@ -6,7 +6,6 @@ SUBDIRS += \
     controller \
     addlabsGUI \
     CommentGUI\
-    labViewGUI \
     RubricCreatorGUI \
     Exporter\
     MainMenuGUI

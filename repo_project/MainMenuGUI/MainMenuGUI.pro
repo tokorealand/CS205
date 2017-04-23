@@ -44,8 +44,13 @@ SOURCES += main.cpp\
     ../grader/semester.cpp\
     ../CommentGUI/dialog.cpp \
     ../RubricCreatorGUI/rubriccreatorgui.cpp \
+<<<<<<< HEAD
     ../grader/rubricobject.cpp \
     ../Exporter/exporter.cpp
+=======
+../grader/rubricsection.cpp\
+    ../grader/rubricobject.cpp
+>>>>>>> cffb505c4df241df6560c38e4c2f440441539d26
 
 
 
@@ -68,8 +73,13 @@ HEADERS  += mainmenugui.h\
     ../addlabsGUI/addlabsgui.h \
     ../CommentGUI/dialog.h \
     ../RubricCreatorGUI/rubriccreatorgui.h \
+<<<<<<< HEAD
     ../grader/rubricobject.h \
     ../Exporter/exporter.h
+=======
+../grader/rubricsection.h\
+    ../grader/rubricobject.h
+>>>>>>> cffb505c4df241df6560c38e4c2f440441539d26
 
 
 FORMS    += mainmenugui.ui\

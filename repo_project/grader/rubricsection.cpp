@@ -1,60 +1,31 @@
-#include "rubricobject.h"
-#include <iostream>
+#include "rubricsection.h"
 
-using namespace std;
-
-RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):DBTable(tool,table){
+RubricSection::RubricSection(std::string id, std::string rubricid, std::string name, std::string points, std::string color, DBTool *tool, std::string table):DBTable(tool,table)
+{
     this->id=id;
-    this->labid=labID;
-    this->tool=tool;
-    this->table=table;
+    this->rubricid=id;
+    this->name=name;
+    this->points=points;
+    this->color=color;
 
     store_add_row_sql();
     store_create_sql();
 
-
 }
 
-void RubricObject::operator = (RubricObject &obj) {
-    this->rubricSections = obj.rubricSections;
-
-    //SHOW_WHERE
-}
-
-RubricObject::~RubricObject()
+RubricSection::~RubricSection()
 {
     build_table();
-    add_row(id,labid);
+    add_row(id,rubricid,name,points,color);
 }
 
-//getters
-vector<RubricSection*> RubricObject::get_rubric_sections(){
-    return rubricSections;
-}
-
-
-
-
-
-//setters
-void RubricObject::add_rubric_section(RubricSection *rsec){
-    rubricSections.push_back(rsec);
-}
-
-std::string RubricObject::get_id()
+std::string RubricSection::get_id()
 {
     return id;
 }
 
-
-
-int RubricObject::get_size(){
-    cout << "size " + size << endl;
-    return size;
-}
-
 // SQL used for inputting information
-void RubricObject::store_add_row_sql() {
+void RubricSection::store_add_row_sql() {
 
     sql_template =  "SELECT name ";
     sql_template += "FROM   sqlite_master ";
@@ -65,7 +36,7 @@ void RubricObject::store_add_row_sql() {
 }
 
 // SQL used to create the table in the database.
-void RubricObject::store_create_sql() {
+void RubricSection::store_create_sql() {
 
 
     std::cerr << "calling store_create_sql from RubricObject\n";
@@ -73,14 +44,17 @@ void RubricObject::store_create_sql() {
     sql_create += table_name;
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
-    sql_create += "  labid TEXT NOT NULL";
+    sql_create += "  rubricid TEXT NOT NULL, ";
+    sql_create += "  name TEXT NOT NULL, ";
+    sql_create += "  points TEXT NOT NULL, ";
+    sql_create += "  color TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the player table database.
 */
-bool RubricObject::add_row(std::string id, std::string labid) {
+bool RubricSection::add_row(std::string id, std::string rubricid, std::string name, std::string points, std::string color) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -89,7 +63,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, labid ) ";
+    sql_add_row += " ( id, rubricid, name, points, color ) ";
     sql_add_row += "VALUES (";
 
 
@@ -97,9 +71,21 @@ bool RubricObject::add_row(std::string id, std::string labid) {
     sql_add_row += std::string(id);
     sql_add_row += "\", ";
 
+    sql_add_row += "\"";
+    sql_add_row += std::string(rubricid);
+    sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(labid);
+    sql_add_row += std::string(name);
+    sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(points);
+    sql_add_row += "\", ";
+
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(color);
     sql_add_row += "\" ";
     sql_add_row += " );";
 
@@ -109,7 +95,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_add_row.c_str(),
-                           cb_add_row_rubric,
+                           cb_add_row_rubricsection,
                            this,
                            &zErrMsg          );
 
@@ -118,7 +104,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
         std::cerr << table_name
                   << " template ::"
                   << std::endl
-                  << "SQL RO error: "
+                  << "SQL RS error: "
                   << zErrMsg;
 
         sqlite3_free(zErrMsg);
@@ -129,7 +115,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
 
 /** Call back for adding to lab table
 */
-int cb_add_row_rubric(void  *data,
+int cb_add_row_rubricsection(void  *data,
                    int    argc,
                    char **argv,
                    char **azColName)
@@ -147,7 +133,7 @@ int cb_add_row_rubric(void  *data,
 
     int i;
 
-    RubricObject *obj = (RubricObject *) data;
+    RubricSection *obj = (RubricSection *) data;
 
     std::cout << "------------------------------\n";
     std::cout << obj->get_name()
@@ -162,5 +148,3 @@ int cb_add_row_rubric(void  *data,
 
     return 0;
 }
-
-

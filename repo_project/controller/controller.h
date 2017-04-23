@@ -11,6 +11,8 @@
 #include "../grader/component.h"
 #include "../grader/commentengine.h"
 #include "../grader/comment.h"
+#include "../grader/rubricobject.h"
+#include "../grader/rubricsection.h"
 #include <iostream>
 #include <sqlite3.h>
 #include <stdio.h>
@@ -30,6 +32,9 @@ private:
     std::vector<Lab*> labs;
     std::vector<Component*> components;
     std::vector<Comment*> comments;
+    std::vector<RubricObject*> rubrics;
+    std::vector<RubricSection*> rubricsections;
+
 
     std::string table_year = "yeartable";
     std::string table_semester = "semestertable";
@@ -39,6 +44,8 @@ private:
     std::string table_lab = "labtable";
     std::string table_component = "componenttable";
     std::string table_comment = "commenttable";
+    std::string table_rubric = "rubrictable";
+    std::string table_rubricsection = "rubricsectiontable";
 
 
 
@@ -75,6 +82,14 @@ private:
     bool select_all_commentss();
     bool drop_comments_table();
     std::string sql_select_all_comments;
+
+    bool select_all_rubrics();
+    bool drop_rubrics_table();
+    std::string sql_select_all_rubrics;
+
+    bool select_all_rubricsections();
+    bool drop_rubricsections_table();
+    std::string sql_select_all_rubricsections;
 
 
     bool item_exist(std::string id, std::string type);
@@ -117,6 +132,10 @@ public:
 
     void add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, string points);
 
+    void add_rubric(std::string rubricID, std::string labID);
+
+    void add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string name, std::string points, std::string color);
+
     std::string student_list();
 
 
@@ -139,6 +158,8 @@ public:
     Lab* get_lab(std::string id);
     Component* get_component(std::string id);
     Comment* get_comment(std::string id);
+    RubricObject* get_rubric(std::string id);
+    RubricSection* get_rubricsection(std::string id);
 
 
     std::vector<Year*> get_years();
@@ -184,7 +205,17 @@ int cb_select_all_components(void  *data,
                        char **argv,
                        char **azColName);
 
-int cb_select_all_comments(void  *data,
+int cb_select_all_commentss(void  *data,
+                       int    argc,
+                       char **argv,
+                       char **azColName);
+
+int cb_select_all_rubrics(void  *data,
+                       int    argc,
+                       char **argv,
+                       char **azColName);
+
+int cb_select_all_rubricsections(void  *data,
                        int    argc,
                        char **argv,
                        char **azColName);

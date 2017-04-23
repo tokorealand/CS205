@@ -30,29 +30,29 @@ void RubricCreatorGUI::display_sections(){
 
 //done button
 void RubricCreatorGUI::on_doneButton_clicked(){
-    //create a rubric object
-    r = new RubricObject();
+//    //create a rubric object
+//    r = new RubricObject();
 
-    //initialize rubric object
-    //sections - contains all the rubric sections
-    for(int i = 0; i < ui->rubricSectionList->count(); i++){
-        r->set_rubric_sections(ui->rubricSectionList->item(i)->text().toStdString());
-    }
-    //pointValues - contains all the point values
-    for(int i = 0 ; i < ui->pointValueList->count(); i++){
-        r->set_point_totals(ui->pointValueList->item(i)->text().toStdString());
-    }
-    //colors - contains all the colors
-    for(int i = 0 ; i < ui->colorList->count(); i++){
-        r->set_section_colors(ui->colorList->item(i)->text().toStdString());
-    }
-    //totalPoints - the total points in the rubric
-    r->set_total_points(to_string(totalPoints));
+//    //initialize rubric object
+//    //sections - contains all the rubric sections
+//    for(int i = 0; i < ui->rubricSectionList->count(); i++){
+//        r->set_rubric_sections(ui->rubricSectionList->item(i)->text().toStdString());
+//    }
+//    //pointValues - contains all the point values
+//    for(int i = 0 ; i < ui->pointValueList->count(); i++){
+//        r->set_point_totals(ui->pointValueList->item(i)->text().toStdString());
+//    }
+//    //colors - contains all the colors
+//    for(int i = 0 ; i < ui->colorList->count(); i++){
+//        r->set_section_colors(ui->colorList->item(i)->text().toStdString());
+//    }
+//    //totalPoints - the total points in the rubric
+//    r->set_total_points(to_string(totalPoints));
 
-    //add the temp rubric to grader
-    grader->add_temp_rubric(r);
+//    //add the temp rubric to grader
+//    grader->add_temp_rubric(r);
 
-    close();//exit gui
+//    close();//exit gui
 }
 
 //remove selected

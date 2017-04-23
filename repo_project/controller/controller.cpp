@@ -11,7 +11,10 @@ Controller::Controller(DBTool *tool):DBTable(tool)
 
 Controller::~Controller()
 {
+
+
     total_drop();
+
     for(Year* it : years)
     {
         delete it;
@@ -44,6 +47,15 @@ Controller::~Controller()
     {
         delete it;
     }
+    for(RubricObject* it : rubrics)
+    {
+        delete it;
+    }
+    for(RubricSection* it : rubricsections)
+    {
+        delete it;
+    }
+
 
 }
 
@@ -67,11 +79,15 @@ void Controller::total_recall()
     select_all_students();
     select_all_labs();
     select_all_components();
+    select_all_rubrics();
+    select_all_rubricsections();
 
 }
 
 void Controller::total_drop()
 {
+    drop_rubricsections_table();
+    drop_rubrics_table();
     drop_comments_table();
     drop_component_table();
     drop_lab_table();
@@ -196,6 +212,32 @@ Comment* Controller::get_comment(std::string id)
     return NULL;
 }
 
+RubricObject* Controller::get_rubric(std::string id)
+{
+    for(RubricObject* it: rubrics)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
+}
+
+RubricSection* Controller::get_rubricsection(std::string id)
+{
+    for(RubricSection* it: rubricsections)
+    {
+        if(it->get_id() == id)
+        {
+            return it;
+        }
+
+    }
+    return NULL;
+}
+
 bool Controller::item_exist(std::string id, std::string type)
 {
     if(type == "year")
@@ -283,6 +325,29 @@ bool Controller::item_exist(std::string id, std::string type)
     if(type == "comment")
     {
         for(Comment* it : comments)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(type == "rubric")
+    {
+        for(RubricObject* it : rubrics)
+        {
+            if(it->get_id() == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    if(type == "rubricsection")
+    {
+        for(RubricSection* it : rubricsections)
         {
             if(it->get_id() == id)
             {
@@ -408,6 +473,29 @@ void Controller::add_comment(std::string commentID, std::string componentID, std
     Comment *com = new Comment(commentID, componentID, linenumber,commentphrase,rubricsection, highlight,points, class_tool,table_comment);
     comments.push_back(com);
     get_component(componentID)->add_comment(com);
+}
+
+void Controller::add_rubric(std::string rubricID, std::string labID)
+{
+    if(item_exist(rubricID,"rubric"))
+    {
+        return;
+    }
+RubricObject *rub = new RubricObject(rubricID,labID,class_tool,table_rubric);
+    rubrics.push_back(rub);
+    get_lab(labID)->add_rubric(rub);
+}
+
+
+void Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string name, std::string points, std::string color)
+{
+    if(item_exist(rubricsectionID,"rubricsection"))
+    {
+        return;
+    }
+RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,name,points,color,class_tool,table_rubricsection);
+    rubricsections.push_back(rubs);
+    get_rubric(rubricID)->add_rubric_section(rubs);
 }
 
 
@@ -1171,6 +1259,37 @@ bool Controller::drop_component_table() {
     return retCode;
 }
 
+
+//Used to retriveve all labs in database
+bool Controller::select_all_commentss() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_comments = "SELECT * FROM ";
+    sql_select_all_comments += table_comment;
+    sql_select_all_comments += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_comments.c_str(),
+                           cb_select_all_commentss,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
 //Call back for select_all_pgh
 int cb_select_all_commentss(void  *data,
                             int    argc,
@@ -1227,6 +1346,220 @@ bool Controller::drop_comments_table() {
     // callback to store any results.
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_drop_comment.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << sql_drop
+        //                  << std::endl;
+
+        //        std::cerr << "SQL error: "
+        //                  << zErrMsg
+        //                  << std::endl;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+
+//////////////////
+bool Controller::select_all_rubrics() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_rubrics = "SELECT * FROM ";
+    sql_select_all_rubrics += table_rubric;
+    sql_select_all_rubrics += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_rubrics.c_str(),
+                           cb_select_all_rubrics,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
+//Call back for select_all_pgh
+int cb_select_all_rubrics(void  *data,
+                            int    argc,
+                            char **argv,
+                            char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_rubrics being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    //old from lab 6
+
+    return 0;
+}
+
+// Removes the db table from the database.
+bool Controller::drop_rubrics_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_rubric="DROP TABLE ";
+    sql_drop_rubric += table_rubric;
+    sql_drop_rubric += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_rubric.c_str(),
+                           cb_drop,
+                           this,
+                           &zErrMsg          );
+
+    // Process a failed call.
+    if( retCode != SQLITE_OK ){
+
+        //        std::cerr << sql_drop
+        //                  << std::endl;
+
+        //        std::cerr << "SQL error: "
+        //                  << zErrMsg
+        //                  << std::endl;
+
+        //        sqlite3_free(zErrMsg);
+    }
+
+
+    return retCode;
+}
+/////////////////////////
+
+bool Controller::select_all_rubricsections() {
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_select_all_rubricsections = "SELECT * FROM ";
+    sql_select_all_rubricsections += table_rubricsection;
+    sql_select_all_rubricsections += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_select_all_rubricsections.c_str(),
+                           cb_select_all_rubricsections,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+
+    return retCode;
+}
+
+
+//Call back for select_all_pgh
+int cb_select_all_rubricsections(void  *data,
+                            int    argc,
+                            char **argv,
+                            char **azColName)
+{
+
+
+
+    std::cerr << "cb_select_all_rubricsections being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    int i;
+
+    Controller *obj = (Controller *) data;
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                     << " = "
+                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                      << std::endl;
+
+
+
+    }
+
+    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    //old from lab 6
+
+    return 0;
+}
+
+// Removes the db table from the database.
+bool Controller::drop_rubricsections_table() {
+
+    // Initialize local variables.
+    int   retCode = 0;
+    char *zErrMsg = 0;
+    std::string sql_drop_rubricsections="DROP TABLE ";
+    sql_drop_rubricsections += table_rubricsection;
+    sql_drop_rubricsections += ";";
+
+
+    // Call sqlite to run the SQL call using the
+    // callback to store any results.
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_drop_rubricsections.c_str(),
                            cb_drop,
                            this,
                            &zErrMsg          );

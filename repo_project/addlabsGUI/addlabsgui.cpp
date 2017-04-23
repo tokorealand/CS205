@@ -26,7 +26,7 @@ void AddLabsGUI::on_selectButton_clicked(){
 }
 
 void AddLabsGUI::on_doneButton_clicked(){
-    add_rubric_to_labs();
+  //  add_rubric_to_labs();
     close();
 }
 

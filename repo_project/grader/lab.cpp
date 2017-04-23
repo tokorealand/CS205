@@ -31,6 +31,11 @@ Lab::~Lab()
     add_row(id,studentID,labName,labNum);
 }
 
+void Lab::add_rubric(RubricObject *rub)
+{
+    this->rubric=rub;
+}
+
 std::string Lab::get_id(){
     return id;
 }
@@ -146,7 +151,7 @@ int cb_add_row_lab(void  *data,
 
     int i;
 
-    Student *obj = (Student *) data;
+    Lab *obj = (Lab *) data;
 
     std::cout << "------------------------------\n";
     std::cout << obj->get_name()
@@ -235,9 +240,7 @@ RubricObject *Lab::get_rubric(){
     return rubric;
 }
 
-void Lab::add_rubric(RubricObject* rubric){
-    this->rubric = rubric;
-}
+
 
 std::string Lab::get_lab_num()
 {

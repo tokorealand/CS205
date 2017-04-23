@@ -56,7 +56,7 @@ private slots:
 
     void display_comment_text();
 
-
+    void display_rubric_text();
 
     void on_saveAndExit_clicked();
 
@@ -74,7 +74,11 @@ private:
     Year* selected_year =nullptr;
     Semester* selected_semester =nullptr;
     Grader *grad;
+<<<<<<< HEAD
     Exporter x;
+=======
+    bool anonymous_grading;
+>>>>>>> cffb505c4df241df6560c38e4c2f440441539d26
 };
 
 #endif // MAINMENUGUI_H
