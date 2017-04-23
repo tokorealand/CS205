@@ -19,17 +19,17 @@ Dialog::~Dialog(){
 //populate the gui with info
 void Dialog::populate(){
 
-    //populate the commentList with comments from the database
-    for(int i = 0; i < lab->get_rubric()->get_rubric_sections().size(); i++){
-        QString temp = QString::fromStdString(lab->get_rubric()->get_section_at(i));
-        ui->commentList->insertItem(i, temp);
-    }
+//    //populate the commentList with comments from the database
+//    for(int i = 0; i < lab->get_rubric()->get_rubric_sections().size(); i++){
+//        QString temp = QString::fromStdString(lab->get_rubric()->get_section_at(i));
+//        ui->commentList->insertItem(i, temp);
+//    }
 
-    //populate the rubricSectionsDropDown with rubric sections
-    for(int i = 0; i<lab->get_rubric()->get_rubric_sections().size(); i++){
-        QString temp = QString::fromStdString(lab->get_rubric()->get_section_text_at(i));
-        ui->rubricSectionDropDown->insertItem(i, temp);
-    }
+//    //populate the rubricSectionsDropDown with rubric sections
+//    for(int i = 0; i<lab->get_rubric()->get_rubric_sections().size(); i++){
+//        QString temp = QString::fromStdString(lab->get_rubric()->get_section_text_at(i));
+//        ui->rubricSectionDropDown->insertItem(i, temp);
+//    }
 }
 
 void Dialog::on_doneButton_clicked(){

@@ -3,7 +3,7 @@
 Grader::Grader()
 {
 
-    tool = new DBTool("TEST900");
+    tool = new DBTool("TEST9000");
 
     control = new Controller(tool);
     fp = new FileParser("students.txt", this);
@@ -78,6 +78,16 @@ void Grader::add_comment(std::string commentID, std::string labID, std::string l
     control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
 }
 
+void Grader::add_rubric(string rubricID, string labID)
+{
+    control->add_rubric(rubricID, labID);
+}
+
+void Grader::add_rubricsection(string rubricsectionID, string rubricID, string name, string points, string color)
+{
+    control->add_rubricsection(rubricsectionID, rubricID, name,points,color);
+}
+
 
 /**
  *
@@ -123,6 +133,16 @@ Component* Grader::get_component(string id)
 Comment* Grader::get_comment(string id)
 {
     return control->get_comment(id);
+}
+
+RubricObject* Grader::get_rubric(string id)
+{
+    return control->get_rubric(id);
+}
+
+RubricSection* Grader::get_rubricsection(string id)
+{
+    return control->get_rubricsection(id);
 }
 
 FileParser* Grader::get_file_parser(){

@@ -51,6 +51,11 @@ public:
 
     void add_year(std::string yearID);
 
+    void add_rubric(std::string rubricID,std::string labID);
+
+    void add_rubricsection(std::string rubricsectionID,std::string rubricID, std::string name, std::string points, std::string color);
+
+
 
     std::string student_list();
 
@@ -71,6 +76,10 @@ public:
     Component* get_component(std::string id);
 
     Comment* get_comment(std::string id);
+
+    RubricObject* get_rubric(std::string id);
+
+    RubricSection* get_rubricsection(std::string id);
 
     Controller* get_control();
 

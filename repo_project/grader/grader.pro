@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     comment.cpp \
     rubricobject.cpp \
     year.cpp \
-    semester.cpp
+    semester.cpp \
+    rubricsection.cpp
 
 HEADERS += \
     grader.h \
@@ -40,5 +41,6 @@ HEADERS += \
     comment.h \
     rubricobject.h \
     year.h \
-    semester.h
+    semester.h \
+    rubricsection.h
 
