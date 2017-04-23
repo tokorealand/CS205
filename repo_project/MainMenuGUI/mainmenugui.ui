@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>716</width>
+    <width>1005</width>
     <height>565</height>
    </rect>
   </property>
@@ -253,7 +253,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>716</width>
+     <width>1005</width>
      <height>22</height>
     </rect>
    </property>
@@ -265,6 +265,8 @@
      <string>File</string>
     </property>
     <addaction name="actionAdd_New_Labs"/>
+    <addaction name="actionComment"/>
+    <addaction name="actionExport_Lab"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -280,6 +282,16 @@
   <action name="actionAdd_New_Labs">
    <property name="text">
     <string>Add New Labs</string>
+   </property>
+  </action>
+  <action name="actionComment">
+   <property name="text">
+    <string>Comment</string>
+   </property>
+  </action>
+  <action name="actionExport_Lab">
+   <property name="text">
+    <string>Export Lab</string>
    </property>
   </action>
  </widget>
