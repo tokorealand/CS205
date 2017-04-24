@@ -279,6 +279,7 @@ void MainMenuGUI::display_component_text()
 void MainMenuGUI::display_comment_text()
 {
     ui->discomment->clear();
+
     QList<QString> jtcontainer;
     for(int i = 0; i<selected_component->get_comments().size(); i++)
     {
