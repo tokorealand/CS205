@@ -3,10 +3,7 @@
 Grader::Grader()
 {
 
-    tool = new DBTool("TEgfST45");
 
-
-    tool = new DBTool("TEST900");
 
     tool = new DBTool("TEST9000");
 

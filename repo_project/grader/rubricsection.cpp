@@ -3,7 +3,7 @@
 RubricSection::RubricSection(std::string id, std::string rubricid, std::string description, std::string points, std::string color, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id=id;
-    this->rubricid=id;
+    this->rubricid=rubricid;
     this->description=description;
     this->points=points;
     this->color=color;

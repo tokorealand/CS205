@@ -1438,7 +1438,7 @@ int cb_select_all_rubrics(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_rubric(argv[0],argv[1]);
     //old from lab 6
 
     return 0;
@@ -1545,7 +1545,7 @@ int cb_select_all_rubricsections(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_rubricsection(argv[0],argv[1],argv[2],argv[3],argv[4]);
     //old from lab 6
 
     return 0;
