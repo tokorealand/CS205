@@ -65,7 +65,7 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 }
 
 void MainMenuGUI::on_actionExport_Lab_triggered(){
-    x.parse_file(selected_lab);
+    x.combine_lab(selected_lab);
 
 }
 

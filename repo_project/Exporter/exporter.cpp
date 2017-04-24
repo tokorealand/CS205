@@ -6,6 +6,52 @@ Exporter::Exporter(){
 Exporter::~Exporter(){
 }
 
+
+
+void Exporter::combine_lab(Lab* currentLab)
+{
+    this->currentLab = currentLab;
+    ofstream oss;
+    oss.open("name.html");
+
+    oss << "<html>" << endl;
+           oss << get_textof()<<endl;
+
+    //end writing the file
+    oss << "</html>" << endl;
+
+    //close the file writer
+    oss.close();
+
+}
+
+std::string Exporter::get_textof()
+{
+    std::string whole;
+    //get the components from this lab
+    vector<Component*> componentVector = currentLab->get_components();
+
+    for(int i = 0; i < componentVector.size(); i++){
+
+            currentComponent = componentVector.at(i);
+
+            //get a current class
+            vector<string> classTemp = currentComponent->get_text_lines();
+    currentComponent = componentVector.at(i);
+
+
+
+    //for each line in the class
+    for(int j = 0; j < classTemp.size(); j++){
+        string lineTemp = to_string(j) + string(" ") + classTemp.at(j);
+        whole+= parse_line(lineTemp, currentLab, j);
+    }
+    }
+
+   return whole;
+
+}
+
 void Exporter::parse_file(Lab* currentLab){
 
     this->currentLab = currentLab;
@@ -24,7 +70,7 @@ void Exporter::parse_file(Lab* currentLab){
 
         //create a name for the class
         string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
-                             + string("class") + to_string(i) + ".html";
+                + string("class") + to_string(i) + ".html";
         //open a file writer
         ofstream ofs;
         cout << "name" << name << endl;
@@ -78,7 +124,7 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
         }
         //check if comment text is specified
         if(currentComment->get_comment_text() != ""){
-            commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + "</b>" + "</p>";
+            commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + "</b>" + "</pre>";
 
 
 

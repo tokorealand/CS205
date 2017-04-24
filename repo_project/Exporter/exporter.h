@@ -23,6 +23,7 @@ public:
 
     //void new_file(Lab lab);
     void parse_file(Lab *currentLab);
+    void combine_lab(Lab *currentLab);
     string parse_line(string line, Lab *currentLab, int lineNo);
     string space();
     string enter();
@@ -30,6 +31,7 @@ public:
     string font_color(string color);
     string bold();
     string get_finished();
+    string get_textof();
 
     //variables
     Lab* currentLab;
