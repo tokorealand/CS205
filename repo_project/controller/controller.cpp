@@ -81,6 +81,7 @@ void Controller::total_recall()
     select_all_components();
     select_all_rubrics();
     select_all_rubricsections();
+    select_all_commentss();
 
 }
 
@@ -1330,7 +1331,7 @@ int cb_select_all_commentss(void  *data,
 
     }
 
-    //obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_comment(argv[0],argv[1],argv[2],argv[3],argv[4],argv[5],argv[6]);
     //old from lab 6
 
     return 0;

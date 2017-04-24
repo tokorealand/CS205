@@ -63,7 +63,7 @@ void Comment::store_add_row_sql() {
 void Comment::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Component\n";
+    std::cerr << "calling store_create_sql from Comment\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";

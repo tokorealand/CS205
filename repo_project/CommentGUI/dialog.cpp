@@ -42,7 +42,7 @@ void Dialog::populate(){
 void Dialog::on_doneButton_clicked(){
 
     //save comment details -- will be in a vector of comments in lab object
-    string commentId        = lab->get_id() + to_string(lab->get_comment_vector().size());
+    string commentId        = component->get_id() + to_string(component->get_comments().size());
     string componentId      = component->get_id();
     string lineNumber       = ui->lineNo->text().toStdString();
     cout << "1" <<endl;
