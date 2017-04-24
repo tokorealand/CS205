@@ -90,9 +90,8 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
 
     }else{
 
-        htmlLine = string("<p>") + fontColor + line + "</p>";
+        htmlLine = string("<pre>") + fontColor + line + "</pre>";
     }
-
     return htmlLine + commentText;
 }
 
