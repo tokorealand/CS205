@@ -87,6 +87,7 @@ void RubricGUI::on_createRubric_clicked()
         string rubricID = to_string( ui->selectLab->value()) + "_" + selected_class->get_id();
         grad->add_rubric(rubricID, selected_class->get_id());
         selected_rubric = grad->get_rubric(rubricID);
+        //cout<<to_string(selected_rubric->get_rubric_sections().size()).c+'\n';
     }
 }
 
@@ -100,7 +101,6 @@ void RubricGUI::on_addSection_clicked()
         string description = ui->selectDescription->toPlainText().toStdString();
         string color = ui->selectColor->currentText().toStdString();
         string points = to_string(ui->selectPoints->value());
-
         ui->displaySections->addItem(QString::fromStdString(points+"|"+color+"|"+description));
         grad->add_rubricsection(rubricsectionID, selected_rubric->get_id(), description, points, color);
     }

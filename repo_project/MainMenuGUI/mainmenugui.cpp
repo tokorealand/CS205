@@ -292,9 +292,11 @@ void MainMenuGUI::display_comment_text()
 void MainMenuGUI::display_rubric_text()
 {
     ui->disrubric->clear();
-    if(selected_class->get_rubrics().size() - 1 >= std::atoi(selected_lab->get_lab_num().c_str()))
+
+    int num = std::atoi(selected_lab->get_lab_num().c_str());
+    if(selected_class->get_rubrics().size() >= std::atoi(selected_lab->get_lab_num().c_str()))
     {
-        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str()));
+        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str())-1);
 
         QList<QString> container;
 
