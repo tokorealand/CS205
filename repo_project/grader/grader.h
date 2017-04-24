@@ -51,7 +51,7 @@ public:
 
     void add_year(std::string yearID);
 
-    void add_rubric(std::string rubricID,std::string labID);
+    void add_rubric(std::string rubricID,std::string classID);
 
     void add_rubricsection(std::string rubricsectionID,std::string rubricID, std::string name, std::string points, std::string color);
 

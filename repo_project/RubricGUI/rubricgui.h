@@ -39,6 +39,8 @@ private slots:
 
     void on_createRubric_clicked();
 
+    void on_addSection_clicked();
+
 private:
     Ui::RubricGUI *ui;
     Component* selected_component =nullptr;
@@ -48,6 +50,7 @@ private:
     Section* selected_section =nullptr;
     Year* selected_year =nullptr;
     Semester* selected_semester =nullptr;
+    RubricObject* selected_rubric = nullptr;
     Grader *grad;
 };
 

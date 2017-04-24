@@ -83,8 +83,22 @@ void RubricGUI::on_createRubric_clicked()
 {
     if(selected_class != nullptr)
     {
-        string rubricID =to_string( ui->selectLab->value()) + "_" + selected_class->get_id();
+        string rubricID = to_string( ui->selectLab->value()) + "_" + selected_class->get_id();
         grad->add_rubric(rubricID, selected_class->get_id());
+        selected_rubric = grad->get_rubric(rubricID);
     }
+}
 
+
+
+void RubricGUI::on_addSection_clicked()
+{
+    if(selected_rubric !=nullptr)
+    {
+        string rubricsectionID ="_" + selected_rubric->get_id();
+        string description;
+        string color;
+        string points;
+        //grad->add_rubricsection(rubricsectionID, selected_rubric->get_id(),);
+    }
 }
