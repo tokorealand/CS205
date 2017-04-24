@@ -8,6 +8,7 @@ Student::Student(std::string studentID, std::string sectionID, std::string first
     this->lastName  = lastname;
     this->sectionID = sectionID;
     this->id = studentID;
+    this->numLabs = 0;
 
     // Load SQL specific to child class.
 
@@ -36,6 +37,8 @@ std::vector<Lab*> Student::get_labs()
 void Student::add_lab(Lab *thelab)
 {
     labs.push_back(thelab);
+    numLabs++;
+
 }
 
 std::string Student::get_id()

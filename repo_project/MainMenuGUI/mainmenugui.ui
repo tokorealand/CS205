@@ -173,12 +173,12 @@
      <rect>
       <x>50</x>
       <y>360</y>
-      <width>131</width>
+      <width>201</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Make Anonymous</string>
+     <string>Toggle Anonymous Grading</string>
     </property>
    </widget>
    <widget class="QComboBox" name="classSelect">
@@ -277,6 +277,7 @@
     <addaction name="actionAdd_New_Labs"/>
     <addaction name="actionComment"/>
     <addaction name="actionExport_Lab"/>
+    <addaction name="actionAdd_Rubric"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -302,6 +303,11 @@
   <action name="actionExport_Lab">
    <property name="text">
     <string>Export Lab</string>
+   </property>
+  </action>
+  <action name="actionAdd_Rubric">
+   <property name="text">
+    <string>Add Rubric</string>
    </property>
   </action>
  </widget>

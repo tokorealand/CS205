@@ -48,6 +48,17 @@ std::vector<Section*> Class::get_sections()
     return sections;
 }
 
+vector<RubricObject*> Class::get_rubrics()
+{
+    return rubrics;
+}
+
+void Class:: add_rubric(RubricObject* rubric)
+{
+    rubrics.push_back(rubric);
+}
+
+
 Section* Class::get_section(int sectionid)
 {/*
     Section *s;

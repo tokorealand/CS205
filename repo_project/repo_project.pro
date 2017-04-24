@@ -8,5 +8,6 @@ SUBDIRS += \
     CommentGUI\
     RubricCreatorGUI \
     Exporter\
-    MainMenuGUI
+    MainMenuGUI \
+    RubricGUI
 

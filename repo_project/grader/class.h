@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include "dbtool.h"
 #include "dbtable.h"
+#include "rubricobject.h"
 using namespace std;
 
 class Section;
@@ -24,6 +25,7 @@ private:
     DBTool *tool;
     vector<Section*> sections;
     std::string name;
+    vector<RubricObject*> rubrics;
 
 
 protected:
@@ -39,6 +41,9 @@ public:
 
     std::vector<Section*> get_sections();
     std::string get_name();
+    std::string labnumber;
+    std::vector<RubricObject*> get_rubrics();
+    void add_rubric(RubricObject* rubric);
 
 
     // create command for your child class.

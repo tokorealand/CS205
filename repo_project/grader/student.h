@@ -27,6 +27,7 @@ private:
     string lastName;
     string sectionID;
     string id;
+    int numLabs;
 protected:
     std::string sql_select_all;
 

@@ -11,8 +11,6 @@ RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):
 
     store_add_row_sql();
     store_create_sql();
-
-
 }
 
 void RubricObject::operator = (RubricObject &obj) {

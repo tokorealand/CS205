@@ -307,6 +307,13 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
     {
      anonymous_grading = false;
     }
+
+    ui->studentSelect->clear();
+    ui->labSelect->clear();
+    ui->componentSelect->clear();
+    ui->disjava->clear();
+    ui->discomment->clear();
+    ui->disrubric->clear();
 }
 
 void MainMenuGUI::on_actionComment_triggered()
@@ -318,4 +325,10 @@ void MainMenuGUI::on_actionComment_triggered()
         c->show();
     }
 
+}
+
+void MainMenuGUI::on_actionAdd_Rubric_triggered()
+{
+    RubricGUI* rg = new RubricGUI(0, grad);
+    rg->show();
 }
