@@ -99,6 +99,9 @@ public:
 
     vector<Class*> get_classes();
 
+    vector<Comment*> get_comments();
+
+
     //ALLIE
     void add_temp_rubric(RubricObject *r);
     RubricObject* get_temp_rubric();

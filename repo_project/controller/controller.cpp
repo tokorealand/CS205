@@ -374,6 +374,10 @@ std::vector<Class*> Controller:: get_classes()
     return classes;
 }
 
+std::vector<Comment*> Controller::get_comments()
+{
+    return comments;
+}
 
 
 void Controller::add_year(std::string yearID)
@@ -473,6 +477,7 @@ void Controller::add_comment(std::string commentID, std::string componentID, std
     Comment *com = new Comment(commentID, componentID, linenumber,commentphrase,rubricsection, highlight,points, class_tool,table_comment);
     comments.push_back(com);
     get_component(componentID)->add_comment(com);
+    cout<<"Ssssasas";
 }
 
 void Controller::add_rubric(std::string rubricID, std::string classID)

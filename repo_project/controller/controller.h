@@ -165,6 +165,7 @@ public:
     std::vector<Year*> get_years();
     std::vector<Semester*> get_semesters();
     std::vector<Class*> get_classes();
+    std::vector<Comment*> get_comments();
 
 
 

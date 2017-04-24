@@ -19,18 +19,25 @@ Dialog::~Dialog(){
 //populate the gui with info
 void Dialog::populate(){
 
-//    //populate the commentList with comments from the database
-//    for(int i = 0; i < lab->get_rubric()->get_rubric_sections().size(); i++){
-//        QString temp = QString::fromStdString(lab->get_rubric()->get_section_at(i));
-//        ui->commentList->insertItem(i, temp);
-//    }
+    QList<QString> ccontainer;
+    ui->commentList->clear();
 
-//    //populate the rubricSectionsDropDown with rubric sections
-//    for(int i = 0; i<lab->get_rubric()->get_rubric_sections().size(); i++){
-//        QString temp = QString::fromStdString(lab->get_rubric()->get_section_text_at(i));
-//        ui->rubricSectionDropDown->insertItem(i, temp);
-//    }
-}
+    if(grader->get_comments().size()>0)
+    {
+        std::vector<Comment*> holder = grader->get_comments();
+
+        for(Comment* it: holder)
+        {
+            ccontainer.append(QString::fromStdString(it->get_comment_text()));
+        }
+
+        ui->commentList->addItems(ccontainer);
+    }
+
+
+
+    }
+
 
 void Dialog::on_doneButton_clicked(){
 

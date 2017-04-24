@@ -39,6 +39,12 @@ vector<Semester*> Grader::get_semesters()
 
 }
 
+vector<Comment*> Grader::get_comments()
+{
+    return control->get_comments();
+}
+
+
 
 
 void Grader::add_year(string yearID)
