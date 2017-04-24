@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>628</width>
-    <height>359</height>
+    <width>708</width>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>70</y>
-     <width>81</width>
+     <x>460</x>
+     <y>20</y>
+     <width>74</width>
      <height>16</height>
     </rect>
    </property>
@@ -29,9 +29,9 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>11</x>
-     <y>71</y>
-     <width>39</width>
+     <x>290</x>
+     <y>20</y>
+     <width>42</width>
      <height>16</height>
     </rect>
    </property>
@@ -42,8 +42,8 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>63</x>
-     <y>71</y>
+     <x>350</x>
+     <y>20</y>
      <width>37</width>
      <height>16</height>
     </rect>
@@ -52,24 +52,11 @@
     <string>Color:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="addSection">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>90</y>
-     <width>121</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add Section</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>130</y>
+     <x>580</x>
+     <y>270</y>
      <width>121</width>
      <height>32</height>
     </rect>
@@ -81,8 +68,8 @@
   <widget class="QPushButton" name="createRubric">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>60</y>
+     <x>30</x>
+     <y>270</y>
      <width>121</width>
      <height>32</height>
     </rect>
@@ -91,64 +78,128 @@
     <string>Create Rubric</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="displaySections">
+  <widget class="QListWidget" name="rubricsectionSelect">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>70</y>
+     <width>401</width>
+     <height>201</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="rubricSelect">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>70</y>
+     <width>91</width>
+     <height>201</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>270</y>
+     <width>111</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Rubric</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>130</y>
-     <width>431</width>
-     <height>211</height>
+     <y>30</y>
+     <width>60</width>
+     <height>16</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Select:</string>
    </property>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>1</x>
-     <y>30</y>
-     <width>616</width>
-     <height>30</height>
+     <x>290</x>
+     <y>40</y>
+     <width>401</width>
+     <height>31</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
+     <widget class="QSpinBox" name="selectPoints"/>
+    </item>
+    <item>
+     <widget class="QComboBox" name="selectColor"/>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="selectDescription"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="addSection">
+      <property name="text">
+       <string>Add Section</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>172</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Year:</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1" colspan="2">
      <widget class="QComboBox" name="yearSelect"/>
     </item>
-    <item>
+    <item row="1" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Semester:</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="1" column="1" colspan="2">
      <widget class="QComboBox" name="semesterSelect"/>
     </item>
-    <item>
+    <item row="2" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Class:</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="2" column="1" colspan="2">
      <widget class="QComboBox" name="classSelect"/>
     </item>
-    <item>
+    <item row="3" column="0" colspan="2">
      <widget class="QLabel" name="label_7">
       <property name="text">
        <string>Lab Number:</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="3" column="2">
      <widget class="QSpinBox" name="selectLab">
       <property name="minimum">
        <number>1</number>
@@ -160,21 +211,22 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>12</x>
-     <y>90</y>
-     <width>431</width>
-     <height>31</height>
+     <x>290</x>
+     <y>270</y>
+     <width>131</width>
+     <height>23</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QSpinBox" name="selectPoints"/>
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Point Total:</string>
+      </property>
+     </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="selectColor"/>
-    </item>
-    <item>
-     <widget class="QTextEdit" name="selectDescription"/>
+     <widget class="QLineEdit" name="lineEdit"/>
     </item>
    </layout>
   </widget>

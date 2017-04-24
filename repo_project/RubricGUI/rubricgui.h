@@ -44,6 +44,10 @@ private slots:
 
 
 
+    void on_rubricSelect_activated(const QModelIndex &index);
+
+    void on_rubricsectionSelect_activated(const QModelIndex &index);
+
 private:
     Ui::RubricGUI *ui;
     Component* selected_component =nullptr;
@@ -54,6 +58,7 @@ private:
     Year* selected_year =nullptr;
     Semester* selected_semester =nullptr;
     RubricObject* selected_rubric = nullptr;
+    RubricSection* selected_rubric_section = nullptr;
     Grader *grad;
 };
 

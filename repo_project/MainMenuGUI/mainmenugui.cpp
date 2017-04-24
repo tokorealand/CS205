@@ -222,7 +222,7 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 
 void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 {
-    string componentID = ui->componentSelect->currentItem()->text().QString::toStdString()+"_"+selected_lab->get_id();
+    string componentID = ui->componentSelect->currentItem()->text().toStdString()+"_"+selected_lab->get_id();
 
     selected_component=grad->get_component(componentID);
 
@@ -296,7 +296,7 @@ void MainMenuGUI::display_rubric_text()
     int num = std::atoi(selected_lab->get_lab_num().c_str());
     if(selected_class->get_rubrics().size() >= std::atoi(selected_lab->get_lab_num().c_str()))
     {
-        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str())-1);
+        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str()) - 1);
 
         QList<QString> container;
 

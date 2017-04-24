@@ -6,6 +6,7 @@ using namespace std;
 RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):DBTable(tool,table){
     this->id=id;
     this->labid=labID;
+    this->name ="Rubric_"+id.substr(0, id.find("_"));
     this->tool=tool;
     this->table=table;
 
@@ -30,9 +31,10 @@ vector<RubricSection*> RubricObject::get_rubric_sections(){
     return rubricSections;
 }
 
-
-
-
+string RubricObject:: get_name()
+{
+    return name;
+}
 
 //setters
 void RubricObject::add_rubric_section(RubricSection *rsec){

@@ -38,7 +38,7 @@ public:
     string get_section_text_at(int i);
     string get_color_at(int i);
     int get_size();
-
+    string get_name();
     //setters
     void add_rubric_section(RubricSection* rsec);
 
@@ -67,6 +67,7 @@ private:
     std::string table;
     std::string id;
     std::string labid;
+    std::string name;
 };
 
 int cb_add_row_rubric(void  *data,
