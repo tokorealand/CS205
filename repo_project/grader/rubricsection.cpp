@@ -1,10 +1,10 @@
 #include "rubricsection.h"
 
-RubricSection::RubricSection(std::string id, std::string rubricid, std::string name, std::string points, std::string color, DBTool *tool, std::string table):DBTable(tool,table)
+RubricSection::RubricSection(std::string id, std::string rubricid, std::string description, std::string points, std::string color, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id=id;
     this->rubricid=id;
-    this->name=name;
+    this->description=description;
     this->points=points;
     this->color=color;
 
@@ -16,12 +16,27 @@ RubricSection::RubricSection(std::string id, std::string rubricid, std::string n
 RubricSection::~RubricSection()
 {
     build_table();
-    add_row(id,rubricid,name,points,color);
+    add_row(id,rubricid,description,points,color);
 }
 
 std::string RubricSection::get_id()
 {
     return id;
+}
+
+std::string RubricSection:: get_points()
+{
+    return points;
+}
+
+std::string RubricSection:: get_color()
+{
+    return color;
+}
+
+std::string RubricSection:: get_description()
+{
+    return description;
 }
 
 // SQL used for inputting information
@@ -54,7 +69,7 @@ void RubricSection::store_create_sql() {
 
 /** Adds the inputted information into the player table database.
 */
-bool RubricSection::add_row(std::string id, std::string rubricid, std::string name, std::string points, std::string color) {
+bool RubricSection::add_row(std::string id, std::string rubricid, std::string description, std::string points, std::string color) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -76,7 +91,7 @@ bool RubricSection::add_row(std::string id, std::string rubricid, std::string na
     sql_add_row += "\", ";
 
     sql_add_row += "\"";
-    sql_add_row += std::string(name);
+    sql_add_row += std::string(description);
     sql_add_row += "\", ";
 
     sql_add_row += "\"";

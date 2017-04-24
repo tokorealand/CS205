@@ -134,7 +134,7 @@ public:
 
     void add_rubric(std::string rubricID, std::string labID);
 
-    void add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string name, std::string points, std::string color);
+    void add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
 
     std::string student_list();
 

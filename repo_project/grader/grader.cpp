@@ -90,9 +90,9 @@ void Grader::add_rubric(string rubricID, string classID)
     control->add_rubric(rubricID, classID);
 }
 
-void Grader::add_rubricsection(string rubricsectionID, string rubricID, string name, string points, string color)
+void Grader::add_rubricsection(string rubricsectionID, string rubricID, string description, string points, string color)
 {
-    control->add_rubricsection(rubricsectionID, rubricID, name,points,color);
+    control->add_rubricsection(rubricsectionID, rubricID, description,points,color);
 }
 
 

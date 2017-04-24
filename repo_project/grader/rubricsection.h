@@ -18,7 +18,7 @@ class RubricSection : public DBTable
 private:
     std::string id;
     std::string rubricid;
-    std::string name;
+    std::string description;
     std::string points;
     std::string color;
 
@@ -26,7 +26,7 @@ private:
 
 
 public:
-    RubricSection(std::string id, std::string rubricid, std::string name, std::string points, std::string color, DBTool *tool, std::string table);
+    RubricSection(std::string id, std::string rubricid, std::string description, std::string points, std::string color, DBTool *tool, std::string table);
 
 
     ~RubricSection();
@@ -40,8 +40,11 @@ public:
     // An overloaded method to generate a new
     // insert command for your child class.
     virtual void store_add_row_sql();
-    bool add_row(std::string id, std::string rubricid, std::string name, std::string points, std::string color);
+    bool add_row(std::string id, std::string rubricid, std::string description, std::string points, std::string color);
 
+    std::string get_points();
+    std::string get_color();
+    std::string get_description();
 
 
 };

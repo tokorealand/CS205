@@ -8,6 +8,7 @@ RubricGUI::RubricGUI(QWidget *parent, Grader* aGrader) :
     ui->setupUi(this);
     this->grad = aGrader;
     display_years();
+    display_colors();
 }
 
 RubricGUI::~RubricGUI()
@@ -95,10 +96,28 @@ void RubricGUI::on_addSection_clicked()
 {
     if(selected_rubric !=nullptr)
     {
-        string rubricsectionID ="_" + selected_rubric->get_id();
-        string description;
-        string color;
-        string points;
-        //grad->add_rubricsection(rubricsectionID, selected_rubric->get_id(),);
+        string rubricsectionID =to_string(selected_rubric->get_rubric_sections().size())+"_" + selected_rubric->get_id();
+        string description = ui->selectDescription->toPlainText().toStdString();
+        string color = ui->selectColor->currentText().toStdString();
+        string points = to_string(ui->selectPoints->value());
+
+        ui->displaySections->addItem(QString::fromStdString(points+"|"+color+"|"+description));
+        grad->add_rubricsection(rubricsectionID, selected_rubric->get_id(), description, points, color);
     }
 }
+
+void RubricGUI::display_colors()
+{
+    QList<QString> container;
+    ui->selectColor->clear();
+
+    container.append("red");
+    container.append("green");
+    container.append("blue");
+    container.append("cyan");
+    container.append("magenta");
+    container.append("yellow");
+
+    ui->selectColor->addItems(container);
+}
+

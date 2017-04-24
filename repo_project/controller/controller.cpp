@@ -487,13 +487,13 @@ void Controller::add_rubric(std::string rubricID, std::string classID)
 }
 
 
-void Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string name, std::string points, std::string color)
+void Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color)
 {
     if(item_exist(rubricsectionID,"rubricsection"))
     {
         return;
     }
-RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,name,points,color,class_tool,table_rubricsection);
+RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
     rubricsections.push_back(rubs);
     get_rubric(rubricID)->add_rubric_section(rubs);
 }

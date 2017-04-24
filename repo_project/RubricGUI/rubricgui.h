@@ -28,6 +28,7 @@ public:
     ~RubricGUI();
 
     void display_years();
+    void display_colors();
 
 private slots:
     void on_yearSelect_activated(const QString &arg1);
@@ -40,6 +41,8 @@ private slots:
     void on_createRubric_clicked();
 
     void on_addSection_clicked();
+
+
 
 private:
     Ui::RubricGUI *ui;

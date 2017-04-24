@@ -206,6 +206,7 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    display_rubric_text();
 
    std::vector<Component*> holder = selected_lab->get_components();
 
@@ -290,6 +291,26 @@ void MainMenuGUI::display_comment_text()
 
 void MainMenuGUI::display_rubric_text()
 {
+    ui->disrubric->clear();
+    if(selected_class->get_rubrics().size() - 1 >= std::atoi(selected_lab->get_lab_num().c_str()))
+    {
+        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str()));
+
+        QList<QString> container;
+
+        for(int i = 0; i < current->get_rubric_sections().size(); i++)
+        {
+           string rubricSectionPoints = current->get_rubric_sections().at(i)->get_points();
+           string rubricSectionColor = current->get_rubric_sections().at(i)->get_color();
+           string rubricSectionDescription = current->get_rubric_sections().at(i)->get_description();
+           container.append(QString::fromStdString(rubricSectionPoints+"|"+rubricSectionColor+"|"+rubricSectionDescription));
+        }
+        ui->disrubric->addItems(container);
+    }
+    else
+    {
+        ui->disrubric->addItem("No rubric to display. File -> Add Rubric to add a rubric for the specified lab");
+    }
 
 }
 
