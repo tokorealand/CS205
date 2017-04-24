@@ -14,6 +14,7 @@ MainMenuGUI::MainMenuGUI(QWidget *parent) :
 MainMenuGUI::~MainMenuGUI()
 {
     delete ui;
+    delete grad;
 }
 
 void MainMenuGUI::display_years()

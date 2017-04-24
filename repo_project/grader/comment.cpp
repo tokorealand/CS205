@@ -87,7 +87,7 @@ bool Comment::add_row(std::string id, std::string componentid, std::string linen
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, componentid, linenumber, commentphrase, rubricsection, highlight ) ";
+    sql_add_row += " ( id, componentid, linenumber, commentphrase, rubricsection, highlight, points ) ";
     sql_add_row += "VALUES (";
 
 
@@ -126,7 +126,7 @@ bool Comment::add_row(std::string id, std::string componentid, std::string linen
 
     retCode = sqlite3_exec(curr_db->db_ref(),
                            sql_add_row.c_str(),
-                           cb_add_row_component,
+                           cb_add_row_comment_ne,
                            this,
                            &zErrMsg          );
 
