@@ -495,7 +495,7 @@ void Controller::add_rubricsection(std::string rubricsectionID, std::string rubr
     }
 RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,name,points,color,class_tool,table_rubricsection);
     rubricsections.push_back(rubs);
-    //get_rubric->add
+    get_rubric(rubricID)->add_rubric_section(rubs);
 }
 
 

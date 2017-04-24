@@ -46,7 +46,9 @@ SOURCES += main.cpp\
     ../RubricCreatorGUI/rubriccreatorgui.cpp \
     ../grader/rubricsection.cpp\
     ../grader/rubricobject.cpp\
-    ../RubricGUI/rubricgui.cpp
+    ../RubricGUI/rubricgui.cpp\
+    ../Exporter/exporter.cpp
+
 
 
 
@@ -71,7 +73,9 @@ HEADERS  += mainmenugui.h\
     ../RubricCreatorGUI/rubriccreatorgui.h \
     ../grader/rubricsection.h\
     ../grader/rubricobject.h\
-    ../RubricGUI/rubricgui.h
+    ../RubricGUI/rubricgui.h\
+    ../Exporter/exporter.h
+
 
 
 FORMS    += mainmenugui.ui\

@@ -14,7 +14,11 @@
 #include "../grader/component.h"
 #include "../grader/dbtable.h"
 #include "../grader/dbtool.h"
+
 #include "../RubricGUI/rubricgui.h"
+
+#include "../Exporter/exporter.h"
+
 
 class Grader;
 namespace Ui {
@@ -36,6 +40,8 @@ private slots:
 
     void on_actionAdd_New_Labs_triggered();
 
+    void on_actionExport_Lab_triggered();
+
     void on_Refresh_clicked();
 
     void on_semesterSelect_activated(const QString &arg1);
@@ -47,7 +53,6 @@ private slots:
     void on_labSelect_activated(const QString &arg1);
 
     void on_studentSelect_activated(const QString &arg1);
-
 
     void on_componentSelect_activated(const QModelIndex &index);
 
@@ -75,6 +80,7 @@ private:
     Year* selected_year =nullptr;
     Semester* selected_semester =nullptr;
     Grader *grad;
+    Exporter x;
     bool anonymous_grading;
 };
 

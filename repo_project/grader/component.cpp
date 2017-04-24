@@ -185,3 +185,27 @@ int cb_add_row_component(void  *data,
 
     return 0;
 }
+
+bool Component::is_comment_at(int lineNo){
+
+    //go through all the comments
+    for(int i = 0; i < comments.size(); i++){
+
+        //check if the line numbers match
+        if(comments.at(i)->get_linenumber() == to_string(lineNo)){
+            return true; //if so, return true
+        }
+    }
+    return false;
+}
+
+//use this method to get the comment at a particular line number
+Comment* Component::get_comment_at(int lineNo){
+
+    for(int i = 0; i < comments.size(); i++){
+        if(comments.at(i)->get_linenumber() == to_string(lineNo)){
+            return comments.at(i);
+        }
+    }
+    return nullptr;
+}
