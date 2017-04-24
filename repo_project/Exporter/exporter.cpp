@@ -7,7 +7,7 @@ Exporter::~Exporter(){
 }
 
 
-
+//writes the file
 void Exporter::combine_lab(Lab* currentLab)
 {
     this->currentLab = currentLab;
@@ -24,7 +24,7 @@ void Exporter::combine_lab(Lab* currentLab)
     oss.close();
 
 }
-
+//used to get a string containing all components
 std::string Exporter::get_textof()
 {
     std::string whole;
@@ -46,6 +46,7 @@ std::string Exporter::get_textof()
         string lineTemp = to_string(j) + string(" ") + classTemp.at(j);
         whole+= parse_line(lineTemp, currentLab, j);
     }
+    whole+="----------------------------------------------------------------------------------------------------------------------------------------------";
     }
 
    return whole;
