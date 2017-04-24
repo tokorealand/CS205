@@ -85,9 +85,9 @@ void Grader::add_comment(std::string commentID, std::string labID, std::string l
     control->add_comment( commentID,  labID,  linenumber,commentphrase,  rubricsection, highlight, points);
 }
 
-void Grader::add_rubric(string rubricID, string labID)
+void Grader::add_rubric(string rubricID, string classID)
 {
-    control->add_rubric(rubricID, labID);
+    control->add_rubric(rubricID, classID);
 }
 
 void Grader::add_rubricsection(string rubricsectionID, string rubricID, string name, string points, string color)

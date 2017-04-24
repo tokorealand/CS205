@@ -475,15 +475,15 @@ void Controller::add_comment(std::string commentID, std::string componentID, std
     get_component(componentID)->add_comment(com);
 }
 
-void Controller::add_rubric(std::string rubricID, std::string labID)
+void Controller::add_rubric(std::string rubricID, std::string classID)
 {
     if(item_exist(rubricID,"rubric"))
     {
         return;
     }
-RubricObject *rub = new RubricObject(rubricID,labID,class_tool,table_rubric);
+    RubricObject *rub = new RubricObject(rubricID,classID,class_tool,table_rubric);
     rubrics.push_back(rub);
-    get_lab(labID)->add_rubric(rub);
+    get_class(classID)->add_rubric(rub);
 }
 
 
