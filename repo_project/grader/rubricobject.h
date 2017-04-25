@@ -41,6 +41,8 @@ public:
     string get_name();
     //setters
     void add_rubric_section(RubricSection* rsec);
+    void set_deleted();
+
 
 
 

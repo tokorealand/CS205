@@ -49,6 +49,11 @@ std::string RubricObject::get_id()
     return id;
 }
 
+void RubricObject::set_deleted()
+{
+    deleted = true;
+}
+
 
 
 int RubricObject::get_size(){
