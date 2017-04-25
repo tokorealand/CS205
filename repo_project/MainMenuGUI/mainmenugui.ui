@@ -167,7 +167,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -413,7 +413,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>810</x>
@@ -464,28 +464,40 @@
      <string>Toggle Anonymous Grading</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="deleteComment">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>400</y>
+      <width>131</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete Comment</string>
+    </property>
+   </widget>
+   <zorder>disrubric</zorder>
+   <zorder>disjava</zorder>
+   <zorder>discomment</zorder>
+   <zorder>componentSelect</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>checkBox</zorder>
    <zorder>Refresh</zorder>
    <zorder>label_8</zorder>
    <zorder>saveAndExit</zorder>
-   <zorder>label_9</zorder>
-   <zorder>displayLabGrade</zorder>
-   <zorder></zorder>
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
+   <zorder>deleteComment</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-
      <width>948</width>
      <height>22</height>
-
-     <width>787</width>
-     <width>1005</width>
-     <height>19</height>
-
     </rect>
    </property>
    <property name="nativeMenuBar">

@@ -50,6 +50,7 @@ public:
      std::string get_linenumber();
      std::string get_section_color();
      int get_points();
+     void set_deleted();
 };
 
 int cb_add_row_comment_ne(void  *data,

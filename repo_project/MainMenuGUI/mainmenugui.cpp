@@ -361,3 +361,10 @@ void MainMenuGUI::on_actionCalculate_Stats_triggered(){
     StatisticsGui* sg = new StatisticsGui(0, grad);
     sg->show();
 }
+
+void MainMenuGUI::on_deleteComment_clicked()
+{
+    Comment* selected_comment = selected_component->get_comments().at(ui->discomment->currentRow());
+    selected_comment->set_deleted();
+    delete selected_comment;
+}

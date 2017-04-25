@@ -72,6 +72,8 @@ private slots:
     void on_actionCalculate_Stats_triggered();
 
 
+    void on_deleteComment_clicked();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;
