@@ -9,7 +9,7 @@ RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):
     this->name ="Rubric_"+id.substr(0, id.find("_"));
     this->tool=tool;
     this->table=table;
-
+    this->deleted = false;
     store_add_row_sql();
     store_create_sql();
 }

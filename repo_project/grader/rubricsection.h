@@ -21,6 +21,8 @@ private:
     std::string description;
     std::string points;
     std::string color;
+    bool deleted;
+
 
 
 

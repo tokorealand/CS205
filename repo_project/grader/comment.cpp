@@ -9,6 +9,7 @@ Comment::Comment(std::string id, std::string componentID, std::string linenumber
     this->rubricsection = rubricsection;
     this->highlight = highlight;
     this->points = points;
+    this->deleted = false;
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();

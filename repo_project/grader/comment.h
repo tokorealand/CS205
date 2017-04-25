@@ -24,6 +24,7 @@ private:
     std::string rubricsection;
     std::string highlight;
     std::string points;
+    bool deleted;
 
 public: 
     Comment(std::string id, std::string componentID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
