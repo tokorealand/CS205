@@ -26,7 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-                    mainmenugui.cpp\
+    mainmenugui.cpp\
     ../grader/student.cpp \
     ../grader/lab.cpp \
     ../grader/section.cpp \

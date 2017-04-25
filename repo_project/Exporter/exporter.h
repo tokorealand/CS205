@@ -8,7 +8,7 @@
 #include "../grader/lab.h"
 #include "../grader/component.h"
 #include "../grader/rubricobject.h"
-
+#include "../grader/class.h"
 
 class Exporter{
 
@@ -18,13 +18,11 @@ public:
     Exporter();
     ~Exporter();
 
-
     //methods
-
 
     //void new_file(Lab lab);
     void parse_file(Lab *currentLab);
-    void combine_lab(Lab *currentLab);
+    void combine_lab(Lab *currentLab, Class *selectedClass, int rubricIndex);
     string parse_line(string line, Lab *currentLab, int lineNo);
     string space();
     string enter();
@@ -39,9 +37,11 @@ public:
     //variables
     Lab* currentLab;
     Component *currentComponent;
+    Class *currentClass;
     string fileString;
     vector<string> codeByLine;
     vector<vector<string>> codeLinesByClass;
+    int rubricIndex;
 
 };
 

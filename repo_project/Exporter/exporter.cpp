@@ -6,10 +6,12 @@ Exporter::Exporter(){
 Exporter::~Exporter(){
 }
 
-
 //writes the file
-void Exporter::combine_lab(Lab* currentLab)
-{
+void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex){
+
+    this->rubricIndex = rubricIndex;
+    this->currentClass = currentClass;
+
     //create a name for the class
     string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + ".html";
 
@@ -25,12 +27,11 @@ void Exporter::combine_lab(Lab* currentLab)
 
     //close the file writer
     oss.close();
-
 }
 
 //used to get a string containing all components
-std::string Exporter::get_textof()
-{
+std::string Exporter::get_textof(){
+
     std::string whole;
 
     //get the components from this lab
@@ -62,79 +63,37 @@ string Exporter::get_rubric(){
     string rubricDrawing = "RUBRIC <br>";
 
     //get a comment vector
-    vector<Comment> comments = currentLab->get_comment_vector();
+    vector<Comment*> comments = currentComponent->get_comments();
 
     //get a rubric
-    RubricObject *rubric = currentLab->get_rubric();
+    RubricObject *rubric = currentClass->get_rubrics().at(rubricIndex);
 
     //write a rubric section
     for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
         RubricSection *rs  = rubric->get_rubric_sections().at(i);
 
-        //rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
+        rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
     }
 }
 
 string Exporter::get_points_off(RubricSection *rs, int total){
 
     //get comment vector
-    vector<Comment> com = currentLab->get_comment_vector();
+    vector<Comment*> com = currentComponent->get_comments();
 
     //track points off section
     int ptsOffThisSection = 0;
 
     //get all the comments for this section
     for(int i = 0; i<com.size(); i++){
-        Comment current = com.at(i);
-        string currentRS = current.get_rubric_section();
+        Comment *current = com.at(i);
+        string currentRS = current->get_rubric_section();
         if(currentRS == rs->get_description()){ //if the section matches
-            ptsOffThisSection+=com.at(i).get_points_deducted(); //add points to point total
+            ptsOffThisSection+=current->get_points_deducted(); //add points to point total
         }
     }
     return to_string(total - ptsOffThisSection);
 }
-
-void Exporter::parse_file(Lab* currentLab){
-
-    this->currentLab = currentLab;
-
-    //get the components from this lab
-    vector<Component*> componentVector = currentLab->get_components();
-
-
-    //for each class in the submission
-    for(int i = 0; i < componentVector.size(); i++){
-
-        currentComponent = componentVector.at(i);
-
-        //get a current class
-        vector<string> classTemp = currentComponent->get_text_lines();
-
-        //create a name for the class
-        string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
-                + string("class") + to_string(i) + ".html";
-        //open a file writer
-        ofstream ofs;
-        cout << "name" << name << endl;
-        ofs.open(name);
-
-        //begin writing the file
-        ofs << "<html>" << endl;
-
-        //for each line in the class
-        for(int j = 0; j < classTemp.size(); j++){
-            string lineTemp = to_string(j) + string(" ") + classTemp.at(j);
-            ofs << parse_line(lineTemp, currentLab, j) << endl;
-        }
-
-        //end writing the file
-        ofs << "</html>" << endl;
-
-        //close the file writer
-        ofs.close();
-    }
-}
-
 
 //parses a line of code according to the comments
 string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
@@ -142,11 +101,11 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
     string htmlLine; //final line saved to html file
 
     //initialize everything as empty
-    string bold = "";
-    string highlight = "";
-    string fontColor = "<font color = 'black'>";
-    string commentText = "";
-    string endBold = "";
+    string bold         = "";
+    string highlight    = "";
+    string fontColor    = "<font color = 'black'>";
+    string commentText  = "";
+    string endBold      = "";
     string endHighlight = "";
 
     //if there is a comment for that line
@@ -167,11 +126,6 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
         //check if comment text is specified
         if(currentComment->get_comment_text() != ""){
             commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + "</b>" + "</pre>";
-
-
-
-
-
         }
 
         htmlLine = "<pre>" +  highlight + line  + endHighlight;

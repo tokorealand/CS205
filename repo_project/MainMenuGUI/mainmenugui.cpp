@@ -30,7 +30,6 @@ void MainMenuGUI::display_years()
         {
             ycontainer.append(QString::fromStdString(it->get_id()));
         }
-
         ui->yearSelect->addItems(ycontainer);
     }
 }
@@ -66,7 +65,8 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 }
 
 void MainMenuGUI::on_actionExport_Lab_triggered(){
-    x.combine_lab(selected_lab);
+    int rubricIndex = stoi(selected_lab->get_lab_num())-1;
+    x.combine_lab(selected_lab, selected_class, rubricIndex);
 
 }
 

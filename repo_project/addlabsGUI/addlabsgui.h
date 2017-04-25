@@ -27,9 +27,9 @@ public:
 private slots:
     void on_selectButton_clicked();
 
-    void on_doneButton_clicked();
+//    void on_doneButton_clicked();
 
-    void on_addRubricButton_clicked();
+//    void on_addRubricButton_clicked();
 
     void on_browseButton_clicked();
 

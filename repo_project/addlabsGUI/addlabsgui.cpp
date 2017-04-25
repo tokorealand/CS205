@@ -22,18 +22,18 @@ void AddLabsGUI::on_selectButton_clicked(){
     string filepath = ui->labPathText->toPlainText().toStdString();
     labIDList = grader->get_file_parser()->parse_java_file(filepath);
     controller = grader->get_control();
+     close();
     //grader->get_file_parser()->parse_java_file(filepath);
 }
 
-void AddLabsGUI::on_doneButton_clicked(){
-  //  add_rubric_to_labs();
-    close();
-}
+//void AddLabsGUI::on_doneButton_clicked(){
+//  //  add_rubric_to_labs();
+//}
 
-void AddLabsGUI::on_addRubricButton_clicked(){
-    RubricCreatorGUI *r = new RubricCreatorGUI(0, grader);
-    r->show();
-}
+//void AddLabsGUI::on_addRubricButton_clicked(){
+//    RubricCreatorGUI *r = new RubricCreatorGUI(0, grader);
+//    r->show();
+//}
 
 void AddLabsGUI::on_browseButton_clicked()
 {

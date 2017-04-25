@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>490</width>
-    <height>465</height>
+    <height>161</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,55 +16,10 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QPushButton" name="addRubricButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>340</y>
-     <width>110</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add Rubric</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="displayLabs">
-   <property name="geometry">
-    <rect>
-     <x>75</x>
-     <y>120</y>
-     <width>291</width>
-     <height>192</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="doneButton">
-   <property name="geometry">
-    <rect>
-     <x>12</x>
-     <y>425</y>
-     <width>74</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Done</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="browseButton">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>380</x>
      <y>80</y>
      <width>99</width>
      <height>32</height>
@@ -96,8 +51,8 @@
   <widget class="QPushButton" name="selectButton">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>110</y>
+     <x>380</x>
+     <y>120</y>
      <width>101</width>
      <height>32</height>
     </rect>
