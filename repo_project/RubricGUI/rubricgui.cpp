@@ -149,8 +149,14 @@ void RubricGUI::on_rubricSelect_activated(const QModelIndex &index){
     ui->rubricsectionSelect->addItems(ccontainer);
 }
 
+<<<<<<< HEAD
 void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index){
 
+=======
+void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index)
+{
+    selected_rubric_section =selected_rubric->get_rubric_sections().at( ui->rubricsectionSelect->currentRow());
+>>>>>>> 24ed6d805f24b7dedbf33dcaa45566b39a93cc58
 }
 
 void RubricGUI::on_deleteRubric_clicked()
