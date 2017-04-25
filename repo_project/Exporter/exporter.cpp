@@ -58,27 +58,39 @@ std::string Exporter::get_textof()
    return whole;
 }
 
-//string Exporter::get_rubric(){
+string Exporter::get_rubric(){
 
-//    string rubricDrawing = "RUBRIC <br>";
+    string rubricDrawing = "RUBRIC <br>";
 
-//    //get a comment vector
-//    vector<Comment*> comments = currentLab->get_comment_vector();
+    //get a comment vector
+    vector<Comment*> comments = currentLab->get_comment_vector();
 
-//    //get a rubric
-//    RubricObject *rubric = currentLab->get_rubric();
+    //get a rubric
+    RubricObject *rubric = currentLab->get_rubric();
 
-//    //write a rubric section
-//    for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
-//        RubricSection *rs  = rubric->get_rubric_sections().at(i);
-//        rubricDrawing+= "<pre>" + rs->get_description() + ": " + rs->get_points() + "/" + get_points();
-//    }
+    //write a rubric section
+    for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
+        RubricSection *rs  = rubric->get_rubric_sections().at(i);
+        rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
+    }
+}
 
-//}
+string Exporter::get_points_off(RubricSection rs, int total){
 
-//string Exporter::get_point(){
+    //get comment vector
+    vector<Comment*> com = currentLab->get_comment_vector();
 
-//}
+    //track points off section
+    int ptsOffThisSection = 0;
+
+    //get all the comments for this section
+    for(int i = 0; i<com.size(); i++){
+        if(com.at(i).get_rubric_section() == rs){ //if the section matches
+            ptsOffThisSection+=stoi(com.at(i).get_points_deducted()); //add points to point total
+        }
+    }
+    return to_string(total - ptsOffThisSection);
+}
 
 void Exporter::parse_file(Lab* currentLab){
 
