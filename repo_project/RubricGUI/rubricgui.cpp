@@ -116,8 +116,7 @@ void RubricGUI::on_addSection_clicked()
     }
 }
 
-void RubricGUI::display_colors()
-{
+void RubricGUI::display_colors(){
     QList<QString> container;
     ui->selectColor->clear();
     container.append("red");
@@ -130,8 +129,7 @@ void RubricGUI::display_colors()
 }
 
 
-void RubricGUI::on_rubricSelect_activated(const QModelIndex &index)
-{
+void RubricGUI::on_rubricSelect_activated(const QModelIndex &index){
     string r = ui->rubricSelect->currentItem()->text().toStdString();
     string rubricID = r.substr(r.find("_")+1, r.length())+"_"+selected_class->get_id();
     selected_rubric = grad->get_rubric(rubricID);
@@ -148,7 +146,6 @@ void RubricGUI::on_rubricSelect_activated(const QModelIndex &index)
     ui->rubricsectionSelect->addItems(ccontainer);
 }
 
-void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index)
-{
+void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index){
 
 }

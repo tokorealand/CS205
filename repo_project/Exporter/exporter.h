@@ -7,6 +7,7 @@
 #include "../grader/comment.h"
 #include "../grader/lab.h"
 #include "../grader/component.h"
+#include "../grader/rubricobject.h"
 
 
 class Exporter{

@@ -10,9 +10,13 @@ Exporter::~Exporter(){
 //writes the file
 void Exporter::combine_lab(Lab* currentLab)
 {
+    //create a name for the class
+    string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
+            + string("class") + to_string(i) + ".html";
+
     this->currentLab = currentLab;
     ofstream oss;
-    oss.open("name.html");
+    oss.open(name);
 
     oss << "<html>" << endl;
            oss << get_textof()<<endl;
@@ -24,10 +28,12 @@ void Exporter::combine_lab(Lab* currentLab)
     oss.close();
 
 }
+
 //used to get a string containing all components
 std::string Exporter::get_textof()
 {
     std::string whole;
+
     //get the components from this lab
     vector<Component*> componentVector = currentLab->get_components();
 
@@ -37,7 +43,7 @@ std::string Exporter::get_textof()
 
             //get a current class
             vector<string> classTemp = currentComponent->get_text_lines();
-    currentComponent = componentVector.at(i);
+            currentComponent = componentVector.at(i);
 
 
 
@@ -47,11 +53,32 @@ std::string Exporter::get_textof()
         whole+= parse_line(lineTemp, currentLab, j);
     }
     whole+="----------------------------------------------------------------------------------------------------------------------------------------------";
+    whole = whole + get_rubric();
     }
-
    return whole;
-
 }
+
+//string Exporter::get_rubric(){
+
+//    string rubricDrawing = "RUBRIC <br>";
+
+//    //get a comment vector
+//    vector<Comment*> comments = currentLab->get_comment_vector();
+
+//    //get a rubric
+//    RubricObject *rubric = currentLab->get_rubric();
+
+//    //write a rubric section
+//    for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
+//        RubricSection *rs  = rubric->get_rubric_sections().at(i);
+//        rubricDrawing+= "<pre>" + rs->get_description() + ": " + rs->get_points() + "/" + get_points();
+//    }
+
+//}
+
+//string Exporter::get_point(){
+
+//}
 
 void Exporter::parse_file(Lab* currentLab){
 
