@@ -39,7 +39,6 @@ public:
         if (AddLabsGUI->objectName().isEmpty())
             AddLabsGUI->setObjectName(QStringLiteral("AddLabsGUI"));
         AddLabsGUI->resize(490, 465);
-        AddLabsGUI->setStyleSheet(QStringLiteral("background-color: rgb(131, 131, 131);"));
         addRubricButton = new QPushButton(AddLabsGUI);
         addRubricButton->setObjectName(QStringLiteral("addRubricButton"));
         addRubricButton->setGeometry(QRect(280, 340, 110, 32));
