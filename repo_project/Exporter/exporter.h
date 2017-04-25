@@ -33,6 +33,8 @@ public:
     string bold();
     string get_finished();
     string get_textof();
+    string get_rubric();
+    string get_points_off(RubricSection *rs, int total);
 
     //variables
     Lab* currentLab;

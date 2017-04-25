@@ -11,8 +11,7 @@ Exporter::~Exporter(){
 void Exporter::combine_lab(Lab* currentLab)
 {
     //create a name for the class
-    string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + "-"
-            + string("class") + to_string(i) + ".html";
+    string name = currentLab->get_id() + "-" + currentLab->get_lab_name() + ".html";
 
     this->currentLab = currentLab;
     ofstream oss;
@@ -53,7 +52,7 @@ std::string Exporter::get_textof()
         whole+= parse_line(lineTemp, currentLab, j);
     }
     whole+="----------------------------------------------------------------------------------------------------------------------------------------------";
-    whole = whole + get_rubric();
+    whole += get_rubric();
     }
    return whole;
 }
@@ -63,7 +62,7 @@ string Exporter::get_rubric(){
     string rubricDrawing = "RUBRIC <br>";
 
     //get a comment vector
-    vector<Comment*> comments = currentLab->get_comment_vector();
+    vector<Comment> comments = currentLab->get_comment_vector();
 
     //get a rubric
     RubricObject *rubric = currentLab->get_rubric();
@@ -71,22 +70,25 @@ string Exporter::get_rubric(){
     //write a rubric section
     for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
         RubricSection *rs  = rubric->get_rubric_sections().at(i);
-        rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
+
+        //rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
     }
 }
 
-string Exporter::get_points_off(RubricSection rs, int total){
+string Exporter::get_points_off(RubricSection *rs, int total){
 
     //get comment vector
-    vector<Comment*> com = currentLab->get_comment_vector();
+    vector<Comment> com = currentLab->get_comment_vector();
 
     //track points off section
     int ptsOffThisSection = 0;
 
     //get all the comments for this section
     for(int i = 0; i<com.size(); i++){
-        if(com.at(i).get_rubric_section() == rs){ //if the section matches
-            ptsOffThisSection+=stoi(com.at(i).get_points_deducted()); //add points to point total
+        Comment current = com.at(i);
+        string currentRS = current.get_rubric_section();
+        if(currentRS == rs->get_description()){ //if the section matches
+            ptsOffThisSection+=com.at(i).get_points_deducted(); //add points to point total
         }
     }
     return to_string(total - ptsOffThisSection);
