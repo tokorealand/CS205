@@ -25,7 +25,7 @@ class Comment;
 class Lab : public DBTable{
 private:
     vector<vector<string>> javaFiles;
-    vector<Component*> coms;
+    vector<Component*> components;
     vector<Comment*> comments;
     vector<Comment> myComments;
     std::string labNum;
@@ -48,7 +48,7 @@ public:
     void add_rubric(RubricObject* rub);
     void add_comment(Comment* com);
     void add_java_line(vector<string>);
-
+    int get_grade();
 
 
     std::string get_id();
@@ -63,7 +63,6 @@ public:
 
     bool add_row(string id, string studentid, std::string labname, std::string labnumber);
     void set_grade(int);
-    int get_grade();
 
     //Allie
     map<int, Comment> commentMap;

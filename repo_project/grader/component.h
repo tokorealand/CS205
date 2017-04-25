@@ -24,6 +24,7 @@ private:
 
 
 
+
     std::string name;
 
 public:
@@ -54,6 +55,8 @@ public:
 
     bool is_comment_at(int lineNo);
     Comment* get_comment_at(int lineNo);
+
+    int get_points();
 
 };
 

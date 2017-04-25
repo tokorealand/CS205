@@ -9,15 +9,19 @@ Comment::Comment(std::string id, std::string componentID, std::string linenumber
     this->rubricsection = rubricsection;
     this->highlight = highlight;
     this->points = points;
+    this->deleted = false;
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
 }
 
 Comment::~Comment(){
+    if(deleted==false)
+    {
     build_table( );
     std::cout<<"addas";
     add_row(id,  componentID,  linenumber, commentphrase,  rubricsection, highlight, points);
+    }
 }
 
 std::string Comment::get_id(){
@@ -48,6 +52,10 @@ string Comment::get_linenumber(){
     return linenumber;
 }
 
+int Comment::get_points()
+{
+    return atoi(points.c_str());
+}
 
 // SQL used for inputting information
 void Comment::store_add_row_sql() {

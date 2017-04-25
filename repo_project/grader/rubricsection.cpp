@@ -7,6 +7,7 @@ RubricSection::RubricSection(std::string id, std::string rubricid, std::string d
     this->description=description;
     this->points=points;
     this->color=color;
+    this->deleted = false;
 
     store_add_row_sql();
     store_create_sql();
@@ -15,8 +16,11 @@ RubricSection::RubricSection(std::string id, std::string rubricid, std::string d
 
 RubricSection::~RubricSection()
 {
+    if(deleted==false)
+    {
     build_table();
     add_row(id,rubricid,description,points,color);
+    }
 }
 
 std::string RubricSection::get_id()

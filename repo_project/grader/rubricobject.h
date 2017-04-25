@@ -61,13 +61,13 @@ public:
 
 private:
     vector<RubricSection*> rubricSections;
-
-
     DBTool *tool;
     std::string table;
     std::string id;
     std::string labid;
     std::string name;
+    bool deleted;
+
 };
 
 int cb_add_row_rubric(void  *data,
