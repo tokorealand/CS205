@@ -153,7 +153,7 @@ void RubricGUI::on_rubricSelect_activated(const QModelIndex &index)
 
 void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index)
 {
-
+    selected_rubric_section =selected_rubric->get_rubric_sections().at( ui->rubricsectionSelect->currentRow());
 }
 
 void RubricGUI::on_deleteRubric_clicked()
