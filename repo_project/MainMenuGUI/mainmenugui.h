@@ -70,6 +70,7 @@ private slots:
 
     void on_actionAdd_Rubric_triggered();
 
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;

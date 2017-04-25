@@ -47,6 +47,7 @@ void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->disrubric->clear();
 
     std::vector<Semester*> holder = selected_year->get_semesters();
 
@@ -87,6 +88,7 @@ void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->disrubric->clear();
 
    std::vector<Class*> holder = selected_semester->get_classes();
 
@@ -114,6 +116,7 @@ void MainMenuGUI::on_classSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->disrubric->clear();
 
    std::vector<Section*> holder = selected_class->get_sections();
 
@@ -139,6 +142,7 @@ void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->disrubric->clear();
 
    std::vector<Student*> holder = selected_section->get_students();
 
@@ -178,13 +182,12 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
       selected_student = selected_section->get_students().at(studentIndex);
     }
 
-
-
     QList<QString> ccontainer;
     ui->labSelect->clear();
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->disrubric->clear();
 
    std::vector<Lab*> holder = selected_student->get_labs();
 
@@ -207,7 +210,11 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
     ui->componentSelect->clear();
     ui->disjava->clear();
     ui->discomment->clear();
+    ui->displayLabGrade->clear();
+    ui->displayLabGrade->setText(QString::fromStdString(to_string(selected_lab->get_grade())));
+    ui->disrubric->clear();
     display_rubric_text();
+
 
    std::vector<Component*> holder = selected_lab->get_components();
 
@@ -243,6 +250,8 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
     ui->discomment->addItems(ccontainer);
 }
 
+
+
 void MainMenuGUI::display_component_text()
 {
     QList<QString> jtcontainer;
@@ -255,16 +264,6 @@ void MainMenuGUI::display_component_text()
             string  javaText = to_string(i) + "     " +selected_component->get_text_lines().at(i);
             jtcontainer.push_back(QString::fromStdString(javaText));
         }
-
-//        for(int i = 0; i<selected_component->get_comments().size(); i++)
-//        {
-//            if(selected_component->get_comments().at(i)->get_highlight_color() != "no")
-//            {
-//                QString color = QString::fromStdString(selected_component->get_comments().at(i)->get_highlight_color());
-//                ui->disjava->item(i)->setBackgroundColor(QColor(color));
-
-//            }
-//        }
 
         ui->disjava->addItems(jtcontainer);
     }
@@ -280,7 +279,6 @@ void MainMenuGUI::display_component_text()
 void MainMenuGUI::display_comment_text()
 {
     ui->discomment->clear();
-
     QList<QString> jtcontainer;
     for(int i = 0; i<selected_component->get_comments().size(); i++)
     {
@@ -328,11 +326,11 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
 {
     if(checked)
     {
-    anonymous_grading = true;
+        anonymous_grading = true;
     }
     else
     {
-     anonymous_grading = false;
+         anonymous_grading = false;
     }
 
     ui->studentSelect->clear();

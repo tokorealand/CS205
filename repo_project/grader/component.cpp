@@ -71,6 +71,18 @@ std::string Component::get_name()
     return name;
 }
 
+int Component::get_points()
+{
+    int total = 0;
+
+    for(int i = 0; i < comments.size(); i ++)
+    {
+      total = total+comments.at(i)->get_points();
+    }
+
+    return total;
+}
+
 
 // SQL used for inputting information
 void Component::store_add_row_sql() {
