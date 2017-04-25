@@ -22,8 +22,11 @@ void RubricObject::operator = (RubricObject &obj) {
 
 RubricObject::~RubricObject()
 {
+    if(deleted==false)
+    {
     build_table();
     add_row(id,labid);
+    }
 }
 
 //getters

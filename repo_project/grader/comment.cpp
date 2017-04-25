@@ -16,9 +16,12 @@ Comment::Comment(std::string id, std::string componentID, std::string linenumber
 }
 
 Comment::~Comment(){
+    if(deleted==false)
+    {
     build_table( );
     std::cout<<"addas";
     add_row(id,  componentID,  linenumber, commentphrase,  rubricsection, highlight, points);
+    }
 }
 
 std::string Comment::get_id(){
