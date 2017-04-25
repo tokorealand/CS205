@@ -38,6 +38,11 @@ std::string RubricSection:: get_color()
     return color;
 }
 
+void RubricSection::set_deleted()
+{
+    deleted = true;
+}
+
 std::string RubricSection:: get_description()
 {
     return description;

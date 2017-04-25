@@ -48,6 +48,10 @@ private slots:
 
     void on_rubricsectionSelect_activated(const QModelIndex &index);
 
+    void on_deleteRubric_clicked();
+
+    void on_removeSection_clicked();
+
 private:
     Ui::RubricGUI *ui;
     Component* selected_component =nullptr;
