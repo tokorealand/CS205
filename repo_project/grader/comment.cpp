@@ -48,6 +48,10 @@ string Comment::get_linenumber(){
     return linenumber;
 }
 
+int Comment::get_points()
+{
+    return atoi(points.c_str());
+}
 
 // SQL used for inputting information
 void Comment::store_add_row_sql() {

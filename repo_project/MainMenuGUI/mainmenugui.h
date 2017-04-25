@@ -68,7 +68,9 @@ private slots:
 
     void on_actionAdd_Rubric_triggered();
 
+
     void on_actionCalculate_Stats_triggered();
+
 
 private:
     Ui::MainMenuGUI *ui;

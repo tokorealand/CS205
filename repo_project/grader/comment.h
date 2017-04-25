@@ -25,9 +25,6 @@ private:
     std::string highlight;
     std::string points;
 
-
-
-
 public: 
     Comment(std::string id, std::string componentID, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight,std::string points, DBTool *tool, std::string table);
 
@@ -51,6 +48,7 @@ public:
      bool get_highlight();
      std::string get_linenumber();
      std::string get_section_color();
+     int get_points();
 };
 
 int cb_add_row_comment_ne(void  *data,

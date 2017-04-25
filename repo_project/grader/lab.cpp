@@ -41,7 +41,7 @@ std::string Lab::get_id(){
 }
 
 void Lab::add_component(Component *com){
-    coms.push_back(com);
+    components.push_back(com);
 }
 
 void Lab::add_comment(Comment *com){
@@ -233,18 +233,26 @@ std::string Lab::get_lab_name(){
 
 vector<Component*> Lab:: get_components()
 {
-    return coms;
+    return components;
 }
 
 RubricObject *Lab::get_rubric(){
     return rubric;
 }
 
-
-
 std::string Lab::get_lab_num()
 {
     return labNum;
+}
+
+int Lab::get_grade()
+{
+    int total = 100;
+    for(int i = 0; i < components.size(); i++)
+    {
+       total = total - components.at(i)->get_points();
+    }
+    return total;
 }
 
 
