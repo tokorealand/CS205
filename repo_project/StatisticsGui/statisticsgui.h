@@ -27,6 +27,11 @@ public:
 
     void display_years();
 
+    string calc_min();
+    string calc_max();
+    string calc_median();
+    string calc_mean();
+
 private slots:
     void on_calcbutton_clicked();
     void on_doneButton_clicked();
@@ -34,6 +39,7 @@ private slots:
     void on_semesterSelect_activated(const QString &arg1);
     void on_classSelect_activated(const QString &arg1);
     void on_sectionSelect_activated(const QString &arg1);
+    void on_labSelect_activated(const QString &arg1);
 
 private:
     Ui::StatisticsGui *ui;

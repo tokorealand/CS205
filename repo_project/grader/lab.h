@@ -34,7 +34,7 @@ private:
     std::string id;
     std::string studentID;
     Student *belongs = nullptr; //student pointer of whose lab it is.
-    RubricObject *rubric =nullptr;
+    RubricObject *rubric = nullptr;
 
 
 public:

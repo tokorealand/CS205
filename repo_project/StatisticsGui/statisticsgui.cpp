@@ -82,25 +82,145 @@ void StatisticsGui::on_classSelect_activated(const QString &arg1){
 
     ui->sectionSelect->addItems(ccontainer);
 }
+
 void StatisticsGui::on_sectionSelect_activated(const QString &arg1){
 
     string sectionID = arg1.toStdString()+"_"+selected_class->get_id();
 
-    selected_section=grad->get_section(sectionID);
+    selected_section = grad->get_section(sectionID);
 
     QList<QString> ccontainer;
     ui->labNoSelect->clear();
 
-   // std::vector<Labs*> holder = selected_section->get_students().at(0).get_labs();
+    std::vector<Lab*> holder = selected_section->get_students().at(0)->get_labs();
 
+    for(Lab* it: holder){
+        ccontainer.append(QString::fromStdString(it->get_lab_num()));
+    }
 
-    //ui->labNoSelect->addItems(ccontainer);
+    ui->labNoSelect->addItems(ccontainer);
+}
+
+void StatisticsGui::on_labSelect_activated(const QString &arg1){
+
+    string labID = arg1.toStdString()+"_"+selected_section->get_id();
+
+    selected_lab = grad->get_lab(labID);
 }
 
 void StatisticsGui::on_calcbutton_clicked(){
+
+    //display calculated min
+    ui->mindisplay->setText(QString::fromStdString(calc_min()));
+
+    //display calculated max
+    ui->maxdisplay->setText(QString::fromStdString(calc_max()));
+
+    //display calculated median
+    ui->mediandisplay->setText(QString::fromStdString(calc_median()));
+
+    //display calculated mean
+    ui->meandisplay->setText(QString::fromStdString(calc_mean()));
 }
 
-void StatisticsGui::on_doneButton_clicked()
-{
-close();
+void StatisticsGui::on_doneButton_clicked(){
+    close();
+}
+
+string StatisticsGui::calc_min(){
+
+    //get all of the students
+    vector<Student*> students = selected_section->get_students();
+
+    //get a temp min
+    int currentMin = 100;
+
+    //search through all the student labs
+    for (int i = 0; i < students.size(); i++){
+
+        Student* tempStu = students.at(i); //get a temp student and their labs
+
+        vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
+
+        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+
+        //reset min?
+        if(currentLab->get_grade() < currentMin){
+            currentMin = currentLab->get_grade(); //reset min
+        }
+    }
+
+    return to_string(currentMin);
+}
+
+string StatisticsGui::calc_max(){
+
+    //get all of the students
+    vector<Student*> students = selected_section->get_students();
+
+    //get a temp min
+    int currentMax = 0;
+
+    //search through all the student labs
+    for (int i = 0; i < students.size(); i++){
+
+        Student* tempStu = students.at(i); //get a temp student and their labs
+
+        vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
+
+        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+
+        //reset min?
+        if(currentLab->get_grade() > currentMax){
+            currentMax = currentLab->get_grade(); //reset min
+        }
+    }
+    return to_string(currentMax);
+}
+
+string StatisticsGui::calc_median(){
+    //get all of the students
+    vector<Student*> students = selected_section->get_students();
+
+    vector<int> keepGrades;
+
+    //collect all the grades
+    for (int i = 0; i < students.size(); i++){
+
+        Student* tempStu = students.at(i); //get a temp student and their labs
+
+        vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
+
+        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+
+        keepGrades.push_back(currentLab->get_grade());
+    }
+
+    //sort the grades high to low
+    std::sort(keepGrades.begin(), keepGrades.end());
+
+    return to_string(keepGrades.at(keepGrades.size()/2));
+}
+
+string StatisticsGui::calc_mean(){
+
+    //get all of the students
+    vector<Student*> students = selected_section->get_students();
+
+    //get a temp min
+    int total = 0;
+
+    //search through all the student labs
+    for (int i = 0; i < students.size(); i++){
+
+        Student* tempStu = students.at(i); //get a temp student and their labs
+
+        vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
+
+        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+
+        total = total + currentLab->get_grade();
+    }
+
+    return to_string(total/students.size());
 }
