@@ -9,5 +9,6 @@ SUBDIRS += \
     RubricCreatorGUI \
     Exporter\
     MainMenuGUI \
-    RubricGUI
+    RubricGUI \
+    StatisticsGui
 

@@ -14,11 +14,9 @@
 #include "../grader/component.h"
 #include "../grader/dbtable.h"
 #include "../grader/dbtool.h"
-
 #include "../RubricGUI/rubricgui.h"
-
 #include "../Exporter/exporter.h"
-
+#include "../StatisticsGui/statisticsgui.h"
 
 class Grader;
 namespace Ui {
@@ -69,6 +67,8 @@ private slots:
     void on_actionComment_triggered();
 
     void on_actionAdd_Rubric_triggered();
+
+    void on_actionCalculate_Stats_triggered();
 
 private:
     Ui::MainMenuGUI *ui;

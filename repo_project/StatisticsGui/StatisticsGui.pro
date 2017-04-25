@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-21T16:24:14
+# Project created by QtCreator 2017-04-24T01:25:31
 #
 #-------------------------------------------------
 
@@ -8,10 +8,8 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = MainMenuGUI
+TARGET = StatisticsGui
 TEMPLATE = app
-
-LIBS += -l sqlite3
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -24,9 +22,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+LIBS += -l sqlite3
 
 SOURCES += main.cpp\
-                    mainmenugui.cpp\
+        statisticsgui.cpp \
     ../grader/student.cpp \
     ../grader/lab.cpp \
     ../grader/section.cpp \
@@ -45,15 +44,9 @@ SOURCES += main.cpp\
     ../CommentGUI/dialog.cpp \
     ../RubricCreatorGUI/rubriccreatorgui.cpp \
     ../grader/rubricsection.cpp\
-    ../grader/rubricobject.cpp\
-    ../RubricGUI/rubricgui.cpp\
-    ../Exporter/exporter.cpp\
-    ../StatisticsGui/statisticsgui.cpp
+    ../grader/rubricobject.cpp
 
-
-
-
-HEADERS  += mainmenugui.h\
+HEADERS  += statisticsgui.h \
     ../grader/student.h \
     ../grader/lab.h \
     ../grader/section.h \
@@ -73,16 +66,7 @@ HEADERS  += mainmenugui.h\
     ../CommentGUI/dialog.h \
     ../RubricCreatorGUI/rubriccreatorgui.h \
     ../grader/rubricsection.h\
-    ../grader/rubricobject.h\
-    ../RubricGUI/rubricgui.h\
-    ../Exporter/exporter.h\
-    ../StatisticsGui/statisticsgui.h
+    ../grader/rubricobject.h
 
 
-
-FORMS    += mainmenugui.ui\
-                    ../addlabsGUI/addlabsgui.ui\
-                    ../CommentGUI/dialog.ui \
-                    ../RubricCreatorGUI/rubriccreatorgui.ui\
-                    ../RubricGUI/rubricgui.ui\
-../StatisticsGui/statisticsgui.ui
+FORMS    += statisticsgui.ui

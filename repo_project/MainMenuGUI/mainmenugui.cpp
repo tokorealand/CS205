@@ -351,11 +351,15 @@ void MainMenuGUI::on_actionComment_triggered()
         Dialog *c = new Dialog(0, grad, selected_lab, selected_component);
         c->show();
     }
-
 }
 
 void MainMenuGUI::on_actionAdd_Rubric_triggered()
 {
     RubricGUI* rg = new RubricGUI(0, grad);
     rg->show();
+}
+
+void MainMenuGUI::on_actionCalculate_Stats_triggered(){
+    StatisticsGui* sg = new StatisticsGui(0, grad);
+    sg->show();
 }

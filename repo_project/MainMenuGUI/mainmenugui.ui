@@ -371,6 +371,7 @@
      <x>0</x>
      <y>0</y>
      <width>787</width>
+     <width>1005</width>
      <height>19</height>
     </rect>
    </property>
@@ -385,6 +386,7 @@
     <addaction name="actionComment"/>
     <addaction name="actionExport_Lab"/>
     <addaction name="actionAdd_Rubric"/>
+    <addaction name="actionCalculate_Stats"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -415,6 +417,11 @@
   <action name="actionAdd_Rubric">
    <property name="text">
     <string>Add Rubric</string>
+   </property>
+  </action>
+  <action name="actionCalculate_Stats">
+   <property name="text">
+    <string>Calculate Stats</string>
    </property>
   </action>
  </widget>
