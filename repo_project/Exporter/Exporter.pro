@@ -17,6 +17,7 @@ SOURCES += main.cpp\
 ../grader/year.cpp\
 ../grader/semester.cpp\
 ../grader/rubricobject.cpp\
+../grader/rubricsection.cpp\
     exporter.cpp
 
 
@@ -32,4 +33,5 @@ HEADERS  += ../grader/student.h \
 ../grader/semester.h\
     ../grader/comment.h\
 ../grader/rubricobject.h\
+../grader/rubricsection.h\
 exporter.h
