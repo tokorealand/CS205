@@ -133,7 +133,7 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
 
         }
 
-        htmlLine = "<p>" +  highlight + line  + endHighlight;
+        htmlLine = "<pre>" +  highlight + line  + endHighlight;
 
     }else{
 

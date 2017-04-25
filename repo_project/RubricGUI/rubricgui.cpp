@@ -51,8 +51,6 @@ void RubricGUI:: display_years()
     }
 }
 
-
-
 void RubricGUI::on_semesterSelect_activated(const QString &arg1)
 {
     string semesterID = arg1.toStdString()+"_"+selected_year->get_id();
