@@ -19,6 +19,7 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
     ofstream oss;
     oss.open(name);
 
+
     oss << "<html>" << endl;
            oss << get_textof()<<endl;
 
@@ -27,6 +28,7 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
 
     //close the file writer
     oss.close();
+
 }
 
 //used to get a string containing all components
@@ -53,8 +55,9 @@ std::string Exporter::get_textof(){
         whole+= parse_line(lineTemp, currentLab, j);
     }
     whole+="----------------------------------------------------------------------------------------------------------------------------------------------";
-    whole += get_rubric();
     }
+    whole += get_rubric();
+
    return whole;
 }
 
@@ -73,7 +76,9 @@ string Exporter::get_rubric(){
         RubricSection *rs  = rubric->get_rubric_sections().at(i);
 
         rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
+
     }
+    return rubricDrawing;
 }
 
 string Exporter::get_points_off(RubricSection *rs, int total){
