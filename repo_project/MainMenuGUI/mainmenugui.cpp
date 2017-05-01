@@ -184,8 +184,6 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
       int studentIndex = atoi(student.substr(student.find("_")+1, student.length()).c_str());
       selected_student = selected_section->get_students().at(studentIndex);
       string name = selected_student->get_first_name();
-
-      int d =0;
     }
 
     QList<QString> ccontainer;
@@ -369,8 +367,8 @@ void MainMenuGUI::on_actionCalculate_Stats_triggered(){
 
 void MainMenuGUI::on_deleteComment_clicked()
 {
-    int d =ui->discomment->currentRow();
-    if(selected_component != nullptr)
+    int check =ui->discomment->currentRow();
+    if(selected_component != nullptr && check != -1)
     {
       selected_component->get_comments().at(ui->discomment->currentRow())->set_deleted();
       display_comment_text();
