@@ -1,6 +1,10 @@
 #include "exporter.h"
 
 Exporter::Exporter(){
+    ofstream of;
+    of.open("name");
+    of << "test " <<endl;
+    of.close();
 }
 
 Exporter::~Exporter(){

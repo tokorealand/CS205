@@ -280,7 +280,10 @@ void MainMenuGUI::display_comment_text()
          string  commentText = "";
         if(selected_component->get_comments().at(i)->get_deleted() == false)
         {
-            commentText = selected_component->get_comments().at(i)->get_comment_text();
+            commentText = "-"+to_string(selected_component->get_comments().at(i)->get_points())
+                                     +" | "+selected_component->get_comments().at(i)->get_rubric_section()
+                                     +" | " +selected_component->get_comments().at(i)->get_comment_text();
+
         }
         jtcontainer.push_back(QString::fromStdString(commentText));
     }

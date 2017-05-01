@@ -60,8 +60,6 @@ void Dialog::populate(){
 
         //add the contents of the temp list to the dropdown
         ui->rubricSectionDropDown->addItems(tempRSections);
-        ui->rubricSectionDropDown->addItem("hi");
-
     }
 
 
