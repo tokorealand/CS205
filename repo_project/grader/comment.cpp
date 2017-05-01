@@ -62,6 +62,11 @@ void Comment::set_deleted()
     deleted = true;
 }
 
+bool Comment:: get_deleted()
+{
+    return deleted;
+}
+
 // SQL used for inputting information
 void Comment::store_add_row_sql() {
 

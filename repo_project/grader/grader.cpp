@@ -5,7 +5,7 @@ Grader::Grader()
 
 
 
-    tool = new DBTool("TEST9000");
+    tool = new DBTool("TEST95680");
 
 
     control = new Controller(tool);

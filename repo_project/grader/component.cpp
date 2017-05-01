@@ -77,9 +77,11 @@ int Component::get_points()
 
     for(int i = 0; i < comments.size(); i ++)
     {
-      total = total+comments.at(i)->get_points();
+        if(comments.at(i)->get_deleted() ==false)
+        {
+            total = total+comments.at(i)->get_points();
+        }
     }
-
     return total;
 }
 

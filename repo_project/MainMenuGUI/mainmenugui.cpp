@@ -239,15 +239,7 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
     ui->disjava->clear();
     ui->discomment->clear();
     display_component_text();
-
-   std::vector<Comment*> holder = selected_component->get_comments();
-
-    for(Comment* it: holder)
-    {
-        ccontainer.append(QString::fromStdString(it->get_comment_text()));
-    }
-
-    ui->discomment->addItems(ccontainer);
+    display_comment_text();
 }
 
 
@@ -282,7 +274,11 @@ void MainMenuGUI::display_comment_text()
     QList<QString> jtcontainer;
     for(int i = 0; i<selected_component->get_comments().size(); i++)
     {
-        string  commentText = selected_component->get_comments().at(i)->get_comment_text();
+         string  commentText = "";
+        if(selected_component->get_comments().at(i)->get_deleted() == false)
+        {
+            commentText = selected_component->get_comments().at(i)->get_comment_text();
+        }
         jtcontainer.push_back(QString::fromStdString(commentText));
     }
     ui->discomment->addItems(jtcontainer);
@@ -364,7 +360,12 @@ void MainMenuGUI::on_actionCalculate_Stats_triggered(){
 
 void MainMenuGUI::on_deleteComment_clicked()
 {
-    Comment* selected_comment = selected_component->get_comments().at(ui->discomment->currentRow());
-    selected_comment->set_deleted();
-    delete selected_comment;
+    int d =ui->discomment->currentRow();
+    if(selected_component != nullptr)
+    {
+      selected_component->get_comments().at(ui->discomment->currentRow())->set_deleted();
+      display_comment_text();
+      ui->displayLabGrade->clear();
+      ui->displayLabGrade->setText(QString::fromStdString(to_string(selected_lab->get_grade())));
+    }
 }

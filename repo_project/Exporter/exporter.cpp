@@ -93,11 +93,14 @@ string Exporter::get_points_off(RubricSection *rs, int total){
             //get the current comment
             Comment* currentComment = currentComponent->get_comments().at(j);
 
-            //get the rubric section that the comment corresponds to
-            string currentRS = currentComment->get_rubric_section();
+            if(currentComment->get_deleted() == false)
+            {
+                //get the rubric section that the comment corresponds to
+                string currentRS = currentComment->get_rubric_section();
 
-            if(currentRS == rs->get_description()){ //if the section matches
-                ptsOffThisSection+=currentComment->get_points_deducted(); //add points to point total
+                if(currentRS == rs->get_description()){ //if the section matches
+                    ptsOffThisSection+=currentComment->get_points_deducted(); //add points to point total
+                }
             }
         }
     }
