@@ -63,10 +63,7 @@ std::string Exporter::get_textof(){
 
 string Exporter::get_rubric(){
 
-    string rubricDrawing = "RUBRIC <br>";
-
-    //get a comment vector
-    vector<Comment*> comments = currentComponent->get_comments();
+    string rubricDrawing = "<br>RUBRIC <br>";
 
     //get a rubric
     RubricObject *rubric = currentClass->get_rubrics().at(rubricIndex);
@@ -75,7 +72,7 @@ string Exporter::get_rubric(){
     for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
         RubricSection *rs  = rubric->get_rubric_sections().at(i);
 
-        rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + "/" + rs->get_points() + "</pre>";
+        rubricDrawing+= "<pre>" + font_color(rs->get_color()) + rs->get_description() + ": " + get_points_off(rs, stoi(rs->get_points())) + " / " + rs->get_points() + "</pre>";
 
     }
     return rubricDrawing;
@@ -83,22 +80,30 @@ string Exporter::get_rubric(){
 
 string Exporter::get_points_off(RubricSection *rs, int total){
 
-    //get comment vector
-    vector<Comment*> com = currentComponent->get_comments();
-
     //track points off section
     int ptsOffThisSection = 0;
 
-    //get all the comments for this section
-    for(int i = 0; i<com.size(); i++){
-        Comment *current = com.at(i);
-        string currentRS = current->get_rubric_section();
-        if(currentRS == rs->get_description()){ //if the section matches
-            ptsOffThisSection+=current->get_points_deducted(); //add points to point total
+    //for all the components
+    for(int i = 0; i < currentLab->get_components().size(); i ++){
+        currentComponent = currentLab->get_components().at(i);
+
+        //for all the comments in the component
+        for(int j = 0; j < currentComponent->get_comments().size(); j++){
+
+            //get the current comment
+            Comment* currentComment = currentComponent->get_comments().at(j);
+
+            //get the rubric section that the comment corresponds to
+            string currentRS = currentComment->get_rubric_section();
+
+            if(currentRS == rs->get_description()){ //if the section matches
+                ptsOffThisSection+=currentComment->get_points_deducted(); //add points to point total
+            }
         }
     }
     return to_string(total - ptsOffThisSection);
 }
+
 
 //parses a line of code according to the comments
 string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
@@ -119,18 +124,28 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
         //save an instance of the current comment
         Comment *currentComment = currentComponent->get_comment_at(lineNo);
 
+         string colorTemp = "";
+
         //check if a rubric color is specified
         if(currentComment->get_rubric_section() != ""){
-            fontColor = font_color(currentComment->get_section_color());
+            RubricObject *rubric = currentClass->get_rubrics().at(rubricIndex);
+            for(int i = 0; i < rubric->get_rubric_sections().size(); i++){
+                if(rubric->get_rubric_sections().at(i)->get_description() == currentComment->get_rubric_section()){
+                    colorTemp = rubric->get_rubric_sections().at(i)->get_color();
+                }
+            }
+            fontColor = font_color(colorTemp);
         }
+
         //check if a highlight is specified
         if(currentComment->get_highlight() == true){
             highlight = "<mark>";
             endHighlight = "</mark>";
         }
+
         //check if comment text is specified
         if(currentComment->get_comment_text() != ""){
-            commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + "</b>" + "</pre>";
+            commentText = "<b>"+ fontColor + string("     #") + currentComment->get_comment_text() + " -" + to_string(currentComment->get_points_deducted()) + "</b>" + "</pre>";
         }
 
         htmlLine = "<pre>" +  highlight + line  + endHighlight;
@@ -166,12 +181,16 @@ string Exporter::highlight(){
 string Exporter::font_color(string color){
     if(color == "red"){
         return "<font color = 'red'>";
-    }else if (color == "blue"){
-        return "<font color = 'blue'>";
-    } else if(color == "pink"){
+    }else if (color == "cyan"){
+        return "<font color = 'cyan'>";
+    } else if(color == "magenta"){
         return "<font color = 'pink'>";
     } else if(color == "green"){
         return "<font color = 'green'>";
+    } else if(color == "blue"){
+        return "<font color = 'blue'>";
+    } else if(color == "yellow"){
+        return "<font color = 'yellow'>";
     }else{
         return "<font color = 'orange'>";
     }

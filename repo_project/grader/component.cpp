@@ -63,7 +63,7 @@ void Component::add_comment(Comment *c){
 
 std::vector<Comment*> Component::get_comments()
 {
-    return this->comments;
+    return comments;
 }
 
 std::string Component::get_name()

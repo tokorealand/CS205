@@ -1,15 +1,17 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
-Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab, Component *aComponent) :
+Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab, Component *aComponent, Class *aclass) :
     QDialog(parent),
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
     grader = aGrader;
     lab = aLab;
-    populate();
+    this->aclass=aclass;
     component = aComponent;
+    populate();
+
 }
 
 Dialog::~Dialog(){
@@ -34,7 +36,31 @@ void Dialog::populate(){
         ui->commentList->addItems(ccontainer);
     }
 
+    //populate the rubric drop down
+        //get the rubric from this class and lab
+        vector<RubricObject*> tempRV = aclass->get_rubrics();
+        RubricObject *tempR = tempRV.at(0);
+        //RubricObject *tempR = currentClass->get_rubrics().at(stoi(lab->get_lab_num()));
 
+        QStringList tempRSections;
+
+        //add the text of each rubric section to a qstring list
+        for(int i = 0; i < tempR->get_rubric_sections().size(); i++){
+
+            //get the text of a rubric section
+            vector<RubricSection*> rsv = tempR->get_rubric_sections();
+            RubricSection *rs = rsv.at(i);
+            string s = rs->get_description();
+            std::cout<<"thisthingisweird";
+            QString sectionText = QString::fromStdString(s);
+
+            //add the text of a rubric section to a temporary list
+            tempRSections.push_back(sectionText);
+        }
+
+        //add the contents of the temp list to the dropdown
+        ui->rubricSectionDropDown->addItems(tempRSections);
+        ui->rubricSectionDropDown->addItem("hi");
 
     }
 
@@ -73,6 +99,7 @@ void Dialog::populate_comment_list(){
 void Dialog::on_commentText_textChanged(const QString &arg1){
 
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
+    //cout << "arg1" << arg1;
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList.filter(regExp));
 }

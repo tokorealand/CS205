@@ -142,7 +142,7 @@ string StatisticsGui::calc_min(){
 
         vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
 
-        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+        Lab *currentLab = labs.at(0); //get the current lab
 
         //reset min?
         if(currentLab->get_grade() < currentMin){
@@ -168,7 +168,7 @@ string StatisticsGui::calc_max(){
 
         vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
 
-        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+        Lab *currentLab = labs.at(0); //get the current lab
 
         //reset min?
         if(currentLab->get_grade() > currentMax){
@@ -191,7 +191,7 @@ string StatisticsGui::calc_median(){
 
         vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
 
-        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
+        Lab *currentLab = labs.at(0); //get the current lab
 
         keepGrades.push_back(currentLab->get_grade());
     }
@@ -210,16 +210,19 @@ string StatisticsGui::calc_mean(){
     //get a temp min
     int total = 0;
 
+    //create a vector of students
+    vector<Lab*> labs;
+
     //search through all the student labs
     for (int i = 0; i < students.size(); i++){
 
         Student* tempStu = students.at(i); //get a temp student and their labs
 
-        vector<Lab*> labs = tempStu->get_labs(); //get all that student's labs
+        labs.push_back(tempStu->get_labs().at(0));
+    }
 
-        Lab *currentLab = labs.at(stoi(selected_lab->get_lab_num())-1); //get the current lab
-
-        total = total + currentLab->get_grade();
+    for (int i = 0; i < labs.size(); i ++){
+        total += labs.at(i)->get_grade();
     }
 
     return to_string(total/students.size());
