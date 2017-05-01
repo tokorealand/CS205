@@ -62,6 +62,9 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 {
     AddLabsGUI* alg = new AddLabsGUI(0, grad);
     alg->show();
+
+    delay(5000);
+    display_years();
 }
 
 void MainMenuGUI::on_actionExport_Lab_triggered(){
@@ -177,9 +180,12 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
     }
     else
     {
-        string student = arg1.toStdString();
-      int studentIndex = atoi(student.substr(student.find("_"), student.length() -1).c_str());
+      string student = arg1.toStdString();
+      int studentIndex = atoi(student.substr(student.find("_")+1, student.length()).c_str());
       selected_student = selected_section->get_students().at(studentIndex);
+      string name = selected_student->get_first_name();
+
+      int d =0;
     }
 
     QList<QString> ccontainer;
@@ -233,7 +239,6 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
     string componentID = ui->componentSelect->currentItem()->text().toStdString()+"_"+selected_lab->get_id();
 
     selected_component=grad->get_component(componentID);
-
 
     QList<QString> ccontainer;
     ui->disjava->clear();
@@ -344,6 +349,10 @@ void MainMenuGUI::on_actionComment_triggered()
 //        cout << selected_lab << endl;
         Dialog *c = new Dialog(0, grad, selected_lab, selected_component, selected_class);
         c->show();
+
+        delay(20000);
+
+        display_comment_text();
     }
 }
 
@@ -367,5 +376,14 @@ void MainMenuGUI::on_deleteComment_clicked()
       display_comment_text();
       ui->displayLabGrade->clear();
       ui->displayLabGrade->setText(QString::fromStdString(to_string(selected_lab->get_grade())));
+    }
+}
+
+void MainMenuGUI::delay( int millisecondsToWait )
+{
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+    while( QTime::currentTime() < dieTime )
+    {
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
 }

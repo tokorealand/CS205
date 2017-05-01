@@ -2,6 +2,7 @@
 #define MAINMENUGUI_H
 
 #include <QMainWindow>
+#include <QTime>
 #include <iostream>
 #include <QObject>
 #include <QSignalMapper>
@@ -73,6 +74,7 @@ private slots:
 
 
     void on_deleteComment_clicked();
+    void delay (int);
 
 private:
     Ui::MainMenuGUI *ui;

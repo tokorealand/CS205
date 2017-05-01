@@ -173,3 +173,8 @@ void RubricGUI::on_removeSection_clicked()
     selected_rubric_section->set_deleted();
     delete selected_rubric_section;
 }
+
+void RubricGUI::on_doneButton_clicked()
+{
+    close();
+}

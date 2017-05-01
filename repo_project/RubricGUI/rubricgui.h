@@ -52,6 +52,8 @@ private slots:
 
     void on_removeSection_clicked();
 
+    void on_doneButton_clicked();
+
 private:
     Ui::RubricGUI *ui;
     Component* selected_component =nullptr;

@@ -55,7 +55,7 @@
   <widget class="QPushButton" name="removeSection">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>420</x>
      <y>270</y>
      <width>121</width>
      <height>32</height>
@@ -130,7 +130,7 @@
      <x>290</x>
      <y>40</y>
      <width>401</width>
-     <height>31</height>
+     <height>91</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -226,9 +226,22 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="disPoints"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="doneButton">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>270</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Done</string>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
