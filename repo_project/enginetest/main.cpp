@@ -328,7 +328,7 @@ TEST(Controller,Addclasstwice)
     DBTool *tool = new DBTool("777");
     Controller con(tool);
     con.add_year("1");
-    con.add_semester("spring","1");
+    con.add_semester("spring1","1");
     con.add_class("class2","spring1");
 
  ASSERT_EQ(false,con.add_class("class2","spring1"));
@@ -339,34 +339,324 @@ TEST(Controller,Addclasstwice)
 }
 
 /**
- * @brief TEST showing accuracy of returned vector
+ * @brief TEST for adding a rubric
  */
-TEST(Controller,Classvector)
+TEST(Controller,Addrubric)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_rubric("r1","class1");
+   RubricObject* sm= con.get_rubric("r1");
+
+   ASSERT_EQ(sm,con.get_rubric("r1"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding a rubric and checking with a different item_exist method
+ */
+TEST(Controller,Addrubric2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_rubric("r1","class1");
+
+
+
+
+   ASSERT_EQ(true,con.item_exist("r1","rubric"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two rubrics
+ */
+TEST(Controller,Addtworubrics)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_rubric("r1","class1");
+    con.add_rubric("r2","class1");
+
+
+
+
+
+   ASSERT_NE(con.get_rubric("r1"),con.get_rubric("r2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two rubrics with different order
+ */
+TEST(Controller,Addtworubrics2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_rubric("r2","class1");
+    con.add_rubric("r1","class1");
+
+
+
+   ASSERT_NE(con.get_rubric("r2"),con.get_rubric(
+                 "r1"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST to make sure you can not add a rubric twice
+ */
+TEST(Controller,Addrubrictwice)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_rubric("r1","class1");
+
+
+ ASSERT_EQ(false,con.add_rubric("r1","class1"));
+
+
+
+   con.test_drop();
+   delete tool;
+}
+
+
+/**
+ * @brief TEST for adding a section
+ */
+TEST(Controller,Addsection)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+   Section* sm= con.get_section("s1");
+
+   ASSERT_EQ(sm,con.get_section("s1"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding a section and checking with a different item_exist method
+ */
+TEST(Controller,Addsection2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+
+
+
+   ASSERT_EQ(true,con.item_exist("s1","section"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two sections
+ */
+TEST(Controller,Addtwosections)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_section("s2","class1");
+
+
+
+
+
+   ASSERT_NE(con.get_section("s1"),con.get_section("s2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two sections with different order
+ */
+TEST(Controller,Addtwosections2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_section("s2","class1");
+
+
+
+   ASSERT_NE(con.get_section("s1"),con.get_section(
+                 "s2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST to make sure you can not add a section twice
+ */
+TEST(Controller,Addsectiontwice)
 {
     DBTool *tool = new DBTool("777");
     Controller con(tool);
     con.add_year("1");
     con.add_semester("spring1","1");
     con.add_class("class2","spring1");
-    con.add_class("class1","spring1");
+    con.add_section("s1","class2");
+    con.add_section("s2","class2");
 
 
-    std::vector<Class*> holder;
 
-    holder=con.get_classes();
-    std::string check="";
-    for(Class* y : holder )
-    {
-       check+=y->get_id();
-    }
+ ASSERT_EQ(false,con.add_section("s2","class2"));
 
-    ASSERT_EQ("class2class1",check);
+
    con.test_drop();
    delete tool;
 }
+
+
+/**
+ * @brief TEST for adding a student
+ */
+TEST(Controller,Addstudent)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+   Student* sm= con.get_student("luis");
+
+   ASSERT_EQ(sm,con.get_student("luis"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding a student and checking with a different item_exist method
+ */
+TEST(Controller,Addstudent2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+
+
+
+
+   ASSERT_EQ(true,con.item_exist("luis","student"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two students
+ */
+TEST(Controller,Addtwostudents)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_student("luis2","s1","luis","lopez");
+
+
+
+
+
+
+   ASSERT_NE(con.get_student("luis"),con.get_student("luis2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two students with different order
+ */
+TEST(Controller,Addtwostudents2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis2","s1","luis","lopez");
+    con.add_student("luis","s1","luis","lopez");
+
+
+
+   ASSERT_NE(con.get_student("luis"),con.get_student(
+                 "luis2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST to make sure you can not add a student twice
+ */
+TEST(Controller,Addstudenttwice)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class2","spring1");
+    con.add_section("s1","class2");
+    con.add_student("luis","s1","luis","lopez");
+
+
+
+ ASSERT_EQ(false,con.add_student("luis","s1","luis","lopez"));
+
+
+
+   con.test_drop();
+   delete tool;
+}
+
 
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
+
