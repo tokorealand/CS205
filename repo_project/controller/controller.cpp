@@ -99,6 +99,19 @@ void Controller::total_drop()
     drop_year_table();
 }
 
+void Controller::test_drop()
+{
+    drop_rubricsections_table();
+    drop_rubrics_table();
+    drop_comments_table();
+    drop_component_table();
+    drop_lab_table();
+    drop_student_table();
+    drop_section_table();
+    drop_class_table();
+    drop_semester_table();
+    drop_year_table();
+}
 
 
 /**
@@ -381,127 +394,135 @@ std::vector<Comment*> Controller::get_comments()
 }
 
 
-void Controller::add_year(std::string yearID)
+bool Controller::add_year(std::string yearID)
 {
     if(item_exist(yearID,"year"))
     {
-        return;
+        return false;
     }
 
     Year *yea = new Year(yearID,class_tool,table_year);
     years.push_back(yea);
+    return true;
 }
 
-void Controller::add_semester(std::string semesterID, std::string yearID)
+bool Controller::add_semester(std::string semesterID, std::string yearID)
 {
     if(item_exist(semesterID,"semester"))
     {
-        return;
+        return false;
     }
 
     Semester *sem = new Semester(semesterID, yearID,class_tool,table_semester);
     semesters.push_back(sem);
     get_year(yearID)->add_semester(sem);
+    return true;
 }
 
 
 
-void Controller::add_class(std::string classID,std::string semesterID)
+bool Controller::add_class(std::string classID,std::string semesterID)
 {
     if(item_exist(classID,"class"))
     {
-        return;
+        return false;
     }
     Class *cla = new Class(classID,semesterID,class_tool,table_class);
     classes.push_back(cla);
     get_semester(semesterID)->add_class(cla);
+    return true;
 
 
 }
 
-void Controller::add_section(std::string sectionID, string classID)
+bool Controller::add_section(std::string sectionID, string classID)
 {
     if(item_exist(sectionID,"section"))
     {
-        return;
+        return false;
     }
 
     Section *sec = new Section(sectionID, classID,class_tool,table_section);
     sections.push_back(sec);
     get_class(classID)->add_section(sec);
+    return true;
 
 }
 
-void Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)
+bool Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)
 {
     if(item_exist(studentID,"student"))
     {
-        return;
+        return false;
     }
     Student *stu = new Student(studentID,sectionID, firstname, lastname, class_tool,table_student);
     students.push_back(stu);
     get_section(sectionID)->add_student(stu);
+    return true;
 }
 
-void Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
+bool Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
 {
     if(item_exist(labID,"lab"))
     {
-        return;
+        return false;
     }
     Lab *la = new Lab(labID, studentID, labName, labNumber, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
+    return true;
 }
 
-void Controller::add_component(std::string componentID, string labID, string text)
+bool Controller::add_component(std::string componentID, string labID, string text)
 {
     if(item_exist(componentID,"component"))
     {
-        return;
+        return false;
     }
     Component *com = new Component(componentID, labID, text, class_tool,table_component);
     components.push_back(com);
     get_lab(labID)->add_component(com);
+    return true;
 
 
 
 }
 
-void Controller::add_comment(std::string commentID, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
+bool Controller::add_comment(std::string commentID, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
 {
-    cout << "8" << endl;
      if(item_exist(commentID,"comment"))
     {
-        return;
+        return false;
     }
     Comment *com = new Comment(commentID, componentID, linenumber,commentphrase,rubricsection, highlight,points, class_tool,table_comment);
     comments.push_back(com);
     get_component(componentID)->add_comment(com);
-    cout<<"Ssssasas";
+    return true;
 }
 
-void Controller::add_rubric(std::string rubricID, std::string classID)
+bool Controller::add_rubric(std::string rubricID, std::string classID)
 {
     if(item_exist(rubricID,"rubric"))
     {
-        return;
+        return false;
     }
     RubricObject *rub = new RubricObject(rubricID,classID,class_tool,table_rubric);
     rubrics.push_back(rub);
     get_class(classID)->add_rubric(rub);
+    return true;
 }
 
 
-void Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color)
+bool Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color)
 {
     if(item_exist(rubricsectionID,"rubricsection"))
     {
-        return;
+        return false;
     }
 RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
     rubricsections.push_back(rubs);
     get_rubric(rubricID)->add_rubric_section(rubs);
+    return true;
 }
 
 

@@ -92,7 +92,6 @@ private:
     std::string sql_select_all_rubricsections;
 
 
-    bool item_exist(std::string id, std::string type);
 
 
     void total_drop();
@@ -110,31 +109,34 @@ public:
     Controller(DBTool *db);
     ~Controller();
     void total_recall();
+    void test_drop();
 
 
     /* String version of the creation methods.
      *
      **/
 
-    void add_year(std::string yearID);
+    bool item_exist(std::string id, std::string type);
 
-    void add_semester(std::string semesterID, std::string yearID);
+    bool add_year(std::string yearID);
 
-    void add_class(std::string classID,std::string semesterID);
+    bool add_semester(std::string semesterID, std::string yearID);
 
-    void add_section(std::string sectionID, std::string classID);
+    bool add_class(std::string classID,std::string semesterID);
 
-    void add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
+    bool add_section(std::string sectionID, std::string classID);
 
-    void add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber);
+    bool add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
 
-    void add_component(std::string componentID, std::string labID, std::string text);
+    bool add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber);
 
-    void add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, string points);
+    bool add_component(std::string componentID, std::string labID, std::string text);
 
-    void add_rubric(std::string rubricID, std::string labID);
+    bool add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, string points);
 
-    void add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
+    bool add_rubric(std::string rubricID, std::string labID);
+
+    bool add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
 
     std::string student_list();
 
