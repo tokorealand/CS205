@@ -21,7 +21,15 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
 
     this->currentLab = currentLab;
     ofstream oss;
-    oss.open(name);
+    string filepathclass ="./ExportedFiles/"+currentClass->get_id();
+    string filepathlab ="./ExportedFiles/"+currentClass->get_id()+"/"+currentLab->get_lab_num();
+
+    mkdir("./ExportedFiles",S_IRWXU);
+    mkdir(filepathclass.c_str(),S_IRWXU);
+    mkdir(filepathlab.c_str(),S_IRWXU);
+
+
+    oss.open(filepathlab+"/"+name);
 
 
     oss << "<html>" << endl;

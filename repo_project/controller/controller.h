@@ -134,7 +134,7 @@ public:
 
     bool add_comment(std::string commentID, std::string labID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, string points);
 
-    bool add_rubric(std::string rubricID, std::string labID);
+    bool add_rubric(std::string rubricID, std::string classID);
 
     bool add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
 
