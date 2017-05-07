@@ -21,6 +21,44 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QCheckBox" name="checkBox">
       <property name="sizePolicy">
@@ -40,7 +78,7 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1" rowspan="2">
+    <item row="0" column="3" rowspan="7">
      <layout class="QHBoxLayout" name="horizontalLayout_9">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -200,7 +238,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item row="6" column="0">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -438,34 +476,47 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0">
+    <item row="7" column="0">
      <widget class="QPushButton" name="saveAndExit">
       <property name="text">
        <string>Save and Exit</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="7" column="3">
      <widget class="QPushButton" name="deleteComment">
       <property name="text">
        <string>Delete Comment</string>
       </property>
      </widget>
     </item>
+    <item row="5" column="0">
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="text">
+       <string>Graded</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Text Size</string>
+      </property>
+     </widget>
+    </item>
    </layout>
-   <zorder>disrubric</zorder>
-   <zorder>disjava</zorder>
-   <zorder>discomment</zorder>
-   <zorder>componentSelect</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>checkBox</zorder>
-   <zorder>Refresh</zorder>
-   <zorder>label_8</zorder>
-   <zorder>saveAndExit</zorder>
-   <zorder>label_10</zorder>
-   <zorder>label_11</zorder>
-   <zorder>deleteComment</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

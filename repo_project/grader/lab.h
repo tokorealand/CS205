@@ -33,12 +33,13 @@ private:
     std::string labName;
     std::string id;
     std::string studentID;
+    std::string graded;
     Student *belongs = nullptr; //student pointer of whose lab it is.
     RubricObject *rubric = nullptr;
 
 
 public:
-    Lab(string labID, std::string studentID, string labName, string labNumber,  DBTool *tool, std::string table);
+    Lab(string labID, std::string studentID, string labName, string labNumber,string graded,  DBTool *tool, std::string table);
     ~Lab();
 
     std::string get_lab_name();
@@ -48,6 +49,8 @@ public:
     void add_rubric(RubricObject* rub);
     void add_comment(Comment* com);
     void add_java_line(vector<string>);
+    void set_graded(std::string booli);
+    std::string get_graded();
     int get_grade();
 
 
@@ -61,7 +64,7 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-    bool add_row(string id, string studentid, std::string labname, std::string labnumber);
+    bool add_row(string id, string studentid, std::string labname, std::string labnumber, std::string graded);
     void set_grade(int);
 
     //Allie

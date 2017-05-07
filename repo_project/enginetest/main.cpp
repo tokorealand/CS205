@@ -653,6 +653,254 @@ TEST(Controller,Addstudenttwice)
    delete tool;
 }
 
+/**
+ * @brief TEST for adding a lab
+ */
+TEST(Controller,Addlab)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+   Lab* sm= con.get_lab("l1");
+
+   ASSERT_EQ(sm,con.get_lab("l1"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding a lab and checking with a different item_exist method
+ */
+TEST(Controller,Addlab2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+
+
+
+
+
+   ASSERT_EQ(true,con.item_exist("l1","lab"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two labs
+ */
+TEST(Controller,Addtwolabs)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+    con.add_lab("l2","luis","recursion","2","0");
+
+
+
+
+
+
+
+   ASSERT_NE(con.get_lab("l2"),con.get_lab("l1"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST for adding two labs with different order
+ */
+TEST(Controller,Addtwolabs2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l2","luis","recursion","2","0");
+    con.add_lab("l1","luis","recursion","1","0");
+
+
+
+
+   ASSERT_NE(con.get_lab("l1"),con.get_lab(
+                 "l2"));
+   con.test_drop();
+   delete tool;
+}
+
+/**
+ * @brief TEST to make sure you can not add a lab twice
+ */
+TEST(Controller,Addlabtwice)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class2","spring1");
+    con.add_section("s1","class2");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+
+
+
+
+
+ ASSERT_EQ(false,con.add_lab("l1","luis","recursion","1","0"));
+
+
+
+   con.test_drop();
+   delete tool;
+}
+
+///**
+// * @brief TEST for adding a component
+// */
+//TEST(Controller,Addcomponent)
+//{
+//    DBTool *tool = new DBTool("777");
+//    Controller con(tool);
+//    con.add_year("1");
+//    con.add_semester("spring1","1");
+//    con.add_class("class1","spring1");
+//    con.add_section("s1","class1");
+//    con.add_student("luis","s1","luis","lopez");
+//    con.add_lab("l1","luis","recursion","1","0");
+//    con.add_component("c1","l1","./afd.txt");
+//   Component* sm= con.get_component("c1");
+
+//   ASSERT_EQ(sm,con.get_component("c1"));
+//   con.test_drop();
+//   delete tool;
+//}
+
+///**
+// * @brief TEST for adding a component and checking with a different item_exist method
+// */
+//TEST(Controller,Addcomponent2)
+//{
+//    DBTool *tool = new DBTool("777");
+//    Controller con(tool);
+//    con.add_year("1");
+//    con.add_semester("spring1","1");
+//    con.add_class("class1","spring1");
+//    con.add_section("s1","class1");
+//    con.add_student("luis","s1","luis","lopez");
+//    con.add_lab("l1","luis","recursion","1","0");
+//    con.add_component("c1","l1","/afd.txt");
+
+
+
+
+
+
+//   ASSERT_EQ(true,con.item_exist("c1","component"));
+//   con.test_drop();
+//   delete tool;
+//}
+
+///**
+// * @brief TEST for adding two labs
+// */
+//TEST(Controller,Addtwocomponents)
+//{
+//    DBTool *tool = new DBTool("777");
+//    Controller con(tool);
+//    con.add_year("1");
+//    con.add_semester("spring1","1");
+//    con.add_class("class1","spring1");
+//    con.add_section("s1","class1");
+//    con.add_student("luis","s1","luis","lopez");
+//    con.add_lab("l1","luis","recursion","1");
+//    con.add_component("c1","l1","addadsa");
+//    con.add_component("c2","l1","addadsa");
+
+
+
+
+
+
+
+
+//   ASSERT_NE(con.get_component("c2"),con.get_component("c1"));
+//   con.test_drop();
+//   delete tool;
+//}
+
+///**
+// * @brief TEST for adding two components with different order
+// */
+//TEST(Controller,Addtwocomponents2)
+//{
+//    DBTool *tool = new DBTool("777");
+//    Controller con(tool);
+//    con.add_year("1");
+//    con.add_semester("spring1","1");
+//    con.add_class("class1","spring1");
+//    con.add_section("s1","class1");
+//    con.add_student("luis","s1","luis","lopez");
+//    con.add_lab("l1","luis","recursion","1");
+//    con.add_component("c2","l1","addadsa");
+//    con.add_component("c1","l1","addadsa");
+
+
+
+
+
+
+//   ASSERT_NE(con.get_component("c1"),con.get_component(
+//                 "c2"));
+//   con.test_drop();
+//   delete tool;
+//}
+
+///**
+// * @brief TEST to make sure you can not add a component twice
+// */
+//TEST(Controller,Addcomponenttwice)
+//{
+//    DBTool *tool = new DBTool("777");
+//    Controller con(tool);
+//    con.add_year("1");
+//    con.add_semester("spring1","1");
+//    con.add_class("class2","spring1");
+//    con.add_section("s1","class2");
+//    con.add_student("luis","s1","luis","lopez");
+//    con.add_lab("l1","luis","recursion","1");
+//    con.add_component("c1","l1","addadsa");
+
+
+
+
+
+
+// ASSERT_EQ(false,    con.add_component("c1","l1","addadsa"));
+
+
+
+
+//   con.test_drop();
+//   delete tool;
+//}
 
 int main(int argc, char **argv)
 {

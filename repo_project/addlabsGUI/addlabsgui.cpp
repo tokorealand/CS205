@@ -21,8 +21,8 @@ void AddLabsGUI::on_selectButton_clicked(){
     //save file path
     string filepath = ui->labPathText->toPlainText().toStdString();
     labIDList = grader->get_file_parser()->parse_java_file(filepath);
-    controller = grader->get_control();
-     close();
+    //controller = grader->get_control();
+    delete this;
     //grader->get_file_parser()->parse_java_file(filepath);
 }
 

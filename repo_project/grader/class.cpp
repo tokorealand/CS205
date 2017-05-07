@@ -28,7 +28,6 @@ std::string Class:: get_id()
 }
 
 
-///*
 
 /*
  *Creates sections and adds them
@@ -57,6 +56,7 @@ void Class:: add_rubric(RubricObject* rubric)
 {
     rubrics.push_back(rubric);
 }
+
 
 
 Section* Class::get_section(int sectionid)

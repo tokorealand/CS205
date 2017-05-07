@@ -84,7 +84,7 @@ vector<string> FileParser::parse_java_file(string aFilepath){
                 grader->add_class(classID, semesterID);
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
-                grader->add_lab(labID, studentID, labName, lab_number);
+                grader->add_lab(labID, studentID, labName, lab_number,"0");
 //                cout<<"Lab Sucessfully added";
 //                cout<<'\n';
                 labIDList.push_back(labID);

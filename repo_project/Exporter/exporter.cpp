@@ -1,10 +1,7 @@
 #include "exporter.h"
 
 Exporter::Exporter(){
-    ofstream of;
-    of.open("name");
-    of << "test " <<endl;
-    of.close();
+
 }
 
 Exporter::~Exporter(){
@@ -23,6 +20,7 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
     ofstream oss;
     string filepathclass ="./ExportedFiles/"+currentClass->get_id();
     string filepathlab ="./ExportedFiles/"+currentClass->get_id()+"/"+currentLab->get_lab_num();
+
 
     mkdir("./ExportedFiles",S_IRWXU);
     mkdir(filepathclass.c_str(),S_IRWXU);

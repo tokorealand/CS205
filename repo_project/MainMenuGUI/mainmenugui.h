@@ -76,6 +76,12 @@ private slots:
     void on_deleteComment_clicked();
     void delay (int);
 
+    void on_pushButton_clicked();
+
+    void on_checkBox_2_toggled(bool checked);
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;

@@ -228,6 +228,15 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
     }
 
     ui->componentSelect->addItems(ccontainer);
+
+    if(selected_lab->get_graded()=="1")
+    {
+    ui->checkBox_2->setChecked(true);
+    }
+    else{
+        ui->checkBox_2->setChecked(false);
+
+    }
 }
 
 
@@ -329,6 +338,8 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
     if(checked)
     {
         anonymous_grading = true;
+
+
     }
     else
     {
@@ -387,4 +398,50 @@ void MainMenuGUI::delay( int millisecondsToWait )
     {
         QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
+}
+
+
+void MainMenuGUI::on_checkBox_2_toggled(bool checked)
+{
+    if(selected_lab!=NULL)
+    {
+        if(checked==true){
+        selected_lab->set_graded("1");
+        }
+        else if(checked==false){
+            selected_lab->set_graded("0");
+
+        }
+    }
+}
+
+void MainMenuGUI::on_pushButton_2_clicked()
+{
+    QFont fnt;
+    int size = ui->disjava->item(0)->font().pointSize();
+            fnt.setPointSize(size+5);
+            fnt.setFamily("Arial");
+
+    for(int i=0; i<ui->disjava->count(); i++)
+    {
+    ui->disjava->item(i)->setFont(fnt);
+    }
+}
+
+void MainMenuGUI::on_pushButton_clicked()
+{
+    QFont fnt;
+    int size = ui->disjava->item(0)->font().pointSize();
+
+        if((size-5)>5)
+        {
+            fnt.setPointSize(size-5);
+            fnt.setFamily("Arial");
+
+    for(int i=0; i<ui->disjava->count(); i++)
+    {
+    ui->disjava->item(i)->setFont(fnt);
+    }
+
+        }
 }

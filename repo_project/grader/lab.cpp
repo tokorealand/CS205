@@ -8,13 +8,14 @@ using namespace std;
 
 class Student;
 
-Lab::Lab(std::string labID, string studentID, string labName, string labNumber, DBTool *tool, std::string table):DBTable(tool,table)
+Lab::Lab(std::string labID, string studentID, string labName, string labNumber, string graded, DBTool *tool, std::string table):DBTable(tool,table)
 {
 
     this->id = labID;
     this->studentID = studentID;
     this->labName = labName;
     this->labNum = labNumber;
+    this->graded=graded;
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -28,7 +29,7 @@ Lab::~Lab()
 {
     //inputs contained information to player table inside the database
     build_table();
-    add_row(id,studentID,labName,labNum);
+    add_row(id,studentID,labName,labNum,graded);
 }
 
 void Lab::add_rubric(RubricObject *rub)
@@ -59,6 +60,16 @@ void Lab::store_add_row_sql() {
 
 }
 
+void Lab::set_graded(std::string booli)
+{
+graded=booli;
+}
+
+std::string Lab::get_graded()
+{
+return graded;
+}
+
 // SQL used to create the table in the database.
 void Lab::store_create_sql() {
 
@@ -70,14 +81,15 @@ void Lab::store_create_sql() {
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
     sql_create += "  studentid TEXT NOT NULL, ";
     sql_create += "  labname TEXT NOT NULL, ";
-    sql_create += "  labnumber TEXT NOT NULL";
+    sql_create += "  labnumber TEXT NOT NULL, ";
+    sql_create += "  graded TEXT NOT NULL";
     sql_create += " );";
 
 }
 
 /** Adds the inputted information into the player table database.
 */
-bool Lab::add_row(std::string id, std::string studentid, std::string labname , std::string labnumber) {
+bool Lab::add_row(std::string id, std::string studentid, std::string labname , std::string labnumber, std::string graded) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -86,7 +98,7 @@ bool Lab::add_row(std::string id, std::string studentid, std::string labname , s
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, studentid, labname, labnumber ) ";
+    sql_add_row += " ( id, studentid, labname, labnumber, graded ) ";
     sql_add_row += "VALUES (";
 
 
@@ -104,7 +116,12 @@ bool Lab::add_row(std::string id, std::string studentid, std::string labname , s
 
     sql_add_row += "\"";
     sql_add_row += std::string(labnumber);
+    sql_add_row += "\", ";
+
+    sql_add_row += "\"";
+    sql_add_row += std::string(graded);
     sql_add_row += "\" ";
+
     sql_add_row += " );";
 
 

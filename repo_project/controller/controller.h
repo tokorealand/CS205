@@ -128,7 +128,7 @@ public:
 
     bool add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname);
 
-    bool add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber);
+    bool add_lab(std::string labID, std::string studentID, std::string labName, std::string labNumber, std::string graded);
 
     bool add_component(std::string componentID, std::string labID, std::string text);
 

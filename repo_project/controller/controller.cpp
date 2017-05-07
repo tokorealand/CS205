@@ -461,13 +461,13 @@ bool Controller::add_student(std::string studentID, std::string sectionID, std::
     return true;
 }
 
-bool Controller::add_lab(std::string labID, string studentID, string labName, string labNumber)
+bool Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, std::string graded)
 {
     if(item_exist(labID,"lab"))
     {
         return false;
     }
-    Lab *la = new Lab(labID, studentID, labName, labNumber, class_tool,table_lab);
+    Lab *la = new Lab(labID, studentID, labName, labNumber,graded, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
     return true;
@@ -1175,7 +1175,7 @@ int cb_select_all_labs(void  *data,
 
     }
 
-    obj->add_lab(argv[0],argv[1],argv[2],argv[3]);
+    obj->add_lab(argv[0],argv[1],argv[2],argv[3],argv[4]);
 
     return 0;
 }

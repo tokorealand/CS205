@@ -5,7 +5,7 @@ Grader::Grader()
 
 
 
-    tool = new DBTool("TEST95680");
+    tool = new DBTool("Testfihhjnxxvgxx");
 
 
     control = new Controller(tool);
@@ -71,9 +71,9 @@ void Grader::add_student(std::string studentID, std::string sectionID, std::stri
     control->add_student(studentID, sectionID, firstname, lastname);
 }
 
-void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber)
+void Grader::add_lab(std::string labID, string studentID, string labName, string labNumber, std::string graded)
 {
-    control->add_lab(labID, studentID,labName,labNumber);
+    control->add_lab(labID, studentID,labName,labNumber,graded);
 }
 
 void Grader::add_component(std::string componentID, std::string labID, std::string text)
