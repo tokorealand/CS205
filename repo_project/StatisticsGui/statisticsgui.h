@@ -11,8 +11,6 @@
 #include "../grader/semester.h"
 #include "../grader/component.h"
 
-#include <QWidget>
-
 namespace Ui {
 class StatisticsGui;
 }
@@ -32,7 +30,7 @@ public:
     string calc_median();
     string calc_mean();
 
-private slots:
+public slots:
     void on_calcbutton_clicked();
     void on_doneButton_clicked();
     void on_yearSelect_activated(const QString &arg1);
@@ -41,7 +39,7 @@ private slots:
     void on_sectionSelect_activated(const QString &arg1);
     void on_labSelect_activated(const QString &arg1);
 
-private:
+public:
     Ui::StatisticsGui *ui;
     Component* selected_component =nullptr;
     Lab* selected_lab = nullptr;

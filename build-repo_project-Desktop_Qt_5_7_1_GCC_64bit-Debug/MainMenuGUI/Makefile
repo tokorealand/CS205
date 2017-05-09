@@ -137,11 +137,15 @@ DIST          = /usr/local/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -345,11 +349,15 @@ Makefile: ../../repo_project/MainMenuGUI/MainMenuGUI.pro /usr/local/Qt/5.7/gcc_6
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -500,11 +508,15 @@ Makefile: ../../repo_project/MainMenuGUI/MainMenuGUI.pro /usr/local/Qt/5.7/gcc_6
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri:

@@ -127,11 +127,15 @@ DIST          = /usr/local/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -329,11 +333,15 @@ Makefile: ../../repo_project/StatisticsGui/StatisticsGui.pro /usr/local/Qt/5.7/g
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
 		/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
@@ -484,11 +492,15 @@ Makefile: ../../repo_project/StatisticsGui/StatisticsGui.pro /usr/local/Qt/5.7/g
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_charts_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri:
+/usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
 /usr/local/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri:
@@ -1408,7 +1420,51 @@ statisticsgui.o: ../../repo_project/StatisticsGui/statisticsgui.cpp ../../repo_p
 		/usr/local/Qt/5.7/gcc_64/include/QtCore/qdiriterator.h \
 		/usr/local/Qt/5.7/gcc_64/include/QtCore/qdir.h \
 		/usr/local/Qt/5.7/gcc_64/include/QtCore/qfileinfo.h \
-		ui_statisticsgui.h
+		ui_statisticsgui.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QComboBox \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qcombobox.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o statisticsgui.o ../../repo_project/StatisticsGui/statisticsgui.cpp
 
 student.o: ../../repo_project/grader/student.cpp ../../repo_project/grader/student.h \

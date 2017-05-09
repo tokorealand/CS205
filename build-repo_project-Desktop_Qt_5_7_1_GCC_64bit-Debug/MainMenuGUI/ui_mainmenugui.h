@@ -24,6 +24,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -42,6 +43,8 @@ public:
     QAction *actionCalculate_Stats;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QCheckBox *checkBox;
     QHBoxLayout *horizontalLayout_9;
     QHBoxLayout *horizontalLayout_8;
@@ -80,6 +83,9 @@ public:
     QComboBox *labSelect;
     QPushButton *saveAndExit;
     QPushButton *deleteComment;
+    QCheckBox *checkBox_2;
+    QLabel *label;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -111,11 +117,27 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy1);
+        pushButton_2->setMaximumSize(QSize(80, 16777215));
+
+        gridLayout->addWidget(pushButton_2, 2, 0, 1, 1);
+
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
+        pushButton->setMaximumSize(QSize(80, 16777215));
+
+        gridLayout->addWidget(pushButton, 3, 0, 1, 1);
+
+        checkBox = new QCheckBox(centralWidget);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
         sizePolicy1.setHeightForWidth(checkBox->sizePolicy().hasHeightForWidth());
         checkBox->setSizePolicy(sizePolicy1);
         checkBox->setMaximumSize(QSize(1000, 1000));
@@ -234,7 +256,7 @@ public:
         horizontalLayout_9->addLayout(verticalLayout_2);
 
 
-        gridLayout->addLayout(horizontalLayout_9, 0, 1, 2, 1);
+        gridLayout->addLayout(horizontalLayout_9, 0, 3, 7, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -372,30 +394,41 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
 
-        gridLayout->addLayout(verticalLayout, 1, 0, 1, 1);
+        gridLayout->addLayout(verticalLayout, 6, 0, 1, 1);
 
         saveAndExit = new QPushButton(centralWidget);
         saveAndExit->setObjectName(QStringLiteral("saveAndExit"));
 
-        gridLayout->addWidget(saveAndExit, 2, 0, 1, 1);
+        gridLayout->addWidget(saveAndExit, 7, 0, 1, 1);
 
         deleteComment = new QPushButton(centralWidget);
         deleteComment->setObjectName(QStringLiteral("deleteComment"));
 
-        gridLayout->addWidget(deleteComment, 2, 1, 1, 1);
+        gridLayout->addWidget(deleteComment, 7, 3, 1, 1);
+
+        checkBox_2 = new QCheckBox(centralWidget);
+        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+
+        gridLayout->addWidget(checkBox_2, 5, 0, 1, 1);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy1);
+        label->setMaximumSize(QSize(80, 20));
+
+        gridLayout->addWidget(label, 1, 0, 1, 1);
+
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        sizePolicy1.setHeightForWidth(progressBar->sizePolicy().hasHeightForWidth());
+        progressBar->setSizePolicy(sizePolicy1);
+        progressBar->setMaximumSize(QSize(190, 16777215));
+        progressBar->setValue(24);
+
+        gridLayout->addWidget(progressBar, 4, 0, 1, 1);
 
         MainMenuGUI->setCentralWidget(centralWidget);
-        disrubric->raise();
-        disjava->raise();
-        discomment->raise();
-        componentSelect->raise();
-        checkBox->raise();
-        Refresh->raise();
-        label_8->raise();
-        saveAndExit->raise();
-        label_10->raise();
-        label_11->raise();
-        deleteComment->raise();
         menuBar = new QMenuBar(MainMenuGUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1283, 19));
@@ -430,6 +463,8 @@ public:
         actionExport_Lab->setText(QApplication::translate("MainMenuGUI", "Export Lab", Q_NULLPTR));
         actionAdd_Rubric->setText(QApplication::translate("MainMenuGUI", "Add Rubric", Q_NULLPTR));
         actionCalculate_Stats->setText(QApplication::translate("MainMenuGUI", "Calculate Stats", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("MainMenuGUI", "+", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainMenuGUI", "-", Q_NULLPTR));
         checkBox->setText(QApplication::translate("MainMenuGUI", "Toggle Anonymous Grading", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainMenuGUI", "Component", Q_NULLPTR));
         Refresh->setText(QApplication::translate("MainMenuGUI", "Refresh", Q_NULLPTR));
@@ -444,6 +479,8 @@ public:
         label_7->setText(QApplication::translate("MainMenuGUI", "Lab Number:", Q_NULLPTR));
         saveAndExit->setText(QApplication::translate("MainMenuGUI", "Save and Exit", Q_NULLPTR));
         deleteComment->setText(QApplication::translate("MainMenuGUI", "Delete Comment", Q_NULLPTR));
+        checkBox_2->setText(QApplication::translate("MainMenuGUI", "Graded", Q_NULLPTR));
+        label->setText(QApplication::translate("MainMenuGUI", "Text Size", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainMenuGUI", "File", Q_NULLPTR));
     } // retranslateUi
 
