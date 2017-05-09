@@ -470,6 +470,7 @@ bool Controller::add_lab(std::string labID, string studentID, string labName, st
     Lab *la = new Lab(labID, studentID, labName, labNumber,graded, class_tool,table_lab);
     labs.push_back(la);
     get_student(studentID)->add_lab(la);
+    get_class( get_section( get_student(studentID)->get_section_id())->get_class_id())->add_lab(la);
     return true;
 }
 

@@ -59,6 +59,7 @@ public:
     std::string get_name();
     vector<Student*> get_students();
     string get_id();
+    string get_class_id();
     void repopulate();
     bool check_for_student(string studentid);
 

@@ -1,6 +1,7 @@
 #ifndef CLASS_H
 #define CLASS_H
 #include "section.h"
+#include "lab.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -14,6 +15,7 @@
 using namespace std;
 
 class Section;
+class Lab;
 
 class Class : public DBTable
 {
@@ -24,6 +26,7 @@ private:
     std::string semesterid;
     DBTool *tool;
     vector<Section*> sections;
+    vector<Lab*> labs;
     std::string name;
     vector<RubricObject*> rubrics;
 
@@ -37,6 +40,7 @@ public:
     ~Class();
 
     void add_section(Section* sec);
+    void add_lab(Lab* lab);
     Section* get_section(int sectionid);
 
     std::vector<Section*> get_sections();
@@ -44,6 +48,10 @@ public:
     std::string labnumber;
     std::vector<RubricObject*> get_rubrics();
     void add_rubric(RubricObject* rubric);
+    int count_lab_matching_key(string labnum);
+    bool check_all_matching_key_graded(string labnum);
+    double get_amount_graded(string labnum);
+
 
 
     // create command for your child class.

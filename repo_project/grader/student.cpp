@@ -46,6 +46,11 @@ std::string Student::get_id()
     return id;
 }
 
+std::string Student::get_section_id()
+{
+    return sectionID;
+}
+
 std::string Student::get_first_name()
 {
     return firstName;

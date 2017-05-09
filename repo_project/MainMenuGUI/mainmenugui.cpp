@@ -9,6 +9,7 @@ MainMenuGUI::MainMenuGUI(QWidget *parent) :
     ui->setupUi(this);
     grad = new Grader();
     display_years();
+    ui->progressBar->setValue(0);
 }
 
 MainMenuGUI::~MainMenuGUI()
@@ -237,6 +238,8 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
         ui->checkBox_2->setChecked(false);
 
     }
+
+    ui->progressBar->setValue(selected_class->get_amount_graded(selected_lab->get_lab_num()));
 }
 
 

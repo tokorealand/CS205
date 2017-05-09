@@ -45,6 +45,11 @@ std::string Section::get_id()
     return id;
 }
 
+std::string Section::get_class_id()
+{
+    return classID;
+}
+
 std::vector<Student*> Section::get_students()
 {
     return students;

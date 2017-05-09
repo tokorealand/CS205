@@ -34,8 +34,68 @@ std::string Class:: get_id()
 **/
 void Class::add_section(Section* sec)
 {
-sections.push_back(sec);
+    sections.push_back(sec);
 }
+
+void Class::add_lab(Lab* lab)
+{
+    labs.push_back(lab);
+}
+
+int Class:: count_lab_matching_key(string labnum)
+{
+    int count=0;
+
+
+    for(Lab* lb : labs)
+    {
+        if(lb->get_lab_num()==labnum)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+bool Class:: check_all_matching_key_graded(string labnum)
+{
+
+
+    for(Lab* lb : labs)
+    {
+        if(lb->get_lab_num()==labnum)
+        {
+            if(lb->get_graded() == "0")
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+double Class:: get_amount_graded(string labnum)
+{
+    double count =0;
+    double totallabs =0;
+    for(Lab* lb : labs)
+    {
+        if(lb->get_lab_num()==labnum)
+        {
+            totallabs++;
+            if(lb->get_graded() == "1")
+            {
+                count++;
+            }
+        }
+    }
+    return (count/totallabs)*100;
+
+
+}
+
+
 
 std::string Class:: get_name()
 {
