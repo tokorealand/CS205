@@ -9,6 +9,12 @@ Controller::Controller(DBTool *tool):DBTable(tool)
 }
 
 
+
+
+/**
+Destructor for controller that drops the tables in the database while calling the
+destructors in the contained objects.
+*/
 Controller::~Controller()
 {
 
@@ -59,6 +65,9 @@ Controller::~Controller()
 
 }
 
+/**
+Returns names of all contained students.
+*/
 std::string Controller::student_list()
 {
     std::string list = "";
@@ -70,6 +79,9 @@ std::string Controller::student_list()
     return list;
 }
 
+/**
+Repopulates the engine from the database.
+*/
 void Controller::total_recall()
 {
     select_all_years();
@@ -85,6 +97,9 @@ void Controller::total_recall()
 
 }
 
+/**
+Drops all the tables in the database.
+*/
 void Controller::total_drop()
 {
     drop_rubricsections_table();
@@ -99,6 +114,9 @@ void Controller::total_drop()
     drop_year_table();
 }
 
+/**
+Used for testing the total_drop method.
+*/
 void Controller::test_drop()
 {
     drop_rubricsections_table();
@@ -252,6 +270,11 @@ RubricSection* Controller::get_rubricsection(std::string id)
     return NULL;
 }
 
+
+/**
+Runs the given ID through the vector of the specified type to check for a match.
+If a match is found then true is returned, otherwise returns false.
+*/
 bool Controller::item_exist(std::string id, std::string type)
 {
     if(type == "year")
@@ -491,7 +514,7 @@ bool Controller::add_component(std::string componentID, string labID, string tex
 
 bool Controller::add_comment(std::string commentID, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
 {
-     if(item_exist(commentID,"comment"))
+    if(item_exist(commentID,"comment"))
     {
         return false;
     }
@@ -520,7 +543,7 @@ bool Controller::add_rubricsection(std::string rubricsectionID, std::string rubr
     {
         return false;
     }
-RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
+    RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
     rubricsections.push_back(rubs);
     get_rubric(rubricID)->add_rubric_section(rubs);
     return true;
@@ -546,13 +569,13 @@ bool Controller::select_all_years() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -656,13 +679,13 @@ bool Controller::select_all_semesters() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -767,13 +790,13 @@ bool Controller::select_all_classes() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
@@ -1427,9 +1450,9 @@ bool Controller::select_all_rubrics() {
 
 //Call back for select_all_pgh
 int cb_select_all_rubrics(void  *data,
-                            int    argc,
-                            char **argv,
-                            char **azColName)
+                          int    argc,
+                          char **argv,
+                          char **azColName)
 {
 
 
@@ -1534,9 +1557,9 @@ bool Controller::select_all_rubricsections() {
 
 //Call back for select_all_pgh
 int cb_select_all_rubricsections(void  *data,
-                            int    argc,
-                            char **argv,
-                            char **azColName)
+                                 int    argc,
+                                 char **argv,
+                                 char **azColName)
 {
 
 
