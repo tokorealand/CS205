@@ -3,9 +3,9 @@
 
 using namespace std;
 
-RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):DBTable(tool,table){
+RubricObject::RubricObject(string id, string classID, DBTool *tool, string table):DBTable(tool,table){
     this->id=id;
-    this->labid=labID;
+    this->classid=classID;
     this->name ="Rubric_"+id.substr(0, id.find("_"));
     this->tool=tool;
     this->table=table;
@@ -17,15 +17,17 @@ RubricObject::RubricObject(string id, string labID, DBTool *tool, string table):
 void RubricObject::operator = (RubricObject &obj) {
     this->rubricSections = obj.rubricSections;
 
-    //SHOW_WHERE
 }
 
+/**
+Destructor for RubricObject which adds itself to the database.
+*/
 RubricObject::~RubricObject()
 {
     if(deleted==false)
     {
     build_table();
-    add_row(id,labid);
+    add_row(id,classid);
     }
 }
 
@@ -81,14 +83,18 @@ void RubricObject::store_create_sql() {
     sql_create += table_name;
     sql_create += " ( ";
     sql_create += "  id TEXT PRIMARY KEY NOT NULL, ";
-    sql_create += "  labid TEXT NOT NULL";
+    sql_create += "  classid TEXT NOT NULL";
     sql_create += " );";
 
 }
 
-/** Adds the inputted information into the player table database.
-*/
-bool RubricObject::add_row(std::string id, std::string labid) {
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param classid
+ * @return
+ */
+bool RubricObject::add_row(std::string id, std::string classid) {
     int   retCode = 0;
     char *zErrMsg = 0;
 
@@ -97,7 +103,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
 
     sql_add_row  = "INSERT INTO ";
     sql_add_row += table_name;
-    sql_add_row += " ( id, labid ) ";
+    sql_add_row += " ( id, classid ) ";
     sql_add_row += "VALUES (";
 
 
@@ -107,7 +113,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
 
 
     sql_add_row += "\"";
-    sql_add_row += std::string(labid);
+    sql_add_row += std::string(classid);
     sql_add_row += "\" ";
     sql_add_row += " );";
 
@@ -135,7 +141,7 @@ bool RubricObject::add_row(std::string id, std::string labid) {
     return retCode;
 }
 
-/** Call back for adding to lab table
+/** Call back for adding to rubric table
 */
 int cb_add_row_rubric(void  *data,
                    int    argc,

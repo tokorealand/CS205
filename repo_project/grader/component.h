@@ -11,6 +11,13 @@
 #include "dbtable.h"
 #include "comment.h"
 
+
+/**
+The Components class is an object representation of a container to hold comments
+while also holding a string representation of a java file.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Comment;
 class Component : public DBTable
 {

@@ -8,7 +8,9 @@ Year::Year(std::string id, DBTool *tool, std::string table):DBTable(tool,table)
     store_create_sql();
 }
 
-
+/**
+Destructor for Year which adds itself to the database.
+*/
 Year::~Year()
 {
 
@@ -22,6 +24,10 @@ std::string Year:: get_id()
     return id;
 }
 
+/**
+Adds semester to the semester vector in year.
+@param Semester - sem
+*/
 void Year::add_semester(Semester* sem)
 {
 semester.push_back(sem);
@@ -58,6 +64,11 @@ void Year::store_create_sql() {
 
 }
 
+/**
+ * @brief SQL method for how to add row to year table in database.
+ * @param id
+ * @return
+ */
 bool Year::add_row(std::string id) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -102,7 +113,7 @@ bool Year::add_row(std::string id) {
     return retCode;
 }
 
-/** Call back for adding to student table
+/** Call back for adding to year table
 */
 int cb_add_row_year(void  *data,
                        int    argc,

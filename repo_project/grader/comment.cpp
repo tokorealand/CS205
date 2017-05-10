@@ -15,6 +15,9 @@ Comment::Comment(std::string id, std::string componentID, std::string linenumber
     store_create_sql();
 }
 
+/**
+Destructor for Comment which adds itself to the database.
+*/
 Comment::~Comment(){
     if(deleted==false)
     {
@@ -97,8 +100,17 @@ void Comment::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the component table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param componentid
+ * @param linenumber
+ * @param commentphrase
+ * @param rubricsection
+ * @param highlight
+ * @param points
+ * @return
+ */
 bool Comment::add_row(std::string id, std::string componentid, std::string linenumber,std::string commentphrase, std::string rubricsection,std::string highlight, std::string points) {
     int   retCode = 0;
     char *zErrMsg = 0;

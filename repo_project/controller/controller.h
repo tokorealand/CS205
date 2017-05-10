@@ -21,6 +21,13 @@
 #include <vector>
 #include <string>
 
+
+/**
+The Controller class keeps tracks of all the objects and holds all the methods
+for basic manipulations of these objects...such as adding and getting.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Controller : public DBTable{
 
 private:
@@ -36,6 +43,7 @@ private:
     std::vector<RubricSection*> rubricsections;
 
 
+    //Database table names
     std::string table_year = "yeartable";
     std::string table_semester = "semestertable";
     std::string table_class = "classtable";
@@ -51,6 +59,9 @@ private:
 
     DBTool *class_tool;
 
+    /**
+     * The methods to interact with the database.
+     */
     bool select_all_years();
     bool drop_year_table();
     std::string sql_select_all_year;
@@ -112,11 +123,13 @@ public:
     void test_drop();
 
 
-    /* String version of the creation methods.
-     *
-     **/
+
+    std::string student_list();
 
     bool item_exist(std::string id, std::string type);
+
+
+    //creation methods
 
     bool add_year(std::string yearID);
 
@@ -138,18 +151,9 @@ public:
 
     bool add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
 
-    std::string student_list();
 
 
-    /* Pointer version of the creation methods.
-     *
-     **/
 
-    void add_section(std::string sectionID, Class* section_of_class);
-
-    void add_student(std::string studentID,Section *student_of_section, std::string firstname, std::string lastname, DBTool *tool, std::string table);
-
-    void add_lab(std::string labID, Student* lab_of_student, std::string labName, std::string labNumber, DBTool *tool, std::string table);
 
 
     Year* get_year(std::string id);
@@ -172,6 +176,8 @@ public:
 
 
 };
+
+//callback methods for the databases
 
 int cb_select_all_years(void  *data,
                           int    argc,

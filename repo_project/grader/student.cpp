@@ -22,6 +22,9 @@ Student::Student(std::string studentID, std::string sectionID, std::string first
 }
 
 
+/**
+Destructor for Student which adds itself to the database.
+*/
 Student::~Student()
 {
     //inputs contained information to student table inside the database
@@ -34,6 +37,10 @@ std::vector<Lab*> Student::get_labs()
     return labs;
 }
 
+/**
+Adds lab to the lab vector in class.
+@param Lab - thelab
+*/
 void Student::add_lab(Lab *thelab)
 {
     labs.push_back(thelab);
@@ -88,8 +95,14 @@ void Student::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the student table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param sectionid
+ * @param firstname
+ * @param lastname
+ * @return
+ */
 bool Student::add_row(std::string id, std::string sectionid, std::string firstname, std::string lastname) {
     int   retCode = 0;
     char *zErrMsg = 0;

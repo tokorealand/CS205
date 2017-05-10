@@ -11,6 +11,11 @@
 #include "dbtool.h"
 #include "dbtable.h"
 
+/**
+The Year class is an object representation of a container to hold semesters.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Semester;
 
 class Year : public DBTable

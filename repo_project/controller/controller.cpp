@@ -9,6 +9,12 @@ Controller::Controller(DBTool *tool):DBTable(tool)
 }
 
 
+
+
+/**
+Destructor for controller that drops the tables in the database while calling the
+destructors in the contained objects.
+*/
 Controller::~Controller()
 {
 
@@ -59,6 +65,9 @@ Controller::~Controller()
 
 }
 
+/**
+Returns names of all contained students.
+*/
 std::string Controller::student_list()
 {
     std::string list = "";
@@ -70,6 +79,9 @@ std::string Controller::student_list()
     return list;
 }
 
+/**
+Repopulates the engine from the database.
+*/
 void Controller::total_recall()
 {
     select_all_years();
@@ -85,6 +97,9 @@ void Controller::total_recall()
 
 }
 
+/**
+Drops all the tables in the database.
+*/
 void Controller::total_drop()
 {
     drop_rubricsections_table();
@@ -99,6 +114,9 @@ void Controller::total_drop()
     drop_year_table();
 }
 
+/**
+Used for testing the total_drop method.
+*/
 void Controller::test_drop()
 {
     drop_rubricsections_table();
@@ -252,6 +270,31 @@ RubricSection* Controller::get_rubricsection(std::string id)
     return NULL;
 }
 
+std::vector<Year*> Controller:: get_years()
+{
+    return years;
+}
+
+std::vector<Semester*> Controller:: get_semesters()
+{
+    return semesters;
+}
+
+std::vector<Class*> Controller:: get_classes()
+{
+    return classes;
+}
+
+std::vector<Comment*> Controller::get_comments()
+{
+    return comments;
+}
+
+
+/**
+Runs the given ID through the vector of the specified type to check for a match.
+If a match is found then true is returned, otherwise returns false.
+*/
 bool Controller::item_exist(std::string id, std::string type)
 {
     if(type == "year")
@@ -373,27 +416,23 @@ bool Controller::item_exist(std::string id, std::string type)
     return false;
 }
 
-std::vector<Year*> Controller:: get_years()
-{
-    return years;
-}
-
-std::vector<Semester*> Controller:: get_semesters()
-{
-    return semesters;
-}
-
-std::vector<Class*> Controller:: get_classes()
-{
-    return classes;
-}
-
-std::vector<Comment*> Controller::get_comments()
-{
-    return comments;
-}
 
 
+/**
+ *
+ * ADD METHODS
+ *
+ */
+
+
+
+/**
+ *Adds a year using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - yearID
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_year(std::string yearID)
 {
     if(item_exist(yearID,"year"))
@@ -406,6 +445,16 @@ bool Controller::add_year(std::string yearID)
     return true;
 }
 
+
+
+/**
+ *Adds a semester using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - semesterID
+ *@param string - yearID
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_semester(std::string semesterID, std::string yearID)
 {
     if(item_exist(semesterID,"semester"))
@@ -415,12 +464,20 @@ bool Controller::add_semester(std::string semesterID, std::string yearID)
 
     Semester *sem = new Semester(semesterID, yearID,class_tool,table_semester);
     semesters.push_back(sem);
+    //adds the semester object to the appropiate year container
     get_year(yearID)->add_semester(sem);
     return true;
 }
 
 
-
+/**
+ *Adds a class using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - classID
+ *@param string - semesterID
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_class(std::string classID,std::string semesterID)
 {
     if(item_exist(classID,"class"))
@@ -429,12 +486,21 @@ bool Controller::add_class(std::string classID,std::string semesterID)
     }
     Class *cla = new Class(classID,semesterID,class_tool,table_class);
     classes.push_back(cla);
+    //adds the class object to the appropiate semester container
     get_semester(semesterID)->add_class(cla);
     return true;
 
-
 }
 
+
+/**
+ *Adds a section using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - sectionID
+ *@param string - classID
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_section(std::string sectionID, string classID)
 {
     if(item_exist(sectionID,"section"))
@@ -444,11 +510,23 @@ bool Controller::add_section(std::string sectionID, string classID)
 
     Section *sec = new Section(sectionID, classID,class_tool,table_section);
     sections.push_back(sec);
+    //adds the section object to the appropiate class container
     get_class(classID)->add_section(sec);
     return true;
 
 }
 
+
+/**
+ *Adds a student using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - studentID
+ *@param string - sectionID
+ *@param string - firstname
+ *@param string - lastname
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)
 {
     if(item_exist(studentID,"student"))
@@ -457,10 +535,22 @@ bool Controller::add_student(std::string studentID, std::string sectionID, std::
     }
     Student *stu = new Student(studentID,sectionID, firstname, lastname, class_tool,table_student);
     students.push_back(stu);
+    //adds the student object to the appropiate section container
     get_section(sectionID)->add_student(stu);
     return true;
 }
 
+/**
+ *Adds a lab using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - labID
+ *@param string - studentID
+ *@param string - labName
+ *@param string - labNumber
+ *@param string - graded
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, std::string graded)
 {
     if(item_exist(labID,"lab"))
@@ -469,11 +559,22 @@ bool Controller::add_lab(std::string labID, string studentID, string labName, st
     }
     Lab *la = new Lab(labID, studentID, labName, labNumber,graded, class_tool,table_lab);
     labs.push_back(la);
+    //adds the lab object to the appropiate student container
     get_student(studentID)->add_lab(la);
+    //adds the lab object to the appropiate class container for stat calculations
     get_class( get_section( get_student(studentID)->get_section_id())->get_class_id())->add_lab(la);
     return true;
 }
 
+/**
+ *Adds a component using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - componentID
+ *@param string - labID
+ *@param string - text
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_component(std::string componentID, string labID, string text)
 {
     if(item_exist(componentID,"component"))
@@ -482,6 +583,7 @@ bool Controller::add_component(std::string componentID, string labID, string tex
     }
     Component *com = new Component(componentID, labID, text, class_tool,table_component);
     components.push_back(com);
+    //adds the component object to the appropiate lab container
     get_lab(labID)->add_component(com);
     return true;
 
@@ -489,18 +591,41 @@ bool Controller::add_component(std::string componentID, string labID, string tex
 
 }
 
+
+/**
+ *Adds a comment using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - commentID
+ *@param string - componentID
+ *@param string - linenumber
+ *@param string - commentphrase
+ *@param string - rubricsection
+ *@param string - highlight
+ *@param string - points
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_comment(std::string commentID, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
 {
-     if(item_exist(commentID,"comment"))
+    if(item_exist(commentID,"comment"))
     {
         return false;
     }
     Comment *com = new Comment(commentID, componentID, linenumber,commentphrase,rubricsection, highlight,points, class_tool,table_comment);
     comments.push_back(com);
+    //adds the comment object to the appropiate component container
     get_component(componentID)->add_comment(com);
     return true;
 }
 
+/**
+ *Adds a rubric using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - rubricID
+ *@param string - classID
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_rubric(std::string rubricID, std::string classID)
 {
     if(item_exist(rubricID,"rubric"))
@@ -509,26 +634,38 @@ bool Controller::add_rubric(std::string rubricID, std::string classID)
     }
     RubricObject *rub = new RubricObject(rubricID,classID,class_tool,table_rubric);
     rubrics.push_back(rub);
+    //adds the rubric object to the appropiate class container
     get_class(classID)->add_rubric(rub);
     return true;
 }
 
-
+/**
+ *Adds a rubricsection using the given ID. Checks whether item already exist before
+ * adding. If the item does not already exist then it is added. Returns true if
+ * added otherwise returns false.
+ *@param string - rubricsectionID
+ *@param string - rubricID
+ *@param string - description
+ *@param string - points
+ *@param string - color
+ *@returns bool - adding operation outcome
+ */
 bool Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color)
 {
     if(item_exist(rubricsectionID,"rubricsection"))
     {
         return false;
     }
-RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
+    RubricSection *rubs = new RubricSection(rubricsectionID,rubricID,description,points,color,class_tool,table_rubricsection);
     rubricsections.push_back(rubs);
+    //adds the rubricsection object to the appropiate rubric container
     get_rubric(rubricID)->add_rubric_section(rubs);
     return true;
 }
 
 
 
-//Used to retriveve all players in database
+//Used to retriveve all years in database
 bool Controller::select_all_years() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -546,20 +683,20 @@ bool Controller::select_all_years() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
 }
 
 
-// Removes the db table from the database.
+// Removes the year table from the database.
 bool Controller::drop_year_table() {
 
     // Initialize local variables.
@@ -595,7 +732,7 @@ bool Controller::drop_year_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_years
 int cb_select_all_years(void  *data,
                         int    argc,
                         char **argv,
@@ -637,8 +774,7 @@ int cb_select_all_years(void  *data,
 }
 
 
-////////////////////////////
-//Used to retriveve all players in database
+//Used to retriveve all semesters in database
 bool Controller::select_all_semesters() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -656,20 +792,20 @@ bool Controller::select_all_semesters() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
 }
 
 
-// Removes the db table from the database.
+// Removes the semester table from the database.
 bool Controller::drop_semester_table() {
 
     // Initialize local variables.
@@ -705,7 +841,7 @@ bool Controller::drop_semester_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_semesters
 int cb_select_all_semesters(void  *data,
                             int    argc,
                             char **argv,
@@ -748,8 +884,7 @@ int cb_select_all_semesters(void  *data,
 
 
 
-//////////////////////////////////////
-//Used to retriveve all players in database
+//Used to retriveve all classes in database
 bool Controller::select_all_classes() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -767,20 +902,20 @@ bool Controller::select_all_classes() {
 
     if( retCode != SQLITE_OK ){
 
-                std::cerr << table_name
-                          << " template ::"
-                          << std::endl
-                          << "SQL error: "
-                          << zErrMsg;
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
 
-                sqlite3_free(zErrMsg);
+        sqlite3_free(zErrMsg);
     }
 
     return retCode;
 }
 
 
-// Removes the db table from the database.
+// Removes the class table from the database.
 bool Controller::drop_class_table() {
 
     // Initialize local variables.
@@ -816,7 +951,7 @@ bool Controller::drop_class_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_classes
 int cb_select_all_classes(void  *data,
                           int    argc,
                           char **argv,
@@ -888,7 +1023,7 @@ bool Controller::select_all_sections() {
 }
 
 
-// Removes the db table from the database.
+// Removes the section table from the database.
 bool Controller::drop_section_table() {
 
     // Initialize local variables.
@@ -924,7 +1059,7 @@ bool Controller::drop_section_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_section
 int cb_select_all_sections(void  *data,
                            int    argc,
                            char **argv,
@@ -960,7 +1095,6 @@ int cb_select_all_sections(void  *data,
     }
 
     obj->add_section(argv[0],argv[1]);
-    //old from lab 6
 
     return 0;
 }
@@ -996,7 +1130,7 @@ bool Controller::select_all_students() {
 }
 
 
-// Removes the db table from the database.
+// Removes the student table from the database.
 bool Controller::drop_student_table() {
 
     // Initialize local variables.
@@ -1032,7 +1166,7 @@ bool Controller::drop_student_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_students
 int cb_select_all_students(void  *data,
                            int    argc,
                            char **argv,
@@ -1068,12 +1202,11 @@ int cb_select_all_students(void  *data,
     }
 
     obj->add_student(argv[0],argv[1],argv[2],argv[3]);
-    //old from lab 6
 
     return 0;
 }
 
-////////
+
 
 //Used to retriveve all labs in database
 bool Controller::select_all_labs() {
@@ -1105,7 +1238,7 @@ bool Controller::select_all_labs() {
 }
 
 
-// Removes the db table from the database.
+// Removes the lab table from the database.
 bool Controller::drop_lab_table() {
 
     // Initialize local variables.
@@ -1141,7 +1274,7 @@ bool Controller::drop_lab_table() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_labs
 int cb_select_all_labs(void  *data,
                        int    argc,
                        char **argv,
@@ -1181,7 +1314,7 @@ int cb_select_all_labs(void  *data,
     return 0;
 }
 
-//Used to retriveve all labs in database
+//Used to retriveve all components in database
 bool Controller::select_all_components() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -1210,7 +1343,7 @@ bool Controller::select_all_components() {
     return retCode;
 }
 
-//Call back for select_all_pgh
+//Call back for select_all_components
 int cb_select_all_components(void  *data,
                              int    argc,
                              char **argv,
@@ -1246,12 +1379,11 @@ int cb_select_all_components(void  *data,
     }
 
     obj->add_component(argv[0],argv[1],argv[2]);
-    //old from lab 6
 
     return 0;
 }
 
-// Removes the db table from the database.
+// Removes the component table from the database.
 bool Controller::drop_component_table() {
 
     // Initialize local variables.
@@ -1288,7 +1420,7 @@ bool Controller::drop_component_table() {
 }
 
 
-//Used to retriveve all labs in database
+//Used to retriveve all comments in database
 bool Controller::select_all_commentss() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -1318,7 +1450,7 @@ bool Controller::select_all_commentss() {
 }
 
 
-//Call back for select_all_pgh
+//Call back for select_all_comments
 int cb_select_all_commentss(void  *data,
                             int    argc,
                             char **argv,
@@ -1354,12 +1486,11 @@ int cb_select_all_commentss(void  *data,
     }
 
     obj->add_comment(argv[0],argv[1],argv[2],argv[3],argv[4],argv[5],argv[6]);
-    //old from lab 6
 
     return 0;
 }
 
-// Removes the db table from the database.
+// Removes the comments table from the database.
 bool Controller::drop_comments_table() {
 
     // Initialize local variables.
@@ -1395,7 +1526,7 @@ bool Controller::drop_comments_table() {
     return retCode;
 }
 
-//////////////////
+//Used to retriveve all rubrics in database
 bool Controller::select_all_rubrics() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -1425,11 +1556,11 @@ bool Controller::select_all_rubrics() {
 }
 
 
-//Call back for select_all_pgh
+//Call back for select_all_rubrics
 int cb_select_all_rubrics(void  *data,
-                            int    argc,
-                            char **argv,
-                            char **azColName)
+                          int    argc,
+                          char **argv,
+                          char **azColName)
 {
 
 
@@ -1461,12 +1592,11 @@ int cb_select_all_rubrics(void  *data,
     }
 
     obj->add_rubric(argv[0],argv[1]);
-    //old from lab 6
 
     return 0;
 }
 
-// Removes the db table from the database.
+// Removes the rubrics table from the database.
 bool Controller::drop_rubrics_table() {
 
     // Initialize local variables.
@@ -1501,8 +1631,8 @@ bool Controller::drop_rubrics_table() {
 
     return retCode;
 }
-/////////////////////////
 
+//Used to retriveve all rubricsections in database
 bool Controller::select_all_rubricsections() {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -1532,11 +1662,11 @@ bool Controller::select_all_rubricsections() {
 }
 
 
-//Call back for select_all_pgh
+//Call back for select_all_rubricsections
 int cb_select_all_rubricsections(void  *data,
-                            int    argc,
-                            char **argv,
-                            char **azColName)
+                                 int    argc,
+                                 char **argv,
+                                 char **azColName)
 {
 
 
@@ -1568,12 +1698,11 @@ int cb_select_all_rubricsections(void  *data,
     }
 
     obj->add_rubricsection(argv[0],argv[1],argv[2],argv[3],argv[4]);
-    //old from lab 6
 
     return 0;
 }
 
-// Removes the db table from the database.
+// Removes the rubricsections table from the database.
 bool Controller::drop_rubricsections_table() {
 
     // Initialize local variables.

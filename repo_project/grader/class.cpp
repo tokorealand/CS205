@@ -13,7 +13,9 @@ Class::Class(std::string classID, string semesterid, DBTool *tool, std::string t
     store_create_sql();
 }
 
-
+/**
+Destructor for Class which adds itself to the database.
+*/
 Class::~Class()
 {
 
@@ -29,19 +31,30 @@ std::string Class:: get_id()
 
 
 
-/*
- *Creates sections and adds them
-**/
+/**
+Adds section to the section vector in class.
+@param Section - sec
+*/
+
 void Class::add_section(Section* sec)
 {
     sections.push_back(sec);
 }
 
+/**
+Adds lab to the lab vector in class.
+@param Lab - lab
+*/
 void Class::add_lab(Lab* lab)
 {
     labs.push_back(lab);
 }
 
+/**
+Counts the labs matching the given lab number.
+@param string - labnum
+@returns int - number of labs matching
+*/
 int Class:: count_lab_matching_key(string labnum)
 {
     int count=0;
@@ -57,6 +70,11 @@ int Class:: count_lab_matching_key(string labnum)
     return count;
 }
 
+/**
+Checks if all labs matching the given key are graded.
+@param string - labnum
+@returns bool - true if all graded, otherwise false
+*/
 bool Class:: check_all_matching_key_graded(string labnum)
 {
 
@@ -75,6 +93,11 @@ bool Class:: check_all_matching_key_graded(string labnum)
     return true;
 }
 
+/**
+Calculates the percentage of the labs matching the given lab number that are graded.
+@param string - labnum
+@returns double - percentage of labs graded
+*/
 double Class:: get_amount_graded(string labnum)
 {
     double count =0;
@@ -112,27 +135,17 @@ vector<RubricObject*> Class::get_rubrics()
     return rubrics;
 }
 
+
+/**
+Adds rubric to the rubric vector in class.
+@param RubricObject - rubric
+*/
 void Class:: add_rubric(RubricObject* rubric)
 {
     rubrics.push_back(rubric);
 }
 
 
-
-Section* Class::get_section(int sectionid)
-{/*
-    Section *s;
-    for(std::vector<Section*>::iterator it = sections.begin();
-        it != sections.end(); ++it)
-    {
-        s = (*it);
-        if(s->get_id() == sectionid)
-        {
-            return s;
-        }*/
-    //  }
-    return NULL;
-}
 
 
 
@@ -164,6 +177,12 @@ void Class::store_create_sql() {
 }
 
 
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param semesterid
+ * @return
+ */
 bool Class::add_row(std::string id, std::string semesterid) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -210,7 +229,7 @@ bool Class::add_row(std::string id, std::string semesterid) {
     return retCode;
 }
 
-/** Call back for adding to student table
+/** Call back for adding to class table
 */
 int cb_add_row_class(void  *data,
                      int    argc,

@@ -14,8 +14,11 @@
 #include "dbtable.h"
 
 
-//Can we not use std namespace? I think it's bad practice.
-
+/**
+The Student class is an object representation of a container to hold Labs.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Lab;
 
 using namespace std;

@@ -11,6 +11,9 @@ Semester::Semester(std::string id, std::string yearid,DBTool *tool, std::string 
 }
 
 
+/**
+Destructor for Semester which adds itself to the database.
+*/
 Semester::~Semester()
 {
 
@@ -24,10 +27,15 @@ std::string Semester:: get_id()
     return id;
 }
 
+/**
+Adds class to the class vector in class.
+@param Class - cla
+*/
 void Semester::add_class(Class* cla)
 {
 classes.push_back(cla);
 }
+
 
 std::vector<Class*> Semester::get_classes()
 {
@@ -65,6 +73,12 @@ void Semester::store_create_sql() {
 
 }
 
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param yearid
+ * @return
+ */
 bool Semester::add_row(std::string id, std::string yearid) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -111,7 +125,7 @@ bool Semester::add_row(std::string id, std::string yearid) {
     return retCode;
 }
 
-/** Call back for adding to student table
+/** Call back for adding to semester table
 */
 int cb_add_row_semester(void  *data,
                        int    argc,

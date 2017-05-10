@@ -14,12 +14,13 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     store_add_row_sql();
     store_create_sql();
 
-    // must build table sepparately so new
-    // sql can be properly registered
-    //  build_table();
+
 
 }
 
+/**
+Destructor for Class which adds itself to the database.
+*/
 Component::~Component()
 {
 
@@ -112,8 +113,13 @@ void Component::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the component table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param labid
+ * @param text
+ * @return
+ */
 bool Component::add_row(std::string id, std::string labid, std::string text) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -164,7 +170,7 @@ bool Component::add_row(std::string id, std::string labid, std::string text) {
     return retCode;
 }
 
-/** Call back for adding to lab table
+/** Call back for adding to component table
 */
 int cb_add_row_component(void  *data,
                    int    argc,
