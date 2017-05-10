@@ -10,6 +10,12 @@
 #include "../grader/rubricobject.h"
 #include "../grader/rubricsection.h"
 
+/**
+ * @class Dialog
+ *
+ * the comment gui for gathering info from the user and using it to create a
+ * comment object.
+ */
 namespace Ui {
 class Dialog;
 }
