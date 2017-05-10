@@ -14,9 +14,7 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     store_add_row_sql();
     store_create_sql();
 
-    // must build table sepparately so new
-    // sql can be properly registered
-    //  build_table();
+
 
 }
 

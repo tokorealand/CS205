@@ -3,8 +3,6 @@
 Grader::Grader()
 {
 
-
-
     tool = new DBTool("Testfihhjnxxvgxx");
 
 

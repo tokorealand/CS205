@@ -11,6 +11,13 @@
 #include <sys/types.h>
 #include "dbtool.h"
 #include "dbtable.h"
+
+
+/**
+The Section class is an object representation of a container to hold students.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 using namespace std;
 
 class Student;
@@ -27,16 +34,6 @@ private:
     vector<Lab*> labs;
     std::string name;
 
-//    Student* get_student(string fn, string ln);
-//    string table_students = "stable";
-//    string table_labs = "ltable";
-//    bool select_all_students_in_section();
-//    bool select_all_labs_in_section();
-//    bool drop_student_table();
-//    bool drop_lab_table();
-
-//    std::string sql_select_all_students_in_section;
-//    std::string sql_select_all_labs_in_section;
 
 protected:
     std::string sql_select_all;
@@ -47,14 +44,7 @@ public:
     ~Section();
 
     void add_student(Student* student);
-//    void add_student_db(std::string fn, std::string ln);
 
-
-//    void add_lab_student(std::string fn, std::string ln, std::string labname);
-
-//    void add_lab_student(std::string fn, std::string ln, std::string labname, int labnumber);
-
-//    void increment_student();
 
     std::string get_name();
     vector<Student*> get_students();
@@ -72,15 +62,6 @@ public:
 
 };
 
-int cb_select_all_students_in_section(void  *data,
-                                      int    argc,
-                                      char **argv,
-                                      char **azColName);
-
-int cb_select_all_labs_in_section(void  *data,
-                                  int    argc,
-                                  char **argv,
-                                  char **azColName);
 
 int cb_add_row_section(void  *data,
                        int    argc,

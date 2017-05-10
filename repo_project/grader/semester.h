@@ -11,7 +11,11 @@
 #include "dbtool.h"
 #include "dbtable.h"
 
-
+/**
+The Semester class is an object representation of a container to hold Classes.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Class;
 class Semester : public DBTable
 {

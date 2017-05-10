@@ -452,6 +452,7 @@ bool Controller::add_year(std::string yearID)
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - semesterID
+ *@param string - yearID
  *@returns bool - adding operation outcome
  */
 bool Controller::add_semester(std::string semesterID, std::string yearID)
@@ -474,6 +475,7 @@ bool Controller::add_semester(std::string semesterID, std::string yearID)
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - classID
+ *@param string - semesterID
  *@returns bool - adding operation outcome
  */
 bool Controller::add_class(std::string classID,std::string semesterID)
@@ -496,6 +498,7 @@ bool Controller::add_class(std::string classID,std::string semesterID)
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - sectionID
+ *@param string - classID
  *@returns bool - adding operation outcome
  */
 bool Controller::add_section(std::string sectionID, string classID)
@@ -519,6 +522,9 @@ bool Controller::add_section(std::string sectionID, string classID)
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - studentID
+ *@param string - sectionID
+ *@param string - firstname
+ *@param string - lastname
  *@returns bool - adding operation outcome
  */
 bool Controller::add_student(std::string studentID, std::string sectionID, std::string firstname, std::string lastname)
@@ -539,6 +545,10 @@ bool Controller::add_student(std::string studentID, std::string sectionID, std::
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - labID
+ *@param string - studentID
+ *@param string - labName
+ *@param string - labNumber
+ *@param string - graded
  *@returns bool - adding operation outcome
  */
 bool Controller::add_lab(std::string labID, string studentID, string labName, string labNumber, std::string graded)
@@ -561,6 +571,8 @@ bool Controller::add_lab(std::string labID, string studentID, string labName, st
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - componentID
+ *@param string - labID
+ *@param string - text
  *@returns bool - adding operation outcome
  */
 bool Controller::add_component(std::string componentID, string labID, string text)
@@ -585,6 +597,12 @@ bool Controller::add_component(std::string componentID, string labID, string tex
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - commentID
+ *@param string - componentID
+ *@param string - linenumber
+ *@param string - commentphrase
+ *@param string - rubricsection
+ *@param string - highlight
+ *@param string - points
  *@returns bool - adding operation outcome
  */
 bool Controller::add_comment(std::string commentID, std::string componentID, std::string linenumber, std::string commentphrase, std::string rubricsection, std::string highlight, std::string points)
@@ -605,6 +623,7 @@ bool Controller::add_comment(std::string commentID, std::string componentID, std
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - rubricID
+ *@param string - classID
  *@returns bool - adding operation outcome
  */
 bool Controller::add_rubric(std::string rubricID, std::string classID)
@@ -625,6 +644,10 @@ bool Controller::add_rubric(std::string rubricID, std::string classID)
  * adding. If the item does not already exist then it is added. Returns true if
  * added otherwise returns false.
  *@param string - rubricsectionID
+ *@param string - rubricID
+ *@param string - description
+ *@param string - points
+ *@param string - color
  *@returns bool - adding operation outcome
  */
 bool Controller::add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color)

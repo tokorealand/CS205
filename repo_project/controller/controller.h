@@ -123,11 +123,13 @@ public:
     void test_drop();
 
 
-    /* String version of the creation methods.
-     *
-     **/
+
+    std::string student_list();
 
     bool item_exist(std::string id, std::string type);
+
+
+    //creation methods
 
     bool add_year(std::string yearID);
 
@@ -149,7 +151,6 @@ public:
 
     bool add_rubricsection(std::string rubricsectionID, std::string rubricID,std::string description, std::string points, std::string color);
 
-    std::string student_list();
 
 
 

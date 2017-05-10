@@ -12,6 +12,13 @@
 #include "dbtool.h"
 #include "dbtable.h"
 #include "rubricobject.h"
+
+/**
+The Class class is an object representation of a conntainer to hold sections and
+to evaluate statistics of submitted assignments.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 using namespace std;
 
 class Section;
@@ -61,7 +68,6 @@ public:
     std::string get_id();
     bool add_row(std::string id, std::string semesterid);
 
-  //  void increment_section();
 
 
 };

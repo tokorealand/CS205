@@ -11,6 +11,12 @@
 
 #include <vector>
 #include <string>
+
+/**
+The Grader class uses the underlying methods in the controller class to facilate
+grading and also to keep code clutter low.
+@version 1.0 (April 25 2017)
+*/
 using namespace std;
 
 class FileParser;
