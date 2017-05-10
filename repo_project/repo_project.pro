@@ -11,5 +11,7 @@ SUBDIRS += \
     MainMenuGUI \
     RubricGUI \
     StatisticsGui \
-    enginetest
+    enginetest \
+    StatGuiTest \
+    ExportTest
 
