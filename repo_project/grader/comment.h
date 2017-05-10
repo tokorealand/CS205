@@ -11,6 +11,13 @@
 #include "dbtable.h"
 #include "lab.h"
 
+
+/**
+The Comment class is an object representation of a comment to hold grading
+information.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 class Lab;
 
 class Comment : public DBTable

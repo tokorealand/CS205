@@ -13,10 +13,13 @@
 #include "rubricsection.h"
 
 
-
+/**
+The Rubric class is an object representation of a container to hold semesters.
+@author Luis Lopez-Bonilla
+@version 1.0 (April 25 2017)
+*/
 using namespace std;
 
-class Lab;
 class RubricSection;
 
 
@@ -25,7 +28,7 @@ class RubricObject : public DBTable
 
 public:
     //constructors
-    RubricObject(std::string id, std::string labID,DBTool *tool, std::string table);
+    RubricObject(std::string id, std::string classID,DBTool *tool, std::string table);
 
     ~RubricObject();
 
@@ -57,7 +60,7 @@ public:
     // insert command for your child class.
     virtual void store_add_row_sql();
 
-    bool add_row(string id, string labid);
+    bool add_row(string id, string classid);
 
     int size = 0;
 
@@ -66,7 +69,7 @@ private:
     DBTool *tool;
     std::string table;
     std::string id;
-    std::string labid;
+    std::string classid;
     std::string name;
     bool deleted;
 
