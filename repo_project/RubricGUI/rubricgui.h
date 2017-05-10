@@ -15,12 +15,18 @@
 #include "../grader/dbtable.h"
 #include "../grader/dbtool.h"
 
+/**
+ * @author Allie Mullan, Julian Binici
+ * @version 1.0
+ *
+ * Creates a gui that allows the user to input information. It creates rubric
+ * objects given the inputted information.
+ */
 namespace Ui {
 class RubricGUI;
 }
 
-class RubricGUI : public QWidget
-{
+class RubricGUI : public QWidget{
     Q_OBJECT
 
 public:
@@ -28,6 +34,7 @@ public:
     ~RubricGUI();
 
     void display_years();
+
     void display_colors();
 
 private slots:
@@ -37,12 +44,9 @@ private slots:
 
     void on_classSelect_activated(const QString &arg1);
 
-
     void on_createRubric_clicked();
 
     void on_addSection_clicked();
-
-
 
     void on_rubricSelect_activated(const QModelIndex &index);
 

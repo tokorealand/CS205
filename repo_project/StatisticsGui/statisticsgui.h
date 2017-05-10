@@ -11,6 +11,14 @@
 #include "../grader/semester.h"
 #include "../grader/component.h"
 
+/**
+* @author Allie Mullan
+* @version 1.0
+*
+* Allows for a lab to be selected and then displays the min, max, median, and
+* mean for the selected labs.
+*/
+
 namespace Ui {
 class StatisticsGui;
 }

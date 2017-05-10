@@ -1,12 +1,6 @@
 #include "statisticsgui.h"
 #include "ui_statisticsgui.h"
 
-/*!
-  @class Statistics gui
-  @brief This class sets up and builds a statistics gui. It calculates and displays
-  four statistics (min, max, median, and mean) for the selected lab.
- */
-
 /**
  * @brief StatisticsGui::StatisticsGui constructor.
  * @param parent
