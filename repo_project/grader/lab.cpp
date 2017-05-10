@@ -25,6 +25,9 @@ Lab::Lab(std::string labID, string studentID, string labName, string labNumber, 
     //  build_table();
 }
 
+/**
+Destructor for Class which adds itself to the database.
+*/
 Lab::~Lab()
 {
     //inputs contained information to player table inside the database
@@ -32,6 +35,10 @@ Lab::~Lab()
     add_row(id,studentID,labName,labNum,graded);
 }
 
+/**
+Adds rubric to the rubric vector in class.
+@param RubricObject - rub
+*/
 void Lab::add_rubric(RubricObject *rub)
 {
     this->rubric=rub;
@@ -41,10 +48,18 @@ std::string Lab::get_id(){
     return id;
 }
 
+/**
+Adds component to the component vector in class.
+@param Component - com
+*/
 void Lab::add_component(Component *com){
     components.push_back(com);
 }
 
+/**
+Adds comment to the comment vector in class.
+@param Comment - com
+*/
 void Lab::add_comment(Comment *com){
     comments.push_back(com);
 }
@@ -87,8 +102,15 @@ void Lab::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the player table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param studentid
+ * @param labname
+ * @param labnumber
+ * @param graded
+ * @return
+ */
 bool Lab::add_row(std::string id, std::string studentid, std::string labname , std::string labnumber, std::string graded) {
     int   retCode = 0;
     char *zErrMsg = 0;

@@ -17,7 +17,6 @@ RubricObject::RubricObject(string id, string classID, DBTool *tool, string table
 void RubricObject::operator = (RubricObject &obj) {
     this->rubricSections = obj.rubricSections;
 
-    //SHOW_WHERE
 }
 
 RubricObject::~RubricObject()

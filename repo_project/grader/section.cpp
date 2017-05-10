@@ -29,9 +29,9 @@ Section::Section( std::string sectionID,std::string classID,DBTool *tool, std::s
     // build_table();
 }
 
-/*
- *Deletes the objects in the tables
-**/
+/**
+Destructor for Section which adds itself to the database.
+*/
 Section::~Section()
 {
     build_table();
@@ -61,9 +61,10 @@ std::string Section::get_name()
 }
 
 
-/*
- *Creates students and adds them
-**/
+/**
+Adds student to the student vector in class.
+@param Section - sec
+*/
 void Section::add_student(Student *student)
 {
     students.push_back(student);
@@ -96,7 +97,12 @@ void Section::store_create_sql() {
 
 }
 
-
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param classid
+ * @return
+ */
 bool Section::add_row(std::string id, std::string classid) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -146,7 +152,7 @@ bool Section::add_row(std::string id, std::string classid) {
 
 
 
-/** Call back for adding to student table
+/** Call back for adding to section table
 */
 int cb_add_row_section(void  *data,
                        int    argc,
