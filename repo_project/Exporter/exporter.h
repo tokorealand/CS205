@@ -10,6 +10,12 @@
 #include "../grader/rubricobject.h"
 #include "../grader/class.h"
 
+/**
+ * @brief The Exporter class
+ *
+ * Takes a lab and puts it together with the rubric and comments and exports
+ * the html file.
+ */
 class Exporter{
 
 public:
@@ -26,7 +32,6 @@ public:
     string parse_line(string line, Lab *currentLab, int lineNo);
     string space();
     string enter();
-    string highlight();
     string font_color(string color);
     string bold();
     string get_finished();

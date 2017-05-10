@@ -16,8 +16,7 @@
 #include "../grader/dbtool.h"
 
 /**
- * @author Allie Mullan, Julian Binici
- * @version 1.0
+ * @class RubricGUI
  *
  * Creates a gui that allows the user to input information. It creates rubric
  * objects given the inputted information.
