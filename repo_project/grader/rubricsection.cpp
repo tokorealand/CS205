@@ -14,6 +14,9 @@ RubricSection::RubricSection(std::string id, std::string rubricid, std::string d
 
 }
 
+/**
+Destructor for rubricsection which adds itself to the database.
+*/
 RubricSection::~RubricSection()
 {
     if(deleted==false)
@@ -76,8 +79,15 @@ void RubricSection::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the player table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param rubricid
+ * @param description
+ * @param points
+ * @param color
+ * @return
+ */
 bool RubricSection::add_row(std::string id, std::string rubricid, std::string description, std::string points, std::string color) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -137,7 +147,7 @@ bool RubricSection::add_row(std::string id, std::string rubricid, std::string de
     return retCode;
 }
 
-/** Call back for adding to lab table
+/** Call back for adding to rubricsection table
 */
 int cb_add_row_rubricsection(void  *data,
                    int    argc,

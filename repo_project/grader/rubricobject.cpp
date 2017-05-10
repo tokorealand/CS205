@@ -19,6 +19,9 @@ void RubricObject::operator = (RubricObject &obj) {
 
 }
 
+/**
+Destructor for RubricObject which adds itself to the database.
+*/
 RubricObject::~RubricObject()
 {
     if(deleted==false)
@@ -85,8 +88,12 @@ void RubricObject::store_create_sql() {
 
 }
 
-/** Adds the inputted information into the player table database.
-*/
+/**
+ * @brief SQL method for how to add row to class table in database.
+ * @param id
+ * @param classid
+ * @return
+ */
 bool RubricObject::add_row(std::string id, std::string classid) {
     int   retCode = 0;
     char *zErrMsg = 0;
@@ -134,7 +141,7 @@ bool RubricObject::add_row(std::string id, std::string classid) {
     return retCode;
 }
 
-/** Call back for adding to lab table
+/** Call back for adding to rubric table
 */
 int cb_add_row_rubric(void  *data,
                    int    argc,
