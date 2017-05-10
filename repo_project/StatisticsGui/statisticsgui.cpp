@@ -1,6 +1,19 @@
 #include "statisticsgui.h"
 #include "ui_statisticsgui.h"
 
+/*!
+  @class Statistics gui
+  @brief This class sets up and builds a statistics gui. It calculates and displays
+  four statistics (min, max, median, and mean) for the selected lab.
+ */
+
+/**
+ * @brief StatisticsGui::StatisticsGui constructor.
+ * @param parent
+ * @param grad
+ *
+ * sets the class's grader to grad and sets up the ui.
+ */
 StatisticsGui::StatisticsGui(QWidget *parent, Grader *grad) :
     QWidget(parent),
     ui(new Ui::StatisticsGui)
@@ -10,10 +23,21 @@ StatisticsGui::StatisticsGui(QWidget *parent, Grader *grad) :
     display_years();
 }
 
+/*!
+ * \brief StatisticsGui::~StatisticsGui
+ *
+ * the deconstructor.
+ */
 StatisticsGui::~StatisticsGui(){
     delete ui;
 }
 
+/**
+ * @brief StatisticsGui::display_years
+ *
+ * when the program begins, it displays the years of the labs that are in the
+ * grader in a drop down list in the ui.
+ */
 void StatisticsGui::display_years(){
 
     QList<QString> ycontainer;
@@ -30,6 +54,14 @@ void StatisticsGui::display_years(){
     }
 }
 
+/**
+ * @brief StatisticsGui::on_yearSelect_activated
+ * @param arg1
+ *
+ * a slot that is activated when the user selects a year from the year drop down
+ * in the ui. It then populates the semester drop down with the semesters
+ * associated with the selected year, based on what is held in the grader.
+ */
 void StatisticsGui::on_yearSelect_activated(const QString &arg1){
 
     selected_year = grad->get_year(arg1.QString::toStdString());
@@ -48,6 +80,14 @@ void StatisticsGui::on_yearSelect_activated(const QString &arg1){
     ui->semesterSelect->addItems(semcontainer);
 }
 
+/**
+ * @brief StatisticsGui::on_semesterSelect_activated
+ * @param arg1
+ *
+ * a slot that is activated when the user selects a semester from the drop
+ * down in the ui. It then populates the class drop down with the classes
+ * associated with the selected semester, based on what is held in grader.
+ */
 void StatisticsGui::on_semesterSelect_activated(const QString &arg1){
 
     string semesterID = arg1.toStdString()+"_"+selected_year->get_id();
@@ -65,6 +105,14 @@ void StatisticsGui::on_semesterSelect_activated(const QString &arg1){
     ui->classSelect->addItems(ccontainer);
 }
 
+/**
+ * @brief StatisticsGui::on_classSelect_activated
+ * @param arg1
+ *
+ * a slot that is activated when the user selects a class from the drop down
+ * in the ui. It then populates the section drop down with the sections
+ * associated with the selected class, based on what is held in grader.
+ */
 void StatisticsGui::on_classSelect_activated(const QString &arg1){
 
     string classID = arg1.toStdString()+"_"+selected_semester->get_id();
@@ -83,6 +131,14 @@ void StatisticsGui::on_classSelect_activated(const QString &arg1){
     ui->sectionSelect->addItems(ccontainer);
 }
 
+/**
+ * @brief StatisticsGui::on_sectionSelect_activated
+ * @param arg1
+ *
+ * a slot that is activated when the user selects a section from the drop down
+ * in the ui. It then populates the lab number drop down with the lab numbers
+ * associated with the selected section, based on what is held in grader.
+ */
 void StatisticsGui::on_sectionSelect_activated(const QString &arg1){
 
     string sectionID = arg1.toStdString()+"_"+selected_class->get_id();
@@ -101,6 +157,14 @@ void StatisticsGui::on_sectionSelect_activated(const QString &arg1){
     ui->labNoSelect->addItems(ccontainer);
 }
 
+/**
+ * @brief StatisticsGui::on_labSelect_activated
+ * @param arg1
+ *
+ * a slot that is activated when the user selects a lab num from the drop down
+ * in the ui. When the user selects a lab, it will save that lab as the current
+ * selected lab.
+ */
 void StatisticsGui::on_labSelect_activated(const QString &arg1){
 
     string labID = arg1.toStdString()+"_"+selected_section->get_id();
@@ -108,6 +172,12 @@ void StatisticsGui::on_labSelect_activated(const QString &arg1){
     selected_lab = grad->get_lab(labID);
 }
 
+/**
+ * @brief StatisticsGui::on_calcbutton_clicked
+ *
+ * a slot for when the calc button is clicked in the ui. calls methods that
+ * calculate statistics and displays them in the ui.
+ */
 void StatisticsGui::on_calcbutton_clicked(){
 
     //display calculated min
@@ -123,10 +193,21 @@ void StatisticsGui::on_calcbutton_clicked(){
     ui->meandisplay->setText(QString::fromStdString(calc_mean()));
 }
 
+/**
+ * @brief StatisticsGui::on_doneButton_clicked
+ *
+ * closes the ui.
+ */
 void StatisticsGui::on_doneButton_clicked(){
     close();
 }
 
+/**
+ * @brief StatisticsGui::calc_min
+ * @return the minimum score for all the selected labs
+ *
+ * loops through all selected labs and finds the lowest grade.
+ */
 string StatisticsGui::calc_min(){
 
     //get all of the students
@@ -153,6 +234,12 @@ string StatisticsGui::calc_min(){
     return to_string(currentMin);
 }
 
+/**
+ * @brief StatisticsGui::calc_max
+ * @return the maximum score for all the selected labs
+ *
+ * loops through all the selected labs and finds the maximum
+ */
 string StatisticsGui::calc_max(){
 
     //get all of the students
@@ -178,6 +265,12 @@ string StatisticsGui::calc_max(){
     return to_string(currentMax);
 }
 
+/**
+ * @brief StatisticsGui::calc_median
+ * @return the median score of all the selected labs
+ *
+ * calculates the median grade from all the currently selected labs
+ */
 string StatisticsGui::calc_median(){
     //get all of the students
     vector<Student*> students = selected_section->get_students();
@@ -202,6 +295,12 @@ string StatisticsGui::calc_median(){
     return to_string(keepGrades.at(keepGrades.size()/2));
 }
 
+/**
+ * @brief StatisticsGui::calc_mean
+ * @return the mean score of all the selected labs
+ *
+ * calculates the mean grade of all the currently selected labs
+ */
 string StatisticsGui::calc_mean(){
 
     //get all of the students
