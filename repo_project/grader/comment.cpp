@@ -85,7 +85,7 @@ void Comment::store_add_row_sql() {
 void Comment::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Comment\n";
+  //  std::cerr << "calling store_create_sql from Comment\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -184,7 +184,7 @@ int cb_add_row_comment_ne(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+  //  std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

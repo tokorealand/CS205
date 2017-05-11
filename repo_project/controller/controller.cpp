@@ -751,7 +751,7 @@ int cb_select_all_years(void  *data,
 
 
 
-    std::cerr << "cb_select_all_years being called\n";
+    //std::cerr << "cb_select_all_years being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -759,23 +759,23 @@ int cb_select_all_years(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+  //  }
 
     obj->add_year(argv[0]);
 
@@ -860,7 +860,7 @@ int cb_select_all_semesters(void  *data,
 
 
 
-    std::cerr << "cb_select_all_semesters being called\n";
+    //std::cerr << "cb_select_all_semesters being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -868,23 +868,23 @@ int cb_select_all_semesters(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_semester(argv[0],argv[1]);
 
@@ -970,31 +970,31 @@ int cb_select_all_classes(void  *data,
 
 
 
-    std::cerr << "cb_select_all_classes being called\n";
+    //std::cerr << "cb_select_all_classes being called\n";
 
     if(argc < 1) {
-        std::cerr << "No data presented to callback "
+       std::cerr << "No data presented to callback "
                   << "argc = " << argc
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_class(argv[0],argv[1]);
 
@@ -1055,10 +1055,10 @@ bool Controller::drop_section_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 
@@ -1078,7 +1078,7 @@ int cb_select_all_sections(void  *data,
 
 
 
-    std::cerr << "cb_select_all_sections being called\n";
+    //std::cerr << "cb_select_all_sections being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1086,23 +1086,23 @@ int cb_select_all_sections(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_section(argv[0],argv[1]);
 
@@ -1127,7 +1127,7 @@ bool Controller::select_all_students() {
 
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << table_name
+        //        //std::cerr << table_name
         //                  << " template ::"
         //                  << std::endl
         //                  << "SQL error: "
@@ -1162,10 +1162,10 @@ bool Controller::drop_student_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 
@@ -1185,7 +1185,7 @@ int cb_select_all_students(void  *data,
 
 
 
-    std::cerr << "cb_select_all_students being called\n";
+    //std::cerr << "cb_select_all_students being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1193,23 +1193,23 @@ int cb_select_all_students(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_student(argv[0],argv[1],argv[2],argv[3]);
 
@@ -1235,7 +1235,7 @@ bool Controller::select_all_labs() {
 
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << table_name
+        //        //std::cerr << table_name
         //                  << " template ::"
         //                  << std::endl
         //                  << "SQL error: "
@@ -1270,10 +1270,10 @@ bool Controller::drop_lab_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 
@@ -1293,31 +1293,31 @@ int cb_select_all_labs(void  *data,
 
 
 
-    std::cerr << "cb_select_all_labs being called\n";
+    //std::cerr << "cb_select_all_labs being called\n";
 
     if(argc < 1) {
-        std::cerr << "No data presented to callback "
+       std::cerr << "No data presented to callback "
                   << "argc = " << argc
                   << std::endl;
     }
 
-    int i;
+ //   int i;
 
-    Controller *obj = (Controller *) data;
+  Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_lab(argv[0],argv[1],argv[2],argv[3],argv[4]);
 
@@ -1362,7 +1362,7 @@ int cb_select_all_components(void  *data,
 
 
 
-    std::cerr << "cb_select_all_components being called\n";
+    //std::cerr << "cb_select_all_components being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1370,23 +1370,23 @@ int cb_select_all_components(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_component(argv[0],argv[1],argv[2]);
 
@@ -1469,7 +1469,7 @@ int cb_select_all_commentss(void  *data,
 
 
 
-    std::cerr << "cb_select_all_commentss being called\n";
+    //std::cerr << "cb_select_all_commentss being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1477,23 +1477,23 @@ int cb_select_all_commentss(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_comment(argv[0],argv[1],argv[2],argv[3],argv[4],argv[5],argv[6]);
 
@@ -1522,10 +1522,10 @@ bool Controller::drop_comments_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 
@@ -1575,7 +1575,7 @@ int cb_select_all_rubrics(void  *data,
 
 
 
-    std::cerr << "cb_select_all_rubrics being called\n";
+    //std::cerr << "cb_select_all_rubrics being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1583,23 +1583,23 @@ int cb_select_all_rubrics(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
-    Controller *obj = (Controller *) data;
+   Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_rubric(argv[0],argv[1]);
 
@@ -1628,10 +1628,10 @@ bool Controller::drop_rubrics_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 
@@ -1681,7 +1681,7 @@ int cb_select_all_rubricsections(void  *data,
 
 
 
-    std::cerr << "cb_select_all_rubricsections being called\n";
+    //std::cerr << "cb_select_all_rubricsections being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -1689,23 +1689,23 @@ int cb_select_all_rubricsections(void  *data,
                   << std::endl;
     }
 
-    int i;
+//    int i;
 
     Controller *obj = (Controller *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+//    std::cout << "------------------------------\n";
+//    std::cout << obj->get_name()
+//              << std::endl;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                     << " = "
-                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
-                      << std::endl;
+//    for(i = 0; i < argc; i++){
+//        std::cout << azColName[i]
+//                     << " = "
+//                     <<  (argv[i] ? std::string(argv[i]) : "NULL")
+//                      << std::endl;
 
 
 
-    }
+//    }
 
     obj->add_rubricsection(argv[0],argv[1],argv[2],argv[3],argv[4]);
 
@@ -1734,10 +1734,10 @@ bool Controller::drop_rubricsections_table() {
     // Process a failed call.
     if( retCode != SQLITE_OK ){
 
-        //        std::cerr << sql_drop
+        //        //std::cerr << sql_drop
         //                  << std::endl;
 
-        //        std::cerr << "SQL error: "
+        //        //std::cerr << "SQL error: "
         //                  << zErrMsg
         //                  << std::endl;
 

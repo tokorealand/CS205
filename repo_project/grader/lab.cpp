@@ -16,6 +16,8 @@ Lab::Lab(std::string labID, string studentID, string labName, string labNumber, 
     this->labName = labName;
     this->labNum = labNumber;
     this->graded=graded;
+
+    build_table();
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
@@ -89,7 +91,7 @@ return graded;
 void Lab::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Lab\n";
+   // std::cerr << "calling store_create_sql from Lab\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -180,7 +182,7 @@ int cb_add_row_lab(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+   // std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

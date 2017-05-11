@@ -10,6 +10,7 @@ Student::Student(std::string studentID, std::string sectionID, std::string first
     this->id = studentID;
     this->numLabs = 0;
 
+    build_table();
     // Load SQL specific to child class.
 
     store_add_row_sql();
@@ -83,7 +84,7 @@ void Student::store_add_row_sql() {
 void Student::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Student\n";
+   // std::cerr << "calling store_create_sql from Student\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -165,7 +166,7 @@ int cb_add_row_student(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+  //  std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

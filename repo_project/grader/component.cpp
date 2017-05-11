@@ -118,7 +118,7 @@ void Component::store_add_row_sql() {
 void Component::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Component\n";
+   // std::cerr << "calling store_create_sql from Component\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -196,7 +196,7 @@ int cb_add_row_component(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+    //std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
