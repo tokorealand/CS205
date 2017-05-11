@@ -130,6 +130,15 @@ std::vector<Section*> Class::get_sections()
     return sections;
 }
 
+void Class::update_lab_totals(int labnum, int total){
+    for(Lab* l : labs)
+        if(l->get_lab_num()==std::to_string(labnum))
+        {
+            l->set_grade(total);
+        }
+}
+
+
 std::vector<Lab*> Class::get_labs()
 {
     return labs;

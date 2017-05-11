@@ -35,7 +35,7 @@ private:
     vector<Comment*> comments;
     vector<Comment> myComments;
     std::string labNum;
-    int grade;
+    int grade=100;
     std::string labName;
     std::string id;
     std::string studentID;
@@ -57,7 +57,7 @@ public:
     void add_java_line(vector<string>);
     void set_graded(std::string booli);
     std::string get_graded();
-    int get_grade();
+    double get_grade();
 
 
     std::string get_id();
@@ -71,7 +71,7 @@ public:
     virtual void store_add_row_sql();
 
     bool add_row(string id, string studentid, std::string labname, std::string labnumber, std::string graded);
-    void set_grade(int);
+    void set_grade(int gradetotal);
 
     //Allie
     map<int, Comment> commentMap;

@@ -32,12 +32,13 @@ public:
 
     //getters
     vector<RubricSection *> get_rubric_sections();
-    string get_total_points();
+    int get_total_points();
     string get_section_at(int i);
     string get_section_text_at(int i);
     string get_color_at(int i);
     int get_size();
     string get_name();
+    string get_class_id();
     //setters
     void add_rubric_section(RubricSection* rsec);
     void set_deleted();
@@ -67,6 +68,7 @@ private:
     std::string id;
     std::string classid;
     std::string name;
+    int total=0;
     bool deleted;
 
 };
