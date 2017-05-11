@@ -1,5 +1,13 @@
 #include "component.h"
 
+/**
+ * @brief Component::Component
+ * @param id
+ * @param labID
+ * @param aText
+ * @param tool
+ * @param table
+ */
 Component::Component(std::string id, std::string labID, std::string aText, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id = id;
@@ -9,18 +17,12 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
     replace(text.begin(), text.end(),'|', '\"');
     replace(text.begin(), text.end(),'`', '\'');
 
-
     this->name = id.substr(0, id.find("_"));
     make_text_lines();
-
-
 
     // Load SQL specific to child class.
     store_add_row_sql();
     store_create_sql();
-
-
-
 }
 
 /**
@@ -34,6 +36,7 @@ Component::~Component()
     add_row(id,labID,text);
 }
 
+
 std::string Component::get_id()
 {
     return id;
@@ -44,6 +47,9 @@ std::string Component:: get_text()
     return text;
 }
 
+/**
+ * @brief Component::make_text_lines
+ */
 void Component:: make_text_lines()
 {
     int parseStart = 0;
@@ -78,6 +84,10 @@ std::string Component::get_name()
     return name;
 }
 
+/**
+ * @brief Component::get_points
+ * @return
+ */
 int Component::get_points()
 {
     int total = 0;

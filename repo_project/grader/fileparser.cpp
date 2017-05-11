@@ -1,15 +1,27 @@
 #include "fileparser.h"
 #include <qdiriterator.h>
 
+/**
+ * @brief FileParser::FileParser
+ * @param aFileName
+ * @param aGrader
+ */
 FileParser::FileParser(string aFileName, Grader* aGrader){
     fileName = aFileName;
     grader   = aGrader;
 }
 
+/**
+ * @brief FileParser::~FileParser
+ */
 FileParser::~FileParser(){
 }
 
-//parses a java class
+/**
+ * @brief FileParser::parse_java_file
+ * @param aFilepath
+ * @return
+ */
 vector<string> FileParser::parse_java_file(string aFilepath){
 
     QString filepath= QString::fromStdString(aFilepath);
