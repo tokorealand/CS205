@@ -8,6 +8,7 @@ RubricSection::RubricSection(std::string id, std::string rubricid, std::string d
     this->points=points;
     this->color=color;
     this->deleted = false;
+    build_table();
 
     store_add_row_sql();
     store_create_sql();
@@ -66,7 +67,7 @@ void RubricSection::store_add_row_sql() {
 void RubricSection::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from RubricObject\n";
+   // std::cerr << "calling store_create_sql from RubricObject\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -157,7 +158,7 @@ int cb_add_row_rubricsection(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+   // std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

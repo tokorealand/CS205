@@ -21,14 +21,7 @@
 #include <vector>
 #include <string>
 
-//TEST(PlayerGameHistory, findemptyplayer)
-//{
-//    DBTool *tool = new DBTool();
-//    PlayerGameHistory pgh(tool);
-//    int check;
-//    check=pgh.find_player_avg("luis","lopez");
-//    ASSERT_EQ(check,-1);
-//}
+
 
 /**
  * @brief TEST for adding a year
@@ -57,7 +50,7 @@ TEST(Controller,Addyear2)
 
    ASSERT_EQ(true,con.item_exist("1","year"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -104,7 +97,7 @@ TEST(Controller,Addyeartwice)
 
 
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -131,7 +124,7 @@ TEST(Controller,Yearvector)
 
     ASSERT_EQ("123457",check);
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 
@@ -263,7 +256,7 @@ TEST(Controller,Addclass)
 
    ASSERT_EQ(sm,con.get_class("class1"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -281,7 +274,7 @@ TEST(Controller,Addclass2)
 
    ASSERT_EQ(true,con.item_exist("class1","class"));
    con.test_drop();
-   //delete tool;
+ //  //delete tool;
 }
 
 /**
@@ -320,7 +313,7 @@ TEST(Controller,Addtwoclasses2)
    ASSERT_NE(con.get_class("class1"),con.get_class(
                  "class2"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -338,7 +331,7 @@ TEST(Controller,Addclasstwice)
 
 
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -419,7 +412,7 @@ TEST(Controller,Addtworubrics2)
    ASSERT_NE(con.get_rubric("r2"),con.get_rubric(
                  "r1"));
    con.test_drop();
- //  delete tool;
+ //  //delete tool;
 }
 
 /**
@@ -440,7 +433,7 @@ TEST(Controller,Addrubrictwice)
 
 
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 
@@ -459,7 +452,7 @@ TEST(Controller,Addsection)
 
    ASSERT_EQ(sm,con.get_section("s1"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -500,7 +493,7 @@ TEST(Controller,Addtwosections)
 
    ASSERT_NE(con.get_section("s1"),con.get_section("s2"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -521,7 +514,7 @@ TEST(Controller,Addtwosections2)
    ASSERT_NE(con.get_section("s1"),con.get_section(
                  "s2"));
    con.test_drop();
- //  delete tool;
+ //  //delete tool;
 }
 
 /**
@@ -584,7 +577,7 @@ TEST(Controller,Addstudent2)
 
    ASSERT_EQ(true,con.item_exist("luis","student"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -630,7 +623,7 @@ TEST(Controller,Addtwostudents2)
    ASSERT_NE(con.get_student("luis"),con.get_student(
                  "luis2"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -653,7 +646,7 @@ TEST(Controller,Addstudenttwice)
 
 
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -722,7 +715,7 @@ TEST(Controller,Addtwolabs)
 
    ASSERT_NE(con.get_lab("l2"),con.get_lab("l1"));
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -732,6 +725,7 @@ TEST(Controller,Addtwolabs2)
 {
     DBTool *tool = new DBTool("777");
     Controller con(tool);
+
     con.add_year("1");
     con.add_semester("spring1","1");
     con.add_class("class1","spring1");
@@ -747,6 +741,7 @@ TEST(Controller,Addtwolabs2)
                  "l2"));
    con.test_drop();
    //delete tool;
+
 }
 
 /**
@@ -772,7 +767,7 @@ TEST(Controller,Addlabtwice)
 
 
    con.test_drop();
-  // delete tool;
+  //delete tool;
 }
 
 /**
@@ -791,10 +786,117 @@ TEST(Controller,Addcomponent)
     con.add_component("c1","l1","./afd.txt");
    Component* sm= con.get_component("c1");
 
-   ASSERT_EQ(sm,con.get_component("c1"));
-   con.test_drop();
-//   delete tool;
 }
+/** @brief TEST for adding a year
+ */
+TEST(Database,Addyear)
+{
+    DBTool *tool = new DBTool("777");
+    Controller *con = new Controller(tool);
+    con->add_year("1");
+   delete con;
+
+
+   Controller con2(tool);
+   con2.total_recall();
+
+   ASSERT_EQ("1",con2.get_year("1")->get_id());
+
+}
+
+
+
+/**
+ * @brief TEST for adding two years
+ */
+TEST(Database,Addtwoyears)
+{
+    DBTool *tool = new DBTool("777");
+    Controller *con = new Controller(tool);
+    con->add_year("1");
+    con->add_year("2");
+    delete con;
+
+    Controller con2(tool);
+    con2.total_recall();
+
+   ASSERT_NE(con2.get_year("1"),con2.get_year("2"));
+
+}
+
+/**
+ * @brief TEST for adding two years with different order
+ */
+TEST(Database,Addtwoyears2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller *con = new Controller(tool);
+    con->add_year("2");
+    con->add_year("1");
+    delete con;
+
+    Controller con2(tool);
+    con2.total_recall();
+
+   ASSERT_NE(con2.get_year("1"),con2.get_year("2"));
+}
+
+
+/**
+ * @brief TEST for adding a lab
+ */
+TEST(Database,Addlab)
+{
+    DBTool *tool = new DBTool("777");
+    Controller *con = new Controller(tool);
+    con->add_year("1");
+    con->add_semester("spring1","1");
+    con->add_class("class2","spring1");
+    con->add_section("s1","class2");
+    con->add_student("luis","s1","luis","lopez");
+    con->add_lab("l1","luis","recursion","1","0");
+
+   delete con;
+
+
+   Controller con2(tool);
+   con2.total_recall();
+
+   ASSERT_EQ("l1",con2.get_lab("l1")->get_id());
+
+}
+
+
+
+/**
+ * @brief TEST for adding two labs
+ */
+TEST(Database,Addtwolabs)
+{
+    DBTool *tool = new DBTool("777");
+    Controller *con = new Controller(tool);
+    con->add_year("1");
+    con->add_semester("spring1","1");
+    con->add_class("class2","spring1");
+    con->add_section("s1","class2");
+    con->add_student("luis","s1","luis","lopez");
+    con->add_lab("l1","luis","recursion","1","0");
+    con->add_lab("l2","luis","recursion","1","0");
+
+    delete con;
+
+    Controller con2(tool);
+    con2.total_recall();
+
+   ASSERT_NE(con2.get_lab("l1"),con2.get_lab("l2"));
+
+}
+
+
+
+
+
+
 
 /**
  * @brief TEST for adding a component and checking with a different item_exist method
@@ -813,7 +915,7 @@ TEST(Controller,Addcomponent2)
 
    ASSERT_EQ(true,con.item_exist("c1","component"));
    con.test_drop();
-//   delete tool;
+   //delete tool;
 }
 
 /**
@@ -836,7 +938,7 @@ TEST(Controller,Addtwocomponents)
 
    ASSERT_NE(con.get_component("c2"),con.get_component("c1"));
    con.test_drop();
-//   delete tool;
+   //delete tool;
 }
 
 /**
@@ -884,7 +986,7 @@ TEST(Controller,Addcomponenttwice)
  ASSERT_EQ(false,    con.add_component("c1","l1","addadsa"));
 
    con.test_drop();
- //  delete tool;
+   //delete tool;
 }
 
 int main(int argc, char **argv)

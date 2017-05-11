@@ -10,6 +10,7 @@ RubricObject::RubricObject(string id, string classID, DBTool *tool, string table
     this->tool=tool;
     this->table=table;
     this->deleted = false;
+    build_table();
     store_add_row_sql();
     store_create_sql();
 }
@@ -87,7 +88,7 @@ void RubricObject::store_add_row_sql() {
 void RubricObject::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from RubricObject\n";
+  //  std::cerr << "calling store_create_sql from RubricObject\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -160,7 +161,7 @@ int cb_add_row_rubric(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+    //std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

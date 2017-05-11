@@ -183,7 +183,7 @@ void Class::store_add_row_sql() {
 void Class::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Class\n";
+  //  std::cerr << "calling store_create_sql from Class\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -258,7 +258,7 @@ int cb_add_row_class(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+   // std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
