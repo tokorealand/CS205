@@ -42,7 +42,7 @@ TEST(Controller,Addyear)
 
    ASSERT_EQ(yr,con.get_year("1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -57,7 +57,7 @@ TEST(Controller,Addyear2)
 
    ASSERT_EQ(true,con.item_exist("1","year"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -73,7 +73,7 @@ TEST(Controller,Addtwoyears)
 
    ASSERT_NE(con.get_year("1"),con.get_year("2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -89,7 +89,7 @@ TEST(Controller,Addtwoyears2)
 
    ASSERT_NE(con.get_year("1"),con.get_year("2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -104,7 +104,7 @@ TEST(Controller,Addyeartwice)
 
 
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -118,6 +118,7 @@ TEST(Controller,Yearvector)
     con.add_year("3");
     con.add_year("4");
     con.add_year("5");
+    con.add_year("7");
 
     std::vector<Year*> holder;
 
@@ -128,9 +129,9 @@ TEST(Controller,Yearvector)
        check+=y->get_id();
     }
 
-    ASSERT_EQ("2345",check);
+    ASSERT_EQ("123457",check);
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 
@@ -147,7 +148,7 @@ TEST(Controller,Addsemester)
 
    ASSERT_EQ(sm,con.get_semester("spring1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -163,7 +164,7 @@ TEST(Controller,Addsemester2)
 
    ASSERT_EQ(true,con.item_exist("spring1","semester"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -181,7 +182,7 @@ TEST(Controller,Addtwosemesters)
 
    ASSERT_NE(con.get_semester("spring1"),con.get_semester("fall1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -199,7 +200,7 @@ TEST(Controller,Addtwosemesters2)
    ASSERT_NE(con.get_semester("fall1"),con.get_semester(
                  "spring1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -215,7 +216,7 @@ TEST(Controller,Addsemestertwice)
 
 
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -226,9 +227,11 @@ TEST(Controller,Semestervector)
     DBTool *tool = new DBTool("777");
     Controller con(tool);
     con.add_year("1");
-    con.add_semester("fall1","1");
 
-    con.add_semester("spring1","1");
+    con.add_semester("fall1","1");
+     con.add_semester("spring2","1");
+
+
 
 
 
@@ -241,9 +244,9 @@ TEST(Controller,Semestervector)
        check+=y->get_id();
     }
 
-    ASSERT_EQ("fall1spring1",check);
+    ASSERT_EQ("spring1fall1spring2",check);
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -260,7 +263,7 @@ TEST(Controller,Addclass)
 
    ASSERT_EQ(sm,con.get_class("class1"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -278,7 +281,7 @@ TEST(Controller,Addclass2)
 
    ASSERT_EQ(true,con.item_exist("class1","class"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -298,7 +301,7 @@ TEST(Controller,Addtwoclasses)
 
    ASSERT_NE(con.get_class("class1"),con.get_class("class2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -317,7 +320,7 @@ TEST(Controller,Addtwoclasses2)
    ASSERT_NE(con.get_class("class1"),con.get_class(
                  "class2"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -335,7 +338,7 @@ TEST(Controller,Addclasstwice)
 
 
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -353,7 +356,7 @@ TEST(Controller,Addrubric)
 
    ASSERT_EQ(sm,con.get_rubric("r1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -373,7 +376,7 @@ TEST(Controller,Addrubric2)
 
    ASSERT_EQ(true,con.item_exist("r1","rubric"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -395,7 +398,7 @@ TEST(Controller,Addtworubrics)
 
    ASSERT_NE(con.get_rubric("r1"),con.get_rubric("r2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -416,7 +419,7 @@ TEST(Controller,Addtworubrics2)
    ASSERT_NE(con.get_rubric("r2"),con.get_rubric(
                  "r1"));
    con.test_drop();
-   delete tool;
+ //  delete tool;
 }
 
 /**
@@ -437,7 +440,7 @@ TEST(Controller,Addrubrictwice)
 
 
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 
@@ -456,7 +459,7 @@ TEST(Controller,Addsection)
 
    ASSERT_EQ(sm,con.get_section("s1"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -475,7 +478,7 @@ TEST(Controller,Addsection2)
 
    ASSERT_EQ(true,con.item_exist("s1","section"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -497,7 +500,7 @@ TEST(Controller,Addtwosections)
 
    ASSERT_NE(con.get_section("s1"),con.get_section("s2"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -518,7 +521,7 @@ TEST(Controller,Addtwosections2)
    ASSERT_NE(con.get_section("s1"),con.get_section(
                  "s2"));
    con.test_drop();
-   delete tool;
+ //  delete tool;
 }
 
 /**
@@ -540,7 +543,7 @@ TEST(Controller,Addsectiontwice)
 
 
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 
@@ -560,7 +563,7 @@ TEST(Controller,Addstudent)
 
    ASSERT_EQ(sm,con.get_student("luis"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -581,7 +584,7 @@ TEST(Controller,Addstudent2)
 
    ASSERT_EQ(true,con.item_exist("luis","student"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -605,7 +608,7 @@ TEST(Controller,Addtwostudents)
 
    ASSERT_NE(con.get_student("luis"),con.get_student("luis2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -627,7 +630,7 @@ TEST(Controller,Addtwostudents2)
    ASSERT_NE(con.get_student("luis"),con.get_student(
                  "luis2"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -650,7 +653,7 @@ TEST(Controller,Addstudenttwice)
 
 
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -670,7 +673,7 @@ TEST(Controller,Addlab)
 
    ASSERT_EQ(sm,con.get_lab("l1"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -693,7 +696,7 @@ TEST(Controller,Addlab2)
 
    ASSERT_EQ(true,con.item_exist("l1","lab"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -719,7 +722,7 @@ TEST(Controller,Addtwolabs)
 
    ASSERT_NE(con.get_lab("l2"),con.get_lab("l1"));
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
 /**
@@ -743,7 +746,7 @@ TEST(Controller,Addtwolabs2)
    ASSERT_NE(con.get_lab("l1"),con.get_lab(
                  "l2"));
    con.test_drop();
-   delete tool;
+   //delete tool;
 }
 
 /**
@@ -769,138 +772,120 @@ TEST(Controller,Addlabtwice)
 
 
    con.test_drop();
-   delete tool;
+  // delete tool;
 }
 
-///**
-// * @brief TEST for adding a component
-// */
-//TEST(Controller,Addcomponent)
-//{
-//    DBTool *tool = new DBTool("777");
-//    Controller con(tool);
-//    con.add_year("1");
-//    con.add_semester("spring1","1");
-//    con.add_class("class1","spring1");
-//    con.add_section("s1","class1");
-//    con.add_student("luis","s1","luis","lopez");
-//    con.add_lab("l1","luis","recursion","1","0");
-//    con.add_component("c1","l1","./afd.txt");
-//   Component* sm= con.get_component("c1");
+/**
+ * @brief TEST for adding a component
+ */
+TEST(Controller,Addcomponent)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+    con.add_component("c1","l1","./afd.txt");
+   Component* sm= con.get_component("c1");
 
-//   ASSERT_EQ(sm,con.get_component("c1"));
-//   con.test_drop();
+   ASSERT_EQ(sm,con.get_component("c1"));
+   con.test_drop();
 //   delete tool;
-//}
+}
 
-///**
-// * @brief TEST for adding a component and checking with a different item_exist method
-// */
-//TEST(Controller,Addcomponent2)
-//{
-//    DBTool *tool = new DBTool("777");
-//    Controller con(tool);
-//    con.add_year("1");
-//    con.add_semester("spring1","1");
-//    con.add_class("class1","spring1");
-//    con.add_section("s1","class1");
-//    con.add_student("luis","s1","luis","lopez");
-//    con.add_lab("l1","luis","recursion","1","0");
-//    con.add_component("c1","l1","/afd.txt");
+/**
+ * @brief TEST for adding a component and checking with a different item_exist method
+ */
+TEST(Controller,Addcomponent2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1","0");
+    con.add_component("c1","l1","/afd.txt");
 
-
-
-
-
-
-//   ASSERT_EQ(true,con.item_exist("c1","component"));
-//   con.test_drop();
+   ASSERT_EQ(true,con.item_exist("c1","component"));
+   con.test_drop();
 //   delete tool;
-//}
+}
 
-///**
-// * @brief TEST for adding two labs
-// */
-//TEST(Controller,Addtwocomponents)
-//{
-//    DBTool *tool = new DBTool("777");
-//    Controller con(tool);
-//    con.add_year("1");
-//    con.add_semester("spring1","1");
-//    con.add_class("class1","spring1");
-//    con.add_section("s1","class1");
-//    con.add_student("luis","s1","luis","lopez");
-//    con.add_lab("l1","luis","recursion","1");
-//    con.add_component("c1","l1","addadsa");
-//    con.add_component("c2","l1","addadsa");
-
-
+/**
+ * @brief TEST for adding two labs
+ */
+TEST(Controller,Addtwocomponents)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1", "0");
+    con.add_component("c1","l1","addadsa");
+    con.add_component("c2","l1","addadsa");
 
 
 
-
-
-
-//   ASSERT_NE(con.get_component("c2"),con.get_component("c1"));
-//   con.test_drop();
+   ASSERT_NE(con.get_component("c2"),con.get_component("c1"));
+   con.test_drop();
 //   delete tool;
-//}
+}
 
-///**
-// * @brief TEST for adding two components with different order
-// */
-//TEST(Controller,Addtwocomponents2)
-//{
-//    DBTool *tool = new DBTool("777");
-//    Controller con(tool);
-//    con.add_year("1");
-//    con.add_semester("spring1","1");
-//    con.add_class("class1","spring1");
-//    con.add_section("s1","class1");
-//    con.add_student("luis","s1","luis","lopez");
-//    con.add_lab("l1","luis","recursion","1");
-//    con.add_component("c2","l1","addadsa");
-//    con.add_component("c1","l1","addadsa");
-
-
-
-
-
-
-//   ASSERT_NE(con.get_component("c1"),con.get_component(
-//                 "c2"));
-//   con.test_drop();
-//   delete tool;
-//}
-
-///**
-// * @brief TEST to make sure you can not add a component twice
-// */
-//TEST(Controller,Addcomponenttwice)
-//{
-//    DBTool *tool = new DBTool("777");
-//    Controller con(tool);
-//    con.add_year("1");
-//    con.add_semester("spring1","1");
-//    con.add_class("class2","spring1");
-//    con.add_section("s1","class2");
-//    con.add_student("luis","s1","luis","lopez");
-//    con.add_lab("l1","luis","recursion","1");
-//    con.add_component("c1","l1","addadsa");
+/**
+ * @brief TEST for adding two components with different order
+ */
+TEST(Controller,Addtwocomponents2)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class1","spring1");
+    con.add_section("s1","class1");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1", "0");
+    con.add_component("c2","l1","addadsa");
+    con.add_component("c1","l1","addadsa");
 
 
 
 
 
 
-// ASSERT_EQ(false,    con.add_component("c1","l1","addadsa"));
+   ASSERT_NE(con.get_component("c1"),con.get_component(
+                 "c2"));
+   con.test_drop();
+   //delete tool;
+}
 
+/**
+ * @brief TEST to make sure you can not add a component twice
+ */
+TEST(Controller,Addcomponenttwice)
+{
+    DBTool *tool = new DBTool("777");
+    Controller con(tool);
+    con.add_year("1");
+    con.add_semester("spring1","1");
+    con.add_class("class2","spring1");
+    con.add_section("s1","class2");
+    con.add_student("luis","s1","luis","lopez");
+    con.add_lab("l1","luis","recursion","1", "0");
+    con.add_component("c1","l1","addadsa");
 
+ ASSERT_EQ(false,    con.add_component("c1","l1","addadsa"));
 
-
-//   con.test_drop();
-//   delete tool;
-//}
+   con.test_drop();
+ //  delete tool;
+}
 
 int main(int argc, char **argv)
 {

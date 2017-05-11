@@ -425,9 +425,9 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
  */
 void MainMenuGUI::on_actionComment_triggered()
 {
-    if(selected_component != nullptr){ // only open the comment engine if there is a lab
-//        cout<< grad <<endl;
-//        cout << selected_lab << endl;
+    if(selected_component != nullptr && selected_class->get_rubrics().size() <= atoi(selected_lab->get_lab_num().c_str()))
+    { // only open the comment engine if there is a lab
+
         Dialog *c = new Dialog(0, grad, selected_lab, selected_component, selected_class);
         c->show();
 
@@ -494,9 +494,10 @@ void MainMenuGUI::on_checkBox_2_toggled(bool checked)
         else if(checked==false){
             selected_lab->set_graded("0");
         }
+         ui->progressBar->setValue(selected_class->get_amount_graded(selected_lab->get_lab_num()));
     }
 
-     ui->progressBar->setValue(selected_class->get_amount_graded(selected_lab->get_lab_num()));
+
 }
 
 void MainMenuGUI::on_pushButton_2_clicked()

@@ -13,8 +13,6 @@ Destructor for Year which adds itself to the database.
 */
 Year::~Year()
 {
-
-
     build_table();
     add_row(id);
 }
