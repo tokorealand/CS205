@@ -499,3 +499,13 @@ if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==t
     }
 }
 }
+
+
+
+
+
+
+void MainMenuGUI::on_actionArchive_triggered()
+{
+    system("cd ../../../../../repo_project \n git add . \n git commit -m \"archive\" \n git push");
+}

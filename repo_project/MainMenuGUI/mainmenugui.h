@@ -83,6 +83,10 @@ private slots:
 
     void on_actionExport_Labs_triggered();
 
+
+
+    void on_actionArchive_triggered();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;

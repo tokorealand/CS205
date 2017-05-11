@@ -552,6 +552,7 @@
     <addaction name="actionAdd_Rubric"/>
     <addaction name="actionCalculate_Stats"/>
     <addaction name="actionExport_Labs"/>
+    <addaction name="actionArchive"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -592,6 +593,21 @@
   <action name="actionExport_Labs">
    <property name="text">
     <string>Export Labs</string>
+   </property>
+  </action>
+  <action name="actionPush">
+   <property name="text">
+    <string>Push</string>
+   </property>
+  </action>
+  <action name="actionPull">
+   <property name="text">
+    <string>Pull</string>
+   </property>
+  </action>
+  <action name="actionArchive">
+   <property name="text">
+    <string>Archive</string>
    </property>
   </action>
  </widget>
