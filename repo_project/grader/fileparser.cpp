@@ -3,11 +3,10 @@
 
 /**
  * @brief FileParser::FileParser
- * @param aFileName
+ * Given a file path to a directory, will parse through all lab submission subdirectories
  * @param aGrader
  */
-FileParser::FileParser(string aFileName, Grader* aGrader){
-    fileName = aFileName;
+FileParser::FileParser(Grader* aGrader){
     grader   = aGrader;
 }
 
@@ -19,8 +18,13 @@ FileParser::~FileParser(){
 
 /**
  * @brief FileParser::parse_java_file
+ * Parses lab sumbissions within the specified directory. Lab submissions must be formatted
+ * in the following way "firstName_lastnName_class_section_labNum_semester_year".
+ * Will only use .java files with each submission to generate components, ignoring all other file types
  * @param aFilepath
+ * Path to directory containing file submissions
  * @return
+ * a vector of lab IDs
  */
 vector<string> FileParser::parse_java_file(string aFilepath){
 
@@ -97,8 +101,6 @@ vector<string> FileParser::parse_java_file(string aFilepath){
                 grader->add_section(sectionID, classID);
                 grader->add_student(studentID, sectionID, first_name, last_name);
                 grader->add_lab(labID, studentID, labName, lab_number,"0");
-//                cout<<"Lab Sucessfully added";
-//                cout<<'\n';
                 labIDList.push_back(labID);
 
 

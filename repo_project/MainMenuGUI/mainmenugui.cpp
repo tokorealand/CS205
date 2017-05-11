@@ -2,8 +2,11 @@
 #include "ui_mainmenugui.h"
 
 /**
- * @brief MainMenuGUI::MainMenuGUI
+ * @brief MainMenuGUI::MainMenuGUI, All acts as the main menu for the project.
+ * Keeps track of current year, semster, class, section, student, lab, component, rubric,
+ * and comment that are being used. Displays selected students lab and calls all other guis.
  * @param parent
+ *
  */
 MainMenuGUI::MainMenuGUI(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +20,7 @@ MainMenuGUI::MainMenuGUI(QWidget *parent) :
 }
 
 /**
- * @brief MainMenuGUI::~MainMenuGUI
+ * @brief MainMenuGUI::~MainMenuGUI, Deletes grader, cascading down the class skeleton
  */
 MainMenuGUI::~MainMenuGUI()
 {
@@ -26,7 +29,8 @@ MainMenuGUI::~MainMenuGUI()
 }
 
 /**
- * @brief MainMenuGUI::display_years
+ * @brief MainMenuGUI::display_years, Displays years that have been input to the project.
+ * Clears all other selections when called.
  */
 void MainMenuGUI::display_years()
 {
@@ -55,8 +59,8 @@ void MainMenuGUI::display_years()
 }
 
 /**
- * @brief MainMenuGUI::on_yearSelect_activated
- * @param arg1
+ * @brief MainMenuGUI::on_yearSelect_activated, When activated uses arg 1 to find selected year in database
+ * @param arg1, used as ID for year in database
  */
 void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
 {
@@ -83,7 +87,8 @@ void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
 }
 
 /**
- * @brief MainMenuGUI::on_actionAdd_New_Labs_triggered
+ * @brief MainMenuGUI::on_actionAdd_New_Labs_triggered,
+ * When triggered calls add new lab gui, waits for input and then automatically refreshes by calling display_years()
  */
 void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 {
@@ -101,6 +106,7 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 
 /**
  * @brief MainMenuGUI::on_actionExport_Lab_triggered
+ * Exports selected lab in html format when triggered
  */
 void MainMenuGUI::on_actionExport_Lab_triggered(){
     if(selected_lab!=nullptr && selected_lab->get_graded()=="1")
@@ -114,7 +120,8 @@ void MainMenuGUI::on_actionExport_Lab_triggered(){
 
 /**
  * @brief MainMenuGUI::on_semesterSelect_activated
- * @param arg1
+ * When activated uses arg 1 to find selected semseter in database
+ * @param arg1, used as ID for semester in database
  */
 void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 {
@@ -144,7 +151,8 @@ void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 
 /**
  * @brief MainMenuGUI::on_classSelect_activated
- * @param arg1
+ * When activated uses arg 1 to find selected class in database
+ * @param arg1, used as ID to find class in database
  */
 void MainMenuGUI::on_classSelect_activated(const QString &arg1)
 {
@@ -174,7 +182,8 @@ void MainMenuGUI::on_classSelect_activated(const QString &arg1)
 
 /**
  * @brief MainMenuGUI::on_sectionSelect_activated
- * @param arg1
+ * When activated uses arg 1 to find selected section in database
+ * @param arg1, used as ID to find section in database
  */
 void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 {
@@ -215,7 +224,8 @@ void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 
 /**
  * @brief MainMenuGUI::on_studentSelect_activated
- * @param arg1
+ * When activated uses arg 1 to find selected student in database
+ * @param arg1, used as ID to find student in database
  */
 void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
 {
@@ -252,7 +262,8 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
 
 /**
  * @brief MainMenuGUI::on_labSelect_activated
- * @param arg1
+ * When activated uses arg 1 to find selected lab in database
+ * @param arg1, used as ID to find lab in database
  */
 void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 {
@@ -294,7 +305,8 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 
 /**
  * @brief MainMenuGUI::on_componentSelect_activated
- * @param index
+ * When activated uses arg 1 to find selected component in database
+ * @param index, used as ID to find component in database
  */
 void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 {
@@ -338,6 +350,8 @@ void MainMenuGUI::display_component_text()
 
 /**
  * @brief MainMenuGUI::display_comment_text
+ * Diplays all comments of the selected component.
+ * Shows points off, text, and section relating to a comment.
  */
 void MainMenuGUI::display_comment_text()
 {
@@ -361,6 +375,8 @@ void MainMenuGUI::display_comment_text()
 
 /**
  * @brief MainMenuGUI::display_rubric_text
+ * Displays rubric of a labnumber in a selected class.
+ * Both lab and class must be selected before rubric is displayed
  */
 void MainMenuGUI::display_rubric_text()
 {
@@ -403,6 +419,8 @@ void MainMenuGUI::display_rubric_text()
 
 /**
  * @brief MainMenuGUI::on_saveAndExit_clicked
+ * Closes main menu gui, triggering cascading deconstructors in class skeleton
+ * and saving that information to the database
  */
 void MainMenuGUI::on_saveAndExit_clicked()
 {
@@ -411,7 +429,9 @@ void MainMenuGUI::on_saveAndExit_clicked()
 
 /**
  * @brief MainMenuGUI::on_checkBox_toggled
+ * Toggles anonymous grading by masking student ID to user
  * @param checked
+ * Anonymous grading on when checked
  */
 void MainMenuGUI::on_checkBox_toggled(bool checked)
 {
@@ -434,6 +454,9 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
 
 /**
  * @brief MainMenuGUI::on_actionComment_triggered
+ * When triggered calls the comment gui, must have a rubric created for
+ * that class/ lab number and selected component to function.
+ * Waits for input then automatically refreshes comment/grade display
  */
 void MainMenuGUI::on_actionComment_triggered()
 {
@@ -457,6 +480,8 @@ void MainMenuGUI::on_actionComment_triggered()
 
 /**
  * @brief MainMenuGUI::on_actionAdd_Rubric_triggered
+ * When triggered calls the rubric gui. Waits for input then
+ *  automatically refreshes rubric display
  */
 void MainMenuGUI::on_actionAdd_Rubric_triggered()
 {
@@ -473,6 +498,7 @@ void MainMenuGUI::on_actionAdd_Rubric_triggered()
 
 /**
  * @brief MainMenuGUI::on_actionCalculate_Stats_triggered
+ * When triggered, calls the statistics gui
  */
 void MainMenuGUI::on_actionCalculate_Stats_triggered(){
     StatisticsGui* sg = new StatisticsGui(0, grad);
@@ -481,6 +507,9 @@ void MainMenuGUI::on_actionCalculate_Stats_triggered(){
 
 /**
  * @brief MainMenuGUI::on_deleteComment_clicked
+ * Deletes a comment from a component by setting a boolean 'deleted' to true.
+ * Comments with 'deleted boolean set to true will not be displayed, counted
+ *  towards lab grade, and will not be added to database upon deconstruction
  */
 void MainMenuGUI::on_deleteComment_clicked()
 {
@@ -495,7 +524,13 @@ void MainMenuGUI::on_deleteComment_clicked()
 }
 
 
-
+/**
+ * @brief MainMenuGUI::on_checkBox_2_toggled
+ * Toggles a lab as graded by setting a 'graded' boolean in lab to true,
+ * updates progress bar whenever toggled
+ * @param checked
+ * checked indicates a graded lab, unchecked indicates an ungraded lab
+ */
 void MainMenuGUI::on_checkBox_2_toggled(bool checked)
 {
     if(selected_lab!=NULL)
@@ -508,10 +543,13 @@ void MainMenuGUI::on_checkBox_2_toggled(bool checked)
         }
          ui->progressBar->setValue(selected_class->get_amount_graded(selected_lab->get_lab_num()));
     }
-
-
 }
 
+/**
+ * @brief MainMenuGUI::on_pushButton_2_clicked
+ * Increases font size of component display when clicked.
+ * Must have a selected component to function
+ */
 void MainMenuGUI::on_pushButton_2_clicked()
 {
     if(ui->disjava->count() !=0 )
@@ -528,6 +566,11 @@ void MainMenuGUI::on_pushButton_2_clicked()
     }
 }
 
+/**
+ * @brief MainMenuGUI::on_pushButton_clicked
+ * Decreases font size of component display when clicked.
+ * Must have a selected component to function.
+ */
 void MainMenuGUI::on_pushButton_clicked()
 {
     if( ui->disjava->count() != 0)
@@ -549,6 +592,10 @@ void MainMenuGUI::on_pushButton_clicked()
     }
 }
 
+/**
+ * @brief MainMenuGUI::on_actionExport_Labs_triggered
+ * Exports all labs in selected class and lab number in html format
+ */
 void MainMenuGUI::on_actionExport_Labs_triggered()
 {
 if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==true)
@@ -568,10 +615,10 @@ if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==t
 }
 
 
-
-
-
-
+/**
+ * @brief MainMenuGUI::on_actionArchive_triggered
+ * pushes database file to remote repository when triggered
+ */
 void MainMenuGUI::on_actionArchive_triggered()
 {
     //system("cd ../../../../../repo_project \n git add . \n git commit -m \"archive\" \n git push");

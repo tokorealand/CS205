@@ -7,7 +7,7 @@ Grader::Grader()
 
 
     control = new Controller(tool);
-    fp = new FileParser("students.txt", this);
+    fp = new FileParser(this);
 
 }
 
