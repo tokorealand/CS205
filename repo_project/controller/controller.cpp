@@ -660,6 +660,16 @@ bool Controller::add_rubricsection(std::string rubricsectionID, std::string rubr
     rubricsections.push_back(rubs);
     //adds the rubricsection object to the appropiate rubric container
     get_rubric(rubricID)->add_rubric_section(rubs);
+    std::vector<RubricObject*> rubi = get_class(get_rubric(rubricID)->get_class_id())->get_rubrics();
+
+    //used to update max grade in all labs matching
+    for(int i=0; i<rubi.size(); i++)
+    {
+    if(rubi.at(i)->get_id() == rubricID)
+    {
+        get_class(get_rubric(rubricID)->get_class_id())->update_lab_totals(i+1,get_rubric(rubricID)->get_total_points());
+    }
+    }
     return true;
 }
 

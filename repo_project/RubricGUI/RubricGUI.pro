@@ -31,7 +31,6 @@ SOURCES += main.cpp\
     ../grader/section.cpp \
     ../grader/dbtable.cpp \
     ../grader/dbtool.cpp \
-    ../grader/commentengine.cpp \
     ../grader/class.cpp \
     ../grader/component.cpp \
     ../grader/grader.cpp \
@@ -42,7 +41,6 @@ SOURCES += main.cpp\
     ../grader/year.cpp\
     ../grader/semester.cpp\
     ../CommentGUI/dialog.cpp \
-    ../RubricCreatorGUI/rubriccreatorgui.cpp \
     ../grader/rubricsection.cpp\
     ../grader/rubricobject.cpp
 
@@ -52,7 +50,6 @@ HEADERS  += rubricgui.h\
     ../grader/section.h \
     ../grader/dbtable.h \
     ../grader/dbtool.h \
-    ../grader/commentengine.h \
     ../grader/class.h \
     ../grader/component.h \
     ../grader/grader.cpp \
@@ -64,7 +61,6 @@ HEADERS  += rubricgui.h\
     ../controller/controller.h\
     ../addlabsGUI/addlabsgui.h \
     ../CommentGUI/dialog.h \
-    ../RubricCreatorGUI/rubriccreatorgui.h \
     ../grader/rubricsection.h\
     ../grader/rubricobject.h
 

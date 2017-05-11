@@ -31,7 +31,6 @@ SOURCES += main.cpp\
     ../grader/section.cpp \
     ../grader/dbtable.cpp \
     ../grader/dbtool.cpp \
-    ../grader/commentengine.cpp \
     ../grader/class.cpp \
     ../grader/component.cpp \
     ../grader/grader.cpp\
@@ -49,7 +48,6 @@ HEADERS  += rubriccreatorgui.h \
     ../grader/section.h \
     ../grader/dbtable.h \
     ../grader/dbtool.h \
-    ../grader/commentengine.h \
     ../grader/class.h \
     ../grader/component.h \
     ../grader/grader.h\

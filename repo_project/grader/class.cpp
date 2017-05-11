@@ -130,6 +130,25 @@ std::vector<Section*> Class::get_sections()
     return sections;
 }
 
+/**
+ * @brief Updates the grades which are the max grade possible using lab number matching and the total comes from a rubric object.
+ * @param int - labnum
+ * @param int - total
+ */
+void Class::update_lab_totals(int labnum, int total){
+    for(Lab* l : labs)
+        if(l->get_lab_num()==std::to_string(labnum))
+        {
+            l->set_grade(total);
+        }
+}
+
+
+std::vector<Lab*> Class::get_labs()
+{
+    return labs;
+}
+
 vector<RubricObject*> Class::get_rubrics()
 {
     return rubrics;

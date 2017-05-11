@@ -51,6 +51,7 @@ public:
     Section* get_section(int sectionid);
 
     std::vector<Section*> get_sections();
+    std::vector<Lab*> get_labs();
     std::string get_name();
     std::string labnumber;
     std::vector<RubricObject*> get_rubrics();
@@ -58,6 +59,7 @@ public:
     int count_lab_matching_key(string labnum);
     bool check_all_matching_key_graded(string labnum);
     double get_amount_graded(string labnum);
+    void update_lab_totals(int labnum, int total);
 
 
 

@@ -269,6 +269,10 @@ vector<Comment> Lab::get_comment_vector(){
 std::string Lab::get_lab_name(){
     return labName;
 }
+void Lab::set_grade(int gradetotal)
+{
+    grade = gradetotal;
+}
 
 vector<Component*> Lab:: get_components()
 {
@@ -284,14 +288,15 @@ std::string Lab::get_lab_num()
     return labNum;
 }
 
-int Lab::get_grade()
+double Lab::get_grade()
 {
-    int total = 100;
+    //calculates the grade using max grade and subtracted points
+    double total =grade;
     for(int i = 0; i < components.size(); i++)
     {
        total = total - components.at(i)->get_points();
     }
-    return total;
+    return (total/(double)grade)*100;
 }
 
 

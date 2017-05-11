@@ -44,6 +44,7 @@ string RubricObject:: get_name()
 //setters
 void RubricObject::add_rubric_section(RubricSection *rsec){
     rubricSections.push_back(rsec);
+    total+=std::stoi(rsec->get_points());
 }
 
 std::string RubricObject::get_id()
@@ -54,6 +55,14 @@ std::string RubricObject::get_id()
 void RubricObject::set_deleted()
 {
     deleted = true;
+}
+std::string RubricObject::get_class_id()
+{
+    return classid;
+}
+int RubricObject::get_total_points()
+{
+    return total;
 }
 
 
