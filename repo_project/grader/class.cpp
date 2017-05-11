@@ -130,6 +130,11 @@ std::vector<Section*> Class::get_sections()
     return sections;
 }
 
+std::vector<Lab*> Class::get_labs()
+{
+    return labs;
+}
+
 vector<RubricObject*> Class::get_rubrics()
 {
     return rubrics;

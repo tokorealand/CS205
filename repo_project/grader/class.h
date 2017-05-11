@@ -51,6 +51,7 @@ public:
     Section* get_section(int sectionid);
 
     std::vector<Section*> get_sections();
+    std::vector<Lab*> get_labs();
     std::string get_name();
     std::string labnumber;
     std::vector<RubricObject*> get_rubrics();

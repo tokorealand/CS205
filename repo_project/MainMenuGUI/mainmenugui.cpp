@@ -69,8 +69,11 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 }
 
 void MainMenuGUI::on_actionExport_Lab_triggered(){
+    if(selected_lab!=nullptr && selected_lab->get_graded()=="1")
+    {
     int rubricIndex = stoi(selected_lab->get_lab_num())-1;
     x.combine_lab(selected_lab, selected_class, rubricIndex);
+    }
 
 }
 
@@ -416,6 +419,8 @@ void MainMenuGUI::on_checkBox_2_toggled(bool checked)
 
         }
     }
+
+     ui->progressBar->setValue(selected_class->get_amount_graded(selected_lab->get_lab_num()));
 }
 
 void MainMenuGUI::on_pushButton_2_clicked()
@@ -447,4 +452,22 @@ void MainMenuGUI::on_pushButton_clicked()
     }
 
         }
+}
+
+void MainMenuGUI::on_actionExport_Labs_triggered()
+{
+if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==true)
+{
+    int rubricIndex = stoi(selected_lab->get_lab_num())-1;
+
+    std::vector<Lab*> labs = selected_class->get_labs();
+
+    for(Lab* it : labs)
+    {
+        if(it->get_lab_num() == selected_lab->get_lab_num())
+        {
+    x.combine_lab(it, selected_class, rubricIndex);
+        }
+    }
+}
 }

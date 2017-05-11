@@ -82,6 +82,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_actionExport_Labs_triggered();
+
 private:
     Ui::MainMenuGUI *ui;
     Component* selected_component =nullptr;
