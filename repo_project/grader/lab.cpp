@@ -290,6 +290,7 @@ std::string Lab::get_lab_num()
 
 double Lab::get_grade()
 {
+    //calculates the grade using max grade and subtracted points
     double total =grade;
     for(int i = 0; i < components.size(); i++)
     {
