@@ -4,6 +4,7 @@ Year::Year(std::string id, DBTool *tool, std::string table):DBTable(tool,table)
 {
     this->id=id;
     this->tool=tool;
+    build_table();
     store_add_row_sql();
     store_create_sql();
 }
@@ -52,7 +53,7 @@ void Year::store_add_row_sql() {
 void Year::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Class\n";
+  //  std::cerr << "calling store_create_sql from Class\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -121,7 +122,7 @@ int cb_add_row_year(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+  //  std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "

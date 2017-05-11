@@ -20,6 +20,7 @@ Section::Section( std::string sectionID,std::string classID,DBTool *tool, std::s
 
     // Load SQL specific to child class.
 
+    build_table();
     store_add_row_sql();
 
     store_create_sql();
@@ -86,7 +87,7 @@ void Section::store_add_row_sql() {
 void Section::store_create_sql() {
 
 
-    std::cerr << "calling store_create_sql from Section\n";
+   // std::cerr << "calling store_create_sql from Section\n";
     sql_create =  "CREATE TABLE ";
     sql_create += table_name;
     sql_create += " ( ";
@@ -162,7 +163,7 @@ int cb_add_row_section(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+   // std::cerr << "cb_add_row being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
