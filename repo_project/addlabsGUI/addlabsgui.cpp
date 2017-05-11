@@ -10,6 +10,7 @@ AddLabsGUI::AddLabsGUI(QWidget *parent, Grader * aGrader) :
 {
     grader = aGrader;
     ui->setupUi(this);
+    done = false;
 }
 
 AddLabsGUI::~AddLabsGUI(){
@@ -21,6 +22,7 @@ void AddLabsGUI::on_selectButton_clicked(){
     //save file path
     string filepath = ui->labPathText->toPlainText().toStdString();
     labIDList = grader->get_file_parser()->parse_java_file(filepath);
+    done = true;
     //controller = grader->get_control();
     delete this;
     //grader->get_file_parser()->parse_java_file(filepath);
@@ -56,4 +58,9 @@ void AddLabsGUI::add_rubric_to_labs(){
         cout << controller->get_lab(labID) << endl;
         controller->get_lab(labID)->add_rubric(rubric);
     }
+}
+
+bool AddLabsGUI::get_done()
+{
+    return this->done;
 }

@@ -22,6 +22,15 @@ void MainMenuGUI::display_years()
 {
     QList<QString> ycontainer;
     ui->yearSelect->clear();
+    ui->semesterSelect->clear();
+    ui->classSelect->clear();
+    ui->sectionSelect->clear();
+    ui->studentSelect->clear();
+    ui->labSelect->clear();
+    ui->componentSelect->clear();
+    ui->disjava->clear();
+    ui->discomment->clear();
+    ui->disrubric->clear();
 
     if(grad->get_years().size()>0)
     {
@@ -64,8 +73,13 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
     AddLabsGUI* alg = new AddLabsGUI(0, grad);
     alg->show();
 
-    delay(5000);
+    while(alg->get_done() == false)
+    {
+       QApplication::processEvents();
+    }
+
     display_years();
+
 }
 
 void MainMenuGUI::on_actionExport_Lab_triggered(){
@@ -74,9 +88,7 @@ void MainMenuGUI::on_actionExport_Lab_triggered(){
 
 }
 
-void MainMenuGUI::on_Refresh_clicked(){
-    display_years();
-}
+
 
 void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 {
@@ -341,8 +353,6 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
     if(checked)
     {
         anonymous_grading = true;
-
-
     }
     else
     {
@@ -365,9 +375,15 @@ void MainMenuGUI::on_actionComment_triggered()
         Dialog *c = new Dialog(0, grad, selected_lab, selected_component, selected_class);
         c->show();
 
-        delay(20000);
+        while(c->get_done() == false)
+        {
+           QApplication::processEvents();
+        }
 
         display_comment_text();
+        ui->displayLabGrade->clear();
+        ui->displayLabGrade->setText(QString::fromStdString(to_string(selected_lab->get_grade())));
+
     }
 }
 
@@ -375,6 +391,13 @@ void MainMenuGUI::on_actionAdd_Rubric_triggered()
 {
     RubricGUI* rg = new RubricGUI(0, grad);
     rg->show();
+    while(rg->get_done() == false)
+    {
+       QApplication::processEvents();
+    }
+
+    display_rubric_text();
+
 }
 
 void MainMenuGUI::on_actionCalculate_Stats_triggered(){
@@ -413,38 +436,43 @@ void MainMenuGUI::on_checkBox_2_toggled(bool checked)
         }
         else if(checked==false){
             selected_lab->set_graded("0");
-
         }
     }
 }
 
 void MainMenuGUI::on_pushButton_2_clicked()
 {
-    QFont fnt;
-    int size = ui->disjava->item(0)->font().pointSize();
-            fnt.setPointSize(size+5);
-            fnt.setFamily("Arial");
-
-    for(int i=0; i<ui->disjava->count(); i++)
+    if(ui->disjava->count() !=0 )
     {
-    ui->disjava->item(i)->setFont(fnt);
+        QFont fnt;
+        int size = ui->disjava->item(0)->font().pointSize();
+        fnt.setPointSize(size+5);
+        fnt.setFamily("Arial");
+
+        for(int i=0; i<ui->disjava->count(); i++)
+        {
+        ui->disjava->item(i)->setFont(fnt);
+        }
     }
 }
 
 void MainMenuGUI::on_pushButton_clicked()
 {
-    QFont fnt;
-    int size = ui->disjava->item(0)->font().pointSize();
+    if( ui->disjava->count() != 0)
+    {
+        QFont fnt;
+        int size = ui->disjava->item(0)->font().pointSize();
 
         if((size-5)>5)
         {
             fnt.setPointSize(size-5);
             fnt.setFamily("Arial");
 
-    for(int i=0; i<ui->disjava->count(); i++)
-    {
-    ui->disjava->item(i)->setFont(fnt);
-    }
+            for(int i=0; i<ui->disjava->count(); i++)
+            {
+            ui->disjava->item(i)->setFont(fnt);
+            }
 
         }
+    }
 }

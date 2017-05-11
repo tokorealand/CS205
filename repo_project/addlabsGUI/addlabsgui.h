@@ -23,6 +23,7 @@ public:
     explicit AddLabsGUI(QWidget *parent = 0, Grader* aGrader = NULL);
     ~AddLabsGUI();
     void add_rubric_to_labs();
+    bool get_done();
 
 private slots:
     void on_selectButton_clicked();
@@ -39,6 +40,7 @@ private:
     string componentid;
     Controller* controller;
     vector<string> labIDList;
+    bool done;
 };
 
 #endif // ADDLABSGUI_H

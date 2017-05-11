@@ -26,6 +26,7 @@ class Dialog : public QDialog{
 public:
     explicit Dialog(QWidget *parent = 0, Grader* aGrader = NULL, Lab *aLab = nullptr, Component *aComponent = nullptr, Class* aclass =nullptr);
     ~Dialog();
+    bool get_done();
 
 private slots:
     void on_doneButton_clicked();
@@ -34,6 +35,7 @@ private slots:
     void on_commentText_textChanged(const QString &arg1);
     void on_commentList_clicked(const QModelIndex &index);
 
+
 private:
     Ui::Dialog *ui;
     Grader* grader;
@@ -41,6 +43,7 @@ private:
     Class *aclass;
     QStringList commentQStringList;
     Component *component;
+    bool done;
 };
 
 #endif // DIALOG_H

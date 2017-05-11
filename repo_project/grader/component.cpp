@@ -4,7 +4,12 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
 {
     this->id = id;
     this->labID = labID;
+
     this->text = aText;
+    replace(text.begin(), text.end(),'|', '\"');
+    replace(text.begin(), text.end(),'`', '\'');
+
+
     this->name = id.substr(0, id.find("_"));
     make_text_lines();
 
@@ -23,7 +28,8 @@ Destructor for Class which adds itself to the database.
 */
 Component::~Component()
 {
-
+    replace(text.begin(), text.end(),'\"', '|');
+    replace(text.begin(), text.end(),'\'', '`');
     build_table();
     add_row(id,labID,text);
 }

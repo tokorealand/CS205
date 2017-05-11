@@ -19,6 +19,7 @@ Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab, Component *aComponen
     grader = aGrader;
     lab = aLab;
     this->aclass=aclass;
+    done = false;
     component = aComponent;
     populate();
 }
@@ -56,7 +57,7 @@ void Dialog::populate(){
 
     //populate the rubric drop down
         //get the rubric from this class and lab
-        RubricObject *tempR = aClass->get_rubrics().at(stoi(lab->get_lab_num()));
+        RubricObject *tempR = aclass->get_rubrics().at(stoi(lab->get_lab_num())-1);
 
         QStringList tempRSections;
 
@@ -103,7 +104,7 @@ void Dialog::on_doneButton_clicked(){
     //add the comment
     grader->add_comment(commentId, componentId, lineNumber, commentText, rubricSection, highlightColor, pointsDeducted);
     cout << "6" <<endl;
-
+    done = true;
     //close the window
     close();
 }
@@ -142,4 +143,9 @@ void Dialog::on_commentList_clicked(const QModelIndex &index){
 
     QString s = ui->commentList->selectedItems().at(0)->text();
     ui->commentText->setText(s);
+}
+
+bool Dialog::get_done()
+{
+    return done;
 }

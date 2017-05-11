@@ -7,6 +7,7 @@ RubricGUI::RubricGUI(QWidget *parent, Grader* aGrader) :
 {
     ui->setupUi(this);
     this->grad = aGrader;
+    done = false;
     display_years();
     display_colors();
 }
@@ -239,5 +240,11 @@ void RubricGUI::on_removeSection_clicked()
  */
 void RubricGUI::on_doneButton_clicked()
 {
+    done = true;
     close();
+}
+
+bool RubricGUI::get_done()
+{
+    return done;
 }

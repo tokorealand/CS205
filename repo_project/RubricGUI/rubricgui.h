@@ -36,6 +36,8 @@ public:
 
     void display_colors();
 
+    bool get_done();
+
 private slots:
     void on_yearSelect_activated(const QString &arg1);
 
@@ -69,6 +71,7 @@ private:
     RubricObject* selected_rubric = nullptr;
     RubricSection* selected_rubric_section = nullptr;
     Grader *grad;
+    bool done;
 };
 
 #endif // RUBRICGUI_H

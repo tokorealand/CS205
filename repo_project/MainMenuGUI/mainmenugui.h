@@ -41,7 +41,6 @@ private slots:
 
     void on_actionExport_Lab_triggered();
 
-    void on_Refresh_clicked();
 
     void on_semesterSelect_activated(const QString &arg1);
 
