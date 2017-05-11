@@ -1,6 +1,10 @@
 #include "mainmenugui.h"
 #include "ui_mainmenugui.h"
 
+/**
+ * @brief MainMenuGUI::MainMenuGUI
+ * @param parent
+ */
 MainMenuGUI::MainMenuGUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenuGUI)
@@ -12,12 +16,18 @@ MainMenuGUI::MainMenuGUI(QWidget *parent) :
     ui->progressBar->setValue(0);
 }
 
+/**
+ * @brief MainMenuGUI::~MainMenuGUI
+ */
 MainMenuGUI::~MainMenuGUI()
 {
     delete ui;
     delete grad;
 }
 
+/**
+ * @brief MainMenuGUI::display_years
+ */
 void MainMenuGUI::display_years()
 {
     QList<QString> ycontainer;
@@ -44,6 +54,10 @@ void MainMenuGUI::display_years()
     }
 }
 
+/**
+ * @brief MainMenuGUI::on_yearSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
 {
     selected_year = grad->get_year(arg1.QString::toStdString());
@@ -68,6 +82,9 @@ void MainMenuGUI::on_yearSelect_activated(const QString &arg1)
     ui->semesterSelect->addItems(semcontainer);
 }
 
+/**
+ * @brief MainMenuGUI::on_actionAdd_New_Labs_triggered
+ */
 void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 {
     AddLabsGUI* alg = new AddLabsGUI(0, grad);
@@ -82,6 +99,9 @@ void MainMenuGUI::on_actionAdd_New_Labs_triggered()
 
 }
 
+/**
+ * @brief MainMenuGUI::on_actionExport_Lab_triggered
+ */
 void MainMenuGUI::on_actionExport_Lab_triggered(){
     if(selected_lab!=nullptr && selected_lab->get_graded()=="1")
     {
@@ -92,12 +112,14 @@ void MainMenuGUI::on_actionExport_Lab_triggered(){
 }
 
 
-
+/**
+ * @brief MainMenuGUI::on_semesterSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 {
     string semesterID = arg1.toStdString()+"_"+selected_year->get_id();
     selected_semester=grad->get_semester(semesterID);
-
 
     QList<QString> ccontainer;
     ui->classSelect->clear();
@@ -120,7 +142,10 @@ void MainMenuGUI::on_semesterSelect_activated(const QString &arg1)
 }
 
 
-
+/**
+ * @brief MainMenuGUI::on_classSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_classSelect_activated(const QString &arg1)
 {
     string classID = arg1.toStdString()+"_"+selected_semester->get_id();
@@ -147,7 +172,10 @@ void MainMenuGUI::on_classSelect_activated(const QString &arg1)
     ui->sectionSelect->addItems(ccontainer);
 }
 
-
+/**
+ * @brief MainMenuGUI::on_sectionSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 {
 
@@ -185,7 +213,10 @@ void MainMenuGUI::on_sectionSelect_activated(const QString &arg1)
 }
 
 
-
+/**
+ * @brief MainMenuGUI::on_studentSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
 {
 
@@ -219,7 +250,10 @@ void MainMenuGUI::on_studentSelect_activated(const QString &arg1)
     ui->labSelect->addItems(ccontainer);
 }
 
-
+/**
+ * @brief MainMenuGUI::on_labSelect_activated
+ * @param arg1
+ */
 void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 {
     string labID = arg1.toStdString() +"_"+selected_student->get_id();
@@ -258,7 +292,10 @@ void MainMenuGUI::on_labSelect_activated(const QString &arg1)
 }
 
 
-
+/**
+ * @brief MainMenuGUI::on_componentSelect_activated
+ * @param index
+ */
 void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 {
     string componentID = ui->componentSelect->currentItem()->text().toStdString()+"_"+selected_lab->get_id();
@@ -273,7 +310,9 @@ void MainMenuGUI::on_componentSelect_activated(const QModelIndex &index)
 }
 
 
-
+/**
+ * @brief MainMenuGUI::display_component_text
+ */
 void MainMenuGUI::display_component_text()
 {
     QList<QString> jtcontainer;
@@ -297,7 +336,9 @@ void MainMenuGUI::display_component_text()
     }
 }
 
-
+/**
+ * @brief MainMenuGUI::display_comment_text
+ */
 void MainMenuGUI::display_comment_text()
 {
     ui->discomment->clear();
@@ -318,6 +359,9 @@ void MainMenuGUI::display_comment_text()
 }
 
 
+/**
+ * @brief MainMenuGUI::display_rubric_text
+ */
 void MainMenuGUI::display_rubric_text()
 {
     ui->disrubric->clear();
@@ -345,12 +389,18 @@ void MainMenuGUI::display_rubric_text()
 
 }
 
-
+/**
+ * @brief MainMenuGUI::on_saveAndExit_clicked
+ */
 void MainMenuGUI::on_saveAndExit_clicked()
 {
     this->close();
 }
 
+/**
+ * @brief MainMenuGUI::on_checkBox_toggled
+ * @param checked
+ */
 void MainMenuGUI::on_checkBox_toggled(bool checked)
 {
     if(checked)
@@ -370,6 +420,9 @@ void MainMenuGUI::on_checkBox_toggled(bool checked)
     ui->disrubric->clear();
 }
 
+/**
+ * @brief MainMenuGUI::on_actionComment_triggered
+ */
 void MainMenuGUI::on_actionComment_triggered()
 {
     if(selected_component != nullptr){ // only open the comment engine if there is a lab
@@ -390,6 +443,9 @@ void MainMenuGUI::on_actionComment_triggered()
     }
 }
 
+/**
+ * @brief MainMenuGUI::on_actionAdd_Rubric_triggered
+ */
 void MainMenuGUI::on_actionAdd_Rubric_triggered()
 {
     RubricGUI* rg = new RubricGUI(0, grad);
@@ -403,11 +459,17 @@ void MainMenuGUI::on_actionAdd_Rubric_triggered()
 
 }
 
+/**
+ * @brief MainMenuGUI::on_actionCalculate_Stats_triggered
+ */
 void MainMenuGUI::on_actionCalculate_Stats_triggered(){
     StatisticsGui* sg = new StatisticsGui(0, grad);
     sg->show();
 }
 
+/**
+ * @brief MainMenuGUI::on_deleteComment_clicked
+ */
 void MainMenuGUI::on_deleteComment_clicked()
 {
     int check =ui->discomment->currentRow();
@@ -420,14 +482,6 @@ void MainMenuGUI::on_deleteComment_clicked()
     }
 }
 
-void MainMenuGUI::delay( int millisecondsToWait )
-{
-    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
-    while( QTime::currentTime() < dieTime )
-    {
-        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
-    }
-}
 
 
 void MainMenuGUI::on_checkBox_2_toggled(bool checked)

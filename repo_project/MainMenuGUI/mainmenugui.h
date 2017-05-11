@@ -34,6 +34,12 @@ public:
 
     void display_years();
 
+    void display_component_text();
+
+    void display_comment_text();
+
+    void display_rubric_text();
+
 private slots:
     void on_yearSelect_activated(const QString &arg1);
 
@@ -54,12 +60,6 @@ private slots:
 
     void on_componentSelect_activated(const QModelIndex &index);
 
-    void display_component_text();
-
-    void display_comment_text();
-
-    void display_rubric_text();
-
     void on_saveAndExit_clicked();
 
     void on_checkBox_toggled(bool checked);
@@ -68,12 +68,9 @@ private slots:
 
     void on_actionAdd_Rubric_triggered();
 
-
     void on_actionCalculate_Stats_triggered();
 
-
     void on_deleteComment_clicked();
-    void delay (int);
 
     void on_pushButton_clicked();
 
@@ -82,8 +79,6 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_actionExport_Labs_triggered();
-
-
 
     void on_actionArchive_triggered();
 
