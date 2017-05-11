@@ -4,6 +4,13 @@
 class Lab;
 class RubricObject;
 
+/**
+ * @brief AddLabsGUI::AddLabsGUI
+ * GUI used to input lab submissions. Select directory containing lab submission subdirectories
+ * Lab submissions must be titled "firstName_lastName_class_section_labNum_semester_year"
+ * @param parent
+ * @param aGrader
+ */
 AddLabsGUI::AddLabsGUI(QWidget *parent, Grader * aGrader) :
     QWidget(parent),
     ui(new Ui::AddLabsGUI)
@@ -13,36 +20,38 @@ AddLabsGUI::AddLabsGUI(QWidget *parent, Grader * aGrader) :
     done = false;
 }
 
+/**
+ * @brief AddLabsGUI::~AddLabsGUI
+ * deconstructs AddLabsGUI
+ */
 AddLabsGUI::~AddLabsGUI(){
     delete ui;
 }
 
+/**
+ * @brief AddLabsGUI::on_selectButton_clicked
+ * passes file path to fileparser in grader to iterate through subdirectories and
+ * parse lab submissions
+ */
 void AddLabsGUI::on_selectButton_clicked(){
-
     //save file path
     string filepath = ui->labPathText->toPlainText().toStdString();
     labIDList = grader->get_file_parser()->parse_java_file(filepath);
     done = true;
-    //controller = grader->get_control();
     delete this;
-    //grader->get_file_parser()->parse_java_file(filepath);
 }
 
-//void AddLabsGUI::on_doneButton_clicked(){
-//  //  add_rubric_to_labs();
-//}
-
-//void AddLabsGUI::on_addRubricButton_clicked(){
-//    RubricCreatorGUI *r = new RubricCreatorGUI(0, grader);
-//    r->show();
-//}
-
+/**
+ * @brief AddLabsGUI::on_browseButton_clicked
+ * Opens file dialog to allow users to browse for a file path to a directory of lab submissions
+ */
 void AddLabsGUI::on_browseButton_clicked()
 {
     ui->labPathText->clear();
     QString filename = QFileDialog::getExistingDirectory(this, tr(""), "/User",  QFileDialog::ShowDirsOnly);
     ui->labPathText->setText(filename);
 }
+
 
 void AddLabsGUI::add_rubric_to_labs(){
 

@@ -2,9 +2,13 @@
 
 /**
  * @brief Component::Component
+ * Adds a component with an id, labID, and text. Swaps out all | with " and
+ * ` with ' in text on construction. Components contain a list of comments
  * @param id
+ * component ID is component name+_+labID
  * @param labID
  * @param aText
+ * text of .java file
  * @param tool
  * @param table
  */
@@ -27,6 +31,7 @@ Component::Component(std::string id, std::string labID, std::string aText, DBToo
 
 /**
 Destructor for Class which adds itself to the database.
+Replaces all " with | and ' with `to avoid SQL issue with storing certain symbols
 */
 Component::~Component()
 {
@@ -49,6 +54,7 @@ std::string Component:: get_text()
 
 /**
  * @brief Component::make_text_lines
+ * breaks down text into a vector of strings based upon location of appends
  */
 void Component:: make_text_lines()
 {
@@ -86,7 +92,9 @@ std::string Component::get_name()
 
 /**
  * @brief Component::get_points
+ * calculates total points off of all comments in this component
  * @return
+ * Returns total points off
  */
 int Component::get_points()
 {

@@ -2,8 +2,9 @@
 #include "ui_mainmenugui.h"
 
 /**
- * @brief MainMenuGUI::MainMenuGUI, All acts as the main menu for the project.
- * Keeps track of current year, semster, class, section, student, lab, component, rubric,
+ * @brief MainMenuGUI::MainMenuGUI
+ *  All acts as the main menu for the project.Keeps track of current year,
+ * semster, class, section, student, lab, component, rubric,
  * and comment that are being used. Displays selected students lab and calls all other guis.
  * @param parent
  *
