@@ -1,6 +1,16 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
+/**
+ * @brief Dialog::Dialog
+ * @param parent
+ * @param aGrader
+ * @param aLab
+ * @param aComponent
+ * @param aclass
+ *
+ * sets the grader, lab, and component, and then populate the gui with
+ */
 Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab, Component *aComponent, Class *aclass) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -11,14 +21,22 @@ Dialog::Dialog(QWidget *parent, Grader *aGrader, Lab *aLab, Component *aComponen
     this->aclass=aclass;
     component = aComponent;
     populate();
-
 }
 
+/**
+ * @brief Dialog::~Dialog
+ *
+ * the deconstructor for Dialog.
+ */
 Dialog::~Dialog(){
     delete ui;
 }
 
-//populate the gui with info
+/**
+ * @brief Dialog::populate
+ *
+ * populate the gui with info
+ */
 void Dialog::populate(){
 
     QList<QString> ccontainer;
@@ -38,9 +56,7 @@ void Dialog::populate(){
 
     //populate the rubric drop down
         //get the rubric from this class and lab
-        vector<RubricObject*> tempRV = aclass->get_rubrics();
-        RubricObject *tempR = tempRV.at(0);
-        //RubricObject *tempR = currentClass->get_rubrics().at(stoi(lab->get_lab_num()));
+        RubricObject *tempR = aClass->get_rubrics().at(stoi(lab->get_lab_num()));
 
         QStringList tempRSections;
 
@@ -62,7 +78,11 @@ void Dialog::populate(){
         ui->rubricSectionDropDown->addItems(tempRSections);
     }
 
-
+/**
+ * @brief Dialog::on_doneButton_clicked
+ *
+ * save a comment and close the gui
+ */
 void Dialog::on_doneButton_clicked(){
 
     //save comment details -- will be in a vector of comments in lab object
@@ -88,20 +108,36 @@ void Dialog::on_doneButton_clicked(){
     close();
 }
 
+/**
+ * @brief Dialog::populate_comment_list
+ *
+ * populate the comment list with a list of comments
+ */
 void Dialog::populate_comment_list(){
 
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList);
 }
 
+/**
+ * @brief Dialog::on_commentText_textChanged
+ * @param arg1
+ *
+ * a slot that filters the preexisting comments when you start typing.
+ */
 void Dialog::on_commentText_textChanged(const QString &arg1){
 
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
-    //cout << "arg1" << arg1;
     ui->commentList->clear();
     ui->commentList->addItems(commentQStringList.filter(regExp));
 }
 
+/**
+ * @brief Dialog::on_commentList_clicked
+ * @param index
+ *
+ * slot that sets the comment text if you select a comment in the comment box.
+ */
 void Dialog::on_commentList_clicked(const QModelIndex &index){
 
     QString s = ui->commentList->selectedItems().at(0)->text();

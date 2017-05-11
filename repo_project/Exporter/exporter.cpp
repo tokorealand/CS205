@@ -1,13 +1,29 @@
 #include "exporter.h"
 
+/**
+ * @brief Exporter::Exporter
+ *
+ * Exporter constructor.
+ */
 Exporter::Exporter(){
-
 }
 
+/**
+ * @brief Exporter::~Exporter
+ *
+ * Exporter deconstructor.
+ */
 Exporter::~Exporter(){
 }
 
-//writes the file
+/**
+ * @brief Exporter::combine_lab
+ * @param currentLab
+ * @param currentClass
+ * @param rubricIndex
+ *
+ * writes the file
+ */
 void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex){
 
     this->rubricIndex = rubricIndex;
@@ -21,14 +37,11 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
     string filepathclass ="./ExportedFiles/"+currentClass->get_id();
     string filepathlab ="./ExportedFiles/"+currentClass->get_id()+"/"+currentLab->get_lab_num();
 
-
     mkdir("./ExportedFiles",S_IRWXU);
     mkdir(filepathclass.c_str(),S_IRWXU);
     mkdir(filepathlab.c_str(),S_IRWXU);
 
-
     oss.open(filepathlab+"/"+name);
-
 
     oss << "<html>" << endl;
            oss << get_textof()<<endl;
@@ -38,10 +51,14 @@ void Exporter::combine_lab(Lab* currentLab, Class *currentClass, int rubricIndex
 
     //close the file writer
     oss.close();
-
 }
 
-//used to get a string containing all components
+/**
+ * @brief Exporter::get_textof
+ * @return a string containing the full lab plus comments plus the rubric
+ *
+ * starts combining the lab with the text of the comments and rubrics
+ */
 std::string Exporter::get_textof(){
 
     std::string whole;
@@ -57,8 +74,6 @@ std::string Exporter::get_textof(){
             vector<string> classTemp = currentComponent->get_text_lines();
             currentComponent = componentVector.at(i);
 
-
-
     //for each line in the class
     for(int j = 0; j < classTemp.size(); j++){
         string lineTemp = to_string(j) + string(" ") + classTemp.at(j);
@@ -71,6 +86,10 @@ std::string Exporter::get_textof(){
    return whole;
 }
 
+/**
+ * @brief Exporter::get_rubric
+ * @return a string of the final rubric with point totals and section text
+ */
 string Exporter::get_rubric(){
 
     string rubricDrawing = "<br>RUBRIC <br>";
@@ -88,6 +107,12 @@ string Exporter::get_rubric(){
     return rubricDrawing;
 }
 
+/**
+ * @brief Exporter::get_points_off
+ * @param rs
+ * @param total
+ * @return the string of the points off the given section
+ */
 string Exporter::get_points_off(RubricSection *rs, int total){
 
     //track points off section
@@ -118,7 +143,15 @@ string Exporter::get_points_off(RubricSection *rs, int total){
 }
 
 
-//parses a line of code according to the comments
+/**
+ * @brief Exporter::parse_line
+ * @param line
+ * @param currentLab
+ * @param lineNo
+ * @return parsed line of code
+ *
+ * parses a line of code according to the comments
+ */
 string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
 
     string htmlLine; //final line saved to html file
@@ -170,27 +203,43 @@ string Exporter::parse_line(string line, Lab *currentLab, int lineNo){
     return htmlLine + commentText;
 }
 
-//gets the finished string
+/**
+ * @brief Exporter::get_finished
+ * @return the finished string
+ */
 string Exporter::get_finished(){
     return "";
 }
 
+/**
+ * @brief Exporter::space
+ * @return a space string
+ */
 string Exporter::space(){
     return " ";
 }
 
+/**
+ * @brief Exporter::enter
+ * @return an enter
+ */
 string Exporter::enter(){
     return "\n";
 }
 
+/**
+ * @brief Exporter::bold
+ * @return bold symbol for html
+ */
 string Exporter::bold(){
     return "<b>";
 }
 
-string Exporter::highlight(){
-    return "<b>";
-}
-
+/**
+ * @brief Exporter::font_color
+ * @param color
+ * @return the string of the color
+ */
 string Exporter::font_color(string color){
     if(color == "red"){
         return "<font color = 'red'>";

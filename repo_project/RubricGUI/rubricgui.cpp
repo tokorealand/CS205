@@ -11,11 +11,22 @@ RubricGUI::RubricGUI(QWidget *parent, Grader* aGrader) :
     display_colors();
 }
 
-RubricGUI::~RubricGUI()
-{
+/**
+ * @brief RubricGUI::~RubricGUI
+ *
+ * deconstructor for the rubric gui.
+ */
+RubricGUI::~RubricGUI(){
     delete ui;
 }
 
+/**
+ * @brief RubricGUI::on_yearSelect_activated
+ * @param arg1
+ *
+ * a slot that gets the selected year from the year drop down and then populates
+ * the semester drop down with the corresponding sections from grader.
+ */
 void RubricGUI::on_yearSelect_activated(const QString &arg1)
 {
     selected_year = grad->get_year(arg1.QString::toStdString());
@@ -34,6 +45,11 @@ void RubricGUI::on_yearSelect_activated(const QString &arg1)
     ui->semesterSelect->addItems(semcontainer);
 }
 
+/**
+ * @brief RubricGUI::display_years
+ *
+ * Displays the all the years in the grader in the years drop down.
+ */
 void RubricGUI:: display_years()
 {
     QList<QString> ycontainer;
@@ -53,8 +69,15 @@ void RubricGUI:: display_years()
     }
 }
 
-void RubricGUI::on_semesterSelect_activated(const QString &arg1)
-{
+/**
+ * @brief RubricGUI::on_semesterSelect_activated
+ * @param arg1
+ *
+ * a slot that gets the selected semester from the year drop down and then
+ * populates the class drop down with the corresponding sections from grader.
+ */
+void RubricGUI::on_semesterSelect_activated(const QString &arg1){
+
     string semesterID = arg1.toStdString()+"_"+selected_year->get_id();
     selected_semester=grad->get_semester(semesterID);
 
@@ -72,9 +95,16 @@ void RubricGUI::on_semesterSelect_activated(const QString &arg1)
     ui->classSelect->addItems(ccontainer);
 }
 
+/**
+ * @brief RubricGUI::on_classSelect_activated
+ * @param arg1
+ *
+ * a slot that gets the selected semester from the year drop down and then
+ * populates the rubric text box with the name of the current rubrics in that
+ * selected class.
+ */
+void RubricGUI::on_classSelect_activated(const QString &arg1){
 
-void RubricGUI::on_classSelect_activated(const QString &arg1)
-{
     string classID = arg1.toStdString()+"_"+selected_semester->get_id();
 
     selected_class = grad->get_class(classID);
@@ -92,20 +122,26 @@ void RubricGUI::on_classSelect_activated(const QString &arg1)
     ui->rubricSelect->addItems(ccontainer);
 }
 
-
-
+/**
+ * @brief RubricGUI::on_createRubric_clicked
+ *
+ * create the rubric and add it to grader.
+ */
 void RubricGUI::on_createRubric_clicked()
 {
     if(selected_class != nullptr)
     {
-        string rubricID = to_string( ui->selectLab->value()) + "_" + selected_class->get_id();
+        string rubricID = to_string(ui->selectLab->value()) + "_" + selected_class->get_id();
         grad->add_rubric(rubricID, selected_class->get_id());
         ui->rubricSelect->addItem(QString::fromStdString("Rubric_"+to_string( ui->selectLab->value())));
     }
 }
 
-
-
+/**
+ * @brief RubricGUI::on_addSection_clicked
+ *
+ * add the inputted section information to the rubric.
+ */
 void RubricGUI::on_addSection_clicked()
 {
     if(selected_rubric !=nullptr)
@@ -119,6 +155,11 @@ void RubricGUI::on_addSection_clicked()
     }
 }
 
+/**
+ * @brief RubricGUI::display_colors
+ *
+ * adds colors to the select color drop down
+ */
 void RubricGUI::display_colors(){
     QList<QString> container;
     ui->selectColor->clear();
@@ -131,8 +172,14 @@ void RubricGUI::display_colors(){
     ui->selectColor->addItems(container);
 }
 
-
+/**
+ * @brief RubricGUI::on_rubricSelect_activated
+ * @param index
+ *
+ * a slot that adds rubric items to the rubric section box.
+ */
 void RubricGUI::on_rubricSelect_activated(const QModelIndex &index){
+
     string r = ui->rubricSelect->currentItem()->text().toStdString();
     string rubricID = r.substr(r.find("_")+1, r.length())+"_"+selected_class->get_id();
     selected_rubric = grad->get_rubric(rubricID);
@@ -142,21 +189,27 @@ void RubricGUI::on_rubricSelect_activated(const QModelIndex &index){
 
     std::vector<RubricSection*> holder = selected_rubric->get_rubric_sections();
 
-    for(RubricSection* it: holder)
-    {
+    for(RubricSection* it: holder){
         ccontainer.append(QString::fromStdString(it->get_points()+" | "+it->get_color()+" | "+it->get_description()));
     }
     ui->rubricsectionSelect->addItems(ccontainer);
 }
 
-
-
-
-void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index)
-{
-    selected_rubric_section =selected_rubric->get_rubric_sections().at( ui->rubricsectionSelect->currentRow());
+/**
+ * @brief RubricGUI::on_rubricsectionSelect_activated
+ * @param index
+ *
+ * a slot that sets the selected rubric section when it is clicked on in the ui.
+ */
+void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index){
+    selected_rubric_section = selected_rubric->get_rubric_sections().at( ui->rubricsectionSelect->currentRow());
 }
 
+/**
+ * @brief RubricGUI::on_deleteRubric_clicked
+ *
+ * a slot that deletes the selected rubric.
+ */
 void RubricGUI::on_deleteRubric_clicked()
 {
     selected_rubric->set_deleted();
@@ -168,12 +221,22 @@ void RubricGUI::on_deleteRubric_clicked()
     delete selected_rubric;
 }
 
+/**
+ * @brief RubricGUI::on_removeSection_clicked
+ *
+ * a slot that deletes the selected rubric section.
+ */
 void RubricGUI::on_removeSection_clicked()
 {
     selected_rubric_section->set_deleted();
     delete selected_rubric_section;
 }
 
+/**
+ * @brief RubricGUI::on_doneButton_clicked
+ *
+ * a slot that closes the program.
+ */
 void RubricGUI::on_doneButton_clicked()
 {
     close();
