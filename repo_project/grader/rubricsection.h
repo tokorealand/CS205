@@ -48,6 +48,7 @@ public:
     std::string get_color();
     std::string get_description();
     void set_deleted();
+    bool get_deleted();
 
 };
 

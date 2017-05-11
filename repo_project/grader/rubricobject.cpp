@@ -65,6 +65,11 @@ int RubricObject::get_total_points()
     return total;
 }
 
+bool RubricObject::get_deleted()
+{
+    return deleted;
+}
+
 
 
 int RubricObject::get_size(){

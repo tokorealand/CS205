@@ -21,8 +21,8 @@ RubricSection::~RubricSection()
 {
     if(deleted==false)
     {
-    build_table();
-    add_row(id,rubricid,description,points,color);
+        build_table();
+        add_row(id,rubricid,description,points,color);
     }
 }
 
@@ -49,6 +49,12 @@ void RubricSection::set_deleted()
 std::string RubricSection:: get_description()
 {
     return description;
+}
+
+
+bool RubricSection::get_deleted()
+{
+    return deleted;
 }
 
 // SQL used for inputting information

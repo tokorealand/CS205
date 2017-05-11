@@ -365,26 +365,38 @@ void MainMenuGUI::display_comment_text()
 void MainMenuGUI::display_rubric_text()
 {
     ui->disrubric->clear();
-
-    int num = std::atoi(selected_lab->get_lab_num().c_str());
-    if(selected_class->get_rubrics().size() >= std::atoi(selected_lab->get_lab_num().c_str()))
+    if(selected_lab != nullptr)
     {
-        RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str()) - 1);
+        int num = std::atoi(selected_lab->get_lab_num().c_str());
 
-        QList<QString> container;
-
-        for(int i = 0; i < current->get_rubric_sections().size(); i++)
+        if(selected_class->get_rubrics().size() >= std::atoi(selected_lab->get_lab_num().c_str()))
         {
-           string rubricSectionPoints = current->get_rubric_sections().at(i)->get_points();
-           string rubricSectionColor = current->get_rubric_sections().at(i)->get_color();
-           string rubricSectionDescription = current->get_rubric_sections().at(i)->get_description();
-           container.append(QString::fromStdString(rubricSectionPoints+"|"+rubricSectionColor+"|"+rubricSectionDescription));
+            RubricObject* current = selected_class->get_rubrics().at(std::atoi(selected_lab->get_lab_num().c_str()) - 1);
+
+            if(current->get_deleted() == false)
+            {
+
+                QList<QString> container;
+
+                for(int i = 0; i < current->get_rubric_sections().size(); i++)
+                {
+                    QString output = "";
+                    if(current->get_rubric_sections().at(i)->get_deleted() == false)
+                    {
+                       string rubricSectionPoints = current->get_rubric_sections().at(i)->get_points();
+                       string rubricSectionColor = current->get_rubric_sections().at(i)->get_color();
+                       string rubricSectionDescription = current->get_rubric_sections().at(i)->get_description();
+                       output = QString::fromStdString(rubricSectionPoints+"|"+rubricSectionColor+"|"+rubricSectionDescription);
+                       container.append(output);
+                    }
+                }
+                ui->disrubric->addItems(container);
+            }
         }
-        ui->disrubric->addItems(container);
-    }
-    else
-    {
-        ui->disrubric->addItem("No rubric to display. File -> Add Rubric to add a rubric for the specified lab");
+        else
+        {
+            ui->disrubric->addItem("No rubric to display. File -> Add Rubric to add a rubric for the specified lab");
+        }
     }
 
 }
@@ -552,7 +564,7 @@ if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==t
     x.combine_lab(it, selected_class, rubricIndex);
         }
     }
-}
+ }
 }
 
 
@@ -562,5 +574,5 @@ if(selected_class->check_all_matching_key_graded(selected_lab->get_lab_num())==t
 
 void MainMenuGUI::on_actionArchive_triggered()
 {
-    system("cd ../../../../../repo_project \n git add . \n git commit -m \"archive\" \n git push");
+    //system("cd ../../../../../repo_project \n git add . \n git commit -m \"archive\" \n git push");
 }

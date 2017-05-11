@@ -213,13 +213,14 @@ void RubricGUI::on_rubricsectionSelect_activated(const QModelIndex &index){
  */
 void RubricGUI::on_deleteRubric_clicked()
 {
-    selected_rubric->set_deleted();
-    for(int i = 0; i , selected_rubric->get_rubric_sections().size(); i++)
-    {
-        selected_rubric->get_rubric_sections().at(i)->set_deleted();
-        delete selected_rubric->get_rubric_sections().at(i);
-    }
-    delete selected_rubric;
+//    if(selected_rubric != nullptr)
+//    {
+//        selected_rubric->set_deleted();
+//        for(int i = 0; i < selected_rubric->get_rubric_sections().size(); i++)
+//        {
+//            selected_rubric->get_rubric_sections().at(i)->set_deleted();
+//        }
+//    }
 }
 
 /**
@@ -229,8 +230,10 @@ void RubricGUI::on_deleteRubric_clicked()
  */
 void RubricGUI::on_removeSection_clicked()
 {
-    selected_rubric_section->set_deleted();
-    delete selected_rubric_section;
+//    if(selected_rubric_section != nullptr)
+//    {
+//        selected_rubric_section->set_deleted();
+//    }
 }
 
 /**

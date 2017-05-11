@@ -3,7 +3,7 @@
 Grader::Grader()
 {
 
-    tool = new DBTool("Testfihhjnjhasxgxx");
+    tool = new DBTool("graderbase");
 
 
     control = new Controller(tool);

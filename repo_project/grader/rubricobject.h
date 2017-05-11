@@ -42,7 +42,7 @@ public:
     //setters
     void add_rubric_section(RubricSection* rsec);
     void set_deleted();
-
+    bool get_deleted();
 
 
 

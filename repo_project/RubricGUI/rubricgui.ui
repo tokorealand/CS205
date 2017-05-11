@@ -98,7 +98,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="deleteRubric">
    <property name="geometry">
     <rect>
      <x>180</x>

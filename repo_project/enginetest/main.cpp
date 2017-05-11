@@ -791,7 +791,7 @@ TEST(Controller,Addcomponent)
     con.add_component("c1","l1","./afd.txt");
    Component* sm= con.get_component("c1");
 
-   ASSERT_EQ(sm,con.get_component("c1"));
+   ASSERT_EQ(sm, con.get_component("c1"));
    con.test_drop();
 //   delete tool;
 }
@@ -854,11 +854,6 @@ TEST(Controller,Addtwocomponents2)
     con.add_lab("l1","luis","recursion","1", "0");
     con.add_component("c2","l1","addadsa");
     con.add_component("c1","l1","addadsa");
-
-
-
-
-
 
    ASSERT_NE(con.get_component("c1"),con.get_component(
                  "c2"));
